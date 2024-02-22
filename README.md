@@ -1,10 +1,19 @@
-# Proyecto de Ingenieria de software(SCD-1011) donde se busca solucionar una problematica ficticia de los club conquistadores
-
-## Instalacion
-- Se necesita php(XAMPPl lo instala por ti), composer, node.js y por ultimo XAMMP.
-- abrir XAMPP y empezar los servicios de apache y mysql
-- En la carpeta donde se tendra el proyecto abrir powershell
-- git clone https://github.com/joseocio192/Club-Conquistadores
-- cd example-app
-- php artisan serve
-Y ya se tendria la pagina en http://127.0.0.1:8000
+# Proyecto
+Proyecto de Ingeniería de software(SCD-1011) donde se busca solucionar una problemática ficticia de los club conquistadores
+## Documentación
+[aqui]([Installation - Laravel 10.x - The PHP Framework For Web Artisans](https://laravel.com/docs/10.x) podrás encontrar documentación de laravel
+## Instalación
+### requerimientos
+- XAMP
+- COMPOSER
+- NODEJS
+- PHP(XAMPP)
+  ## Instalar el proyecto
+- Abrir XAMPP y empezar los servicios de MySql y Apache
+- En la carpeta donde se tendrá el proyecto abrir PowerShell
+```
+git clone https://github.com/joseocio192/Club-Conquistadores
+cd '.\Club Conquistadores\'
+php artisan serve
+```
+ - Y ya se tendría la pagina en http://127.0.0.1:8000
