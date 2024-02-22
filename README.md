@@ -1,7 +1,7 @@
 # Proyecto
 Proyecto de Ingeniería de software(SCD-1011) donde se busca solucionar una problemática ficticia de los club conquistadores
 ## Documentación
-[aqui]([Installation - Laravel 10.x - The PHP Framework For Web Artisans](https://laravel.com/docs/10.x) podrás encontrar documentación de laravel
+[aqui](https://laravel.com/docs/10.x) podrás encontrar documentación de laravel
 ## Instalación
 ### requerimientos
 - XAMP
