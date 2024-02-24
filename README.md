@@ -22,7 +22,7 @@ cd '.\Club Conquistadores\'
 
 composer install
 ```
-En el proyecto cambiar el nombre de '.env.example' por '.env'
+En el proyecto cambiar el nombre de '.env.example' por '.env' \n
 ![image](https://github.com/joseocio192/Club-Conquistadores/assets/80994068/ab9e21b0-816f-4a5d-999e-8b7b56a0a99e)
 
 
