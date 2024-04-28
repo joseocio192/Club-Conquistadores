@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 
 function Sidebar() {
     return (
-        <div>
+        <div className='Sidebar'>
            jijija
         </div>
     );
