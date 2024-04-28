@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
 import { SidebarData } from './SidebarData';
+import "../../css/Sidebar.css"
 
 function Sidebar() {
     return (
@@ -11,8 +12,8 @@ function Sidebar() {
                         <li key={key}
                             className='row' 
                             onClick={() => {window.location.pathname = val.link}}> 
-                            <div>{val.icon}</div>
-                            <div>{val.title}</div> 
+                            <div className='icon'>{val.icon}</div>
+                            <div className='title'>{val.title}</div> 
                         </li>
                     )
                 })}

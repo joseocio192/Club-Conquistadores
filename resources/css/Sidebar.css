@@ -1,0 +1,25 @@
+.Sidebar{
+    height: 100%;
+    width: 15%;
+    background-color: #31363F;
+    border-radius: 10px;
+}
+
+.SidebarList {
+    height: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.SidebarList .row {
+    height: 50px;
+    width: 100%;
+    list-style-type: none;
+    margin: 0%;
+    display: flex;
+    flex-direction: row;
+    color: #EEEEEE;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
