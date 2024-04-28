@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
+import Sidebar from './components/Sidebar'
 
 function App() {
     return (
-        <div>
+        <div className='App'>
+            <Sidebar></Sidebar>
         </div>
     );
 }

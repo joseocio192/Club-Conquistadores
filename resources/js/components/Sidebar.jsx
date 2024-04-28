@@ -10,13 +10,3 @@ function Sidebar() {
 }
 
 export default Sidebar
-
-if (document.getElementById('root')) {
-    const Index = ReactDOM.createRoot(document.getElementById("root"));
-
-    Index.render(
-        <React.StrictMode>
-            <Sidebar/>
-        </React.StrictMode>
-    )
-}
