@@ -2,7 +2,7 @@
     height: 100%;
     width: 15%;
     background-color: #31363F;
-    border-radius: 10px;
+    display: flex;
 }
 
 .SidebarList {
