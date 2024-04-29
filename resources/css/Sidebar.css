@@ -12,7 +12,7 @@
 }
 
 .SidebarList .row {
-    height: 50px;
+    height: 60px;
     width: 100%;
     list-style-type: none;
     margin: 0%;
@@ -22,4 +22,20 @@
     justify-content: center;
     align-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.SidebarList .row:hover {
+    cursor: pointer;
+    background-color: #1c1f24;
+    border-radius: 10px;
+}
+
+.row .icon {
+    flex: 30%;
+    display: grid;
+    place-items: center;
+}
+
+.row .title {
+    flex: 70%;
 }
