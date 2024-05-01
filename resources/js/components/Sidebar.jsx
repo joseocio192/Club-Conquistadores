@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
-import { SidebarData } from './SidebarData';
+import { SidebarDataInstructores } from './SidebarData';
 import "../../css/Sidebar.css"
 
 function Sidebar() {
     return (
         <div className='Sidebar'>
             <ul className='SidebarList'>
-                {SidebarData.map((val, key) => {
+                {SidebarDataInstructores.map((val, key) => {
                     return (
                         <li key={key}
                             className='row' 
