@@ -17,6 +17,7 @@ function Sidebar() {
                         </li>
                     )
                 })}
+                <button className='btnSalir'></button>
             </ul>
         </div>
     );
