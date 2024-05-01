@@ -6,6 +6,7 @@ import "../../css/Sidebar.css"
 function Sidebar() {
     return (
         <div className='Sidebar'>
+            <span className='SidebarTitle'>Instructores</span>
             <ul className='SidebarList'>
                 {SidebarDataInstructores.map((val, key) => {
                     return (
