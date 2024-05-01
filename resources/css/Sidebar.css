@@ -6,21 +6,37 @@
     border-right: 1px solid #EEEEEE;
 }
 
+.SidebarTitle {
+    font-size: 28px;
+    position: absolute;
+    color: #EEEEEE;
+    margin-top: 10px;
+    padding: 20px;
+    height: 10px;
+    left: 20px;
+    width: 200px;
+    font-family: Georgia;
+}
+
 .SidebarList {
-    height: auto;
-    padding: 0;
+    position: relative;
+    margin-top: 90px;
+    height: 90%;
     width: 100%;
 }
 
 .SidebarList .row {
+    position: relative;
+    z-index: auto;
+    right: 20px;
     height: 60px;
     width: 100%;
     list-style-type: none;
-    border-bottom: 1px solid #EEEEEE;
+    border-bottom: 1px solid #76ABAE;
     margin: 0%;
     display: flex;
     flex-direction: row;
-    color: #EEEEEE;
+    color: #76ABAE;
     justify-content: center;
     align-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -28,8 +44,9 @@
 
 .SidebarList .row:hover {
     cursor: pointer;
-    background-color: #1c1f24;
-    font-size: 18px;
+    color: #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+    font-size: 16px;
 }
 
 .row .icon {
