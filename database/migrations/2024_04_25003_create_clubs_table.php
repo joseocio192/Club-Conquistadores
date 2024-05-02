@@ -13,9 +13,14 @@ return new class extends Migration
     {
         Schema::create('Club', function (Blueprint $table) {
             $table->id();
-            $table->String('nombre');
-            $table->foreignID('Director')->references('id')->on('directivo');
-            $table->foreignID('ciudad')->references('id')->on('ciudad');
+            $table->id('idEspecialidad')->references('id')->on('especialidad');
+            $table->string('nombre');
+            $table->string('lema')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('especialidad')->nullable();
+            $table->string('direccion')->nullable();
+            $table->foreignId('Director')->references('id')->on('directivo');
+            $table->foreignId('ciudad')->references('id')->on('ciudad');
             $table->timestamps();
         });
     }
