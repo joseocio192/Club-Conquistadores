@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('especialidad_id')->references('id')->on('especialidad');
             $table->string('nombre', 100);
-            $table->longText('descripcion');
+            $table->Text('descripcion');
             $table->timestamps();
             $table->string('locale', 5);
         });

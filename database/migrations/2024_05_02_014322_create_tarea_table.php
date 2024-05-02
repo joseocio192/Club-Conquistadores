@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('clase_id')->references('id')->on('clase');
             $table->string('nombre', 150);
-            $table->longText('descripcion');
+            $table->Text('descripcion');
             $table->date('fecha');
             $table->timestamps();
             $table->string('locale', 5);

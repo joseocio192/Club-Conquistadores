@@ -17,7 +17,7 @@ return new class extends Migration
             $table->String('column');
             $table->integer('Row_ID');
             $table->String('locale', 7);
-            $table->longText('Content');
+            $table->Text('Content');
             $table->timestamps();
         });
     }
