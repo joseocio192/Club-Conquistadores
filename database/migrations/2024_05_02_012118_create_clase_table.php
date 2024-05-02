@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('color');
+            $table->binary('logo');
+            $table->string('horario');
+            $table->integer('Max alumnos');
             $table->foreignId('ImpartidaPor')->references('id')->on('instructor');
             $table->integer('edadMinima');
             $table->timestamps();
