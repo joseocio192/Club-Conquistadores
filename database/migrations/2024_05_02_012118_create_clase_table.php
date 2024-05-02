@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('clase', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('club_id')->references('id')->on('club');
+            $table->foreignId('impartidaPor')->references('id')->on('instructor');
             $table->string('nombre');
             $table->string('color');
-            $table->binary('logo');
+            $table->string('logo');
             $table->string('horario');
-            $table->integer('Max alumnos');
-            $table->foreignId('ImpartidaPor')->references('id')->on('instructor');
-            $table->integer('edadMinima');
             $table->timestamps();
         });
     }

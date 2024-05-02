@@ -11,21 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tarea', function (Blueprint $table) {
+        Schema::create('tutorlegal', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('clase_id')->references('id')->on('clase');
             $table->string('nombre');
-            $table->string('descripcion');
-            $table->date('fecha');
+            $table->string('apellido paterno');
+            $table->string('apellido materno');
+            $table->string('curp');
+            $table->string('telefono');
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('tarea');
+        Schema::dropIfExists('tutorlegal');
     }
 };

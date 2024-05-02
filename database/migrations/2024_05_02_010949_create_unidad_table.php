@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('unidad', function (Blueprint $table) {
             $table->id();
             $table->foreignId('Consejero_id')->references('id')->on('instructor');
+            $table->foreignId('Capitan')->references('id')->on('Conquistador');
             $table->string('nombre');
             $table->binary('logo');
             $table->string('Lema');
-            $table->foreignId('Capitan')->references('id')->on('Conquistador');
             $table->string('sexo');
             $table->timestamps();
         });

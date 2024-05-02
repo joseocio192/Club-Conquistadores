@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('municipios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
             $table->foreignID('Estado_id')->references('id')->on('estados');
+            $table->string('nombre');
             $table->timestamps();
         });
     }
