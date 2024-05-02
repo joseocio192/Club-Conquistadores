@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tareaxconquistador', function (Blueprint $table) {
             $table->foreignId('tarea_id')->references('id')->on('tarea');
-            $table->foreignId('conquistador')->references('id')->on('conquistador');
+            $table->foreignId('conquistador')->references('id')->on('Conquistador');
             $table->boolean('completada');
         });
     }

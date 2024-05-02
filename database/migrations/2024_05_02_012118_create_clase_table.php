@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('clase', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('club_id')->references('id')->on('club');
+            $table->foreignId('club_id')->references('id')->on('Club');
             $table->foreignId('instructor')->references('id')->on('instructor');
             $table->string('nombre', 100);
             $table->string('color', 50);

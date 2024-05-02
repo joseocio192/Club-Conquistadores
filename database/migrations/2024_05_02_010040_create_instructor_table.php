@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('instructor', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('persona_id')->references('id')->on('persona');
+            $table->foreignId('persona_id')->references('id')->on('Persona');
             $table->foreignId('jefe_id')->references('id')->on('directivo');
             $table->timestamps();
         });
