@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('requisitos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('especialidad_id')->references('id')->on('especialidad');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->foreignId('especialidad_id')->references('id')->on('especialidad');
             $table->timestamps();
         });
     }
