@@ -19,9 +19,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('rol', ['Director', 'Subdirector', 'Tesorero', 'Secretario', 'Consejero', 'Asesor', 'Consejero Mayor']);
+            $table->string('sexo');
+            //$table->foreignId('club_id')->references('id')->on('club');
+            $table->foreignId('jefe')->references('id')->on('directivo');
             $table->string('telefono')->unique();
             $table->string('direccion');
-            $table->foreignID('Municipcio_Id')->references('id')->on('municipio');
+            $table->foreignID('Municipcio_Id')->references('id')->on('municipios');
             $table->timestamps();
         });
     }

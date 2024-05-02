@@ -19,12 +19,11 @@ return new class extends Migration
             $table->string('apellido materno');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('rol',['Amigo','Compañero','Explorador','Orientador','viajero','Guia','Guia Mayor']);
+            $table->enum('rol',['Amigo','Compañero','Explorador','Orientador','viajero','Guia','Guia Mayor','Guia Mayor Investido']);
             $table->string('telefono');
             $table->string('direccion');
             $table->string('codigo postal');
-            $table->foreignID('Estado_id')->references('id')->on('estados');
-            $table->foreignID('Pais_id')->references('id')->on('Pais');
+            $table->foreignId('ciudad_id')->references('id')->on('ciudad');
             $table->foreignID('TutorLegal_id')->references('id')->on('tutorlegal');
             $table->foreignID('Clubs_id')->references('id')->on('Club');
             $table->rememberToken();
