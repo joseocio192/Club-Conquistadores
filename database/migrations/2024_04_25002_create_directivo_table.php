@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignID('ciudad_id')->references('id')->on('ciudad');
 
             //Esto no puede ser una restriccion estatica Esto debe ser una restriccion dinamica por el idioma
-            $table->enum('rol', ['Director', 'Subdirector', 'Tesorero', 'Secretario', 'Consejero', 'Asesor', 'Consejero Mayor']);
+            $table->enum('rol', ['Director', 'Subdirector', 'Tesorero', 'Secretario', 'Asesor']);
 
             $table->timestamps();
             $table->string('locale', 5);
