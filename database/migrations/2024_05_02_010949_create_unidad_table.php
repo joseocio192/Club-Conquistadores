@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('Consejero_id')->references('id')->on('instructor');
             $table->foreignId('Capitan')->references('id')->on('Conquistador');
-            $table->string('nombre');
-            $table->binary('logo');
-            $table->string('Lema');
-            $table->string('sexo');
+            $table->string('nombre', 100);
+            $table->string('logo', 50);
+            $table->text('Lema');
+            $table->string('sexo', 25);
             $table->timestamps();
+            $table->string('locale', 5);
         });
     }
 

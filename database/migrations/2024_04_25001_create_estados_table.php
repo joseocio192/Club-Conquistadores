@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignID('pais_id')->references('id')->on('Pais');
             $table->string('nombre');
             $table->timestamps();
+            $table->string('locale', 5);
         });
     }
 

@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('tutorlegal', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido paterno');
-            $table->string('apellido materno');
-            $table->string('curp');
-            $table->string('telefono');
-            $table->string('email')->unique();
+            $table->string('nombre', 100);
+            $table->string('apellido', 100);
+            $table->string('telefono', 10);
+            $table->string('email', 45)->unique();
             $table->timestamps();
+            $table->string('locale', 5);
         });
     }
     /**

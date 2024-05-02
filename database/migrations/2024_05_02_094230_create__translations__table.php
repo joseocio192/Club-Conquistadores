@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('especialidad', function (Blueprint $table) {
+        Schema::create('_translations_', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 100);
-            $table->date('fechaCumplido');
             $table->timestamps();
-            $table->string('locale', 5);
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('especialidad');
+        Schema::dropIfExists('_translations_');
     }
 };

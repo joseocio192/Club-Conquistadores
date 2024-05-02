@@ -13,18 +13,14 @@ return new class extends Migration
     {
         Schema::create('directivo', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('jefe')->references('id')->on('directivo');
-            $table->foreignID('Ciudad_id')->references('id')->on('ciudad');
+            $table->foreignId('jefe_id')->references('id')->on('directivo');
+            $table->foreignID('ciudad_id')->references('id')->on('ciudad');
+
+            //Esto no puede ser una restriccion estatica Esto debe ser una restriccion dinamica por el idioma
             $table->enum('rol', ['Director', 'Subdirector', 'Tesorero', 'Secretario', 'Consejero', 'Asesor', 'Consejero Mayor']);
-            $table->string('nombre');
-            $table->string('apellido paterno');
-            $table->string('apellido materno');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('sexo');
-            $table->string('telefono')->unique();
-            $table->string('direccion');
+
             $table->timestamps();
+            $table->string('locale', 5);
         });
     }
 

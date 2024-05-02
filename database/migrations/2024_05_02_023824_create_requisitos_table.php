@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('requisitos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('especialidad_id')->references('id')->on('especialidad');
-            $table->string('nombre');
-            $table->string('descripcion');
+            $table->string('nombre', 100);
+            $table->longText('descripcion');
             $table->timestamps();
+            $table->string('locale', 5);
         });
     }
 

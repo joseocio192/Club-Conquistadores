@@ -16,12 +16,13 @@ return new class extends Migration
             $table->foreignID('Especialidad_ID')->references('id')->on('especialidad');
             $table->foreignId('Director_ID')->references('id')->on('directivo');
             $table->foreignId('ciudad')->references('id')->on('ciudad');
-            $table->string('nombre');
-            $table->string('lema')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('especialidad')->nullable();
-            $table->string('direccion')->nullable();
+            $table->string('direccion', 150)->nullable();
+            $table->string('nombre', 100);
+            $table->text('lema')->nullable();
+            $table->string('logo', 50)->nullable();
+            $table->string('especialidad', 55)->nullable();
             $table->timestamps();
+            $table->string('locale', 5);
         });
     }
 
