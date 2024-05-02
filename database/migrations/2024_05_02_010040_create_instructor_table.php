@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('persona_id')->references('id')->on('Persona');
             $table->foreignId('jefe_id')->references('id')->on('directivo');
+            $table->boolean('Activo');
             $table->timestamps();
         });
     }

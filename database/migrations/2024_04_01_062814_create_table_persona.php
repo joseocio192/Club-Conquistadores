@@ -26,6 +26,7 @@ return new class extends Migration
             $table->foreignId('ciudad_id')->references('id')->on('ciudad');
             $table->string('codigo postal', 7);
             $table->string('sexo', 25);
+            $table->boolean('Vigente');
             $table->timestamps();
             $table->string('locale', 5);
         });
