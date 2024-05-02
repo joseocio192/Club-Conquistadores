@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->string('apellido', 100);
             $table->string('telefono', 10);
+
             $table->string('email', 45)->unique();
             $table->timestamps();
             $table->string('locale', 5);

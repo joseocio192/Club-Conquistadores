@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('jefe_id')->references('id')->on('directivo');
             $table->foreignID('ciudad_id')->references('id')->on('ciudad');
-
+            $table->foreignId('persona_id')->references('id')->on('Persona');
             //Esto no puede ser una restriccion estatica Esto debe ser una restriccion dinamica por el idioma
             $table->enum('rol', ['Director', 'Subdirector', 'Tesorero', 'Secretario', 'Asesor']);
-
             $table->timestamps();
             $table->string('locale', 5);
         });

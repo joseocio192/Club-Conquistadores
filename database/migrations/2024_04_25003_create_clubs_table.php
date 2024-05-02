@@ -16,7 +16,11 @@ return new class extends Migration
             $table->foreignID('Especialidad_ID')->references('id')->on('especialidad');
             $table->foreignId('Director_ID')->references('id')->on('directivo');
             $table->foreignId('ciudad')->references('id')->on('ciudad');
-            $table->string('direccion', 150)->nullable();
+            $table->string('Calle');
+            $table->string('numero exterior', 10);
+            $table->string('numero interior', 10)->nullable();
+            $table->string('colonia', 100);
+
             $table->string('nombre', 100);
             $table->text('lema')->nullable();
             $table->string('logo', 50)->nullable();
