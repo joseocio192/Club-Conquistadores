@@ -11,19 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('directivo', function (Blueprint $table) {
+        Schema::create('instructor', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('apellido paterno');
-            $table->string('apellido materno');
+            $table->string('apellido_paterno');
+            $table->string('apellido_materno');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('rol', ['Director', 'Subdirector', 'Tesorero', 'Secretario', 'Consejero', 'Asesor', 'Consejero Mayor']);
-            $table->string('sexo');
-            $table->foreignId('jefe')->references('id')->on('directivo');
-            $table->string('telefono')->unique();
+            $table->date('fecha_nacimiento');
+            $table->string('telefono');
             $table->string('direccion');
-            $table->foreignID('Ciudad_id')->references('id')->on('ciudad');
+            $table->string('sexo');
+            $table->foreignId('jefe_id')->references('id')->on('directivo');
+            $table->foreignId('club_id')->references('id')->on('club');
+            $table->foreignId('especialidad_id')->references('id')->on('especialidad');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('directivo');
+        Schema::dropIfExists('instructor');
     }
 };
