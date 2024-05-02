@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignID('TutorLegal_id')->references('id')->on('Persona');
             //Esto no puede ser una restriccion estatica Esto debe ser una restriccion dinamica por el idioma
             $table->enum('rol', ['Amigo', 'Compañero', 'Explorador', 'Orientador', 'viajero', 'Guia', 'Guia Mayor Aspirante', 'Guia Mayor Investido']);
-
             $table->rememberToken();
             $table->timestamps();
         });
