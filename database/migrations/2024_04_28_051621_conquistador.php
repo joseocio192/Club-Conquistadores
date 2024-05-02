@@ -14,18 +14,9 @@ return new class extends Migration
         //
         Schema::create('Conquistador', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido paterno');
-            $table->string('apellido materno');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('rol',['Amigo','Compañero','Explorador','Orientador','viajero','Guia','Guia Mayor','Guia Mayor Investido']);
-            $table->string('telefono');
-            $table->string('direccion');
-            $table->string('codigo postal');
-            $table->foreignId('ciudad_id')->references('id')->on('ciudad');
+            $table->foreignId('persona_id')->references('id')->on('Persona');
             $table->foreignID('TutorLegal_id')->references('id')->on('tutorlegal');
-            $table->foreignID('Clubs_id')->references('id')->on('Club');
+            $table->enum('rol', ['Amigo', 'Compañero', 'Explorador', 'Orientador', 'viajero', 'Guia', 'Guia Mayor Aspirante', 'Guia Mayor Investido']);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -36,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('Conquistador');
     }
 };

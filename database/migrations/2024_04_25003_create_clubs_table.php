@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('Club', function (Blueprint $table) {
             $table->id();
-            $table->id('idEspecialidad')->references('id')->on('especialidad');
+            $table->foreignID('idEspecialidad')->references('id')->on('especialidad');
             $table->string('nombre');
             $table->string('lema')->nullable();
             $table->string('logo')->nullable();
