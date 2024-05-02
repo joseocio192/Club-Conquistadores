@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('jefe')->references('id')->on('directivo');
             $table->string('telefono')->unique();
             $table->string('direccion');
-            $table->foreignID('Municipcio_Id')->references('id')->on('municipios');
+            $table->foreignID('Ciudad_id')->references('id')->on('ciudad');
             $table->timestamps();
         });
     }
