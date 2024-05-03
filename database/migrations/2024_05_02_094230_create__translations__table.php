@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tutorlegal', function (Blueprint $table) {
+        Schema::create('_translations_', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido paterno');
-            $table->string('apellido materno');
-            $table->string('curp');
-            $table->string('telefono');
-            $table->string('email')->unique();
+            $table->String('Table');
+            $table->String('column');
+            $table->integer('Row_ID');
+            $table->String('locale', 7);
+            $table->Text('Content');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tutorlegal');
+        Schema::dropIfExists('_translations_');
     }
 };

@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('tarea', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('descripcion');
-            $table->date('fecha');
             $table->foreignId('clase_id')->references('id')->on('clase');
+            $table->string('nombre', 150);
+            $table->Text('descripcion');
+            $table->date('fecha');
             $table->timestamps();
+            $table->string('locale', 5);
         });
     }
 
