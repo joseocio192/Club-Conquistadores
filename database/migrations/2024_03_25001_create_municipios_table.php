@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignID('Estado_id')->references('id')->on('estados');
             $table->string('nombre');
             $table->timestamps();
-            $table->string('locale', 5);
         });
     }
 

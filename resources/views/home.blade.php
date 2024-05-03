@@ -5,9 +5,18 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Club de Conquistadores</title>
-   @vite("resources/js/app.js")
+
 </head>
 <body>
-   <div id="root"></div>
+    <h1>Club de Conquistadores</h1>
+    <p>¡Bienvenido!</p>
+    <p>Por favor, inicia sesión o regístrate para continuar.</p>
+    <form action="{{ route('login') }}" method="GET">
+        <button type="submit">Iniciar sesión</button>
+    </form>
+    <form action="{{ route('register') }}" method="GET">
+        <button type="submit">Registrarse</button>
+    </form>
+</body>
 </body>
 </html>

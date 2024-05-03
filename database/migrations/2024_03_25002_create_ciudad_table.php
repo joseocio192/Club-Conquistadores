@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('municipio_id')->references('id')->on('municipios');
             $table->string('nombre');
             $table->timestamps();
-            $table->string('locale', 5);
         });
     }
 
