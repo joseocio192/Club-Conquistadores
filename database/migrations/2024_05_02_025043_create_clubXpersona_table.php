@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('club_xconquistador', function (Blueprint $table) {
-            $table->foreignId('club_id')->references('id')->on('club');
-            $table->foreignId('conquistador_id')->references('id')->on('conquistador');
+        Schema::create('clubXpersona', function (Blueprint $table) {
+            $table->foreignId('club_id')->references('id')->on('Club');
+            $table->foreignId('persona_id')->references('id')->on('Persona');
             $table->date('fechaIngreso');
             $table->date('fechaRetiro')->nullable();
             $table->boolean('activo');
+            $table->string('detalles')->nullable();
             $table->timestamps();
         });
     }

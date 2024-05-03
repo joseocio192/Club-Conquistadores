@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('requisitos_xconsquitador', function (Blueprint $table) {
             $table->foreignId('requisito_id')->references('id')->on('requisitos');
-            $table->foreignId('conquistador_id')->references('id')->on('conquistador');
+            $table->foreignId('conquistador_id')->references('id')->on('Conquistador');
             $table->boolean('completado');
         });
     }

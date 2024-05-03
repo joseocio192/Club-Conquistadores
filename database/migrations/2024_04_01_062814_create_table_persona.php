@@ -11,20 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Club', function (Blueprint $table) {
+        Schema::create('Persona', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('Especialidad_ID')->references('id')->on('especialidad');
-            $table->foreignId('Director_ID')->references('id')->on('directivo');
-            $table->foreignId('ciudad')->references('id')->on('ciudad');
+            $table->string('nombre', 100);
+            $table->string('apellido', 100);
+            $table->string('email', 45)->unique();
+            $table->string('password', 100);
+            $table->date('fecha_nacimiento');
+            $table->string('telefono', 10)->nullable();
             $table->string('Calle');
             $table->string('numero exterior', 10);
             $table->string('numero interior', 10)->nullable();
             $table->string('colonia', 100);
-
-            $table->string('nombre', 100);
-            $table->text('lema')->nullable();
-            $table->string('logo', 50)->nullable();
-            $table->string('especialidad', 55)->nullable();
+            $table->foreignId('ciudad_id')->references('id')->on('ciudad');
+            $table->string('codigo postal', 7);
+            $table->string('sexo', 25);
+            $table->boolean('Vigente');
             $table->timestamps();
             $table->string('locale', 5);
         });
@@ -35,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Club');
+        Schema::dropIfExists('Persona');
     }
 };

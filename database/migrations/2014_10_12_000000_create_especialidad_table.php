@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('especialidad', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombre', 100);
             $table->date('fechaCumplido');
             $table->timestamps();
+            $table->string('locale', 5);
         });
     }
 
