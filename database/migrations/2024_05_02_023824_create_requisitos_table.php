@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('requisitos', function (Blueprint $table) {
+        Schema::create('Requisitos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('especialidad_id')->references('id')->on('especialidad');
+            $table->foreignId('especialidad_id')->references('id')->on('Especialidad');
             $table->string('nombre', 100);
             $table->Text('descripcion');
             $table->timestamps();
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('requisitos');
+        Schema::dropIfExists('Requisitos');
     }
 };

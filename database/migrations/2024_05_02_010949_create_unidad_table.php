@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('unidad', function (Blueprint $table) {
+        Schema::create('Unidad', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Consejero_id')->references('id')->on('instructor');
-            $table->foreignId('Capitan')->references('id')->on('Conquistador');
+            $table->foreignId('consejero_id')->references('id')->on('Instructor');
+            $table->foreignId('capitan')->references('id')->on('Conquistador');
             $table->string('nombre', 100);
             $table->string('logo', 50);
-            $table->text('Lema');
+            $table->text('lema');
             $table->string('sexo', 25);
             $table->timestamps();
             $table->string('locale', 5);
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('unidad');
+        Schema::dropIfExists('Unidad');
     }
 };

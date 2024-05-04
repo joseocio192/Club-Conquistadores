@@ -15,11 +15,11 @@ return new class extends Migration
         Schema::create('Conquistador', function (Blueprint $table) {
             $table->id();
             $table->foreignID('persona_id')->references('id')->on('Persona');
-            $table->foreignID('TutorLegal_id')->references('id')->on('Persona');
+            $table->foreignID('tutorLegal_id')->references('id')->on('Persona');
             //Esto no puede ser una restriccion estatica Esto debe ser una restriccion dinamica por el idioma
             $table->enum('rol', ['Amigo', 'Compañero', 'Explorador', 'Orientador', 'viajero', 'Guia', 'Guia Mayor Aspirante', 'Guia Mayor Investido']);
             $table->rememberToken();
-            $table->boolean('Activo');
+            $table->boolean('activo');
             $table->timestamps();
         });
     }

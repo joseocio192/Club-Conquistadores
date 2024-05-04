@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clubXpersona', function (Blueprint $table) {
+        Schema::create('ClubXpersona', function (Blueprint $table) {
             $table->foreignId('club_id')->references('id')->on('Club');
             $table->foreignId('persona_id')->references('id')->on('Persona');
             $table->date('fechaIngreso');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('club_xconquistador');
+        Schema::dropIfExists('Club_xconquistador');
     }
 };

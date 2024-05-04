@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clase_xConquistador', function (Blueprint $table) {
-            $table->foreignId('clase_id')->references('id')->on('clase');
+        Schema::create('Clase_xalumno', function (Blueprint $table) {
+            $table->foreignId('clase_id')->references('id')->on('Clase');
             $table->foreignId('conquistador')->references('id')->on('Conquistador');
         });
     }
@@ -21,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clase_xalumno');
+        Schema::dropIfExists('Clase_xalumno');
     }
 };
