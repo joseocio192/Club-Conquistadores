@@ -1,26 +1,19 @@
 .Register {
     display: flex;
-    padding: 200px;
+    justify-content: center;
+    align-items: center;
 }
 
 .RegisterLeft {
-    position: absolute;
     background-color: #31363F;
     width: 500px;
     height: 600px;
     left: 440px;
-    -webkit-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.51);
-    -moz-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.51);
-    box-shadow: 19px 10px 5px -4px rgba(0,0,0,0.51);
 }
 
 .RegisterRight{
-    position: absolute;
     background-color: #222831;
     width: 500px;
     height: 600px;
     right: 439px;
-    -webkit-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.51);
-    -moz-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.51);
-    box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.51);
 }
