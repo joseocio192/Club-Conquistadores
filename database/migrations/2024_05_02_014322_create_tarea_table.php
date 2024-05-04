@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tarea', function (Blueprint $table) {
+        Schema::create('Tarea', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('clase_id')->references('id')->on('clase');
+            $table->foreignId('clase_id')->references('id')->on('Clase');
             $table->string('nombre', 150);
             $table->Text('descripcion');
             $table->date('fecha');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tarea');
+        Schema::dropIfExists('Tarea');
     }
 };

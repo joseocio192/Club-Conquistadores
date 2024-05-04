@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tareaxconquistador', function (Blueprint $table) {
-            $table->foreignId('tarea_id')->references('id')->on('tarea');
+        Schema::create('Tareaxconquistador', function (Blueprint $table) {
+            $table->foreignId('tarea_id')->references('id')->on('Tarea');
             $table->foreignId('conquistador')->references('id')->on('Conquistador');
             $table->boolean('completada');
         });
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tareaxconquistador');
+        Schema::dropIfExists('Tareaxconquistador');
     }
 };

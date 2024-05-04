@@ -19,14 +19,14 @@ return new class extends Migration
             $table->string('password', 100);
             $table->date('fecha_nacimiento');
             $table->string('telefono', 10)->nullable();
-            $table->string('Calle');
+            $table->string('calle');
             $table->string('numero exterior', 10);
             $table->string('numero interior', 10)->nullable();
             $table->string('colonia', 100);
             $table->foreignId('ciudad_id')->references('id')->on('ciudad');
             $table->string('codigo postal', 7);
             $table->string('sexo', 25);
-            $table->boolean('Vigente');
+            $table->boolean('vigente');
             $table->timestamps();
             $table->string('locale', 5);
         });

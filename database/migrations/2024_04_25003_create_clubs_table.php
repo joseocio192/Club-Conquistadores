@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('Club', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('Especialidad_ID')->references('id')->on('especialidad');
-            $table->foreignId('Director_ID')->references('id')->on('directivo');
-            $table->foreignId('ciudad')->references('id')->on('ciudad');
-            $table->string('Calle');
+            $table->foreignID('especialidad_ID')->references('id')->on('Especialidad');
+            $table->foreignId('director_ID')->references('id')->on('Directivo');
+            $table->foreignId('ciudad')->references('id')->on('Ciudad');
+            $table->string('calle');
             $table->string('numero exterior', 10);
             $table->string('numero interior', 10)->nullable();
             $table->string('colonia', 100);
