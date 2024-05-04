@@ -4,13 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\Mutators\MunicipioMutators;
 
-class municipio extends Model
+class Municipio extends Model
 {
-    use HasFactory;
-    protected $table = 'Municipios';
-    protected $fillable = [
-        'nombre',
-        'estado_id'
-    ];
+    use HasFactory,
+        MunicipioMutators;
+
+    protected $fillable = ['nombre', 'estado_id', 'locale'];
 }
