@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('jefe_id')->references('id')->on('Directivo')->nullable();
             $table->foreignID('ciudad_id')->references('id')->on('Ciudad');
-            $table->foreignId('persona_id')->references('id')->on('User');
+            $table->foreignId('user_id')->references('id')->on('Users');
             //Esto no puede ser una restriccion estatica Esto debe ser una restriccion dinamica por el idioma
             $table->enum('rol', ['Director', 'Subdirector', 'Tesorero', 'Secretario', 'Asesor', 'Administrador', 'Master']);
             $table->boolean('activo');

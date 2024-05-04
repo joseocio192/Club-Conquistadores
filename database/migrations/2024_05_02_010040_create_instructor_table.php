@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('Instructor', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('User');
+            $table->foreignId('user_id')->references('id')->on('Users');
             $table->foreignId('jefe_id')->references('id')->on('Directivo');
             $table->boolean('Activo');
             $table->timestamps();

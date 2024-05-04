@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ClubXpersona', function (Blueprint $table) {
-            $table->foreignId('club_id')->references('id')->on('Club');
-            $table->foreignId('user_id')->references('id')->on('User');
+            $table->foreignId('club_id')->references('id')->on('Clubs');
+            $table->foreignId('user_id')->references('id')->on('Users');
             $table->date('fechaIngreso');
             $table->date('fechaRetiro')->nullable();
             $table->boolean('activo');
