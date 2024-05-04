@@ -1,0 +1,20 @@
+.Register {
+    display: flex;
+    padding: 200px;
+}
+
+.RegisterLeft {
+    position: absolute;
+    border: 1px solid red;
+    width: 500px;
+    height: 600px;
+    left: 438px;
+}
+
+.RegisterRight{
+    position: absolute;
+    border: 1px solid blue;
+    width: 500px;
+    height: 600px;
+    right: 438px;
+}

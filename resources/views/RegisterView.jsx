@@ -1,13 +1,14 @@
 import React from 'react'
-import "../js/components/Input"
+import Input from '../js/components/Input';
+import "../css/RegisterView.css"
 
 function RegisterView() {
     return (
         <div className='Register'>
-            hola
-            <Input className="InputNombre">
-            Nombre
-            </Input>
+            <div className='RegisterLeft'>
+            </div>
+            <div className='RegisterRight'>
+            </div>
         </div>
     );
 }
