@@ -13,14 +13,13 @@
     <h1>@lang('app.title')</h1>
     <p>@lang('app.welcome')</p>
 
-    <ul>
-        <li>
-            <a href="/lang/es">Español</a>
-        </li>
-        <li>
-            <a href="/lang/en">English</a>
-        </li>
-    </ul>
+    <form action="{{ route('setlocale') }}" method="post">
+        @csrf
+        <select name="language" id="language" onchange="this.form.submit()">
+            <option value="en" @if (session('locale') == 'en') selected @endif>English</option>
+            <option value="es" @if (session('locale') == 'es') selected @endif>Español</option>
+        </select>
+    </form>
 
 
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocalizationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class);
 
-Route::get('/welcome2', function () {
-    return view('welcome2');
-});
+Route::get('/welcome2', LocalizationController::class);
 
 Route::get('users/{id}', function ($id) {
     return 'User ' . $id;
 });
 
-Route::get('/lang/{locale}', 'LocalizationController@set_Lang');
+Route::post('/welcome2', [LocalizationController::class, 'set_Lang']);
+
+Route::post('/setlocale', 'LocalizationController@setLocale')->name('setlocale');
