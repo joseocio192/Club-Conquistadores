@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('Users');
             //Esto no puede ser una restriccion estatica Esto debe ser una restriccion dinamica por el idioma
             $table->enum('rol', ['Director', 'Subdirector', 'Tesorero', 'Secretario', 'Asesor', 'Administrador', 'Master']);
-            $table->boolean('activo');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
             $table->string('locale', 5);
         });

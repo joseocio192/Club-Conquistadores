@@ -11,6 +11,7 @@ class Instructor extends Model
     protected $table= 'Instructor';
     protected $fillable= [
         'persona_id',
-        'jefe_id'
+        'jefe_id',
+        'activo'
     ];
 }
