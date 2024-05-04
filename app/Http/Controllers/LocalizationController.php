@@ -13,19 +13,6 @@ class LocalizationController extends Controller
     {
         return view('welcome2');
     }
-    public function set_Lang(Request $request)
-    {
-
-        $locale = Session::get('locale');
-        $request->validate([
-            'locale' => 'required|in:en,es',
-        ]);
-        App::setLocale($locale);
-
-        session()->put('locale', $locale);
-
-        return redirect()->back();
-    }
 
     public function setLocale(Request $request)
     {
