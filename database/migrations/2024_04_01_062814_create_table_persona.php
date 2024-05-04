@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('numero exterior', 10);
             $table->string('numero interior', 10)->nullable();
             $table->string('colonia', 100);
-            $table->foreignId('ciudad_id')->references('id')->on('ciudad');
+            $table->foreignId('ciudad_id')->references('id')->on('Ciudad');
             $table->string('codigo postal', 7);
             $table->string('sexo', 25);
             $table->boolean('vigente');
