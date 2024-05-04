@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class);
+
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -34,3 +36,14 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/welcome2', function () {
+    return view('welcome2');
+});
+
+Route::get('users/{id}', function ($id) {
+    return 'User ' . $id;
+});
+
+Route::get('/lang/{locale}', 'LocalizationController@set_Lang');
+
