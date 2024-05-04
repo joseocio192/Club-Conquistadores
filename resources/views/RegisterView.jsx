@@ -7,7 +7,7 @@ function RegisterView() {
         <div className='Register'>
             <div className='RegisterLeft'>
                 <div className='LayoutCandidateTitle'>
-
+                    Datos del joven aspirante
                 </div>
             </div>
             <div className='RegisterRight'>

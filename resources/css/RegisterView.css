@@ -20,7 +20,10 @@
     align-items: center;
     width: 500px;
     height: 70px;
-    background-color: aquamarine;
+    font-size: 1.7em;
+    color: #eeeeee;
+    font-family: Gorgia, serif;
+    font-weight: bold;
 }
 
 .RegisterRight{
