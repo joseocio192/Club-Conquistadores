@@ -30,7 +30,7 @@
          <p>No records found.</p>
      @endif
         <p>¡Gracias por visitarnos!</p>
-    <div id="root"></div>
+     <!-- <div id="root"></div> -->
 </body>
 
 </html>

@@ -26,8 +26,8 @@ class UserSeeder extends Seeder
         $user->colonia = 'Colonia';
         $user->ciudad_id = 1;
         $user->codigo_postal = '12345';
-        $user->sexo = 'Masculino';
-        $user->rol = 'admin';
+        $user->sexo = 'Hombre';
+        $user->rol = 'conquistador';
         $user->Vigente = 1;
         $user->locale = 'es';
         $user->save();
