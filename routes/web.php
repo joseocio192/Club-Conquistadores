@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConquistadorConstroller;
 
 
 /*
@@ -46,4 +47,6 @@ Route::get('users/{id}', function ($id) {
 });
 
 Route::get('/lang/{locale}', 'LocalizationController@set_Lang');
+Route::get('conquistador', [ConquistadorConstroller::class, 'invoke']);
+Route::get('conquistador/{id}', [ConquistadorConstroller::class, 'show']);
 

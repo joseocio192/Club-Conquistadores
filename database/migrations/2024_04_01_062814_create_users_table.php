@@ -31,7 +31,7 @@ return new class extends Migration
             $table->timestamps();
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('locale', 5)->default('es');
+            $table->string('locale', 5)->default('es')->nullable();
         });
     }
 
