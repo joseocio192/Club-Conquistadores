@@ -5,11 +5,22 @@
 }
 
 .RegisterLeft {
+    display: flex;
+    flex-direction: column;
     background-color: #31363F;
     width: 500px;
     height: 600px;
     border-radius: 10px 0px 0px 10px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
+}
+
+.LayoutCandidateTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 70px;
+    background-color: aquamarine;
 }
 
 .RegisterRight{
