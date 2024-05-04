@@ -14,12 +14,10 @@ return new class extends Migration
         Schema::create('Users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('nombre', 100);
             $table->string('apellido', 100);
             $table->string('email')->unique();
             $table->string('password');
             $table->string('telefono', 10)->nullable();
-            $table->timestamp('email_verified_at')->nullable();
             $table->date('fecha_nacimiento');
             $table->string('calle');
             $table->string('numero_exterior', 10);
@@ -27,11 +25,12 @@ return new class extends Migration
             $table->string('colonia', 100);
             $table->foreignId('ciudad_id')->references('id')->on('Ciudad');
             $table->string('codigo_postal', 7);
-            $table->string('sexo', 25);
+            $table->enum('sexo', ['Hombre', 'Mujer', 'Otro']);
             $table->enum('rol', ['admin', 'conquistador','tutor','directivo','instructor'])->default('conquistador');
             $table->boolean('vigente')->default(1);
-            $table->rememberToken();
             $table->timestamps();
+            $table->rememberToken();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('locale', 5)->default('es');
         });
     }

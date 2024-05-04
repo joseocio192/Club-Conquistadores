@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ClubXpersona', function (Blueprint $table) {
             $table->foreignId('club_id')->references('id')->on('Club');
-            $table->foreignId('persona_id')->references('id')->on('Persona');
+            $table->foreignId('user_id')->references('id')->on('User');
             $table->date('fechaIngreso');
             $table->date('fechaRetiro')->nullable();
             $table->boolean('activo');

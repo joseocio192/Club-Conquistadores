@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('numero_exterior', 10);
             $table->string('numero_interior', 10)->nullable();
             $table->string('colonia', 100);
-
             $table->string('nombre', 100);
             $table->text('lema')->nullable();
             $table->string('logo', 50)->nullable();
