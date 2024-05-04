@@ -1,10 +1,13 @@
-import React from 'react';
-//import "../../css/Sidebar.css"
+import React from 'react'
+import "../js/components/Input"
 
 function RegisterView() {
     return (
         <div className='Register'>
-            
+            hola
+            <Input className="InputNombre">
+            Nombre
+            </Input>
         </div>
     );
 }
