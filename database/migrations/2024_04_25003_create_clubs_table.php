@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Club', function (Blueprint $table) {
+        Schema::create('Clubs', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('especialidad_ID')->references('id')->on('Especialidad');
-            $table->foreignId('director_ID')->references('id')->on('Directivo');
+            $table->foreignId('especialidad_Id')->references('id')->on('Especialidad');
+            $table->foreignId('director_Id')->references('id')->on('Directivo');
             $table->foreignId('ciudad')->references('id')->on('Ciudad');
             $table->string('calle');
             $table->string('numero_exterior', 10);
