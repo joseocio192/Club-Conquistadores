@@ -6,6 +6,9 @@ function RegisterView() {
     return (
         <div className='Register'>
             <div className='RegisterLeft'>
+                <div className='LayoutCandidateTitle'>
+
+                </div>
             </div>
             <div className='RegisterRight'>
             </div>
