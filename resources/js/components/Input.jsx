@@ -1,10 +1,10 @@
 import React from 'react';
-//import "../../css/Sidebar.css"
+import '../../css/Input.css'
 
-function Input(text, type, className) {
+function Input(text, type, classNameInput, classNameLabel) {
     return (
-        <label>
-            <input type={type} className={className}></input>
+        <label className={classNameLabel}>
+            <input type={type} className={classNameInput}></input>
             {text}
         </label>
     );
