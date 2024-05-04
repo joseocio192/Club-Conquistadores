@@ -8,12 +8,14 @@
     background-color: #31363F;
     width: 500px;
     height: 600px;
-    left: 440px;
+    border-radius: 10px 0px 0px 10px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
 }
 
 .RegisterRight{
     background-color: #222831;
     width: 500px;
     height: 600px;
-    right: 439px;
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
 }
