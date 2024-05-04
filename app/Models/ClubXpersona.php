@@ -11,7 +11,7 @@ class ClubXpersona extends Model
     protected $table='ClubXpersona';
     protected $fillable= [
         'club_id',
-        'persona_id',
+        'user_id',
         'fechaIngreso',
         'fechRetiro',
         'activo',

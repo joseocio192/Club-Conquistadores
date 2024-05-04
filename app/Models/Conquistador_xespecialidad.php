@@ -12,6 +12,6 @@ class Conquistador_xespecialidad extends Model
     protected $fillable= [
         'conquistador_id',
         'especialidad_id',
-        'fechaCumoplido',
+        'fechaCumplido',
     ];
 }

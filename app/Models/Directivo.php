@@ -12,7 +12,8 @@ class Directivo extends Model
     protected $fillable= [
         'jefe_id',
         'ciudad_id',
-        'persona_id',
-        'rol'
+        'user_id',
+        'rol',
+        'activo'
     ];
 }

@@ -14,7 +14,7 @@ class Unidad extends Model
         'capitan',
         'nombre',
         'logo',
-        'sexo',
-        'lema'
+        'lema',
+        'sexo'
     ];
 }
