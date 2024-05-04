@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class);
-Route::get('/welcome', function () {
-    return view('welcome');
+
+Route::get('/welcome2', function () {
+    return view('welcome2');
 });
+
+Route::get('users/{id}', function ($id) {
+    return 'User ' . $id;
+});
+
+Route::get('/lang/{locale}', 'LocalizationController@set_Lang');
