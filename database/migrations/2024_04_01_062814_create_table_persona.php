@@ -20,8 +20,8 @@ return new class extends Migration
             $table->date('fecha_nacimiento');
             $table->string('telefono', 10)->nullable();
             $table->string('calle');
-            $table->string('numero exterior', 10);
-            $table->string('numero interior', 10)->nullable();
+            $table->string('numero_exterior', 10);
+            $table->string('numero_interior', 10)->nullable();
             $table->string('colonia', 100);
             $table->foreignId('ciudad_id')->references('id')->on('Ciudad');
             $table->string('codigo postal', 7);
