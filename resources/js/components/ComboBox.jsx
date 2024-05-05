@@ -1,14 +1,16 @@
 import React from 'react'
 import '../../css/ComboBox.css'
 
-export function ComboBox({text, classNameLabel ,classNameCombo}) {
+export function ComboBoxSexo() {
     return (
         <div className='LayoutCombo'>
-           <label className={classNameLabel}>
-           {text}
+           <label className='Label'>
+           Sexo
             </label>  
-            <select
-                className={classNameCombo}>
+            <select className='Combo'>
+                <option value="masculino">Masculino</option>
+                <option value="femenino" selected>Femenino</option>
+                <option value="otros">Otros</option>
             </select>
         </div>   
     )

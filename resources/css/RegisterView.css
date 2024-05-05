@@ -50,7 +50,7 @@
     color: #222831;
 }
 
-.Input:focus, .InputNumber:focus, .InputCP:focus {
+.Input:focus, .InputNumber:focus, .InputCP:focus, .Combo:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border: 3px solid #4ea4a8;
@@ -84,7 +84,7 @@
 .LayoutCandidateInputs2{
     display: grid;
     grid-template-columns: 250px 250px;
-    width: 100%;
+    width: 99%;
     height: 200px;
 }
 
