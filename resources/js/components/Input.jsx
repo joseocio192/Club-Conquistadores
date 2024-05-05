@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../css/Input.css'
 
-export function Input({text, type,classNameLabel ,classNameInput}) {
+export function Input({text, type,classNameLabel ,classNameInput, pattern, placeholder}) {
     return (
         <div className='LayoutInput'>
            <label className={classNameLabel}>
@@ -9,7 +9,9 @@ export function Input({text, type,classNameLabel ,classNameInput}) {
             </label>  
             <input 
             type={type} 
-            className={classNameInput}>
+            className={classNameInput}
+            pattern={pattern}
+            placeholder={placeholder}>
             </input>
         </div>   
     )

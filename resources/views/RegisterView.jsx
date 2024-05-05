@@ -13,26 +13,35 @@ function RegisterView() {
                 <div className='LayoutCandidateInputs1'>
                     <Input text='Nombre' 
                     classNameLabel='Label'
-                    classNameInput='Input'>
-                    </Input>
+                    classNameInput='Input'/>
+
                     <Input text='Apellidos' 
                     classNameLabel='Label'
-                    classNameInput='Input'>
-                    </Input>
+                    classNameInput='Input'/>
+
                     <Input text='E-mail' 
                     classNameLabel='Label'
-                    classNameInput='Input'>
-                    </Input>
+                    classNameInput='Input'/>
+
                     <Input text='Contraseña' 
                     type='password'
                     classNameLabel='Label'
-                    classNameInput='Input'>
-                    </Input>
+                    classNameInput='Input'/>
+
                     <Input text='Fecha de nacimiento'
                     type='date'
                     classNameLabel='Label'
-                    classNameInput='InputDate'>
-                    </Input>
+                    classNameInput='InputDate'/>
+
+                    <Input text='Telefono'
+                    type='tel'
+                    classNameLabel='Label'
+                    classNameInput='Input'
+                    placeholder='667-231-8212'/>
+
+                    <Input text='Colonia'
+                    classNameLabel='Label'
+                    classNameInput='Input'/>
                 </div>
             </div>
             <div className='RegisterRight'>
