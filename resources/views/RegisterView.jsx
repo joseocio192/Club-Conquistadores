@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input } from '../js/components/Input';
-import { ComboBoxSexo } from '../js/components/ComboBox';
+import { ComboBoxSexo, ComboBoxPais } from '../js/components/ComboBox';
 import "../css/RegisterView.css"
 
 function RegisterView() {
@@ -44,6 +44,8 @@ function RegisterView() {
                     classNameInput='InputLeft'/>
                 </div>
                 <div className='LayoutCandidateInputs2'>
+                    <ComboBoxPais/>
+
                     <Input text='Calle'
                     classNameLabel='Label' 
                     classNameInput='InputNumber'/>
