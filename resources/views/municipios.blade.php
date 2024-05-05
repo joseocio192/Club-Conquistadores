@@ -9,6 +9,7 @@
             <div class="form-group">
                 <label for="pais">Pais</label>
                 <select id="pais" class="form-control">
+                    <option value="">Select a country</option>
                     @foreach($paises as $pais)
                         <option value="{{ $pais->id }}">{{ $pais->nombre }}</option>
                     @endforeach
@@ -18,31 +19,31 @@
             <div class="form-group">
                 <label for="estado">Estado</label>
                 <select id="estado" class="form-control">
-                    @foreach($estados as $estado)
-                        <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
-                    @endforeach
+
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="municipio">Municipio</label>
                 <select id="municipio" class="form-control">
-                    @foreach($municipios as $municipio)
-                        <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
-                    @endforeach
+
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="ciudad">Ciudad</label>
                 <select id="ciudad" class="form-control">
-                    @foreach($ciudades as $ciudad)
-                        <option value="{{ $ciudad->id }}">{{ $ciudad->nombre }}</option>
-                    @endforeach
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label for= "clubes">Clubes</label>
+                <select id="clubes" class="form-control">
+
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="submit-button" disabled>Submit</button>
         </form>
     </div>
 
@@ -71,6 +72,7 @@
         // Clear the municipality and city dropdowns
         $("#municipio").empty();
         $("#ciudad").empty();
+        $("#clubes").empty();
     });
 
     $('#estado').change(function(){
@@ -96,6 +98,7 @@
         }
         // Clear the city dropdown
         $("#ciudad").empty();
+        $("#clubes").empty();
     });
 
     $('#municipio').change(function(){
@@ -118,6 +121,38 @@
             });
         }else{
             $("#ciudad").empty();
+            $("#clubes").empty();
         }
     });
+
+    $('#ciudad').change(function(){
+        var ciudad_Id = $(this).val();
+        if(ciudad_Id){
+            $.ajax({
+                url: "{{url('api/get-club-list')}}?ciudad_Id="+ciudad_Id,
+                type: "GET",
+                success: function(res) {
+                    if(res) {
+                        $('#clubes').empty();
+                        $('#clubes').append('<option>Select</option>');
+                        $.each(res,function(key,value){
+                            $('#clubes').append('<option value="'+key+'">'+value+'</option>');
+                        });
+                    }
+                }
+            });
+        }else{
+            $("#clubes").empty();
+        }
+    });
+
+    $('#clubes').change(function(){
+        var ciudad_Id = $(this).val();
+        if(ciudad_Id){
+            $('#submit-button').prop('disabled', false);
+        }else{
+            $("#submit-button").prop('disabled', true);
+        }
+    });
+
 </script>

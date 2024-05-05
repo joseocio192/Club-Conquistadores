@@ -31,5 +31,23 @@ class userSeeder extends Seeder
         $user->Vigente = 1;
         $user->locale = 'es';
         $user->save();
+
+        $user = new User();
+        $user->name = 'Saul';
+        $user->apellido = 'Llanes';
+        $user->email = 'saulllanes@outlook.com';
+        $user->password = bcrypt('12345678');
+        $user->telefono = '6675463263';
+        $user->fecha_nacimiento = '2000-01-01';
+        $user->Calle = 'Calle';
+        $user->numero_exterior = '123';
+        $user->numero_interior = '123';
+        $user->colonia = 'Colonia';
+        $user->ciudad_id = 1;
+        $user->codigo_postal = '12345';
+        $user->sexo = 'Hombre';
+        $user->rol = 'tutor';
+        $user->locale = 'es';
+        $user->save();
     }
 }

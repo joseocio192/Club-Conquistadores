@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 100);
             $table->foreignId('especialidad_Id')->references('id')->on('Especialidad');
-            $table->foreignId('director_Id')->references('id')->on('Directivo');
-            $table->foreignId('ciudad')->references('id')->on('Ciudad');
+            $table->foreignId('director_Id')->references('id')->on('Users');
+            $table->foreignId('ciudad_Id')->references('id')->on('Ciudad');
             $table->string('calle');
             $table->string('numero_exterior', 10);
             $table->string('numero_interior', 10)->nullable();

@@ -13,7 +13,7 @@ class Clubs extends Model
         'nombre',
         'especialidad_Id',
         'director_Id',
-        'ciudad',
+        'ciudad_Id',
         'calle',
         'numero_exterior',
         'numero_interior',

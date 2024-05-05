@@ -36,4 +36,17 @@ class DropdownController extends Controller
             return response()->json(['error' => 'Internal Server Error'], 500);
         }
     }
+    public function getClubList(Request $request)
+    {
+
+        try {
+            $clubs = DB::table("clubs")
+                        ->where("ciudad_Id",$request->ciudad_Id)
+                        ->pluck("nombre","id");
+            return response()->json($clubs);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['error' => 'Internal Server Error'], 500);
+        }
+    }
 }

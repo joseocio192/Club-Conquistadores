@@ -13,6 +13,7 @@ class MunicipioPaisController extends Controller
         $estados = DB::table('estados')->get();
         $municipios = DB::table('municipios')->get();
         $ciudades = DB::table('ciudad')->get();
-        return view('municipios', ['paises' => $paises, 'estados' => $estados, 'municipios' => $municipios, 'ciudades' => $ciudades]);
+        $clubes = DB::table('clubs')->get();
+        return view('municipios', ['paises' => $paises, 'estados' => $estados, 'municipios' => $municipios, 'ciudades' => $ciudades, 'clubes' => $clubes]);
     }
 }
