@@ -48,6 +48,14 @@ function RegisterView() {
                     classNameLabel='Label' 
                     classNameInput='InputNumber'/>
 
+                    <Input text='Número Exterior'
+                    classNameLabel='Label' 
+                    classNameInput='InputNumber'/>
+
+                    <Input text='Número Interior'
+                    classNameLabel='Label' 
+                    classNameInput='InputNumber'/>
+
                     <ComboBoxPais/>
 
                     <ComboBoxEstado/>
@@ -58,12 +66,8 @@ function RegisterView() {
 
                     <ComboBoxClub/>
 
-                    <Input text='Número'
-                    classNameLabel='Label' 
-                    classNameInput='InputNumber'/>
-
                     <Input text='Codigo postal'
-                    classNameLabel='Label' 
+                    classNameLabel='LabelCP' 
                     classNameInput='InputCP'
                     placeholder='#4477'/>
 

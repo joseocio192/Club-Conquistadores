@@ -152,3 +152,9 @@
     height: 100px;
     border-radius: 20px;
 }
+
+.LabelCP {
+    font-size: 1.1em;
+    color: #eeeeee;
+    padding-left: 20px;
+} 
