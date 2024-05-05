@@ -27,3 +27,16 @@ export function ComboBoxPais() {
         </div>   
     )
 }
+
+export function ComboBoxEstado() {
+    return (
+        <div className='LayoutCombo'>
+           <label className='Label'>
+           Estado
+            </label>  
+            <select className='Combo'>
+                
+            </select>
+        </div>   
+    )
+}
