@@ -50,7 +50,7 @@ function RegisterView() {
 
                     <Input text='Número'
                     classNameLabel='Label' 
-                    classNameInput='Input'/>
+                    classNameInput='InputNumber'/>
                 </div>
             </div>
             <div className='RegisterRight'>
