@@ -77,6 +77,12 @@ function RegisterView() {
                 <Input text='E-mail'
                 classNameLabel='Label'
                 classNameInput='InputRight'/>
+
+                <Input text='Telefono'
+                type='tel'
+                classNameLabel='Label'
+                classNameInput='InputRight'
+                placeholder='667-231-8212'/>
             </div>
         </div>
     );
