@@ -53,3 +53,16 @@ export function ComboBoxMunicipio() {
         </div>   
     )
 }
+
+export function ComboBoxCiudad() {
+    return (
+        <div className='LayoutCombo'>
+           <label className='Label'>
+           Ciudad
+            </label>  
+            <select className='Combo'>
+                
+            </select>
+        </div>   
+    )
+}
