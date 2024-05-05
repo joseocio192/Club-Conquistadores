@@ -44,7 +44,9 @@ function RegisterView() {
                     classNameInput='Input'/>
                 </div>
                 <div className='LayoutCandidateInputs2'>
-
+                    <Input text='Nombre de Calle'
+                    classNameLabel='Label' 
+                    classNameInput='Input'/>
                 </div>
             </div>
             <div className='RegisterRight'>
