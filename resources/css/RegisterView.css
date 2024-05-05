@@ -40,7 +40,7 @@
     padding-left: 40px;
 } 
 
-.Input, .InputNumber {
+.Input, .InputNumber, .InputCP {
     border: 3px solid #222831;
     width: 200px;
     height: 20px;
@@ -50,7 +50,7 @@
     color: #222831;
 }
 
-.Input:focus, .InputNumber:focus {
+.Input:focus, .InputNumber:focus, .InputCP:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border: 3px solid #4ea4a8;
@@ -99,6 +99,10 @@
 }
 
 .InputNumber {
+    width: 100px;
+}
+
+.InputCP {
     width: 100px;
 }
 

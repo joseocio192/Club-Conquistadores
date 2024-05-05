@@ -52,7 +52,7 @@ function RegisterView() {
                     classNameLabel='Label' 
                     classNameInput='InputNumber'/>
 
-                    <Input text='Calle'
+                    <Input text='Codigo postal'
                     classNameLabel='Label' 
                     classNameInput='InputCP'/>
                 </div>
