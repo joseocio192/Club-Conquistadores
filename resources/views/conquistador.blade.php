@@ -1,21 +1,31 @@
+<h1>Conquistadores</h1>
 
-@section('content')
-    <div class="container">
-        <h1>Conquistador</h1>
-        <!-- Add your conquistador content here -->
-       @foreach ( $conquistadores as $conquistador )
-            <h2>{{ $conquistador->nombre }}</h2>
-            <p>{{ $conquistador->apellido }}</p>
-            <p>{{ $conquistador->email }}</p>
-            <p>{{ $conquistador->telefono }}</p>
-            <p>{{ $conquistador->fecha_nacimiento }}</p>
-            <p>{{ $conquistador->calle }}</p>
-            <p>{{ $conquistador->numero_exterior }}</p>
-            <p>{{ $conquistador->numero_interior }}</p>
-            <p>{{ $conquistador->colonia }}</p>
-            <p>{{ $conquistador->ciudad_id }}</p>
-            <p>{{ $conquistador->codigo_postal }}</p>
-            <p>{{ $conquistador->sexo }}</p>
-        @endforeach
-    </div>
-@endsection
+@if($conquistadores->count())
+    @foreach($conquistadores as $conquistador)
+        <ul>
+            <li>ID: {{ $conquistador->id }}</li>
+            <li>UID: {{ $conquistador->uid }}</li>
+            <li>Nombre: {{ $conquistador->nombre }}</li>
+            <li>Apellidos: {{ $conquistador->apellidos }}</li>
+            <li>Email: {{ $conquistador->email }}</li>
+            <li>Contraseña: {{ $conquistador->contraseña }}</li>
+            <li>Teléfono: {{ $conquistador->telefono }}</li>
+            <li>Fecha de Nacimiento: {{ $conquistador->fecha_nacimiento }}</li>
+            <li>Calle: {{ $conquistador->calle }}</li>
+            <li>Número Exterior: {{ $conquistador->numero_exterior }}</li>
+            <li>Número Interior: {{ $conquistador->numero_interior }}</li>
+            <li>Colonia: {{ $conquistador->colonia }}</li>
+            <li>Ciudad: {{ $conquistador->ciudad }}</li>
+            <li>Municipio: {{ $conquistador->municipio }}</li>
+            <li>Estado: {{ $conquistador->estado }}</li>
+            <li>País: {{ $conquistador->pais }}</li>
+            <li>Locale: {{ $conquistador->locale }}</li>
+            <li>Nombre del Tutor: {{ $conquistador->tutor_nombre }}</li>
+            <li>Tutor ID: {{ $conquistador->tutorid }}</li>
+            <li>Rol: {{ $conquistador->rol }}</li>
+            <li>Activo: {{ $conquistador->activo }}</li>
+        </ul>
+    @endforeach
+@else
+    <p>No conquistadores found.</p>
+@endif

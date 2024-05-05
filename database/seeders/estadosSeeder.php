@@ -16,6 +16,7 @@ class estadosSeeder extends Seeder
         $estado = new Estados();
         $estado->pais_id = 1;
         $estado->nombre = 'Sinaloa';
+        $estado->save();
         $estado = new Estados();
         $estado->nombre = 'Aguascalientes';
         $estado->pais_id = 1;

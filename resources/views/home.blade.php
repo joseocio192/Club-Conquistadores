@@ -16,8 +16,11 @@
      <form action="{{ route('login') }}" method="GET">
           <button type="submit">Iniciar sesión</button>
      </form>
+     <form action="{{ route('registerTutorLegal') }}" method="GET">
+            <button type="submit">Registrar tutor legal</button>
+     </form>
      <form action="{{ route('register') }}" method="GET">
-          <button type="submit">Registrarse</button>
+          <button type="submit">Registrar conquistador</button>
      </form>
      @if($records->count())
          <h2>Records:</h2>

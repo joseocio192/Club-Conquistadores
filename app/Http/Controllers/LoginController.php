@@ -25,7 +25,7 @@ class LoginController extends Controller
                 return redirect()->intended('admin');
             }
             if ($user->rol == 'conquistador') {
-                return redirect()->intended('conquistador');
+                return redirect()->intended('conquistador/{id}', ['id' => $user->id]);
             }
             if ($user->rol == 'instructor') {
                 return redirect()->intended('welcome');
