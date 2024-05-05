@@ -20,10 +20,6 @@
     height: 400px;
 }
 
-.LabelName {
-    width: 100px;
-}
-
 .LayoutCandidateTitle {
     display: flex;
     justify-content: center;

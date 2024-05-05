@@ -10,7 +10,10 @@ function RegisterView() {
                     Datos del joven aspirante
                 </div>
                 <div className='LayoutCandidateInputs1'>
-                    
+                    <Input text='Nombre' 
+                    className='InputNombre'>
+
+                    </Input>
                 </div>
             </div>
             <div className='RegisterRight'>
