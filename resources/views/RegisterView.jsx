@@ -83,6 +83,9 @@ function RegisterView() {
                 classNameLabel='Label'
                 classNameInput='InputRight'
                 placeholder='667-231-8212'/>
+                <div className='LayoutButtons'>
+
+                </div>
             </div>
         </div>
     );
