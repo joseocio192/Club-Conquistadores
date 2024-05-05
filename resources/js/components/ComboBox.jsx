@@ -14,3 +14,16 @@ export function ComboBoxSexo() {
         </div>   
     )
 }
+
+export function ComboBoxPais() {
+    return (
+        <div className='LayoutCombo'>
+           <label className='Label'>
+           Pais
+            </label>  
+            <select className='Combo'>
+                
+            </select>
+        </div>   
+    )
+}
