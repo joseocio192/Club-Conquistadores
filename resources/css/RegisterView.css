@@ -9,7 +9,7 @@
     flex-direction: column;
     background-color: #31363F;
     width: 500px;
-    height: 600px;
+    height: 700px;
     border-radius: 10px 0px 0px 10px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
 }
@@ -85,7 +85,7 @@
     display: grid;
     grid-template-columns: 250px 250px;
     width: 99%;
-    height: 200px;
+    height: 300px;
 }
 
 .InputNumber {
@@ -112,7 +112,7 @@
     justify-content: space-between;
     background-color: #222831;
     width: 500px;
-    height: 600px;
+    height: 700px;
     border-radius: 0px 10px 10px 0px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
 }
