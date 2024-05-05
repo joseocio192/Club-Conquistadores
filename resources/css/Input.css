@@ -1,6 +1,7 @@
 .LayoutInput {
     display: flex;
-    justify-content: space-evenly;
     align-items: baseline;
+    justify-content: space-evenly;
     width: 100%;
+    padding-bottom: 20px;
 }

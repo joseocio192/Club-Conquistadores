@@ -13,7 +13,19 @@ function RegisterView() {
                     <Input text='Nombre' 
                     classNameLabel='Label'
                     classNameInput='Input'>
-
+                    </Input>
+                    <Input text='Apellidos' 
+                    classNameLabel='Label'
+                    classNameInput='Input'>
+                    </Input>
+                    <Input text='E-mail' 
+                    classNameLabel='Label'
+                    classNameInput='Input'>
+                    </Input>
+                    <Input text='Contraseña' 
+                    type='password'
+                    classNameLabel='Label'
+                    classNameInput='Input'>
                     </Input>
                 </div>
             </div>
