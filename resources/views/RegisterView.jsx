@@ -11,9 +11,9 @@ function RegisterView() {
                     Datos del joven aspirante
                 </div>
                 <div className='LayoutCandidateInputs1'>
-                    <Input text='Nombre' 
+                    <Input text='Nombres' 
                     classNameLabel='Label'
-                    classNameInput='InputName'/>
+                    classNameInput='InputLeft'/>
 
                     <Input text='Apellidos' 
                     classNameLabel='Label'
@@ -66,9 +66,13 @@ function RegisterView() {
                 <div className='LayoutTutorsTitle'>
                     Datos del tutor
                 </div>
-                <Input text='Nombre'
+                <Input text='Nombres'
                 classNameLabel='Label'
-                classNameInput='InputNameTutor'/>
+                classNameInput='InputRight'/>
+
+                <Input text='Apellidos'
+                classNameLabel='Label'
+                classNameInput='InputRight'/>
             </div>
         </div>
     );
