@@ -40,3 +40,16 @@ export function ComboBoxEstado() {
         </div>   
     )
 }
+
+export function ComboBoxMunicipio() {
+    return (
+        <div className='LayoutCombo'>
+           <label className='Label'>
+           Municipio
+            </label>  
+            <select className='Combo'>
+                
+            </select>
+        </div>   
+    )
+}
