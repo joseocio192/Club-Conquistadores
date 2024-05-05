@@ -63,6 +63,9 @@ function RegisterView() {
                 </div>
             </div>
             <div className='RegisterRight'>
+                <div className='LayoutTutorsTitle'>
+                    Datos del tutor
+                </div>
             </div>
         </div>
     );
