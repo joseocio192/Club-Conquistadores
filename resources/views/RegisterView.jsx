@@ -28,10 +28,11 @@ function RegisterView() {
                     classNameLabel='Label'
                     classNameInput='Input'>
                     </Input>
-                    <ComboBox text='Fecha de nacimiento'
+                    <Input text='Fecha de nacimiento'
+                    type='date'
                     classNameLabel='Label'
-                    classNameCombo='Combo'>
-                    </ComboBox>
+                    classNameInput='InputDate'>
+                    </Input>
                 </div>
             </div>
             <div className='RegisterRight'>

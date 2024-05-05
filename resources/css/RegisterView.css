@@ -36,7 +36,6 @@
     font-weight: bold;
     color: #222831;
 }
-
 .Input:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -45,7 +44,37 @@
     font-family: Verdana;
     font-weight: bold;
     color: #222831;
-  }
+}
+
+.InputDate {
+    border: 3px solid #222831;
+    width: 130px;
+    height: 20px;
+    border-radius: 10px;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
+}
+.InputDate:focus {
+    outline: none;
+    cursor: text;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 3px solid #4ea4a8;
+    background-color: #eeeeee;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
+}
+
+.Combo {
+    border: 3px solid #222831;
+    width: 200px;
+    height: 20px;
+    border-radius: 10px;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
+}
 
 .LayoutCandidateTitle {
     display: flex;
