@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Ciudad;
 use App\Models\Conquistador;
+use App\Models\Pais;
+use App\Models\ClubXpersona;
 
 class RegisterController extends Controller
 {
     public function showRegistrationForm()
     {
         $ciudades = Ciudad::all(); // Retrieve all cities from the database
-        return view('register', ['ciudades' => $ciudades]);
+        $paises = Pais::all(); // Retrieve all countries from the database
+        return view('register', ['ciudades' => $ciudades, 'paises' => $paises]);
     }
 
     public function register(Request $request)
@@ -37,6 +40,15 @@ class RegisterController extends Controller
                 'codigo_postal' => $request->codigo_postal,
                 'sexo' => $request->sexo,
                 'rol' => 'conquistador',
+            ]);
+            $conquistador = Conquistador::create([
+                'user_id' => $user->id,
+                'tutorLegal_id' => $request->tutorLegal_id,
+                'rol' => 'conquistador',
+            ]);
+            $clubXpersona = ClubXpersona::create([
+                'club_id' => $request->club_id,
+                'user_id' => $user->id,
             ]);
 
             auth()->login($user);
