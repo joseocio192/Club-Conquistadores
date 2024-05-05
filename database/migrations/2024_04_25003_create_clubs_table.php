@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('Clubs', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre', 100);
             $table->foreignId('especialidad_Id')->references('id')->on('Especialidad');
-            $table->foreignId('director_Id')->references('id')->on('Directivo');
-            $table->foreignId('ciudad')->references('id')->on('Ciudad');
+            $table->foreignId('director_Id')->references('id')->on('Users');
+            $table->foreignId('ciudad_Id')->references('id')->on('Ciudad');
             $table->string('calle');
             $table->string('numero_exterior', 10);
             $table->string('numero_interior', 10)->nullable();
             $table->string('colonia', 100);
-
-            $table->string('nombre', 100);
             $table->text('lema')->nullable();
             $table->string('logo', 50)->nullable();
             $table->string('especialidad', 55)->nullable();

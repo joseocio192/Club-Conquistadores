@@ -9,8 +9,8 @@ class Conquistador extends Model
 {
     use HasFactory;
     protected $table='Conquistador';
-    protected $filable=[
-        'persona_id',
+    protected $fillable=[
+        'user_id',
         'tutorLegal_id',
         'rol'
     ];

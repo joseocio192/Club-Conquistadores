@@ -5,7 +5,7 @@ import "../css/app.css"
  * building robust, powerful web applications using React + Laravel.
  */
 
-import './bootstrap';
+// import './bootstrap';
 
 /**
  * Next, we will create a fresh React component instance and attach it to

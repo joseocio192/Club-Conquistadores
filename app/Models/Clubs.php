@@ -10,14 +10,14 @@ class Clubs extends Model
     use HasFactory;
     protected $table= 'Clubs';
     protected $filable= [
+        'nombre',
         'especialidad_Id',
         'director_Id',
-        'ciudad',
+        'ciudad_Id',
         'calle',
         'numero_exterior',
         'numero_interior',
         'colonia',
-        'nombre',
         'lema',
         'logo',
         'especialidad',

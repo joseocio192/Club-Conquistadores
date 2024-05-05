@@ -5,6 +5,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConquistadorConstroller;
+use App\Http\Controllers\RegisterTutorController;
+use App\Http\Controllers\MunicipioPaisController;
+use App\Models\Municipio;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class);
 
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
@@ -31,6 +36,23 @@ Route::get('users/{id}', function ($id) {
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
+Route::get('/registerTutorLegal', [RegisterTutorController::class, 'showRegistrationForm'])->name('registerTutorLegal');
+Route::post('/registerTutorLegal', [RegisterTutorController::class, 'register']);
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/welcome2', function () {
+    return view('welcome2');
+});
+
+Route::get('users/{id}', function ($id) {
+    return 'User ' . $id;
+});
+
+Route::get('/lang/{locale}', 'LocalizationController@set_Lang');
+Route::get('/conquistador', [ConquistadorConstroller::class, 'invoke']);
+Route::get('/conquistador/{id}', [ConquistadorConstroller::class, 'show']);
+
+Route::get('/municipios',[MunicipioPaisController::class, '__invoke']);
+

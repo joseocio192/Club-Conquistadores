@@ -21,17 +21,11 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $userId = Auth::id();
             $user = User::find($userId);
-            if ($user->Vigente == 0) {
-                Auth::logout();
-                return back()->withErrors([
-                    'email' => 'The provided credentials do not match our records.'
-                ]);
-            }
             if ($user->rol == 'admin') {
                 return redirect()->intended('admin');
             }
             if ($user->rol == 'conquistador') {
-                return redirect()->intended('conquistador');
+                return redirect()->intended('conquistador/{id}', ['id' => $user->id]);
             }
             if ($user->rol == 'instructor') {
                 return redirect()->intended('welcome');
