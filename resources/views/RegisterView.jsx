@@ -84,7 +84,9 @@ function RegisterView() {
                 classNameInput='InputRight'
                 placeholder='667-231-8212'/>
                 <div className='LayoutButtons'>
-
+                    <button>
+                        
+                    </button>
                 </div>
             </div>
         </div>
