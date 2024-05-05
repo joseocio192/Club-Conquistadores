@@ -1,12 +1,16 @@
 import React from 'react'
+import '../../css/Input.css'
 
-export function Input({text, type, className}) {
+export function Input({text, type,classNameLabel ,classNameInput}) {
     return (
-        <>
-           <label className='Label'>
+        <div className='LayoutInput'>
+           <label className={classNameLabel}>
            {text}
-            <input type={type} className={className}></input>
-            </label>     
-        </>   
+            </label>  
+            <input 
+            type={type} 
+            className={classNameInput}>
+            </input>
+        </div>   
     )
 }
