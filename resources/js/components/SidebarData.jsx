@@ -10,8 +10,8 @@ export const SidebarDataInstructores = [
         link: "/cursos",
     },
     {
-        title: "Alumnos",
+        title: "Conquistadores",
         icon: <SchoolIcon/>,
-        link: "/alumnos",
+        link: "/Conquistadores",
     }
 ] 

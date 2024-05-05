@@ -57,9 +57,7 @@ function RegisterView() {
                     classNameInput='InputCP'
                     placeholder='#4477'/>
 
-                    <ComboBoxSexo> 
-                        <option value="value1">Value 1</option>
-                    </ComboBoxSexo>
+                    <ComboBoxSexo/>
                 </div>
             </div>
             <div className='RegisterRight'>
