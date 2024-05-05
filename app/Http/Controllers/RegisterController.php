@@ -44,10 +44,10 @@ class RegisterController extends Controller
             $conquistador = Conquistador::create([
                 'user_id' => $user->id,
                 'tutorLegal_id' => $request->tutorLegal_id,
-                'rol' => 'conquistador',
+                'rol' => 'Amigo',
             ]);
             $clubXpersona = ClubXpersona::create([
-                'club_id' => $request->club_id,
+                'club_id' => $request->clubes,
                 'user_id' => $user->id,
             ]);
 

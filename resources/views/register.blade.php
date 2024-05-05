@@ -40,6 +40,13 @@
     form button[type="submit"]:hover {
         background-color: #0056b3;
     }
+    form button[disabled] {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+    form button[disabled]:hover {
+        background-color: #ccc;
+    }
 </style>
 
 <form method="POST" action="{{ route('register') }}" id="registro">
@@ -90,11 +97,11 @@
     <label for="municipio">Municipio</label>
     <select id="municipio"></select>
 
-    <label for="ciudad">Ciudad</label>
-    <select id="ciudad"></select>
+    <label for="ciudad_id">ciudad</label>
+    <select id="ciudad_id" name="ciudad_id"></select>
 
     <label for="clubes">Clubes</label>
-    <select id="club_id"></select>
+    <select id="clubes" name="clubes"></select>
 
     <label for="codigo_postal">Codigo Postal</label>
     <input id="codigo_postal" type="text" name="codigo_postal" required><br>
@@ -109,8 +116,8 @@
 
     <label for="tutorLegal_id">Tutor id</label>
     <input id="tutorLegal_id" type="text" name="tutorLegal_id" required><br>
-    <button type="submit">
-        Register
+    <button type="submit" class="btn btn-primary" id="submit-button" disabled>
+        registrarse
     </button>
 
 </form>
@@ -140,7 +147,7 @@
         }
         // Clear the municipality and city dropdowns
         $("#municipio").empty();
-        $("#ciudad").empty();
+        $("#ciudad_id").empty();
         $("#clubes").empty();
     });
 
@@ -167,7 +174,7 @@
             $("#municipio").empty();
         }
         // Clear the city dropdown
-        $("#ciudad").empty();
+        $("#ciudad_id").empty();
         $("#clubes").empty();
     });
 
@@ -179,28 +186,28 @@
                 type: "GET",
                 success: function(res) {
                     if (res) {
-                        $('#ciudad').empty();
-                        $('#ciudad').append('<option>Seleccionar</option>');
+                        $('#ciudad_id').empty();
+                        $('#ciudad_id').append('<option>Seleccionar</option>');
                         $.each(res, function(key, value) {
-                            $('#ciudad').append('<option value="' + key + '">' + value +
+                            $('#ciudad_id').append('<option value="' + key + '">' + value +
                                 '</option>');
                         });
                     } else {
-                        $('#ciudad').empty();
+                        $('#ciudad_id').empty();
                     }
                 }
             });
         } else {
-            $("#ciudad").empty();
+            $("#ciudad_id").empty();
             $("#clubes").empty();
         }
     });
 
-    $('#ciudad').change(function() {
-        var ciudad_Id = $(this).val();
-        if (ciudad_Id) {
+    $('#ciudad_id').change(function() {
+        var ciudad_id = $(this).val();
+        if (ciudad_id) {
             $.ajax({
-                url: "{{ url('api/get-club-list') }}?ciudad_Id=" + ciudad_Id,
+                url: "{{ url('api/get-club-list') }}?ciudad_id=" + ciudad_id,
                 type: "GET",
                 success: function(res) {
                     if (res) {
@@ -219,8 +226,8 @@
     });
 
     $('#clubes').change(function() {
-        var ciudad_Id = $(this).val();
-        if (ciudad_Id) {
+        var ciudad_id = $(this).val();
+        if (ciudad_id) {
             $('#submit-button').prop('disabled', false);
         } else {
             $("#submit-button").prop('disabled', true);

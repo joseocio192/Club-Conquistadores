@@ -41,7 +41,7 @@ class DropdownController extends Controller
 
         try {
             $clubs = DB::table("clubs")
-                        ->where("ciudad_Id",$request->ciudad_Id)
+                        ->where("ciudad_Id",$request->ciudad_id)
                         ->pluck("nombre","id");
             return response()->json($clubs);
         } catch (\Exception $e) {
