@@ -81,16 +81,6 @@
     color: #222831;
 }
 
-.Combo {
-    border: 3px solid #222831;
-    width: 200px;
-    height: 20px;
-    border-radius: 10px;
-    font-family: Verdana;
-    font-weight: bold;
-    color: #222831;
-}
-
 .LayoutCandidateInputs2{
     display: grid;
     grid-template-columns: 250px 250px;
@@ -104,6 +94,16 @@
 
 .InputCP {
     width: 100px;
+}
+
+.Combo {
+    border: 3px solid #222831;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
 }
 
 .RegisterRight{
