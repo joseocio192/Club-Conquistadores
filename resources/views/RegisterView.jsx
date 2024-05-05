@@ -73,6 +73,10 @@ function RegisterView() {
                 <Input text='Apellidos'
                 classNameLabel='Label'
                 classNameInput='InputRight'/>
+
+                <Input text='E-mail'
+                classNameLabel='Label'
+                classNameInput='InputRight'/>
             </div>
         </div>
     );
