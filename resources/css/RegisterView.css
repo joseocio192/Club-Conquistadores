@@ -40,7 +40,7 @@
     padding-left: 40px;
 } 
 
-.Input, .InputNumber, .InputCP {
+.InputLeft, .InputNumber, .InputCP, .InputName {
     border: 3px solid #222831;
     width: 200px;
     height: 20px;
@@ -50,7 +50,11 @@
     color: #222831;
 }
 
-.Input:focus, .InputNumber:focus, .InputCP:focus, .Combo:focus {
+.InputName {
+    width: 300px;
+}
+
+.InputLeft:focus, .InputNumber:focus, .InputCP:focus, .Combo:focus, .InputName:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border: 3px solid #4ea4a8;
@@ -107,9 +111,31 @@
 }
 
 .RegisterRight{
+    display: flex;
+    flex-direction: column;
     background-color: #222831;
     width: 500px;
     height: 600px;
     border-radius: 0px 10px 10px 0px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
+}
+
+.InputNameTutor {
+    width: 300px;
+    border: 3px solid #4a4b4c;
+    height: 20px;
+    border-radius: 10px;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
+}
+
+.InputNameTutor:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 3px solid #4ea4a8;
+    background-color: #eeeeee;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
 }

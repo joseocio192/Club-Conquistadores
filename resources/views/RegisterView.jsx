@@ -13,20 +13,20 @@ function RegisterView() {
                 <div className='LayoutCandidateInputs1'>
                     <Input text='Nombre' 
                     classNameLabel='Label'
-                    classNameInput='Input'/>
+                    classNameInput='InputName'/>
 
                     <Input text='Apellidos' 
                     classNameLabel='Label'
-                    classNameInput='Input'/>
+                    classNameInput='InputLeft'/>
 
                     <Input text='E-mail' 
                     classNameLabel='Label'
-                    classNameInput='Input'/>
+                    classNameInput='InputLeft'/>
 
                     <Input text='Contraseña' 
                     type='password'
                     classNameLabel='Label'
-                    classNameInput='Input'/>
+                    classNameInput='InputLeft'/>
 
                     <Input text='Fecha de nacimiento'
                     type='date'
@@ -36,12 +36,12 @@ function RegisterView() {
                     <Input text='Telefono'
                     type='tel'
                     classNameLabel='Label'
-                    classNameInput='Input'
+                    classNameInput='InputLeft'
                     placeholder='667-231-8212'/>
 
                     <Input text='Colonia'
                     classNameLabel='Label'
-                    classNameInput='Input'/>
+                    classNameInput='InputLeft'/>
                 </div>
                 <div className='LayoutCandidateInputs2'>
                     <Input text='Calle'
@@ -66,6 +66,9 @@ function RegisterView() {
                 <div className='LayoutTutorsTitle'>
                     Datos del tutor
                 </div>
+                <Input text='Nombre'
+                classNameLabel='Label'
+                classNameInput='InputNameTutor'/>
             </div>
         </div>
     );
