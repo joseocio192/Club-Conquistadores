@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     background-color: #31363F;
-    width: 500px;
+    width: 550px;
     height: 700px;
     border-radius: 10px 0px 0px 10px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
@@ -150,7 +150,34 @@
 .Btn {
     width: 100%;
     height: 100px;
+    border-width: 0;
     border-radius: 20px;
+    outline: none;
+    overflow: hidden;
+    backface-visibility: hidden;
+    line-height: 1.15;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1em;
+    text-align: center;
+    text-transform: none;
+    background-color: #76ABAE;
+    color: #EEEEEE;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    touch-action: manipulation;
+    cursor: pointer;
+}
+
+.Btn:disabled {
+  cursor: default;
+}
+
+.Btn:hover {
+  font-size: 1.4em;
+  color: #EEEEEE;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
 }
 
 .LabelCP {

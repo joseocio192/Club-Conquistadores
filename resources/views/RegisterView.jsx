@@ -97,8 +97,10 @@ function RegisterView() {
                 placeholder='667-231-8212'/>
                 <div className='LayoutButtons'>
                     <button className='Btn'>
+                        Pagina principal
                     </button>
                     <button className='Btn'>
+                        Registrarse
                     </button>
                 </div>
             </div>
