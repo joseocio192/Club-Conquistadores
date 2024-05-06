@@ -15,7 +15,6 @@ return new class extends Migration
             u.name as nombre,
             u.apellido as apellidos,
             u.email as email,
-            u.password as contraseña,
             u.telefono as telefono,
             u.fecha_nacimiento as fecha_nacimiento,
             u.calle as calle,
