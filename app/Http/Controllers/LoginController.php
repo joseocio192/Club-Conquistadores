@@ -28,20 +28,23 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $userId = Auth::id();
-            $user = User::find($userId);
+        if ($attempt = Auth::attempt($credentials, $request->remember)) {
+            $request->session()->regenerate();
+
+            $user = Auth::user();
             if ($user->rol == 'admin') {
                 return redirect()->intended('admin');
             }
             if ($user->rol == 'conquistador') {
-                $conquistador = DB::table('vw_conquistador')->where('id', $userId)->get();
+                $conquistador = DB::table('vw_conquistador')->where('id', $user->id)->get();
                 $conquistador = $conquistador -> last();
                 return redirect()->intended(route('conquistador.show', ['id' => $conquistador->id]));
             }
             if ($user->rol == 'instructor') {
                 return redirect()->intended('welcome');
             }
+
+            return redirect()->intended('welcome');
         }
 
         return back()->withErrors([

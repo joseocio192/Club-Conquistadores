@@ -3,17 +3,32 @@
 <form method="POST" action="{{ route('login') }}">
     @csrf
 
-    <label for="email">Email</label>
-    <input id="email" type="email" name="email" required autofocus>
+    <!-- Email Address -->
+    <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" required autofocus>
+    </div>
 
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" required>
+    <!-- Password -->
+    <div>
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" required autocomplete="current-password">
+    </div>
 
-    <button type="submit">
-        Log in
-    </button>
+    <!-- Remember Me -->
+    <div>
+        <label for="remember_me">
+            <input id="remember_me" type="checkbox" name="remember">
+            <span>Remember me</span>
+        </label>
+    </div>
+
+    <div>
+        <button type="submit">
+            Log in
+        </button>
+    </div>
 </form>
-
 @error('email')
     <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
