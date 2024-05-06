@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <title>Login</title>
         <!-- ... -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -10,6 +11,10 @@
 
     </head>
 <body>
+    <div style="padding: 5%;">
+        <!-- ... -->
+    </div>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -65,6 +70,8 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Login') }}
                                     </button>
+                                    <a href="/" class="btn btn-primary">Volver a inicio</a>
+                                    <br>
 
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
