@@ -3,8 +3,16 @@ import "../css/Index.css"
 
 function Index() {
     return (
-        <div>
-            
+        <div className='Wrapper'>
+            <div className='MainLayout'>
+                <nav></nav>
+                <header></header>
+                <section></section>
+                <footer></footer>
+            </div>
+            <div className='AsideLayout'>
+
+            </div>
         </div>
     );
 }
