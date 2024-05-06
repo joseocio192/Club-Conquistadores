@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Clase extends Model
 {
@@ -17,4 +18,9 @@ class Clase extends Model
         'logo',
         'horario',
     ];
+
+    public function alumnos(): BelongsToMany
+    {
+        return $this->belongsToMany(Conquistador::class, 'Clase_xalumno', 'clase_id', 'conquistador');
+    }
 }
