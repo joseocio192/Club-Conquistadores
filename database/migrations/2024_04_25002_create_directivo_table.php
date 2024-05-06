@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('Directivo', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('Users');
+            //por alguna razon el jefe no puede ser nulo y tienes que meterte a la base de datos a cambiarlo
             $table->foreignId('jefe_id')->references('id')->on('Directivo')->nullable();
             $table->foreignID('ciudad_id')->references('id')->on('Ciudad');
             //Esto no puede ser una restriccion estatica Esto debe ser una restriccion dinamica por el idioma
