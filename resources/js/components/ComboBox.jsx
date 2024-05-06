@@ -8,8 +8,8 @@ export function ComboBoxSexo() {
            Sexo
             </label>  
             <select className='Combo'>
-                <option value="masculino">Masculino</option>
-                <option value="femenino" selected>Femenino</option>
+                <option value="masculino" selected  >Masculino</option>
+                <option value="femenino">Femenino</option>
             </select>
         </div>   
     )
