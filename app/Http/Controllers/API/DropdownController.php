@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Log;
 
 class DropdownController extends Controller
 {
+
+    public function getPaisList(Request $request)
+    {
+        $paises = DB::table("Pais")
+            ->pluck("nombre", "id");
+        return response()->json($paises);
+    }
+
     public function getStateList(Request $request)
     {
         $states = DB::table("Estados")
