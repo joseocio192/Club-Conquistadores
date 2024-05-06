@@ -11,25 +11,25 @@ class DropdownController extends Controller
 {
     public function getStateList(Request $request)
     {
-        $states = DB::table("estados")
-                    ->where("pais_id",$request->pais_id)
-                    ->pluck("nombre","id");
+        $states = DB::table("Estados")
+            ->where("pais_id", $request->pais_id)
+            ->pluck("nombre", "id");
         return response()->json($states);
     }
     public function getMunicipalityList(Request $request)
     {
-        $municipios = DB::table("municipios")
-                        ->where("estado_id",$request->estado_id)
-                        ->pluck("nombre","id");
+        $municipios = DB::table("Municipios")
+            ->where("estado_id", $request->estado_id)
+            ->pluck("nombre", "id");
         return response()->json($municipios);
     }
 
     public function getCityList(Request $request)
     {
         try {
-            $ciudades = DB::table("ciudad")
-                            ->where("municipio_id",$request->municipio_id)
-                            ->pluck("nombre","id");
+            $ciudades = DB::table("Ciudad")
+                ->where("municipio_id", $request->municipio_id)
+                ->pluck("nombre", "id");
             return response()->json($ciudades);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
@@ -40,9 +40,9 @@ class DropdownController extends Controller
     {
 
         try {
-            $clubs = DB::table("clubs")
-                        ->where("ciudad_Id",$request->ciudad_id)
-                        ->pluck("nombre","id");
+            $clubs = DB::table("Clubs")
+                ->where("ciudad_Id", $request->ciudad_id)
+                ->pluck("nombre", "id");
             return response()->json($clubs);
         } catch (\Exception $e) {
             Log::error($e->getMessage());

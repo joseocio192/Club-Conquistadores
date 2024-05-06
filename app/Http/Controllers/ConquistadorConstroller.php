@@ -19,7 +19,7 @@ class ConquistadorConstroller extends Controller
     public function invoke()
     {
         $userId = auth()->user()->id;
-        $conquistador = DB::table('vw_conquistador')->where('id', $userId)->first();
+        $conquistador = DB::table('vw_conquistador')->where('uid', $userId)->first();
 
         return view('conquistador', ['conquistador' => $conquistador]);
     }

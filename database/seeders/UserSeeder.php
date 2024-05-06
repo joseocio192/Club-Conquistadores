@@ -86,8 +86,11 @@ class userSeeder extends Seeder
 
         $directivo = new \App\Models\Directivo();
         $directivo->user_id = 4;
-        $directivo->jefe_id = null;
+        $directivo->jefe_id = 1;
         $directivo->ciudad_id = 1;
+        $directivo->municipio_id = 1;
+        $directivo->estado_id = 1;
+        $directivo->pais_id = 1;
         $directivo->rol = 'Director';
         $directivo->activo = 1;
         $directivo->locale = 'es';
@@ -98,6 +101,5 @@ class userSeeder extends Seeder
         $instructor->jefe_id = 1;
         $instructor->activo = 1;
         $instructor->save();
-
     }
 }

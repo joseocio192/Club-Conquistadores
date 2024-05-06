@@ -13,7 +13,13 @@ return new class extends Migration
     public function up(): void
     {
         //only run on production
-        DB::statement("create or replace view vw_ciudadLocale as SELECT c.nombre, p.locale FROM ciudad c INNER JOIN municipios m ON m.id = c.municipio_id INNER JOIN estados e ON e.id = m.Estado_id INNER JOIN pais p ON p.id = e.pais_id; ");
+        DB::statement("create or replace view vw_ciudadLocale as
+            SELECT c.nombre,
+            p.locale
+            FROM Ciudad c
+            INNER JOIN Municipios m ON m.id = c.municipio_id
+            INNER JOIN Estados e ON e.id = m.Estado_id
+            INNER JOIN Pais p ON p.id = e.pais_id; ");
     }
 
     /**

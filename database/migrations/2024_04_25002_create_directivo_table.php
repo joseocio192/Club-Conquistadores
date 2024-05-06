@@ -17,6 +17,7 @@ return new class extends Migration
             //por alguna razon el jefe no puede ser nulo y tienes que meterte a la base de datos a cambiarlo
             $table->foreignId('jefe_id')->references('id')->on('Directivo')->nullable();
             $table->foreignID('ciudad_id')->references('id')->on('Ciudad')->nullable();
+            $table->foreignId('municipio_id')->references('id')->on('Municipios')->nullable();
             $table->foreignId('estado_id')->references('id')->on('Estados')->nullable();
             $table->foreignId('pais_id')->references('id')->on('Pais')->nullable();
             //Esto no puede ser una restriccion estatica Esto debe ser una restriccion dinamica por el idioma
