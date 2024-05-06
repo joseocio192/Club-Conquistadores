@@ -6,12 +6,12 @@
 }
 
 .RegisterLeft {
-    margin-top: 250px;
     display: flex;
     flex-direction: column;
     background-color: #31363F;
+    border-top: 3px solid #EEEEEE;
     width: 550px;
-    height: 700px;
+    height: 750px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
 }
 
@@ -20,6 +20,7 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 20px;
+    padding-left: 35px;
     width: 500px;
     height: 70px;
     font-size: 1.7em;
@@ -87,6 +88,7 @@
     grid-template-columns: 250px 250px;
     width: 99%;
     height: 300px;
+    margin-bottom: 30px;
 }
 
 .InputNumber {
@@ -114,18 +116,19 @@
     justify-content: space-between;
     background-color: #31363F;
     width: 550px;
-    height: 500px;
+    height: 450px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
 }
 
 .LayoutTutorsTitle {
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+    padding-left: 30px;
     width: 500px;
-    height: 70px;
+    height: 60px;
     font-size: 1.7em;
     color: #eeeeee;
     font-family: Gorgia, serif;
@@ -160,7 +163,7 @@
     align-items: center;
     justify-content: center;
     width: 99%;
-    height: 250px;
+    height: 100%;
 }
 
 .Btn {
@@ -173,11 +176,12 @@
     backface-visibility: hidden;
     line-height: 1.15;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.1em;
+    font-size: 1em;
+    font-weight: bold;
     text-align: center;
     text-transform: none;
     background-color: #76ABAE;
-    color: #EEEEEE;
+    color: #222831;
     transform: translateZ(0);
     transition: all .2s,box-shadow .08s ease-in;
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
@@ -191,8 +195,8 @@
 }
 
 .Btn:hover {
-  font-size: 1.4em;
-  color: #EEEEEE;
+  font-size: 1.2em;
+  color: #222831;
   box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
 }
 
