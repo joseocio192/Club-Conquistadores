@@ -69,7 +69,7 @@ function RegisterView() {
                     <Input text='Codigo postal'
                     classNameLabel='LabelCP' 
                     classNameInput='InputCP'
-                    placeholder='#4477'/>
+                    placeholder='#80014'/>
 
                     <ComboBoxSexo/>
                 </div>
