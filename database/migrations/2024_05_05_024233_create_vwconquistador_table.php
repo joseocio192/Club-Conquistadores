@@ -10,8 +10,28 @@ return new class extends Migration
     public function up()
     {
         DB::statement("
-            CREATE VIEW vw_conquistador AS
-            SELECT c.id as id, u.name as nombre, u.apellido as apellidos, u.email as email, u.password as contraseña, u.telefono as telefono, u.fecha_nacimiento as fecha_nacimiento, u.calle as calle, u.numero_exterior as numero_exterior, u.numero_interior as numero_interior, u.colonia as colonia, ci.nombre as ciudad, m.nombre as municipio, e.nombre as estado, p.nombre as pais, p.locale as locale, t.name as tutor_nombre, c.user_id as uid, c.tutorLegal_id as tutorid, c.rol as rol, c.activo as activo
+            CREATE OR REPLACE VIEW vw_conquistador AS
+            SELECT c.id as id,
+            u.name as nombre,
+            u.apellido as apellidos,
+            u.email as email,
+            u.password as contraseña,
+            u.telefono as telefono,
+            u.fecha_nacimiento as fecha_nacimiento,
+            u.calle as calle,
+            u.numero_exterior as numero_exterior,
+            u.numero_interior as numero_interior,
+            u.colonia as colonia,
+            ci.nombre as ciudad,
+            m.nombre as municipio,
+            e.nombre as estado,
+            p.nombre as pais,
+            p.locale as locale,
+            t.name as tutor_nombre,
+            c.user_id as uid,
+            c.tutorLegal_id as tutorid,
+            c.rol as rol,
+            c.activo as activo
             from conquistador c
             INNER JOIN users u on u.id = c.id
             INNER JOIN ciudad ci on ci.id = u.ciudad_id
