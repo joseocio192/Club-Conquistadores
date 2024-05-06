@@ -41,6 +41,7 @@ class RegisterController extends Controller
                 'sexo' => $request->sexo,
                 'rol' => 'conquistador',
             ]);
+
             $conquistador = Conquistador::create([
                 'user_id' => $user->id,
                 'tutorLegal_id' => $request->tutorLegal_id,
@@ -52,6 +53,6 @@ class RegisterController extends Controller
             ]);
 
             auth()->login($user);
-            return redirect()->route('users/{id}' , ['id' => $user->id]);
+            return redirect()->route('/conquistador/{id}' , ['id' => $user->id]);
     }
 }

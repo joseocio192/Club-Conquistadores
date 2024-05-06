@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
 import Sidebar from './components/Sidebar'
-import RegisterView from '../views/RegisterView';
+import RegisterView from './RegisterView'
 
 function App() {
     return (

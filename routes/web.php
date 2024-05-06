@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConquistadorConstroller;
 use App\Http\Controllers\RegisterTutorController;
 use App\Http\Controllers\MunicipioPaisController;
-use App\Models\Municipio;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,23 +35,21 @@ Route::get('users/{id}', function ($id) {
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
+Route::get('/logout', [LoginController::class, 'logout']);
+
 Route::get('/registerTutorLegal', [RegisterTutorController::class, 'showRegistrationForm'])->name('registerTutorLegal');
 Route::post('/registerTutorLegal', [RegisterTutorController::class, 'register']);
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-Route::get('/welcome2', function () {
-    return view('welcome2');
-});
-
-Route::get('users/{id}', function ($id) {
-    return 'User ' . $id;
-});
-
 Route::get('/lang/{locale}', 'LocalizationController@set_Lang');
-Route::get('/conquistador', [ConquistadorConstroller::class, 'invoke']);
-Route::get('/conquistador/{id}', [ConquistadorConstroller::class, 'show']);
+
+Route::get('/conquistador/{id}', 'ConquistadorConstroller@show')->name('conquistador.show')->middleware('checkuser');
+Route::get('/conquistador', 'ConquistadorConstroller@invoke')->middleware('auth', 'rol:conquistador');
+
+Route::get('/instructor', 'InstructorController@index')->middleware('auth', 'rol:instructor');
 
 Route::get('/municipios',[MunicipioPaisController::class, '__invoke']);
+
 

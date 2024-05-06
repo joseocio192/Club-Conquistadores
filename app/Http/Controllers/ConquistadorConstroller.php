@@ -4,21 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Conquistador;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ConquistadorConstroller extends Controller
 {
     public function show($id)
     {
-        $conquistadores = DB::table('vw_conquistador')->where('id', $id)->get();
+        $conquistador = DB::table('vw_conquistador')->where('id', $id)->first();
 
-        return view('conquistador', ['conquistadores' => $conquistadores]);
+        return view('conquistador', ['conquistador' => $conquistador]);
     }
 
     public function invoke()
     {
-        $conquistadores = DB::table('vw_conquistador')->get();
+        $userId = auth()->user()->id;
+        $conquistador = DB::table('vw_conquistador')->where('id', $userId)->first();
 
-        return view('conquistador', ['conquistadores' => $conquistadores]);
+        return view('conquistador', ['conquistador' => $conquistador]);
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        return redirect('/login');
     }
 }
