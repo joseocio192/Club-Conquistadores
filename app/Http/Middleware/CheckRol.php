@@ -18,7 +18,7 @@ class CheckRol
 
         if ($user->rol != $role) {
             // Redirect users who do not have the appropriate role...
-            return redirect('/home');
+            return redirect('/')->with('error', 'You do not have access to this page');
         }
 
         return $next($request);

@@ -48,6 +48,7 @@ Route::get('/lang/{locale}', 'LocalizationController@set_Lang');
 Route::get('/conquistador/{id}', 'ConquistadorConstroller@show')->name('conquistador.show')->middleware('checkuser');
 Route::get('/conquistador', 'ConquistadorConstroller@invoke')->middleware('auth', 'rol:conquistador');
 
+Route::get('/instructor/{id}', 'InstructorController@show')->name('instructor.show')->middleware('checkinstructor');
 Route::get('/instructor', 'InstructorController@index')->middleware('auth', 'rol:instructor');
 
 Route::get('/municipios',[MunicipioPaisController::class, '__invoke']);

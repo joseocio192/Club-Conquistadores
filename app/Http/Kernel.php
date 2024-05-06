@@ -50,6 +50,7 @@ class Kernel extends HttpKernel
         // ...
         'rol' => \App\Http\Middleware\CheckRol::class,
         'checkuser' => \App\Http\Middleware\CheckUser::class,
+        'checkinstructor' => \App\Http\Middleware\CheckInstructor::class,
 
     ];
 

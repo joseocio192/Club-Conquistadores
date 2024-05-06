@@ -4,10 +4,11 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-class CheckUser
+
+class CheckInstructor
 {
     /**
      * Handle an incoming request.
@@ -22,22 +23,24 @@ class CheckUser
         if (!Auth::check()){// I added this check to make sure the user is logged in
             return redirect($loginurl)->withErrors($permisos);
         }
+
+        // userId hace referencia al id del instructor de la ruta
         $userId = $request->route('id'); // obtén el ID del usuario de la ruta
         $authenticatedUserId = auth()->user()->id; // obtén el ID del usuario autenticado
-        $conquistador = DB::table('vw_conquistador')->where('uid', $authenticatedUserId)->first();
+        $instructor = DB::table('vw_instructor')->where('uid', $authenticatedUserId)->first();
 
-        if ($conquistador === null) {
-            // maneja el caso en que no se encuentra el conquistador
+        if ($instructor === null) {
+            // maneja el caso en que no se encuentra el instructor
             return redirect($loginurl)->withErrors($permisos);
         } else {
-            $conquistadorid = $conquistador->uid;
+            $instructorid = $instructor->id;
         }
 
-        if ($userId != $conquistadorid) {
+        if ($userId != $instructorid) {
             // si los IDs no coinciden, redirige al usuario
-            return redirect($loginurl)->withErrors($permisos . $userId . " " . $conquistadorid);
-        } else {
-            return $next($request);
+            return redirect($loginurl)->withErrors($permisos . ", Usuario al que intentas entrar: " . $userId . ", usuario que eres: " . $instructorid);
         }
+
+        return $next($request);
     }
 }

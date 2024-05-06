@@ -43,5 +43,14 @@
         <p class="text-center">¡Gracias por visitarnos!</p>
     </div>
 </body>
-
 </html>
+@if ($errors->any())
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Upss...',
+            text: 'Algo salio mal!',
+            footer: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>'
+        })
+    </script>
+@endif
