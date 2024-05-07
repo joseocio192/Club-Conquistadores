@@ -9,7 +9,7 @@ use App\Models\Ciudad;
 use App\Models\Conquistador;
 use App\Models\Pais;
 use App\Models\ClubXpersona;
-use App\Http\Controllers\ConquistadorConstroller;
+use App\Http\Controllers\ConquistadorController;
 
 class RegisterController extends Controller
 {
@@ -53,6 +53,6 @@ class RegisterController extends Controller
         ]);
 
         auth()->login($user);
-        return redirect()->action([ConquistadorConstroller::class, 'invoke']);
+        return redirect()->action([ConquistadorController::class, 'invoke']);
     }
 }

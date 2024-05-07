@@ -7,7 +7,7 @@ use App\Models\Conquistador;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class ConquistadorConstroller extends Controller
+class ConquistadorController extends Controller
 {
     public function show($id)
     {
