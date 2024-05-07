@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ConquistadorConstroller;
+use App\Http\Controllers\ConquistadorController;
 use App\Http\Controllers\RegisterTutorController;
 use App\Http\Controllers\MunicipioPaisController;
 
@@ -40,8 +40,8 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/lang/{locale}', 'LocalizationController@set_Lang');
 
-Route::get('/conquistador/{id}', 'ConquistadorConstroller@show')->name('conquistador.show')->middleware('checkuser');
-Route::get('/conquistador', 'ConquistadorConstroller@invoke')->middleware('auth', 'rol:conquistador');
+Route::get('/conquistador/{id}', 'ConquistadorController@show')->name('conquistador.show')->middleware('checkuser');
+Route::get('/conquistador', 'ConquistadorController@invoke')->middleware('auth', 'rol:conquistador');
 
 Route::get('/instructor/{id}', 'InstructorController@show')->name('instructor.show')->middleware('checkinstructor');
 Route::get('/instructor', 'InstructorController@index')->middleware('auth', 'rol:instructor');
