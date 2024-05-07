@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Unidad extends Model
 {
@@ -14,7 +15,17 @@ class Unidad extends Model
         'capitan',
         'nombre',
         'logo',
-        'sexo',
-        'lema'
+        'lema',
+        'sexo'
     ];
+
+    public function consejero(): BelongsTo
+    {
+        return $this->belongsTo(Instructor::class, 'consejero_id');
+    }
+
+    public function capitan(): BelongsTo
+    {
+        return $this->belongsTo(Conquistador::class, 'capitan');
+    }
 }

@@ -26,6 +26,21 @@ class ciudadesSeeder extends Seeder
         $ciudad->municipio_id = 3;
         $ciudad->save();
 
+        $ciudad = new Ciudad();
+        $ciudad->nombre = 'Aguascalientes';
+        $ciudad->municipio_id = 4;
+        $ciudad->save();
+
+        $ciudad = new Ciudad();
+        $ciudad->nombre = 'Cabo san lucas';
+        $ciudad->municipio_id = 7;
+        $ciudad->save();
+
+        $ciudad = new Ciudad();
+        $ciudad->nombre = 'San jose del cabo';
+        $ciudad->municipio_id = 7;
+        $ciudad->save();
+
 
     }
 }

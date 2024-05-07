@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('Especialidad', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
-            $table->date('fechaCumplido');
             $table->timestamps();
             $table->string('locale', 5);
         });

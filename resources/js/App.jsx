@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
 import Sidebar from './components/Sidebar'
+import RegisterView from './RegisterView'
 
 function App() {
     return (
         <div className='App'>
-            <Sidebar></Sidebar>
+            <RegisterView/>
         </div>
     );
 }
