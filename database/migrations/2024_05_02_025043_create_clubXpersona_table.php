@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('ClubXpersona', function (Blueprint $table) {
             $table->foreignId('club_id')->references('id')->on('Clubs');
             $table->foreignId('user_id')->references('id')->on('Users');
-            $table->date('fechaIngreso');
+            $table->timestamp('fechaIngreso')->useCurrent();
             $table->date('fechaRetiro')->nullable();
-            $table->boolean('activo');
+            $table->boolean('activo')->default(true);
             $table->string('detalles')->nullable();
             $table->timestamps();
         });

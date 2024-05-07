@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('get-pais-list', 'API\DropdownController@getPaisList');
+Route::get('get-state-list', 'API\DropdownController@getStateList');
+Route::get('get-municipality-list', 'API\DropdownController@getMunicipalityList');
+Route::get('get-city-list', 'API\DropdownController@getCityList');
+Route::get('get-club-list', 'API\DropdownController@getClubList');
