@@ -20,10 +20,12 @@ class CheckInstructor
     {
         $loginurl = '/login';
         $permisos = 'No tienes permiso para acceder a esta página. Por favor, inicia sesión';
-        if (!Auth::check()){// I added this check to make sure the user is logged in
+        if (!Auth::check()) { // I added this check to make sure the user is logged in
             return redirect($loginurl)->withErrors($permisos);
         }
-
+        if (Auth::user()->rol != 'instructor') {
+            return redirect($loginurl)->withErrors($permisos);
+        }
         // userId hace referencia al id del instructor de la ruta
         $userId = $request->route('id'); // obtén el ID del usuario de la ruta
         $authenticatedUserId = auth()->user()->id; // obtén el ID del usuario autenticado

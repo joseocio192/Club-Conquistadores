@@ -25,12 +25,7 @@ Route::get('/', HomeController::class);
 
 Route::get('/welcome', function () {
     return view('welcome');
-});
-
-Route::get('users/{id}', function ($id) {
-    return 'User '.$id;
-});
-
+})->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -51,6 +46,4 @@ Route::get('/conquistador', 'ConquistadorConstroller@invoke')->middleware('auth'
 Route::get('/instructor/{id}', 'InstructorController@show')->name('instructor.show')->middleware('checkinstructor');
 Route::get('/instructor', 'InstructorController@index')->middleware('auth', 'rol:instructor');
 
-Route::get('/municipios',[MunicipioPaisController::class, '__invoke']);
-
-
+Route::get('/municipios', [MunicipioPaisController::class, '__invoke'])->middleware('auth', 'rol:admin');

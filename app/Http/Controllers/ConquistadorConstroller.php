@@ -23,11 +23,4 @@ class ConquistadorConstroller extends Controller
 
         return view('conquistador', ['conquistador' => $conquistador]);
     }
-
-    public function logout(Request $request)
-    {
-        auth()->logout();
-        $request->session()->invalidate();
-        return redirect('/login');
-    }
 }

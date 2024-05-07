@@ -15,8 +15,10 @@ class RegisterController extends Controller
 {
     public function showRegistrationForm()
     {
-        $paises = Pais::all(); // Retrieve all countries from the database
-        return view('register', ['paises' => $paises]);
+        // Obtenidos mediante jquery
+        //$paises = Pais::all(); // Retrieve all countries from the database,
+        //return view('register', ['paises' => $paises]);
+        return view('register');
     }
 
     public function register(Request $request)
