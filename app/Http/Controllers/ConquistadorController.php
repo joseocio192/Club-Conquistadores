@@ -7,7 +7,7 @@ use App\Models\Conquistador;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class ConquistadorConstroller extends Controller
+class ConquistadorController extends Controller
 {
     public function show($id)
     {
@@ -22,12 +22,5 @@ class ConquistadorConstroller extends Controller
         $conquistador = DB::table('vw_conquistador')->where('uid', $userId)->first();
 
         return view('conquistador', ['conquistador' => $conquistador]);
-    }
-
-    public function logout(Request $request)
-    {
-        auth()->logout();
-        $request->session()->invalidate();
-        return redirect('/login');
     }
 }

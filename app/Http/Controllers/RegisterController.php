@@ -9,14 +9,16 @@ use App\Models\Ciudad;
 use App\Models\Conquistador;
 use App\Models\Pais;
 use App\Models\ClubXpersona;
-use App\Http\Controllers\ConquistadorConstroller;
+use App\Http\Controllers\ConquistadorController;
 
 class RegisterController extends Controller
 {
     public function showRegistrationForm()
     {
-        $paises = Pais::all(); // Retrieve all countries from the database
-        return view('register', ['paises' => $paises]);
+        // Obtenidos mediante jquery
+        //$paises = Pais::all(); // Retrieve all countries from the database,
+        //return view('register', ['paises' => $paises]);
+        return view('register');
     }
 
     public function register(Request $request)
@@ -51,6 +53,6 @@ class RegisterController extends Controller
         ]);
 
         auth()->login($user);
-        return redirect()->action([ConquistadorConstroller::class, 'invoke']);
+        return redirect()->action([ConquistadorController::class, 'invoke']);
     }
 }
