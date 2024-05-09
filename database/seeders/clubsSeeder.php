@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Clubs;
+use App\Models\ClubXpersona;
+use App\Models\Instructor;
 
 class clubsSeeder extends Seeder
 {
@@ -28,35 +30,34 @@ class clubsSeeder extends Seeder
         $club->locale = 'es';
         $club->save();
 
-        $clubxpersona = new \App\Models\Clubxpersona();
+        $clubxpersona = new Clubxpersona();
         $clubxpersona->club_id = 1;
         $clubxpersona->user_id = 1;
         $clubxpersona->activo = 1;
         $clubxpersona->save();
 
-        $clubxpersona = new \App\Models\Clubxpersona();
+        $clubxpersona = new Clubxpersona();
         $clubxpersona->club_id = 1;
         $clubxpersona->user_id = 2;
         $clubxpersona->activo = 1;
         $clubxpersona->save();
 
-        $clubxpersona = new \App\Models\Clubxpersona();
+        $clubxpersona = new Clubxpersona();
         $clubxpersona->club_id = 1;
         $clubxpersona->user_id = 3;
         $clubxpersona->activo = 1;
         $clubxpersona->save();
 
-        $clubxpersona = new \App\Models\Clubxpersona();
+        $clubxpersona = new Clubxpersona();
         $clubxpersona->club_id = 1;
         $clubxpersona->user_id = 4;
         $clubxpersona->activo = 1;
         $clubxpersona->save();
 
-        $instructor = new \App\Models\Instructor();
+        $instructor = new Instructor();
         $instructor->user_id = 3;
         $instructor->jefe_id = 1;
         $instructor->activo = 1;
         $instructor->save();
-
     }
 }
