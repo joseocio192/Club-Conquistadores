@@ -14,8 +14,8 @@ use App\Models\Clase;
 class Conquistador extends Model
 {
     use HasFactory;
-    protected $table='Conquistador';
-    protected $fillable=[
+    protected $table = 'Conquistador';
+    protected $fillable = [
         'user_id',
         'tutorLegal_id',
         'rol'
@@ -48,12 +48,12 @@ class Conquistador extends Model
 
     public function especialidad(): hasMany
     {
-        return $this->hasMany(Especialidad::class, 'conquistador_x_especialidad', 'conquistador_id', 'especialidad_id')->using(Conquistador_xespecialidad::class);
+        return $this->hasMany(Especialidad::class, 'Conquistador_xespecialidad', 'conquistador_id', 'especialidad_id')->using(Conquistador_xespecialidad::class);
     }
 
     public function tareas(): BelongsToMany
     {
-        return $this->belongsToMany(Tarea::class, 'tareaxconquistador', 'conquistador', 'tarea_id');
+        return $this->belongsToMany(Tarea::class, 'Tareaxconquistador', 'conquistador', 'tarea_id');
     }
 
     public function requisitos(): hasMany
