@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(especialidadSeeder::class);
         $this->call(clubsSeeder::class);
         $this->call(conquistadorSeeder::class);
+        $this->call(claseSeeder::class);
     }
 }
