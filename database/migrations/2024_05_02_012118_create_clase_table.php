@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('Clase', function (Blueprint $table) {
-            $table->softDeletes();
             $table->id();
             $table->foreignId('club_id')->references('id')->on('Clubs');
             $table->foreignId('instructor')->references('id')->on('Instructor');
@@ -20,8 +19,9 @@ return new class extends Migration
             $table->string('color', 50);
             $table->string('logo', 50)->nullable();
             $table->string('horario', 50);
-            $table->timestamps();
             $table->string('locale', 5);
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

@@ -6,11 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Instructor;
 use Illuminate\Support\Facades\DB;
 use App\Models\Clase;
-use App\Models\Clase_xalumno;
-use App\Models\Conquistador;
-use App\Models\Insturctor;
 use App\Models\User;
-use App\Models\Clubs;
+
 
 class InstructorController extends Controller
 {
@@ -19,10 +16,8 @@ class InstructorController extends Controller
 
         $user = auth()->user();
         $instructor = Instructor::where('user_id', $user->id)->first();
-        //$clasesDeInstructor = Clase::where('Instructor', $instructor->id);
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         $status = "nada";
-        //$clasesDeInstructor = DB::table('Clase')->where('instructor', $instructor->id)->get();
         return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status'));
     }
 
@@ -84,5 +79,50 @@ class InstructorController extends Controller
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         $status = "crear";
         return view('instructor', compact('clasesDeInstructor', 'user', 'status'));
+    }
+
+    public function anadirAlumnos(Request $request)
+    {
+        $clase = Clase::find($request->clase_id);
+        // Check if $clase is not null
+        if (!$clase) {
+            return redirect()->back()->with('error', 'Invalid class ID.');
+        }
+        // Split the input into an array of IDs
+        $conquistador_ids = explode(',', $request->alumnos);
+
+        // Attach each Conquistador to the Clase
+        foreach ($conquistador_ids as $conquistador_id) {
+            // Check if the Conquistador is already attached to the Clase
+            if (!$clase->conquistadores->contains(trim($conquistador_id))) {
+                $clase->conquistadores()->attach(trim($conquistador_id));
+            }else{
+                return redirect()->back()->with('error', 'One or more students are already in the class.');
+            }
+        }
+
+        return redirect()->back()->with('success', 'Students added successfully.');
+    }
+
+    public function eliminarAlumnos(Request $request)
+    {
+        $clase = Clase::find($request->clase_id);
+        // Check if $clase is not null
+        if (!$clase) {
+            return redirect()->back()->with('error', 'Invalid class ID.');
+        }
+        // Split the input into an array of IDs
+        $conquistador_ids = explode(',', $request->alumnos);
+
+        // Detach each Conquistador from the Clase
+        foreach ($conquistador_ids as $conquistador_id) {
+            // Check if the Conquistador is attached to the Clase
+            if ($clase->conquistadores->contains(trim($conquistador_id))) {
+                $clase->conquistadores()->detach(trim($conquistador_id));
+            }else{
+                return redirect()->back()->with('error', 'One or more students are not in the class.');
+            }
+        }
+        return redirect()->back()->with('success', 'Students removed successfully.');
     }
 }
