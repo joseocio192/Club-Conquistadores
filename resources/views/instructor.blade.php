@@ -72,7 +72,8 @@
 
     <h1 class="text-center">Instructor: {{$user->name}}</h1>
     <div class="sidenav">
-        <a style="color: #f1f1f1;" href="{{route('instructor.index')}}">Clases</a>
+        <a style="color: #f1f1f1; font-size: 20px;" href="{{route('instructor.index')}}">Clases</a>
+        <a href="{{route('instructor.crear')}}">Crear clase</a>
         @foreach ($clasesDeInstructor as $clase)
         <a href="{{route('instructor.clases', $clase->id)}}">{{$clase->nombre}}</a>
         @endforeach
@@ -83,10 +84,13 @@
     </div>
     <div class="main">
         <ul>
-            @if ($status == "yes")
+            @if ($status == "clase")
             @foreach ($alumnos as $alumno)
-            <h3>-{{$alumno->id}}</h3>
+            <h3>-{{$alumno->user->name}}</h3>
             @endforeach
+            @endif
+            @if ($status == "crear")
+            <h3> Crear clase </h3>
             @endif
         </ul>
         <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->

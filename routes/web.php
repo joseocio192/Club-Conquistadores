@@ -44,6 +44,7 @@ Route::get('/conquistador/{id}', 'ConquistadorController@show')->name('conquista
 Route::get('/conquistador', 'ConquistadorController@invoke')->middleware('auth', 'rol:conquistador');
 
 Route::get('/instructor/{id}', 'InstructorController@clases')->name('instructor.clases')->middleware('checkinstructor');
+Route::get('/instructor/crear', 'InstructorController@crear')->name('instructor.crear')->middleware('auth', 'rol:instructor');
 Route::get('/instructor', 'InstructorController@index')->name('instructor.index')->middleware('auth', 'rol:instructor');
 
 Route::get('/municipios', [MunicipioPaisController::class, '__invoke'])->middleware('auth', 'rol:admin');
