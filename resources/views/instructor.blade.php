@@ -73,7 +73,7 @@
     <h1 class="text-center">Instructor: {{$user->name}}</h1>
     <div class="sidenav">
         <a style="color: #f1f1f1; font-size: 20px;" href="{{route('instructor.index')}}">Clases</a>
-        <a href="{{route('instructor.crear')}}">Crear clase</a>
+        <a href="{{route('instructor.crear')}}">Gestionar clases</a>
         @foreach ($clasesDeInstructor as $clase)
         <a href="{{route('instructor.clases', $clase->id)}}">{{$clase->nombre}}</a>
         @endforeach
@@ -85,17 +85,39 @@
     <div class="main">
         <ul>
             @if ($status == "clase")
-            <h3>Estudiantes de la clase {{$clase->nombre}}</h3>
-            @foreach ($alumnos as $alumno)
-            <h3>-{{$alumno->user->name}}</h3>
+            <h3>Estudiantes de la clase {{$clase->nombre}} id: {{$clase->id}}</h3>
+            @foreach ($conquistadores as $conquistador)
+            <h3>-{{$conquistador->user->name}}</h3>
+                @if ($conquistador->tareas === null)
+                    <h4>No tiene tareas</h4>
+                @else
+                    <h4>Tareas:</h4>
+                    @foreach ($conquistador->tareas as $tarea)
+                    <h4>{{$tarea->nombre}} <input type="checkbox"></h4>
+
+                    @endforeach
+                @endif
             @endforeach
             @endif
             @if ($status == "crear")
             <h3> Crear clase </h3>
+            <form action="{{route('instructor.crear')}}" method="post">
+                @csrf
+                <input type="text" name="nombre" placeholder="Nombre de la clase">
+                <input type="text" name="color" placeholder="Color">
+                <input type="text" name="logo" placeholder="Logo">
+                <input type="text" name="horario" placeholder="Horario">
+                <button type="submit">Crear</button>
+            </form>
+            <h3> Eliminar clase </h3>
+            <form action="{{route('instructor.eliminarClase')}}" method="post">
+                @csrf
+                <input type="text" name="clase_id" placeholder="Id de la clase">
+                <button type="submit">Eliminar</button>
+            </form>
             @endif
         </ul>
         <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
     </div>
 </body>
-
 </html>

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Clase;
+
 
 class Conquistador extends Model
 {
@@ -49,9 +51,9 @@ class Conquistador extends Model
         return $this->hasMany(Especialidad::class, 'conquistador_x_especialidad', 'conquistador_id', 'especialidad_id')->using(Conquistador_xespecialidad::class);
     }
 
-    public function tareas(): hasMany
+    public function tareas(): BelongsToMany
     {
-        return $this->hasMany(Tarea::class, 'conquistador_id')->using(Tareaxconquistador::class);
+        return $this->belongsToMany(Tarea::class, 'tareaxconquistador', 'conquistador', 'tarea_id');
     }
 
     public function requisitos(): hasMany

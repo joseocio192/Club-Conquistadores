@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('Clase', function (Blueprint $table) {
+            $table->softDeletes();
             $table->id();
             $table->foreignId('club_id')->references('id')->on('Clubs');
             $table->foreignId('instructor')->references('id')->on('Instructor');

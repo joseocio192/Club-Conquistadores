@@ -13,7 +13,8 @@ class Especialidad extends Model
     protected $table = 'Especialidad';
     protected $fillable =[
         'nombre',
-         'fechaCumplido'];
+         'fechaCumplido',
+         'locale'];
 
     public function requisitos(): HasMany
     {

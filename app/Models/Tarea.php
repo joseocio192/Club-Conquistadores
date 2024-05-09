@@ -26,7 +26,7 @@ class Tarea extends Model
 
     public function conquistadores(): BelongsToMany
     {
-        return $this->belongsToMany(Conquistador::class, 'Tarea_xalumno', 'tarea_id', 'conquistador');
+        return $this->belongsToMany(Conquistador::class, 'tareaxconquistador', 'tarea_id', 'conquistador');
     }
 
 }

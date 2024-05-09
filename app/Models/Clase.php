@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Clubs;
 use App\Models\Instructor;
 
 class Clase extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $table = 'Clase';
     protected $fillable = [
         'club_id',
@@ -32,7 +34,7 @@ class Clase extends Model
         return $this->belongsTo(Instructor::class, 'instructor');
     }
 
-    public function alumnos(): BelongsToMany
+    public function conquistadores(): BelongsToMany
     {
         return $this->belongsToMany(Conquistador::class, 'Clase_xalumno', 'clase_id', 'conquistador');
     }
