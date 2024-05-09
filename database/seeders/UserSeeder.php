@@ -95,11 +95,6 @@ class userSeeder extends Seeder
         $directivo->activo = 1;
         $directivo->locale = 'es';
         $directivo->save();
-
-        $instructor = new \App\Models\Instructor();
-        $instructor->user_id = 3;
-        $instructor->jefe_id = 1;
-        $instructor->activo = 1;
-        $instructor->save();
     }
 }
+

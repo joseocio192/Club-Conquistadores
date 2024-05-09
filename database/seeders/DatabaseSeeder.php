@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(clubsSeeder::class);
         $this->call(conquistadorSeeder::class);
         $this->call(claseSeeder::class);
+        $this->call(tareaSeeder::class);
     }
+
 }

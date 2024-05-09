@@ -85,6 +85,7 @@
     <div class="main">
         <ul>
             @if ($status == "clase")
+            <h3>Estudiantes de la clase {{$clase->nombre}}</h3>
             @foreach ($alumnos as $alumno)
             <h3>-{{$alumno->user->name}}</h3>
             @endforeach

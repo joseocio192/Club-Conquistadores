@@ -16,6 +16,7 @@ class Tarea extends Model
         'nombre',
         'descripcion',
         'fecha',
+        'locale',
 ];
 
     public function clase(): BelongsTo
