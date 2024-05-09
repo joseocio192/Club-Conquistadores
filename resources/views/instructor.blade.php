@@ -81,12 +81,16 @@
             <button type="submit">log out</button>
         </form>
     </div>
-    <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
-    @if ($status == "yes")
-    @foreach ($alumnos as $alumno)
-    <h3>-----------------------------------------{{$alumno->id}}</h3>
-    @endforeach
-    @endif
+    <div class="main">
+        <ul>
+            @if ($status == "yes")
+            @foreach ($alumnos as $alumno)
+            <h3>-{{$alumno->id}}</h3>
+            @endforeach
+            @endif
+        </ul>
+        <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
+    </div>
 </body>
 
 </html>
