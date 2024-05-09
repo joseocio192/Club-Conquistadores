@@ -1,4 +1,5 @@
 <!-- resources/views/register.blade.php -->
+<!DOCTYPE html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
@@ -6,6 +7,7 @@
     body {
         font-family: Arial, sans-serif;
     }
+
     form {
         width: 300px;
         margin: 0 auto;
@@ -13,10 +15,12 @@
         border: 1px solid #ccc;
         border-radius: 5px;
     }
+
     form label {
         display: block;
         margin-top: 10px;
     }
+
     form input[type="text"],
     form input[type="email"],
     form input[type="password"],
@@ -27,6 +31,7 @@
         border: 1px solid #ccc;
         border-radius: 5px;
     }
+
     form button[type="submit"] {
         width: 100%;
         padding: 10px;
@@ -37,13 +42,16 @@
         cursor: pointer;
         margin-top: 10px;
     }
+
     form button[type="submit"]:hover {
         background-color: #0056b3;
     }
+
     form button[disabled] {
         background-color: #ccc;
         cursor: not-allowed;
     }
+
     form button[disabled]:hover {
         background-color: #ccc;
     }
@@ -86,9 +94,6 @@
     <label for="pais">Pais</label>
     <select id="pais">
         <option value="">Select a country</option>
-        @foreach ($paises as $pais)
-            <option value="{{ $pais->id }}">{{ $pais->nombre }}</option>
-        @endforeach
     </select>
 
     <label for="estado">Estado</label>
@@ -123,6 +128,26 @@
 </form>
 
 <script type="text/javascript">
+    $(document).ready(function() {
+        console.log("Hola");
+        $.ajax({
+            url: "{{ url('api/get-pais-list') }}",
+            type: "GET",
+            success: function(res) {
+                if (res) {
+                    $('#pais').empty();
+                    $('#pais').append('<option>Seleccionar</option>');
+                    $.each(res, function(key, value) {
+                        $('#pais').append('<option value="' + key + '">' + value +
+                            '</option>');
+                    });
+                } else {
+                    $('#pais').empty();
+                }
+            }
+        });
+    });
+
     $('#pais').change(function() {
         var paisID = $(this).val();
         if (paisID) {

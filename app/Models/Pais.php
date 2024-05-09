@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pais extends Model
 {
@@ -12,5 +13,8 @@ class Pais extends Model
     protected $fillable = [
         'nombre',
         'locale'];
-
+    public function estados(): HasMany
+    {
+        return $this->hasMany(Estados::class, 'id_pais', 'id');
+    }
 }

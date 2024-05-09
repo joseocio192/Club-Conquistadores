@@ -36,14 +36,10 @@ class LoginController extends Controller
                 return redirect()->intended('admin');
             }
             if ($user->rol == 'conquistador') {
-                $conquistador = DB::table('vw_conquistador')->where('id', $user->id)->get();
-                $conquistador = $conquistador -> last();
-                return redirect()->intended(route('conquistador.show', ['id' => $conquistador->id]));
+                return redirect()->action([ConquistadorController::class, 'invoke']);
             }
             if ($user->rol == 'instructor') {
-                $instructor = DB::table('vw_instructor')->where('uid', $user->id)->get();
-                $instructor = $instructor -> last();
-                return redirect()->intended(route('instructor.show', ['id' => $instructor->id]));
+                return redirect()->action([InstructorController::class, 'index']);
             }
 
             return redirect()->intended('welcome');

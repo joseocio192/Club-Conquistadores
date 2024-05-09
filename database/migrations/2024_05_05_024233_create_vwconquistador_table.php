@@ -15,7 +15,6 @@ return new class extends Migration
             u.name as nombre,
             u.apellido as apellidos,
             u.email as email,
-            u.password as contraseña,
             u.telefono as telefono,
             u.fecha_nacimiento as fecha_nacimiento,
             u.calle as calle,
@@ -32,13 +31,13 @@ return new class extends Migration
             c.tutorLegal_id as tutorid,
             c.rol as rol,
             c.activo as activo
-            from conquistador c
-            INNER JOIN users u on u.id = c.id
-            INNER JOIN ciudad ci on ci.id = u.ciudad_id
-            INNER JOIN municipios m on m.id = ci.municipio_id
-            INNER JOIN estados e on e.id = m.estado_id
-            INNER JOIN pais p on p.id = e.pais_id
-            INNER JOIN users t on t.id = c.tutorLegal_id
+            from Conquistador c
+            INNER JOIN Users u on u.id = c.user_id
+            INNER JOIN Ciudad ci on ci.id = u.ciudad_id
+            INNER JOIN Municipios m on m.id = ci.municipio_id
+            INNER JOIN Estados e on e.id = m.estado_id
+            INNER JOIN Pais p on p.id = e.pais_id
+            INNER JOIN Users t on t.id = c.tutorLegal_id
         ");
     }
 
