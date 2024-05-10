@@ -23,7 +23,7 @@
             
             <div class='EmailDiv'> 
                 <label for="email">Email</label>
-                <input id="email" type="email" name="email" class='EmailInput' required><br>
+                <input id="email" type="email" name="email" required><br>
             </div>
 
             <div class='SubSeccionDiv'> 
@@ -126,7 +126,7 @@
 
         <div class="ButtonsDiv">
             <div> 
-                <button class="HomeBtn" id="home-button">
+                <button class="HomeBtn" id="home-button" onclick="window.location.href = '/register';">
                     Volver
                 </button>
             </div>
