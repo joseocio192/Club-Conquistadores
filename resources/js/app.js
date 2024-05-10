@@ -1,4 +1,4 @@
-import "../css/app.css"
+//import "../css/app.css"
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -13,4 +13,4 @@ import "../css/app.css"
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import './App.jsx';
+//import './App.jsx';

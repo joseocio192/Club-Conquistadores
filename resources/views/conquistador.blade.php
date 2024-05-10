@@ -94,9 +94,9 @@
                     <li>Activo: {{ $conquistador->activo }}</li>
                 </ul>
 
-                <form action="/logout" method="GET">
+                <form action="/logout" method="get">
                     @csrf
-                    <button type="submit">Log Out</button>
+                    <button type="submit">log out</button>
                 </form>
             </div>
             @else

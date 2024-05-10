@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Clase;
+use App\Models\Instructor;
 
 class CheckInstructor
 {
@@ -23,26 +26,19 @@ class CheckInstructor
         if (!Auth::check()) { // I added this check to make sure the user is logged in
             return redirect($loginurl)->withErrors($permisos);
         }
-        if (Auth::user()->rol != 'instructor') {
+        $user = Auth::user();
+        if ($user->rol != 'instructor') {
             return redirect($loginurl)->withErrors($permisos);
         }
-        // userId hace referencia al id del instructor de la ruta
-        $userId = $request->route('id'); // obtén el ID del usuario de la ruta
-        $authenticatedUserId = auth()->user()->id; // obtén el ID del usuario autenticado
-        $instructor = DB::table('vw_instructor')->where('uid', $authenticatedUserId)->first();
+        $claseId = $request->route('id');
+        if (Clase::find($claseId) == null) {
+            return redirect('/instructor')->withErrors($permisos);
+        }
 
-        if ($instructor === null) {
-            // maneja el caso en que no se encuentra el instructor
+        $instructor = Instructor::where('user_id', $user->id)->first();
+        if (Clase::find($claseId)->instructor != $instructor->id) {
             return redirect($loginurl)->withErrors($permisos);
-        } else {
-            $instructorid = $instructor->id;
         }
-
-        if ($userId != $instructorid) {
-            // si los IDs no coinciden, redirige al usuario
-            return redirect($loginurl)->withErrors($permisos . ", Usuario al que intentas entrar: " . $userId . ", usuario que eres: " . $instructorid);
-        }
-
         return $next($request);
     }
 }

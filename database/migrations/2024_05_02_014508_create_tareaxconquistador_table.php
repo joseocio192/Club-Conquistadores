@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('Tareaxconquistador', function (Blueprint $table) {
             $table->foreignId('tarea_id')->references('id')->on('Tarea');
             $table->foreignId('conquistador')->references('id')->on('Conquistador');
-            $table->boolean('completada');
+            $table->boolean('completada')->default(false);
+            $table->timestamps();
         });
     }
 

@@ -12,6 +12,7 @@ class Municipio extends Model
 {
     use HasFactory,
         MunicipioMutators;
+    protected $table = 'Municipios';
 
     protected $fillable = ['nombre', 'estado_id'];
 
