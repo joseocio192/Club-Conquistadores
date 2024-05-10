@@ -32,7 +32,8 @@ class InstructorController extends Controller
         $conquistadores = $clase->conquistadores;
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         $status = "clase";
-        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status'));
+        $tareas = Tarea::where('clase_id', $id)->get();
+        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas'));
     }
 
     public function crear()

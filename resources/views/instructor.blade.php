@@ -66,6 +66,22 @@
                 font-size: 18px;
             }
         }
+
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
     </style>
 </head>
 
@@ -86,46 +102,36 @@
     </div>
     <div class="main">
         <ul>
-            <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
             @if ($status == 'clase')
-                <h3>Estudiantes de la clase {{ $clase->nombre }} id: {{ $clase->id }}</h3>
-                @foreach ($conquistadores as $conquistador)
-                    <h3>-{{ $conquistador->user->name }} {{ $conquistador->id }}</h3>
-                    @if ($conquistador->tareas === null)
-                        <h4>No tiene tareas</h4>
-                    @else
-                        <form action={{ route('instructor.sendhw') }} method="post">
-                            @csrf
-                            <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                            <h4>Tareas:</h4>
-                            @foreach ($conquistador->tareas as $tarea)
-                                @if ($tarea->clase_id === $clase->id)
-                                    <h4>{{ $tarea->nombre }} <input type="checkbox"
-                                            name="{{ $tarea->pivot->tarea_id . '-' . $tarea->pivot->conquistador }}"
-                                            value="1" @if ($tarea->pivot->completada == 1) checked @endif></h4>
-                                @endif
-                            @endforeach
-                            <button type="submit">Enviar</button>
-                        </form>
-                    @endif
-                @endforeach
+            <form action={{ route('instructor.sendhw') }} method="post">
+                @csrf
+                <table>
+                    <tr>
+                        <th>Nombre</th>
+                        @foreach ( $tareas as $tarea )
+                            <th>{{ $tarea->nombre }}</th>
+                        @endforeach
+                    </tr>
+                        @foreach ( $conquistadores as $conquistador )
+                            <tr>
+                                <td>{{$conquistador->user->name }}</td>
+                                @foreach ($conquistador->tareas as $tareaa)
+                                    <td>
+                                        @if ($tareaa->clase_id === $clase->id)
+                                        <input type="checkbox" name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}" value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
+                                         @endif
+                                    </td>
+                                @endforeach
+                            </tr>
 
-                <h3>Añadir alumnos a la clase</h3>
-                <form action="{{ route('instructor.anadirAlumnos') }}" method="post">
-                    @csrf
-                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                    <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
-                    <button type="submit">Añadir</button>
-                </form>
-
-                <h3>Eliminar alumnos de la clase</h3>
-                <form action="{{ route('instructor.eliminarAlumnos') }}" method="post">
-                    @csrf
-                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                    <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
-                    <button type="submit">Eliminar</button>
-                </form>
+                        @endforeach
+                </table>
+                <button type="submit">Enviar</button>
+            </form>
             @endif
+
+            <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
+
 
 
             @if ($status == 'crear')
