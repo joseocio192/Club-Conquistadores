@@ -78,6 +78,9 @@ class InstructorController extends Controller
         $clase = Clase::find($request->clase_id);
         if ($clase) {
             $clase->delete();
+        }else
+        {
+            return back()->withErrors(['clase_id' => 'Invalid class ID.']);
         }
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         $status = "crear";
@@ -89,7 +92,7 @@ class InstructorController extends Controller
         $clase = Clase::find($request->clase_id);
         // Check if $clase is not null
         if (!$clase) {
-            return redirect()->back()->with('error', 'Invalid class ID.');
+            return back()->withErrors(['clase_id' => 'Invalid class ID.']);
         }
         // Split the input into an array of IDs
         $conquistador_ids = explode(',', $request->alumnos);
@@ -98,7 +101,7 @@ class InstructorController extends Controller
         foreach ($conquistador_ids as $conquistador_id) {
             $conquistador = Conquistador::find($conquistador_id);
             if (!$conquistador) {
-                return redirect()->back()->with('error', 'Invalid student ID.');
+                return back()->withErrors(['alumnos' => 'Invalid student ID.']);
             }
         }
 
@@ -108,7 +111,7 @@ class InstructorController extends Controller
             if (!$clase->conquistadores->contains(trim($conquistador_id))) {
                 $clase->conquistadores()->attach(trim($conquistador_id));
             } else {
-                return redirect()->back()->with('error', 'One or more students are already in the class.');
+                return back()->withErrors(['alumnos' => 'One or more students are already in the class.']);
             }
         }
 
@@ -120,7 +123,7 @@ class InstructorController extends Controller
         $clase = Clase::find($request->clase_id);
         // Check if $clase is not null
         if (!$clase) {
-            return redirect()->back()->with('error', 'Invalid class ID.');
+            return back()->withErrors(['clase_id' => 'Invalid class ID.']);
         }
         // Split the input into an array of IDs
         $conquistador_ids = explode(',', $request->alumnos);
@@ -129,7 +132,7 @@ class InstructorController extends Controller
         foreach ($conquistador_ids as $conquistador_id) {
             $conquistador = Conquistador::find($conquistador_id);
             if (!$conquistador) {
-                return redirect()->back()->with('error', 'Invalid student ID.');
+                return back()->withErrors(['alumnos' => 'Invalid student ID.']);
             }
         }
 
@@ -139,7 +142,7 @@ class InstructorController extends Controller
             if ($clase->conquistadores->contains(trim($conquistador_id))) {
                 $clase->conquistadores()->detach(trim($conquistador_id));
             } else {
-                return redirect()->back()->with('error', 'One or more students are not in the class.');
+                return back()->withErrors(['alumnos' => 'One or more students are not in the class.']);
             }
         }
         return redirect()->back()->with('success', 'Students removed successfully.');
@@ -184,5 +187,24 @@ class InstructorController extends Controller
             $conquistador->tareas()->attach($tarea->id, ['completada' => 0]);
         }
         return redirect()->back()->with('success', 'Homework created successfully.');
+    }
+
+    public function modificarTarea(Request $request)
+    {
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'fecha' => 'required',
+        ]);
+
+        $tarea = Tarea::find($request->tarea_id);
+        if (!$tarea) {
+            return back()->withErrors(['tarea_id' => 'Invalid homework ID.']);
+        }
+        $tarea->nombre = $request->nombre;
+        $tarea->descripcion = $request->descripcion;
+        $tarea->fecha = $request->fecha;
+        $tarea->save();
+        return redirect()->back()->with('success', 'Homework updated successfully.');
     }
 }

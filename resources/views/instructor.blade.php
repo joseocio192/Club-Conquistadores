@@ -68,20 +68,61 @@
         }
 
         table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .my-button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 4px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        /* Your existing CSS */
+    }
+    .my-button:hover {
+        background-color: #45a049;
+    }
+    .my-button-loggout {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 4px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        position: absolute;
+        bottom: 0;
+        /* Your existing CSS */
+    }
+    .my-button-loggout:hover {
+        background-color: #45a049;
+    }
+
     </style>
 </head>
 
@@ -97,68 +138,79 @@ tr:nth-child(even) {
         @endforeach
         <form action="/logout" method="get">
             @csrf
-            <button type="submit">log out</button>
+            <button class="my-button-loggout" type="submit">log out</button>
         </form>
     </div>
     <div class="main">
         <ul>
             @if ($status == 'clase')
-            <form action={{ route('instructor.sendhw') }} method="post">
-                @csrf
-                <table>
-                    <tr>
-                        <th>Nombre</th>
-                        @foreach ( $tareas as $tarea )
-                            <th>{{ $tarea->nombre }}</th>
-                        @endforeach
-                    </tr>
-                        @foreach ( $conquistadores as $conquistador )
+                {{ Log::info($clase) }}
+                <form action={{ route('instructor.sendhw') }} method="post">
+                    @csrf
+                    <table>
+                        <tr>
+                            <th>Nombre</th>
+                            @foreach ($tareas as $tarea)
+                                <th>{{ $tarea->nombre }}</th>
+                            @endforeach
+                        </tr>
+                        @foreach ($conquistadores as $conquistador)
                             <tr>
-                                <td>{{$conquistador->user->name }}</td>
+                                <td>{{ $conquistador->user->name }}</td>
                                 @foreach ($conquistador->tareas as $tareaa)
                                     <td>
                                         @if ($tareaa->clase_id === $clase->id)
-                                        <input type="checkbox" name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}" value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
-                                         @endif
+                                            {{Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada)}}
+                                            <input type="checkbox"
+                                                name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}"
+                                                value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
+                                        @endif
                                     </td>
                                 @endforeach
                             </tr>
-
                         @endforeach
-                </table>
-                <button type="submit">Enviar</button>
-            </form>
+                    </table>
+                    <button class="my-button" type="submit">Enviar</button>
+                </form>
 
-            <h3>Añadir alumnos a la clase</h3>
-            <form action="{{ route('instructor.anadirAlumnos') }}" method="post">
-                @csrf
-                <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
-                <button type="submit">Añadir</button>
-            </form>
+                <h3>Añadir alumnos a la clase</h3>
+                <form action="{{ route('instructor.anadirAlumnos') }}" method="post">
+                    @csrf
+                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                    <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
+                    <button class="my-button" type="submit">Añadir</button>
+                </form>
 
-            <h3>Eliminar alumnos de la clase</h3>
-            <form action="{{ route('instructor.eliminarAlumnos') }}" method="post">
-                @csrf
-                <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
-                <button type="submit">Eliminar</button>
-            </form>
+                <h3>Eliminar alumnos de la clase</h3>
+                <form action="{{ route('instructor.eliminarAlumnos') }}" method="post">
+                    @csrf
+                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                    <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
+                    <button class="my-button" type="submit">Eliminar</button>
+                </form>
 
-            <h3>Crear tarea</h3>
-            <form action="{{ route('instructor.crearTarea') }}" method="post">
-                @csrf
-                <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                <input type="text" name="nombre" placeholder="Nombre de la tarea">
-                <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
-                <input type="date" name="fecha" placeholder="Fecha de la tarea">
-                <button type="submit">Crear</button>
+                <h3>Crear tarea</h3>
+                <form action="{{ route('instructor.crearTarea') }}" method="post">
+                    @csrf
+                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                    <input type="text" name="nombre" placeholder="Nombre de la tarea">
+                    <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
+                    <input type="date" name="fecha" placeholder="Fecha de la tarea">
+                    <button class="my-button" type="submit">Crear</button>
+                </form>
 
-        @endif
+                <h3>Modificar tarea</h3>
+                <form action="{{ route('instructor.modificarTarea') }}" method="post">
+                    @csrf
+                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                    <input type="text" name="tarea_id" placeholder="Id de la tarea">
+                    <input type="text" name="nombre" placeholder="Nombre de la tarea">
+                    <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
+                    <input type="date" name="fecha" placeholder="Fecha de la tarea">
+                    <button class="my-button" type="submit">Modificar</button>
+            @endif
 
             <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
-
-
 
             @if ($status == 'crear')
                 <h3> Crear clase </h3>
@@ -167,14 +219,15 @@ tr:nth-child(even) {
                     <input type="text" name="nombre" placeholder="Nombre de la clase">
                     <input type="text" name="color" placeholder="Color">
                     <input type="text" name="logo" placeholder="Logo">
-                    <input type="text" name="horario" placeholder="Horario">
-                    <button type="submit">Crear</button>
+                    <input type="time" name="horario" placeholder="Horario">
+                    <input type="time" name="horario2" placeholder="Horario">
+                    <button class="my-button" type="submit">Crear</button>
                 </form>
                 <h3> Eliminar clase </h3>
                 <form action="{{ route('instructor.eliminarClase') }}" method="post">
                     @csrf
                     <input type="text" name="clase_id" placeholder="Id de la clase">
-                    <button type="submit">Eliminar</button>
+                    <button class="my-button" type="submit">Eliminar</button>
                 </form>
             @endif
         </ul>
@@ -187,6 +240,17 @@ tr:nth-child(even) {
                 </ul>
             </div>
         @endif
+
+        @if ($errors->any())
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Upss...',
+            text: 'Algo salio mal!',
+            footer: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>'
+        })
+    </script>
+@endif
     </div>
 
 </body>
@@ -207,5 +271,11 @@ tr:nth-child(even) {
             var v = $(this).is(':checked') ? 1 : 0;
             $(this).next('input[type="hidden"]').val(v);
         });
+    });
+
+    document.getElementById('my-form').addEventListener('submit', function(event) {
+        var horario1 = document.getElementById('horario1').value;
+        var horario2 = document.getElementById('horario2').value;
+        document.getElementById('horario1').value = horario1 + '-' + horario2;
     });
 </script>
