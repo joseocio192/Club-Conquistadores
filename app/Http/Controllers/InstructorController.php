@@ -94,6 +94,14 @@ class InstructorController extends Controller
         // Split the input into an array of IDs
         $conquistador_ids = explode(',', $request->alumnos);
 
+        //check if ids are valid
+        foreach ($conquistador_ids as $conquistador_id) {
+            $conquistador = Conquistador::find($conquistador_id);
+            if (!$conquistador) {
+                return redirect()->back()->with('error', 'Invalid student ID.');
+            }
+        }
+
         // Attach each Conquistador to the Clase
         foreach ($conquistador_ids as $conquistador_id) {
             // Check if the Conquistador is already attached to the Clase
@@ -116,6 +124,14 @@ class InstructorController extends Controller
         }
         // Split the input into an array of IDs
         $conquistador_ids = explode(',', $request->alumnos);
+
+        //check if ids are valid
+        foreach ($conquistador_ids as $conquistador_id) {
+            $conquistador = Conquistador::find($conquistador_id);
+            if (!$conquistador) {
+                return redirect()->back()->with('error', 'Invalid student ID.');
+            }
+        }
 
         // Detach each Conquistador from the Clase
         foreach ($conquistador_ids as $conquistador_id) {
@@ -144,5 +160,29 @@ class InstructorController extends Controller
         }
 
         return redirect()->back()->with('success', 'Homework status updated successfully.');
+    }
+
+    public function crearTarea(Request $request)
+    {
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'fecha' => 'required',
+        ]);
+
+        $tarea = new Tarea();
+        $tarea->clase_id = $request->clase_id;
+        $tarea->nombre = $request->nombre;
+        $tarea->descripcion = $request->descripcion;
+        $tarea->fecha = $request->fecha;
+        $tarea->locale = 'es';
+        $tarea->save();
+        //assign the task to all students in the class
+        $clase = Clase::find($request->clase_id);
+        $conquistadores = $clase->conquistadores;
+        foreach ($conquistadores as $conquistador) {
+            $conquistador->tareas()->attach($tarea->id, ['completada' => 0]);
+        }
+        return redirect()->back()->with('success', 'Homework created successfully.');
     }
 }

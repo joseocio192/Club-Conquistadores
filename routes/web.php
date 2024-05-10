@@ -49,6 +49,7 @@ Route::post('/instructor/eliminar', 'InstructorController@eliminarClase')->name(
 Route::post('/instructor/anadirAlumnos', 'InstructorController@anadirAlumnos')->name('instructor.anadirAlumnos')->middleware('auth', 'rol:instructor');
 Route::post('/instructor/sendhw', 'InstructorController@sendhw')->name('instructor.sendhw')->middleware('auth', 'rol:instructor');
 Route::post('/instructor/eliminarAlumnos', 'InstructorController@eliminarAlumnos')->name('instructor.eliminarAlumnos')->middleware('auth', 'rol:instructor');
+Route::post('/instructor/crearTarea', 'InstructorController@crearTarea')->name('instructor.crearTarea')->middleware('auth', 'rol:instructor');
 Route::get('/instructor/{id}', 'InstructorController@clases')->name('instructor.clases')->middleware('checkinstructor');
 Route::get('/instructor', 'InstructorController@index')->name('instructor.index')->middleware('auth', 'rol:instructor');
 

@@ -144,7 +144,17 @@ tr:nth-child(even) {
                 <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
                 <button type="submit">Eliminar</button>
             </form>
-            @endif
+
+            <h3>Crear tarea</h3>
+            <form action="{{ route('instructor.crearTarea') }}" method="post">
+                @csrf
+                <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                <input type="text" name="nombre" placeholder="Nombre de la tarea">
+                <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
+                <input type="date" name="fecha" placeholder="Fecha de la tarea">
+                <button type="submit">Crear</button>
+
+        @endif
 
             <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
 
