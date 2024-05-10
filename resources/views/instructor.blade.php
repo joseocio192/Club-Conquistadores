@@ -94,12 +94,14 @@
             <h4>No tiene tareas</h4>
             @else
             <form action={{ route('instructor.sendhw') }} method="post">
+                <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
                 <h4>Tareas:</h4>
                 @foreach ($conquistador->tareas as $tarea)
-                <h4>{{ $tarea->nombre }} <input type="checkbox" name="{{ $tarea->id }}" @if($tarea->pivot->completada) checked @endif></h4>
+                @if ($tarea->clase_id === $clase->id)
+                <h4>{{ $tarea->nombre }} <input type="checkbox" name="{{ $tarea->pivot-> }}" value="1" @if($tarea->pivot->completada) checked @endif></h4>
+                @endif
                 @endforeach
                 <button type="submit">Enviar</button>
-
             </form>
             @endif
             @endforeach
