@@ -91,6 +91,6 @@ class User extends Authenticatable
 
     public function clubes(): BelongsToMany
     {
-        return $this->belongsToMany(Clubs::class, 'ClubXpersona', 'user_id', 'club_id')->withTimestamps()->orderBy('fecha_ingreso', 'desc')->using(ClubXpersona::class);
+        return $this->belongsToMany(Clubs::class, 'ClubXpersona', 'user_id', 'club_id')->withTimestamps()->orderBy('fechaIngreso', 'desc')->using(ClubXpersona::class);
     }
 }

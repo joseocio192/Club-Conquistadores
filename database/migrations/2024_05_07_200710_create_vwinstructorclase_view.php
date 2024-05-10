@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use illuminate\support\Facades\DB;
 
 return new class extends Migration
 {
@@ -11,17 +12,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Clase_xalumno', function (Blueprint $table) {
-            $table->foreignId('clase_id')->references('id')->on('Clase');
-            $table->foreignId('conquistador')->references('id')->on('Conquistador');
-            $table->timestamps();
-        });
+        DB::statement('create or replace view vw_instructorclase as
+        SELECT *
+        FROM vw_instructor i
+        inner join Clase c on c.instructor = i.id');
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('Clase_xalumno');
+        Schema::dropIfExists('vw_instructorclase');
     }
 };

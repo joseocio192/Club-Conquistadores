@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('color', 50);
             $table->string('logo', 50)->nullable();
             $table->string('horario', 50);
-            $table->timestamps();
             $table->string('locale', 5);
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
