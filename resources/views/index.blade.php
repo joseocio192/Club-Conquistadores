@@ -26,7 +26,20 @@
                 <h2>Conquistadores</h2>
             </header>
             <section></section>
-            <footer></footer>
+            <footer>
+                <img class="LogoFooter" src="{{ asset('/imgs/logo.webp') }}"></img>
+                <div class='Info'>
+                    <h2 class="h2Equipo">Equipo 12</h2>
+                    <ul>
+                        <li>Jose Pablo Ocio Mazo</li>
+                        <li>Victor Ramon Grande Espinoza</li>
+                        <li>Isaac David Beltran Beltran</li>
+                        <li>Luis Xavier Acosta Chang</li>
+                        <li>Manuel Alejandro Amezola Chaidez</li>
+                    </ul>
+
+                </div>
+            </footer>
         </div>
         <aside>
             <img class="LogoAside" src="{{ asset('/imgs/logo2.webp') }}"></img>
