@@ -7,6 +7,8 @@ use App\Models\Instructor;
 use Illuminate\Support\Facades\DB;
 use App\Models\Clase;
 use App\Models\User;
+use App\Models\Tarea;
+use App\Models\Conquistador;
 
 
 class InstructorController extends Controller
@@ -128,19 +130,18 @@ class InstructorController extends Controller
 
     public function sendhw(Request $request)
     {
-        $clase = Clase::find($request->clase_id);
-        // Check if $clase is not null
-        if (!$clase) {
-            return redirect()->back()->with('error', 'Invalid class ID.');
-        }
-        // Loop through the request data
-        foreach ($request->all() as $key => $value) {
-            // Check if the key is not clase_id
-            if ($key != 'clase_id') {
-                // Attach the Tarea to the Conquistador
-                $clase->conquistadores()->updateExistingPivot($key, ['completada' => $value]);
+        $clase_id = $request->clase_id;
+
+        foreach ($request->except(['_token', 'clase_id']) as $key => $value) {
+            list($tarea_id, $conquistador_id) = explode('-', $key);
+
+            $conquistador = Conquistador::find($conquistador_id);
+
+            if ($conquistador) {
+                $conquistador->tareas()->updateExistingPivot($tarea_id, ['completada' => $value]);
             }
         }
-        return redirect()->back()->with('success', 'Homework sent successfully.');
+
+        return redirect()->back()->with('success', 'Homework status updated successfully.');
     }
 }

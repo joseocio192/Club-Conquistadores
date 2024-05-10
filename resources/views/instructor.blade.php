@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instructor</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         #instructorData {
             display: none;
@@ -94,11 +95,15 @@
             <h4>No tiene tareas</h4>
             @else
             <form action={{ route('instructor.sendhw') }} method="post">
+                @csrf
                 <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
                 <h4>Tareas:</h4>
                 @foreach ($conquistador->tareas as $tarea)
                 @if ($tarea->clase_id === $clase->id)
-                <h4>{{ $tarea->nombre }} <input type="checkbox" name="{{ $tarea->pivot-> }}" value="1" @if($tarea->pivot->completada) checked @endif></h4>
+                @php
+                    Log::info("Tarea: " . $tarea->nombre . " completada: " . $tarea->pivot->completada . " consquistador:" . $tarea->pivot->conquistador);
+                @endphp
+                <h4>{{ $tarea->nombre }} <input type="checkbox" name="{{ $tarea->pivot->tarea_id . "-".  $tarea->pivot->conquistador}}" value="1" @if($tarea->pivot->completada == 1) checked @endif></h4>
                 @endif
                 @endforeach
                 <button type="submit">Enviar</button>
@@ -156,3 +161,19 @@
 </body>
 
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+        var chk = $('input[type="checkbox"]');
+    chk.each(function(){
+        var v = $(this).attr('checked') == 'checked'?1:0;
+        $(this).after('<input type="hidden" name="'+$(this).attr('name')+'" value="'+v+'" />');
+    });
+
+chk.change(function(){
+        var v = $(this).is(':checked')?1:0;
+        $(this).next('input[type="hidden"]').val(v);
+    });
+    });
+</script>

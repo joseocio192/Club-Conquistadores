@@ -39,4 +39,9 @@ class Clase extends Model
     {
         return $this->belongsToMany(Conquistador::class, 'Clase_xalumno', 'clase_id', 'conquistador');
     }
+
+    public function tareas()
+    {
+        return $this->belongsToMany(Tarea::class)->withPivot('completada');
+    }
 }

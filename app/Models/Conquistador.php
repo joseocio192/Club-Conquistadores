@@ -53,7 +53,7 @@ class Conquistador extends Model
 
     public function tareas(): BelongsToMany
     {
-        return $this->belongsToMany(Tarea::class, 'Tareaxconquistador', 'conquistador', 'tarea_id');
+        return $this->belongsToMany(Tarea::class, 'Tareaxconquistador', 'conquistador', 'tarea_id')->withPivot('completada');
     }
 
     public function requisitos(): hasMany
