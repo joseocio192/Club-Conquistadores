@@ -128,6 +128,22 @@ tr:nth-child(even) {
                 </table>
                 <button type="submit">Enviar</button>
             </form>
+
+            <h3>Añadir alumnos a la clase</h3>
+            <form action="{{ route('instructor.anadirAlumnos') }}" method="post">
+                @csrf
+                <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
+                <button type="submit">Añadir</button>
+            </form>
+
+            <h3>Eliminar alumnos de la clase</h3>
+            <form action="{{ route('instructor.eliminarAlumnos') }}" method="post">
+                @csrf
+                <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
+                <button type="submit">Eliminar</button>
+            </form>
             @endif
 
             <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
