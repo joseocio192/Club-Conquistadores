@@ -76,7 +76,7 @@
         <a href="{{ route('instructor.crear') }}">Gestionar clases</a>
         <!--Ojo las variables dentro de los foreach NO SON LOCALES -->
         @foreach ($clasesDeInstructor as $clases)
-            <a href="{{ route('instructor.clases', $clases->id) }}">{{ $clases->nombre }}</a>
+        <a href="{{ route('instructor.clases', $clases->id) }}">{{ $clases->nombre }}</a>
         @endforeach
         <form action="/logout" method="get">
             @csrf
@@ -87,63 +87,67 @@
         <ul>
             <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
             @if ($status == 'clase')
-                <h3>Estudiantes de la clase {{ $clase->nombre }} id: {{ $clase->id }}</h3>
-                @foreach ($conquistadores as $conquistador)
-                    <h3>-{{ $conquistador->user->name }} {{ $conquistador->id }}</h3>
-                    @if ($conquistador->tareas === null)
-                        <h4>No tiene tareas</h4>
-                    @else
-                        <h4>Tareas:</h4>
-                        @foreach ($conquistador->tareas as $tarea)
-                            <h4>{{ $tarea->nombre }} <input type="checkbox"></h4>
-                        @endforeach
-                    @endif
+            <h3>Estudiantes de la clase {{ $clase->nombre }} id: {{ $clase->id }}</h3>
+            @foreach ($conquistadores as $conquistador)
+            <h3>-{{ $conquistador->user->name }} {{ $conquistador->id }}</h3>
+            @if ($conquistador->tareas === null)
+            <h4>No tiene tareas</h4>
+            @else
+            <form action={{ route('instructor.sendhw') }} method="post">
+                <h4>Tareas:</h4>
+                @foreach ($conquistador->tareas as $tarea)
+                <h4>{{ $tarea->nombre }} <input type="checkbox" name="{{ $tarea->id }}" @if($tarea->pivot->completada) checked @endif></h4>
                 @endforeach
+                <button type="submit">Enviar</button>
 
-                <h3>Añadir alumnos a la clase</h3>
-                <form action="{{ route('instructor.anadirAlumnos') }}" method="post">
-                    @csrf
-                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                    <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
-                    <button type="submit">Añadir</button>
-                </form>
+            </form>
+            @endif
+            @endforeach
 
-                <h3>Eliminar alumnos de la clase</h3>
-                <form action="{{ route('instructor.eliminarAlumnos') }}" method="post">
-                    @csrf
-                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                    <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
-                    <button type="submit">Eliminar</button>
-                </form>
+            <h3>Añadir alumnos a la clase</h3>
+            <form action="{{ route('instructor.anadirAlumnos') }}" method="post">
+                @csrf
+                <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
+                <button type="submit">Añadir</button>
+            </form>
+
+            <h3>Eliminar alumnos de la clase</h3>
+            <form action="{{ route('instructor.eliminarAlumnos') }}" method="post">
+                @csrf
+                <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                <input type="text" name="alumnos" placeholder="Id de los alumnos separados por comas">
+                <button type="submit">Eliminar</button>
+            </form>
             @endif
 
 
             @if ($status == 'crear')
-                <h3> Crear clase </h3>
-                <form action="{{ route('instructor.crear') }}" method="post">
-                    @csrf
-                    <input type="text" name="nombre" placeholder="Nombre de la clase">
-                    <input type="text" name="color" placeholder="Color">
-                    <input type="text" name="logo" placeholder="Logo">
-                    <input type="text" name="horario" placeholder="Horario">
-                    <button type="submit">Crear</button>
-                </form>
-                <h3> Eliminar clase </h3>
-                <form action="{{ route('instructor.eliminarClase') }}" method="post">
-                    @csrf
-                    <input type="text" name="clase_id" placeholder="Id de la clase">
-                    <button type="submit">Eliminar</button>
-                </form>
+            <h3> Crear clase </h3>
+            <form action="{{ route('instructor.crear') }}" method="post">
+                @csrf
+                <input type="text" name="nombre" placeholder="Nombre de la clase">
+                <input type="text" name="color" placeholder="Color">
+                <input type="text" name="logo" placeholder="Logo">
+                <input type="text" name="horario" placeholder="Horario">
+                <button type="submit">Crear</button>
+            </form>
+            <h3> Eliminar clase </h3>
+            <form action="{{ route('instructor.eliminarClase') }}" method="post">
+                @csrf
+                <input type="text" name="clase_id" placeholder="Id de la clase">
+                <button type="submit">Eliminar</button>
+            </form>
             @endif
         </ul>
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
     </div>
 

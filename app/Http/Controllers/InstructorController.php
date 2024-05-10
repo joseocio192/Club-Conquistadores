@@ -96,7 +96,7 @@ class InstructorController extends Controller
             // Check if the Conquistador is already attached to the Clase
             if (!$clase->conquistadores->contains(trim($conquistador_id))) {
                 $clase->conquistadores()->attach(trim($conquistador_id));
-            }else{
+            } else {
                 return redirect()->back()->with('error', 'One or more students are already in the class.');
             }
         }
@@ -119,10 +119,28 @@ class InstructorController extends Controller
             // Check if the Conquistador is attached to the Clase
             if ($clase->conquistadores->contains(trim($conquistador_id))) {
                 $clase->conquistadores()->detach(trim($conquistador_id));
-            }else{
+            } else {
                 return redirect()->back()->with('error', 'One or more students are not in the class.');
             }
         }
         return redirect()->back()->with('success', 'Students removed successfully.');
+    }
+
+    public function sendhw(Request $request)
+    {
+        $clase = Clase::find($request->clase_id);
+        // Check if $clase is not null
+        if (!$clase) {
+            return redirect()->back()->with('error', 'Invalid class ID.');
+        }
+        // Loop through the request data
+        foreach ($request->all() as $key => $value) {
+            // Check if the key is not clase_id
+            if ($key != 'clase_id') {
+                // Attach the Tarea to the Conquistador
+                $clase->conquistadores()->updateExistingPivot($key, ['completada' => $value]);
+            }
+        }
+        return redirect()->back()->with('success', 'Homework sent successfully.');
     }
 }
