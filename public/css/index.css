@@ -8,8 +8,8 @@ body {
 
 .Wrapper {
     display: flex;
-    height: 100%;
-    width: 100%;
+    height: 58.6em;
+    width: 117em;
 }
 
 .MainLayout {
@@ -17,15 +17,15 @@ body {
     margin: 0;
     flex-direction: column;
     padding: auto;
-    height: 100%;
-    width: 100%;
+    height: 58.6em;
+    width: 117em;
     background-color: orange;
 }
 
 aside {
     display: flex;
-    height: 100%;
-    width: 330px;
+    height: 58.6em;
+    width: 20.625em;
     background-color: #76ABAE;
 }
 
@@ -33,32 +33,32 @@ header {
     display: flex;
     flex-direction: column;
     background-color: #96abac;
-    height: 250px;
+    height: 15.625em;
 }
 
 nav {
     display: flex;
     background-color: #eee;
-    height: 250px;
+    height: 15.625em;
 }
 
 section {
     background-color: #eee;
-    height: 100%;
+    height: 57em;
 }
 
 footer {
     display: flex;
     margin-top: auto;
     background-color: #F7F8FA;
-    height: 240px;
+    height: 15em;
 }
 
 .NavOption1, .NavOption2{
     display: flex;
     align-items: center;
-    height: 40px;
-    margin-top: 30px;
+    height: 2.5em;
+    margin-top: 1.875em;
     font-family: "Gill Sans", sans-serif;
     font-weight: bold;
     border-bottom: 3px solid #76ABAE;
@@ -69,8 +69,8 @@ footer {
 }
 
 .NavOption2 {
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 2.5em;
+    margin-right: 2.5em;
 }
 
 .NavOption1:hover, .NavOption2:hover {
@@ -78,7 +78,7 @@ footer {
     color: #76ABAE;
     fill: #76ABAE;
     border-bottom: 3px solid #76ABAE;
-    font-size: 17px;
+    font-size: 1.0625em;
 }
 
 .LogoNav {
@@ -103,7 +103,7 @@ footer {
 }
 
 .IconArrow {
-    margin-left: 5px;
+    margin-left: 0.3125em;
     width: 1.1em;
     height: 1.1em;
 }
