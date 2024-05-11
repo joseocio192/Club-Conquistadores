@@ -28,15 +28,14 @@
 
             <div class='SubSeccionDiv'> 
                 <div>
-                    <label for="telefono">Telefono</label>
-                    <input id="telefono" type="text" name="telefono"><br>
-                </div>
-                
-                <div>
                     <label for="password">Password</label>
                     <input id="password" type="password" name="password" required><br>
                 </div>
 
+                <div>
+                    <label for="telefono">Telefono</label>
+                    <input id="telefono" type="text" name="telefono"><br>
+                </div>
             </div>
 
             <div class='SubSeccionDiv'> 
@@ -132,7 +131,7 @@
             </div>
             
             <div> 
-                <button class="RegisterBtn" id="submit-button" disabled>
+                <button class="RegisterBtn" type="submit" id="submit-button" disabled>
                     Registrarse
                 </button>
             </div>

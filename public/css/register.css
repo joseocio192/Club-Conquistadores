@@ -37,42 +37,80 @@ form select {
     border-radius: 5px;
     margin-bottom: 10px;
     margin-left: 17.5px;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="date"]:focus,
+form select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 3px solid #4ea4a8;
+    background-color: #eeeeee;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
 }
 
 form input[type="email"] {
-    width: 642px;
+    width: 635px;
+    padding: 7px;
     margin-left: 17px;
     border-radius: 5px;
-    height: 28px;
+    margin-bottom: 10px;
+    height: 14px;
     border: 1px solid #ccc;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
 }
 
-form button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
+form input[type="email"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 3px solid #4ea4a8;
+    background-color: #eeeeee;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
+}
+
+.RegisterBtn {
+    height: 55px;
+    width: 155px;
+    border-radius: 6px;
+    border-width: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 100%;
+    background-color: #76ABAE;
+    color: #EEEEEE;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
     cursor: pointer;
-    margin-top: 10px;
 }
 
-form button[type="submit"]:hover {
-    background-color: #0056b3;
+.RegisterBtn:hover {
+    font-size: 20px;
+    color: #EEEEEE;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
 }
 
-form button[disabled] {
+.RegisterBtn[disabled] {
     background-color: #ccc;
     cursor: not-allowed;
 }
 
-form button[disabled]:hover {
+.RegisterBtn[disabled]:hover {
     background-color: #ccc;
 }
 
 .RegistroDiv {
-    width: 100%;
+    width: 98%;
 }
 
 h1 {
@@ -87,7 +125,6 @@ h2 {
     align-self: self-start;
     color: #31363F;
 }
-
 
 .DatosH2 {
     margin-top: 20px;
@@ -125,14 +162,11 @@ h2 {
     width: 100%;
 }
 
-button {
-    backface-visibility: hidden;
+.HomeBtn {
     height: 55px;
     width: 155px;
     border-radius: 6px;
     border-width: 0;
-    outline: none;
-    overflow: hidden;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 100%;
     background-color: #76ABAE;
@@ -141,6 +175,11 @@ button {
     transition: all .2s,box-shadow .08s ease-in;
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
     box-sizing: border-box;
-    touch-action: manipulation;
     cursor: pointer;
+}
+
+.HomeBtn:hover {
+    font-size: 20px;
+    color: #EEEEEE;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
 }
