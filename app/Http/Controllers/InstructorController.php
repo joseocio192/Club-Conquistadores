@@ -9,10 +9,14 @@ use App\Models\Clase;
 use App\Models\User;
 use App\Models\Tarea;
 use App\Models\Conquistador;
+use App\Models\Asistencia;
 
+use function PHPSTORM_META\elementType;
+use Illuminate\Support\Str;
 
 class InstructorController extends Controller
 {
+
     public function index()
     {
 
@@ -33,7 +37,8 @@ class InstructorController extends Controller
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         $status = "clase";
         $tareas = Tarea::where('clase_id', $id)->get();
-        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas'));
+        $asistencias = Asistencia::where('id_clase', $id)->get();
+        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas', 'asistencias'));
     }
 
     public function crear()
@@ -206,5 +211,57 @@ class InstructorController extends Controller
         $tarea->fecha = $request->fecha;
         $tarea->save();
         return redirect()->back()->with('success', 'Homework updated successfully.');
+    }
+
+    public function definer(Request $request)
+    {
+        if(isset($_POST['adddia'])){
+            return $this->adddia($request);
+        }else
+        {
+            return $this->asistencia($request);
+        }
+    }
+
+    public function adddia(Request $request){
+        $dia = new Asistencia();
+        $dia->id_clase = $request->clase_id;
+        $dia->fecha = date('Y-m-d');
+        $dia->save();
+
+        //assign the asistencia to all students in the class
+        $clase = Clase::find($request->clase_id);
+        $conquistadores = $clase->conquistadores;
+        foreach ($conquistadores as $conquistador) {
+            $conquistador->asistencia()->attach($dia->id, ['asistio' => 0, 'pulcritud' => 0]);
+        }
+
+        return redirect()->back()->with('success', 'Day added successfully.');
+    }
+
+    public function asistencia(Request $request)
+    {
+        // Loop through all the request data
+        foreach ($request->all() as $key => $value) {
+            // Check if the key starts with 'asistencia_' or 'pulcritud_'
+            if (Str::startsWith($key, 'asistencia_')) {
+                // Process asistencia value
+                list($asistencia_id, $conquistador_id) = explode('-', Str::after($key, 'asistencia_'));
+                // Find the Asistencia and update it
+                $conquistador = Conquistador::find($conquistador_id);
+                if ($conquistador) {
+                    $conquistador->asistencia()->updateExistingPivot($asistencia_id, ['asistio' => $value]);
+                }
+            } elseif (Str::startsWith($key, 'pulcritud_')) {
+                // Process pulcritud value
+                list($asistencia_id, $conquistador_id) = explode('-', Str::after($key, 'pulcritud_'));
+                // Find the Asistencia and update it
+                $conquistador = Conquistador::find($conquistador_id);
+                if ($conquistador) {
+                    $conquistador->asistencia()->updateExistingPivot($asistencia_id, ['pulcritud' => $value]);
+                }
+            }
+        }
+        return redirect()->back()->with('success', 'Attendance updated successfully.');
     }
 }
