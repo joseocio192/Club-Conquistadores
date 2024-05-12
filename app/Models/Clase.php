@@ -22,6 +22,7 @@ class Clase extends Model
         'color',
         'logo',
         'horario',
+        'edadMinima',
         'locale',
     ];
 

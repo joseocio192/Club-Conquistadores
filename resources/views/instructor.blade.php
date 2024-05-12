@@ -188,8 +188,8 @@
                             @foreach ($asistencias as $fechas)
                                 <th>{{ $fechas->fecha }}</th>
                             @endforeach
-                            <th><button type="submit" name="adddia">+</button><button type="submit"
-                                    name="adddia">-</button></th>
+                            <th><button type="submit" name="adddia">+</button>
+                                <button type="submit" name="deleteDia">-</button></th>
                         </tr>
                         @foreach ($conquistadores as $conquistador)
                             <tr>
@@ -287,6 +287,7 @@
                 <form action="{{ route('instructor.crear') }}" method="post">
                     @csrf
                     <input type="text" name="nombre" placeholder="Nombre de la clase">
+                    <input type="number" name="edadMinima" placeholder="Edad mínima">
                     <input type="text" name="color" placeholder="Color">
                     <input type="text" name="logo" placeholder="Logo">
                     <input type="time" name="horario" placeholder="Horario">

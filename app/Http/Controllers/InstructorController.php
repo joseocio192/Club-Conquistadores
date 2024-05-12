@@ -55,6 +55,7 @@ class InstructorController extends Controller
         $user = auth()->user();
         $request->validate([
             'nombre' => 'required',
+            'edadMinima' => 'required|integer|max:20',
             'color' => 'required',
             'logo' => 'required',
             'horario' => 'required',
@@ -64,6 +65,7 @@ class InstructorController extends Controller
         $clase->club_id = User::find($user->id)->clubes->first()->id;
         $clase->instructor = $instructor->id;
         $clase->nombre = $request->nombre;
+        $clase->edadMinima = $request->edadMinima;
         $clase->color = $request->color;
         $clase->logo = $request->logo;
         $clase->horario = $request->horario;
@@ -107,6 +109,14 @@ class InstructorController extends Controller
             $conquistador = Conquistador::find($conquistador_id);
             if (!$conquistador) {
                 return back()->withErrors(['alumnos' => 'Invalid student ID.']);
+            }
+        }
+
+        //check the age of the students
+        foreach ($conquistador_ids as $conquistador_id) {
+            $conquistador = Conquistador::find($conquistador_id);
+            if ($conquistador->edad < $clase->edadMinima) {
+                return back()->withErrors(['alumnos' => 'One or more students are under 12 years old.']);
             }
         }
 
@@ -217,8 +227,9 @@ class InstructorController extends Controller
     {
         if(isset($_POST['adddia'])){
             return $this->adddia($request);
-        }else
-        {
+        }elseif(isset($_POST['deleteDia'])){
+            return $this->deleteDia($request);
+        }else{
             return $this->asistencia($request);
         }
     }
@@ -237,6 +248,23 @@ class InstructorController extends Controller
         }
 
         return redirect()->back()->with('success', 'Day added successfully.');
+    }
+
+    public function deleteDia(Request $request)
+    {
+        $clase = Clase::find($request->clase_id);
+        $asistencia = Asistencia::where('id_clase', $clase->id)->latest()->first();
+        if ($asistencia) {
+            // Detach the asistencia from all conquistadores
+            foreach ($asistencia->conquistadores as $conquistador) {
+                $conquistador->asistencia()->detach($asistencia->id);
+            }
+            // Now it's safe to delete the asistencia
+            $asistencia->delete();
+        } else {
+            return back()->withErrors(['clase_id' => 'Invalid class ID.']);
+        }
+        return redirect()->back()->with('success', 'Day deleted successfully.');
     }
 
     public function asistencia(Request $request)

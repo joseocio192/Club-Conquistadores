@@ -21,6 +21,11 @@ class Conquistador extends Model
         'rol'
     ];
 
+    public function getEdadAttribute(): int
+    {
+        return $this->user->fecha_nacimiento ? now()->diffInYears($this->user->fecha_nacimiento) : 0;
+    }
+
     public function clases(): BelongsToMany
     {
         return $this->belongsToMany(Clase::class, 'Clase_xalumno', 'conquistador', 'clase_id');
