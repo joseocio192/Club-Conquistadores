@@ -23,20 +23,19 @@
             
             <div class='EmailDiv'> 
                 <label for="email">Email</label>
-                <input id="email" type="email" name="email" class='EmailInput' required><br>
+                <input id="email" type="email" name="email" required><br>
             </div>
 
             <div class='SubSeccionDiv'> 
-                <div>
-                    <label for="telefono">Telefono</label>
-                    <input id="telefono" type="text" name="telefono"><br>
-                </div>
-                
                 <div>
                     <label for="password">Password</label>
                     <input id="password" type="password" name="password" required><br>
                 </div>
 
+                <div>
+                    <label for="telefono">Telefono</label>
+                    <input id="telefono" type="text" name="telefono"><br>
+                </div>
             </div>
 
             <div class='SubSeccionDiv'> 
@@ -126,13 +125,13 @@
 
         <div class="ButtonsDiv">
             <div> 
-                <button class="HomeBtn" id="home-button">
+                <button class="HomeBtn" id="home-button" onclick="window.location.href = '/register';">
                     Volver
                 </button>
             </div>
             
             <div> 
-                <button class="RegisterBtn" id="submit-button" disabled>
+                <button class="RegisterBtn" type="submit" id="submit-button" disabled>
                     Registrarse
                 </button>
             </div>
