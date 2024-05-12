@@ -156,12 +156,15 @@
                         <tr>
                             <th>Nombre</th>
                             @foreach ($tareas as $tarea)
-                                <th>{{ $tarea->nombre }}</th>
+                                <th><a style="color: #111"
+                                        href="/instructor/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a></th>
                             @endforeach
                         </tr>
                         @foreach ($conquistadores as $conquistador)
                             <tr>
-                                <td>{{ $conquistador->user->name }}</td>
+                                <td><a style="color: #111"
+                                        href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
+                                </td>
                                 @foreach ($conquistador->tareas as $tareaa)
                                     <td>
                                         @if ($tareaa->clase_id === $clase->id)
@@ -189,7 +192,8 @@
                                 <th>{{ $fechas->fecha }}</th>
                             @endforeach
                             <th><button type="submit" name="adddia">+</button>
-                                <button type="submit" name="deleteDia">-</button></th>
+                                <button type="submit" name="deleteDia">-</button>
+                            </th>
                         </tr>
                         @foreach ($conquistadores as $conquistador)
                             <tr>
@@ -278,6 +282,7 @@
                     <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
                     <input type="date" name="fecha" placeholder="Fecha de la tarea">
                     <button class="my-button" type="submit">Modificar</button>
+                </form>
             @endif
 
             <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
@@ -300,6 +305,46 @@
                     <input type="text" name="clase_id" placeholder="Id de la clase">
                     <button class="my-button" type="submit">Eliminar</button>
                 </form>
+            @endif
+            @if ($status == 'Mostar Tarea')
+                <h2>Id: {{ $tarea->id }}</h2>
+                <h2>{{ $tarea->nombre }}</h2>
+                <h3>{{ $tarea->descripcion }}</h3>
+                <h3>{{ $tarea->fecha }}</h3>
+                <h3>Modificar tarea</h3>
+                <form action="{{ route('instructor.modificarTarea') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="tarea_id" value="{{ $tarea->id }}">
+                    <input type="text" name="nombre" placeholder="Nombre de la tarea">
+                    <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
+                    <input type="date" name="fecha" placeholder="Fecha de la tarea">
+                    <button class="my-button" type="submit">Modificar</button>
+                </form>
+            @endif
+            @if ($status == 'Mostar Conquistador')
+                <h2>Conquistador: {{ $conquistador->user->id }}</h2>
+                <h3>Nombre: {{ $conquistador->user->name }}</h3>
+                <h3>Edad: {{ $conquistador->edad }}</h3>
+                <h3>Telefono: {{ $conquistador->user->telefono }}</h3>
+                <h3>Correo: {{ $conquistador->user->email }}</h3>
+                <br>
+                <h3>Tutor Legal: {{ $conquistador->tutorLegal->name . ' ' . $conquistador->tutorLegal->apellido }}</h3>
+                <h3>Telefono: {{ $conquistador->tutorLegal->telefono }}</h3>
+                <h3>Correo: {{ $conquistador->tutorLegal->email }}</h3>
+                <h3>Direccion:
+                    {{ $conquistador->tutorLegal->colonia . ' ' . $conquistador->tutorLegal->calle . ' ' . $conquistador->tutorLegal->numero_exterior }}
+                </h3>
+                <br>
+            @endif
+
+            @if ($status == 'nada')
+                <h1>Selecciona una clase</h1>
+                <h2>Tus datos</h2>
+                <h3>Nombre: {{ $user->name }}</h3>
+                <h3>Edad: {{ $user->edad }}</h3>
+                <h3>Telefono: {{ $user->telefono }}</h3>
+                <h3>Correo: {{ $user->email }}</h3>
+                <h3>Direccion: {{ $user->colonia . ' ' . $user->calle . ' ' . $user->numero_exterior }}</h3>
             @endif
         </ul>
         @if ($errors->any())

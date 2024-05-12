@@ -59,9 +59,19 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function getEdadAttribute(): int
+    {
+        return date_diff(date_create($this->fecha_nacimiento), date_create('now'))->y;
+    }
+
     public function conquistador(): HasOne
     {
         return $this->hasOne(Conquistador::class, 'user_id');
+    }
+
+    public function instructor(): HasOne
+    {
+        return $this->hasOne(Instructor::class, 'user_id');
     }
 
     public function tutorLegal(): HasOne

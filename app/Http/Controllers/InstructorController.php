@@ -292,4 +292,24 @@ class InstructorController extends Controller
         }
         return redirect()->back()->with('success', 'Attendance updated successfully.');
     }
+
+    public function tarea(Request $request)
+    {
+        $user = auth()->user();
+        $instructor = Instructor::where('user_id', $user->id)->first();
+        $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
+        $status = "Mostar Tarea";
+        $tarea = Tarea::find($request->id);
+        return view('instructor', compact('clasesDeInstructor', 'user', 'status', 'tarea'));
+    }
+
+    public function showConquistador(Request $request)
+    {
+        $user = auth()->user();
+        $conquistador = Conquistador::find($request->id);
+        $status = "Mostar Conquistador";
+        $instructor = Instructor::where('user_id', $user->id)->first();
+        $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
+        return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status', 'conquistador'));
+    }
 }

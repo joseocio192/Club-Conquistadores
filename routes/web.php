@@ -43,7 +43,6 @@ Route::get('/lang/{locale}', 'LocalizationController@set_Lang');
 Route::get('/conquistador/{id}', 'ConquistadorController@show')->name('conquistador.show')->middleware('checkuser');
 Route::get('/conquistador', 'ConquistadorController@invoke')->middleware('auth', 'rol:conquistador');
 
-Route::get('/instructor/crear', 'InstructorController@crear')->name('instructor.crear')->middleware('auth', 'rol:instructor');
 Route::post('/instructor/crear', 'InstructorController@crearClase')->name('instructor.crearClase')->middleware('auth', 'rol:instructor');
 Route::post('/instructor/eliminar', 'InstructorController@eliminarClase')->name('instructor.eliminarClase')->middleware('auth', 'rol:instructor');
 Route::post('/instructor/anadirAlumnos', 'InstructorController@anadirAlumnos')->name('instructor.anadirAlumnos')->middleware('auth', 'rol:instructor');
@@ -52,6 +51,9 @@ Route::post('/instructor/eliminarAlumnos', 'InstructorController@eliminarAlumnos
 Route::post('/instructor/crearTarea', 'InstructorController@crearTarea')->name('instructor.crearTarea')->middleware('auth', 'rol:instructor');
 Route::post('/instructor/modificarTarea', 'InstructorController@modificarTarea')->name('instructor.modificarTarea')->middleware('auth', 'rol:instructor');
 Route::post('/instructor/definer', 'InstructorController@definer')->name('instructor.definer')->middleware('auth', 'rol:instructor');
+Route::get('/instructor/tarea/{id}', 'InstructorController@tarea')->name('instructor.tarea')->middleware('auth', 'rol:instructor');
+Route::get('/instructor/crear', 'InstructorController@crear')->name('instructor.crear')->middleware('auth', 'rol:instructor');
+Route::get('/instructor/conquistador/{id}', 'InstructorController@showConquistador')->name('instructor.showConquistador')->middleware('auth', 'rol:instructor');
 Route::get('/instructor/{id}', 'InstructorController@clases')->name('instructor.clases')->middleware('checkinstructor');
 Route::get('/instructor', 'InstructorController@index')->name('instructor.index')->middleware('auth', 'rol:instructor');
 
