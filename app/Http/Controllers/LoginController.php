@@ -36,7 +36,7 @@ class LoginController extends Controller
                 return redirect()->intended('admin');
             }
             if ($user->rol == 'conquistador') {
-                return redirect()->action([ConquistadorConstroller::class, 'invoke']);
+                return redirect()->action([ConquistadorController::class, 'invoke']);
             }
             if ($user->rol == 'instructor') {
                 return redirect()->action([InstructorController::class, 'index']);

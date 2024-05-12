@@ -1,0 +1,169 @@
+body {
+    padding: 0;
+    display: flex;
+    background: rgb(118,174,159);
+    background: linear-gradient(90deg, rgba(118,174,159,1) 0%, rgba(118,171,174,1) 47%, rgba(238,238,238,1) 100%);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15.7em;
+    width: 32em;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid #31363F;
+    background-color: white;
+    opacity: 0.8;
+}
+
+.card-header {
+    padding-left: 0;
+    width: 26em;
+    background-color: white;
+    border-bottom: 2px solid #ccc;
+}
+
+.card-body {
+    width: 30em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    color: #31363F;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5em;
+}
+
+label {
+    font-weight: bold;
+    color: #31363F;
+}
+
+label[for="email"] {
+    margin-left: 0;
+    color: #31363F;
+    font-size: 1.05em;
+    margin-right: 17.2em;
+    margin-top: 0.25em;
+    margin-bottom: 0.70em;
+}
+
+input[type="email"] {
+    margin-right: 12.5em;
+    margin-bottom: 0.70em;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid #4ea4a8;
+    background-color: #eeeeee;
+}
+
+label[for="password"] {
+    margin-left: 0;
+    color: #31363F;
+    font-size: 1.05em;
+    margin-right: 7.55em;
+}
+
+input[type="password"] {
+    margin-bottom: 0.70em;
+}
+
+label[for="remember"] {
+    align-items: baseline;
+    color: #31363F;
+    font-size: 1.030em;
+    margin-top: 0.35em;
+}
+
+input[type="checkbox"] {
+    width: 1.1em;
+    height: 1.1em;
+    border: 1px solid #31363F;
+    margin-right: 0.7em;
+}
+
+input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+.checkboxDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5em;
+    width: 10em;
+    height: 2em;
+}
+
+.buttonsDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 22em;
+    height: 5em;
+    margin-bottom: 1em;
+}
+
+button {
+    height: 3.235294117647059em;
+    width: 9.6875em;
+    border-radius: 6px;
+    border-width: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 100%;
+    background-color: #76ABAE;
+    color: #EEEEEE;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.botonInicio{
+    height: 3.235294117647059em;
+    width: 9.6875em;
+    border-radius: 6px;
+    border-width: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 100%;
+    background-color: #76ABAE;
+    color: #EEEEEE;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botonInicio:hover{
+    font-size: 1.1em;
+    color: #EEEEEE;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
+}
+
+button:hover {
+    font-size: 1.1em;
+    color: #EEEEEE;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
+}

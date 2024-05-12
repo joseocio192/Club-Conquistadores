@@ -7,26 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Tarea extends Model
+class Asistencia extends Model
 {
     use HasFactory;
-    protected $table='Tarea';
-    protected $fillable=[
-        'clase_id',
-        'nombre',
-        'descripcion',
+
+    protected $table = 'Asistencia';
+
+    protected $fillable = [
+        'id_clase',
         'fecha',
-        'locale',
-];
+    ];
 
     public function clase(): BelongsTo
     {
-        return $this->belongsTo(Clase::class, 'clase_id')->withPivot('completada');
+        return $this->belongsTo(Clase::class, 'id_clase')->withPivot('asistio', 'pulcritud');
     }
 
     public function conquistadores(): BelongsToMany
     {
-        return $this->belongsToMany(Conquistador::class, 'tareaxconquistador', 'tarea_id', 'conquistador')->withPivot('completada');
+        return $this->belongsToMany(Conquistador::class, 'Asistenciaxconquistador', 'id_asistencia', 'id_conquistador')->withPivot('asistio', 'pulcritud');
     }
 
 }

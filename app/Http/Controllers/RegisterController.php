@@ -9,7 +9,7 @@ use App\Models\Ciudad;
 use App\Models\Conquistador;
 use App\Models\Pais;
 use App\Models\ClubXpersona;
-use App\Http\Controllers\ConquistadorConstroller;
+use App\Http\Controllers\ConquistadorController;
 
 class RegisterController extends Controller
 {
@@ -23,7 +23,23 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $request->validate([]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'telefono' => 'required|string|max:10',
+            'fecha_nacimiento' => 'required|date',
+            'calle' => 'required|string|max:255',
+            'numero_exterior' => 'required|string|max:255',
+            'numero_interior' => 'nullable|string|max:255',
+            'colonia' => 'required|string|max:255',
+            'ciudad_id' => 'required|integer',
+            'codigo_postal' => 'required|string|max:255',
+            'sexo' => 'required|string|max:255',
+            'tutorLegal_id' => 'required|integer',
+            'clubes' => 'required|integer',
+        ]);
 
         $user = User::create([
             'name' => $request->name,
@@ -53,6 +69,6 @@ class RegisterController extends Controller
         ]);
 
         auth()->login($user);
-        return redirect()->action([ConquistadorConstroller::class, 'invoke']);
+        return redirect()->action([ConquistadorController::class, 'invoke']);
     }
 }

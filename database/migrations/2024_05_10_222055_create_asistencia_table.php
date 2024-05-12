@@ -11,17 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Clase_xalumno', function (Blueprint $table) {
-            $table->foreignId('clase_id')->references('id')->on('Clase');
-            $table->foreignId('conquistador')->references('id')->on('Conquistador');
+        Schema::create('Asistencia', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('id_clase')->references('id')->on('clase');
+            $table->date('fecha');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('Clase_xalumno');
+        Schema::dropIfExists('asistencia');
     }
 };

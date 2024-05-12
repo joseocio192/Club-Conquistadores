@@ -1,130 +1,143 @@
 <!-- resources/views/register.blade.php -->
 <!DOCTYPE html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-    }
-
-    form {
-        width: 300px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    form label {
-        display: block;
-        margin-top: 10px;
-    }
-
-    form input[type="text"],
-    form input[type="email"],
-    form input[type="password"],
-    form input[type="date"],
-    form select {
-        width: 100%;
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    form button[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
-    }
-
-    form button[type="submit"]:hover {
-        background-color: #0056b3;
-    }
-
-    form button[disabled] {
-        background-color: #ccc;
-        cursor: not-allowed;
-    }
-
-    form button[disabled]:hover {
-        background-color: #ccc;
-    }
-</style>
-
-<form method="POST" action="{{ route('register') }}" id="registro">
+<link href="{{ asset('/css/register.css') }}" rel="stylesheet">
+<form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
     @csrf
 
     <h1>Registro</h1>
+    <h2>Datos personales conquistador</h2>
+    <div class='RegistroDiv'>
+        <div class='SeccionDiv1'>
+            <div class='SubSeccionDiv'>
+                <div>
+                    <label for="name">Nombre</label>
+                    <input id="name" type="text" name="name" required autofocus><br>
+                </div>
+                
+                <div>
+                    <label for="apellido">Apellido</label>
+                    <input id="apellido" type="text" name="apellido" class="Input" required><br>
+                </div>
+            </div>
+            
+            <div class='EmailDiv'> 
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required><br>
+            </div>
 
-    <label for="name">Nombre</label>
-    <input id="name" type="text" name="name" required autofocus><br>
+            <div class='SubSeccionDiv'> 
+                <div>
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" required><br>
+                </div>
 
-    <label for="apellido">Apellido</label>
-    <input id="apellido" type="text" name="apellido" required><br>
+                <div>
+                    <label for="telefono">Telefono</label>
+                    <input id="telefono" type="text" name="telefono"><br>
+                </div>
+            </div>
 
-    <label for="email">Email</label>
-    <input id="email" type="email" name="email" required><br>
+            <div class='SubSeccionDiv'> 
+                <div>
+                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                    <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" required><br>
+                </div>
 
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" required><br>
+                <div> 
+                    <label for="sexo">Sexo</label>
+                    <select id="sexo" name="sexo" required><br>
+                        <option value="">Select a gender</option>
+                        <option value="Hombre">Hombre</option>
+                        <option value="Mujer">Mujer</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <h2 class='DatosH2'>Datos residencia de conquistador</h2>
+        <div class='SeccionDiv2'> 
+            <div class='SubSeccionDiv'>  
+                <div> 
+                    <label for="calle">Calle</label>
+                    <input id="calle" type="text" name="calle" required><br>
+                </div>
 
-    <label for="telefono">Telefono</label>
-    <input id="telefono" type="text" name="telefono"><br>
+                <div> 
+                    <label for="numero_exterior">Numero Exterior</label>
+                    <input id="numero_exterior" type="text" name="numero_exterior" required><br>
+                </div>
+            </div>
 
-    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-    <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" required><br>
+            <div class='SubSeccionDiv'>  
+                <div> 
+                    <label for="numero_interior">Numero Interior</label>
+                    <input id="numero_interior" type="text" name="numero_interior"><br>
+                </div>
 
-    <label for="calle">Calle</label>
-    <input id="calle" type="text" name="calle" required><br>
+                <div> 
+                    <label for="colonia">Colonia</label>
+                    <input id="colonia" type="text" name="colonia" required><br>
+                </div>
+            </div>
 
-    <label for="numero_exterior">Numero Exterior</label>
-    <input id="numero_exterior" type="text" name="numero_exterior" required><br>
+            <div class='SubSeccionDiv'>  
+                <div class="PaisDiv"> 
+                    <label for="pais">Pais</label>
+                    <select id="pais">
+                        <option value="">Select a country</option>
+                    </select>
+                </div> 
 
-    <label for="numero_interior">Numero Interior</label>
-    <input id="numero_interior" type="text" name="numero_interior"><br>
+                <div> 
+                    <label for="estado">Estado</label>
+                    <select id="estado"></select>
+                </div> 
+            </div>
 
-    <label for="colonia">Colonia</label>
-    <input id="colonia" type="text" name="colonia" required><br>
-    <label for="pais">Pais</label>
-    <select id="pais">
-        <option value="">Select a country</option>
-    </select>
+            <div class='SubSeccionDiv'>  
+                <div class="MunicipioDiv"> 
+                    <label for="municipio">Municipio</label>
+                    <select id="municipio"></select>
+                </div> 
 
-    <label for="estado">Estado</label>
-    <select id="estado"></select>
+                <div> 
+                    <label for="ciudad_id">Ciudad</label>
+                    <select id="ciudad_id" name="ciudad_id"></select>
+                </div> 
+            </div>
 
-    <label for="municipio">Municipio</label>
-    <select id="municipio"></select>
+            <div class='SubSeccionDiv'>  
+                <div class="ClubesDiv"> 
+                    <label for="clubes">Clubes</label>
+                    <select id="clubes" name="clubes"></select>
+                </div> 
 
-    <label for="ciudad_id">ciudad</label>
-    <select id="ciudad_id" name="ciudad_id"></select>
+                <div> 
+                    <label for="codigo_postal">Codigo Postal</label>
+                    <input id="codigo_postal" type="text" name="codigo_postal" required><br>
+                </div> 
+            </div>
+        </div>        
 
-    <label for="clubes">Clubes</label>
-    <select id="clubes" name="clubes"></select>
+        <label for="tutorLegal_id">Tutor id</label>
+        <input id="tutorLegal_id" type="text" name="tutorLegal_id" required><br>
 
-    <label for="codigo_postal">Codigo Postal</label>
-    <input id="codigo_postal" type="text" name="codigo_postal" required><br>
-
-    <label for="sexo">Sexo</label>
-    <select id="sexo" name="sexo" required><br>
-        <option value="">Select a gender</option>
-        <option value="Hombre">Hombre</option>
-        <option value="Mujer">Mujer</option>
-        <option value="Otro">Otro</option>
-    </select>
-
-    <label for="tutorLegal_id">Tutor id</label>
-    <input id="tutorLegal_id" type="text" name="tutorLegal_id" required><br>
-    <button type="submit" class="btn btn-primary" id="submit-button" disabled>
-        registrarse
-    </button>
-
+        <div class="ButtonsDiv">
+            <div> 
+                <button class="HomeBtn" id="home-button" onclick="window.location.href = '/register';">
+                    Volver
+                </button>
+            </div>
+            
+            <div> 
+                <button class="RegisterBtn" type="submit" id="submit-button" disabled>
+                    Registrarse
+                </button>
+            </div>
+        </div>
+    </div>
+    
 </form>
 
 <script type="text/javascript">
