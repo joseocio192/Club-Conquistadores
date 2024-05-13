@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('Asistencia', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_clase')->references('id')->on('clase');
-            $table->date('fecha');
+            $table->foreignId('id_clase')->references('id')->on('Clase');
             $table->timestamps();
         });
     }
