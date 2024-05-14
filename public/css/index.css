@@ -1,31 +1,19 @@
 body {
-    width: 100vw;
-    height: 100vh;
     margin: 0;
-    padding: 0;
-    background-color: #76ABAE;
-}
-
-.Wrapper {
     display: flex;
-    height: 58.6em;
-    width: 117em;
+    background-color: #76ABAE;
 }
 
 .MainLayout {
     display: flex;
-    margin: 0;
     flex-direction: column;
-    padding: auto;
-    height: 58.6em;
-    width: 117em;
-    background-color: orange;
+    width: 85%;
+    min-height: 100vh;
 }
 
 aside {
     display: flex;
-    height: 58.6em;
-    width: 20.625em;
+    width: 15%;
     background-color: #76ABAE;
 }
 
@@ -33,25 +21,23 @@ header {
     display: flex;
     flex-direction: column;
     background-color: #96abac;
-    height: 15.625em;
 }
 
 nav {
     display: flex;
     background-color: #eee;
-    height: 15.625em;
+    padding-bottom: 2em;
 }
 
 section {
     background-color: #eee;
-    height: 57em;
+    height: 100%;
 }
 
 footer {
     display: flex;
     margin-top: auto;
     background-color: #F7F8FA;
-    height: 15em;
 }
 
 .NavOption1, .NavOption2{
