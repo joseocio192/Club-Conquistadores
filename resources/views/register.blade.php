@@ -125,9 +125,9 @@
 
         <div class="ButtonsDiv">
             <div> 
-                <button class="HomeBtn" id="home-button" onclick="window.location.href = '/register';">
+                <a class="HomeBtn" id="home-button" onclick="window.location.href = '/';">
                     Volver
-                </button>
+                </a>
             </div>
             
             <div> 
