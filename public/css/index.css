@@ -48,6 +48,7 @@ footer {
     font-family: "Gill Sans", sans-serif;
     font-weight: bold;
     border-bottom: 3px solid #76ABAE;
+    outline: none;
 }
 
 .NavOption1 {
@@ -65,6 +66,7 @@ footer {
     fill: #76ABAE;
     border-bottom: 3px solid #76ABAE;
     font-size: 1.0625em;
+    outline: none;
 }
 
 .LogoNav {
