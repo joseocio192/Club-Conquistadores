@@ -74,9 +74,9 @@ class User extends Authenticatable
         return $this->hasOne(Instructor::class, 'user_id');
     }
 
-    public function tutorLegal(): HasOne
+    public function pupilo(): HasMany
     {
-        return $this->hasOne(Conquistador::class, 'tutorLegal_id');
+        return $this->hasMany(Conquistador::class, 'tutorLegal_id');
     }
 
     public function directivo(): HasOne
