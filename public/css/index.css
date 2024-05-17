@@ -1,3 +1,7 @@
+* {
+    font-family: "Roboto";
+}
+
 body {
     width: 100vw;
     height: 100vh;
@@ -59,8 +63,8 @@ footer {
     align-items: center;
     height: 2.5em;
     margin-top: 1.875em;
-    font-family: "Gill Sans", sans-serif;
-    font-weight: bold;
+    font-size: 1.2em;
+    font-weight: 900;
     border-bottom: 3px solid #76ABAE;
 }
 
@@ -78,7 +82,6 @@ footer {
     color: #76ABAE;
     fill: #76ABAE;
     border-bottom: 3px solid #76ABAE;
-    font-size: 1.0625em;
 }
 
 .LogoNav {
@@ -113,12 +116,12 @@ h1 {
     justify-content: center;
     margin-top: 1em;
     margin-left: 5em;
+    font-size: 2em;
     width: 5em;
     color: #31363F;
     background-color: rgba(238, 238, 238, 0.5);
     border-radius: 5px;
     opacity: 50%;
-    font-family: Georgia, serif;
 }
 
 h2 {
@@ -129,7 +132,6 @@ h2 {
     color: #31363F;
     width: 10em;
     font-size: 1.6em;
-    font-family: Georgia, serif;
 }
 
 ul {
@@ -139,8 +141,7 @@ ul {
 
 li {
     color: #31363F;
-    font-size: 1.3em;
-    font-family: Georgia, serif;
+    font-size: 1.4em;
 }
 
 .h2Equipo {
