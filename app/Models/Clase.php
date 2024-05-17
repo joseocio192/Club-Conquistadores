@@ -22,6 +22,7 @@ class Clase extends Model
         'color',
         'logo',
         'horario',
+        'edadMinima',
         'locale',
     ];
 
@@ -40,8 +41,13 @@ class Clase extends Model
         return $this->belongsToMany(Conquistador::class, 'Clase_xalumno', 'clase_id', 'conquistador');
     }
 
-    public function tareas()
+    public function tareas() : BelongsToMany
     {
         return $this->belongsToMany(Tarea::class)->withPivot('completada');
+    }
+
+    public function asistencia() : BelongsToMany
+    {
+        return $this->belongsToMany(Asistencia::class, 'id_clase')->withPivot('asistio', 'pulcritud');
     }
 }

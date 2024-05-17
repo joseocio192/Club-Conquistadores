@@ -89,40 +89,44 @@
         }
 
         .my-button {
-        background-color: #4CAF50; /* Green */
-        border: none;
-        color: white;
-        padding: 4px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        /* Your existing CSS */
-    }
-    .my-button:hover {
-        background-color: #45a049;
-    }
-    .my-button-loggout {
-        background-color: #4CAF50; /* Green */
-        border: none;
-        color: white;
-        padding: 4px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        position: absolute;
-        bottom: 0;
-        /* Your existing CSS */
-    }
-    .my-button-loggout:hover {
-        background-color: #45a049;
-    }
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 4px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            /* Your existing CSS */
+        }
 
+        .my-button:hover {
+            background-color: #45a049;
+        }
+
+        .my-button-loggout {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 4px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0;
+            /* Your existing CSS */
+        }
+
+        .my-button-loggout:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 
@@ -145,22 +149,26 @@
         <ul>
             @if ($status == 'clase')
                 {{ Log::info($clase) }}
+                <h2>{{ $clase->nombre }}</h2>
                 <form action={{ route('instructor.sendhw') }} method="post">
                     @csrf
                     <table>
                         <tr>
                             <th>Nombre</th>
                             @foreach ($tareas as $tarea)
-                                <th>{{ $tarea->nombre }}</th>
+                                <th><a style="color: #111"
+                                        href="/instructor/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a></th>
                             @endforeach
                         </tr>
                         @foreach ($conquistadores as $conquistador)
                             <tr>
-                                <td>{{ $conquistador->user->name }}</td>
+                                <td><a style="color: #111"
+                                        href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
+                                </td>
                                 @foreach ($conquistador->tareas as $tareaa)
                                     <td>
                                         @if ($tareaa->clase_id === $clase->id)
-                                            {{Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada)}}
+                                            {{ Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada) }}
                                             <input type="checkbox"
                                                 name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}"
                                                 value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
@@ -171,6 +179,72 @@
                         @endforeach
                     </table>
                     <button class="my-button" type="submit">Enviar</button>
+                </form>
+
+                <h3>Asistencia</h3>
+                <form action="{{ route('instructor.definer') }}" method="post">
+                    @csrf
+                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                    <table>
+                        <tr>
+                            <th>Nombre</th>
+                            @foreach ($asistencias as $fechas)
+                                <th>{{ $fechas->fecha }}</th>
+                            @endforeach
+                            <th><button type="submit" name="adddia">+</button>
+                                <button type="submit" name="deleteDia">-</button>
+                            </th>
+                        </tr>
+                        @foreach ($conquistadores as $conquistador)
+                            <tr>
+                                <td>{{ $conquistador->user->name }}</td>
+                                @if ($conquistador->asistencias && $conquistador->asistencias->count() == 0)
+                                    <td>
+                                        <input type="checkbox"
+                                            name="asistencia_{{ $conquistador->id . '-' . $asistencias[0]->id }}"
+                                            value="1">
+                                        <select
+                                            name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
+                                            <option value="1" @if ($asistencia->pivot->pulcritud == 1) selected @endif>1
+                                            </option>
+                                            <option value="2" @if ($asistencia->pivot->pulcritud == 2) selected @endif>2
+                                            </option>
+                                            <option value="3" @if ($asistencia->pivot->pulcritud == 3) selected @endif>3
+                                            </option>
+                                            <option value="4" @if ($asistencia->pivot->pulcritud == 4) selected @endif>4
+                                            </option>
+                                            <option value="5" @if ($asistencia->pivot->pulcritud == 5) selected @endif>5
+                                            </option>
+                                        </select>
+                                    </td>
+                                @else
+                                    @foreach ($conquistador->asistencia as $asistencia)
+                                        @if ($asistencia->id_clase === $clase->id)
+                                            <td>
+                                                <input type="checkbox"
+                                                    name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}"
+                                                    value="1" @if ($asistencia->pivot->asistio == 1) checked @endif>
+                                                <select
+                                                    name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
+                                                    <option value="1"
+                                                        @if ($asistencia->pivot->pulcritud == 1) selected @endif>1</option>
+                                                    <option value="2"
+                                                        @if ($asistencia->pivot->pulcritud == 2) selected @endif>2</option>
+                                                    <option value="3"
+                                                        @if ($asistencia->pivot->pulcritud == 3) selected @endif>3</option>
+                                                    <option value="4"
+                                                        @if ($asistencia->pivot->pulcritud == 4) selected @endif>4</option>
+                                                    <option value="5"
+                                                        @if ($asistencia->pivot->pulcritud == 5) selected @endif>5</option>
+                                                </select>
+                                            </td>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </tr>
+                        @endforeach
+                    </table>
+                    <button class="my-button" type="submit" name="save">Enviar</button>
                 </form>
 
                 <h3>Añadir alumnos a la clase</h3>
@@ -208,6 +282,7 @@
                     <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
                     <input type="date" name="fecha" placeholder="Fecha de la tarea">
                     <button class="my-button" type="submit">Modificar</button>
+                </form>
             @endif
 
             <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
@@ -217,6 +292,7 @@
                 <form action="{{ route('instructor.crear') }}" method="post">
                     @csrf
                     <input type="text" name="nombre" placeholder="Nombre de la clase">
+                    <input type="number" name="edadMinima" placeholder="Edad mínima">
                     <input type="text" name="color" placeholder="Color">
                     <input type="text" name="logo" placeholder="Logo">
                     <input type="time" name="horario" placeholder="Horario">
@@ -230,6 +306,46 @@
                     <button class="my-button" type="submit">Eliminar</button>
                 </form>
             @endif
+            @if ($status == 'Mostar Tarea')
+                <h2>Id: {{ $tarea->id }}</h2>
+                <h2>{{ $tarea->nombre }}</h2>
+                <h3>{{ $tarea->descripcion }}</h3>
+                <h3>{{ $tarea->fecha }}</h3>
+                <h3>Modificar tarea</h3>
+                <form action="{{ route('instructor.modificarTarea') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="tarea_id" value="{{ $tarea->id }}">
+                    <input type="text" name="nombre" placeholder="Nombre de la tarea">
+                    <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
+                    <input type="date" name="fecha" placeholder="Fecha de la tarea">
+                    <button class="my-button" type="submit">Modificar</button>
+                </form>
+            @endif
+            @if ($status == 'Mostar Conquistador')
+                <h2>Conquistador: {{ $conquistador->user->id }}</h2>
+                <h3>Nombre: {{ $conquistador->user->name }}</h3>
+                <h3>Edad: {{ $conquistador->edad }}</h3>
+                <h3>Telefono: {{ $conquistador->user->telefono }}</h3>
+                <h3>Correo: {{ $conquistador->user->email }}</h3>
+                <br>
+                <h3>Tutor Legal: {{ $conquistador->tutorLegal->name . ' ' . $conquistador->tutorLegal->apellido }}</h3>
+                <h3>Telefono: {{ $conquistador->tutorLegal->telefono }}</h3>
+                <h3>Correo: {{ $conquistador->tutorLegal->email }}</h3>
+                <h3>Direccion:
+                    {{ $conquistador->tutorLegal->colonia . ' ' . $conquistador->tutorLegal->calle . ' ' . $conquistador->tutorLegal->numero_exterior }}
+                </h3>
+                <br>
+            @endif
+
+            @if ($status == 'nada')
+                <h1>Selecciona una clase</h1>
+                <h2>Tus datos</h2>
+                <h3>Nombre: {{ $user->name }}</h3>
+                <h3>Edad: {{ $user->edad }}</h3>
+                <h3>Telefono: {{ $user->telefono }}</h3>
+                <h3>Correo: {{ $user->email }}</h3>
+                <h3>Direccion: {{ $user->colonia . ' ' . $user->calle . ' ' . $user->numero_exterior }}</h3>
+            @endif
         </ul>
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -242,15 +358,15 @@
         @endif
 
         @if ($errors->any())
-    <script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Upss...',
-            text: 'Algo salio mal!',
-            footer: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>'
-        })
-    </script>
-@endif
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Upss...',
+                    text: 'Algo salio mal!',
+                    footer: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>'
+                })
+            </script>
+        @endif
     </div>
 
 </body>
@@ -269,6 +385,22 @@
 
         chk.change(function() {
             var v = $(this).is(':checked') ? 1 : 0;
+            $(this).next('input[type="hidden"]').val(v);
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var select = document.querySelectorAll('select');
+
+        var sel = $('select');
+        sel.each(function() {
+            var v = $(this).val();
+            $(this).after('<input type="hidden" name="' + $(this).attr('name') + '" value="' + v +
+                '" />');
+        });
+
+        sel.change(function() {
+            var v = $(this).val();
             $(this).next('input[type="hidden"]').val(v);
         });
     });

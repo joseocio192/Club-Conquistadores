@@ -19,7 +19,7 @@
                 </div>
             </nav>
             <header>
-                <h1>Club</h1>          
+                <h1>Club</h1>
                 <h2>Conquistadores</h2>
             </header>
             <section></section>
