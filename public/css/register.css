@@ -169,6 +169,9 @@ h2 {
 }
 
 .HomeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 3.235294117647059em;
     width: 9.6875em;
     border-radius: 6px;

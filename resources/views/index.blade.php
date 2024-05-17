@@ -2,13 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
     <title>Club de Conquistadores</title>
 </head>
 <body>
-    <div class="Wrapper">
         <div class="MainLayout">
             <nav>
                 <img class="LogoNav" src="{{ asset('/imgs/logo.webp') }}"></img>
@@ -44,6 +41,5 @@
         <aside>
             <img class="LogoAside" src="{{ asset('/imgs/logo2.webp') }}"></img>
         </aside>
-    </div>
 </body>
 </html>

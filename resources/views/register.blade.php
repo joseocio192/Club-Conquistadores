@@ -129,10 +129,11 @@
         <input type="hidden" name="autorizado" value="0">
         @endif
         <div class="ButtonsDiv">
-            <div>
-                <button class="HomeBtn" id="home-button" onclick="window.location.href = '/register';">
+
+            <div> 
+                <a class="HomeBtn" id="home-button" onclick="window.location.href = '/';">
                     Volver
-                </button>
+                </a>
             </div>
 
             <div>
