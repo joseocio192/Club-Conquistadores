@@ -85,8 +85,7 @@ class InstructorController extends Controller
         $clase = Clase::find($request->clase_id);
         if ($clase) {
             $clase->delete();
-        }else
-        {
+        } else {
             return back()->withErrors(['clase_id' => 'Invalid class ID.']);
         }
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
@@ -117,6 +116,14 @@ class InstructorController extends Controller
             $conquistador = Conquistador::find($conquistador_id);
             if ($conquistador->edad < $clase->edadMinima) {
                 return back()->withErrors(['alumnos' => 'One or more students are under 12 years old.']);
+            }
+        }
+
+        //check if each conquistador is accepted
+        foreach ($conquistador_ids as $conquistador_id) {
+            $conquistador = Conquistador::find($conquistador_id);
+            if ($conquistador->aceptado == 0) {
+                return back()->withErrors(['alumnos' => 'One or more students are not accepted.']);
             }
         }
 
@@ -225,16 +232,17 @@ class InstructorController extends Controller
 
     public function definer(Request $request)
     {
-        if(isset($_POST['adddia'])){
+        if (isset($_POST['adddia'])) {
             return $this->adddia($request);
-        }elseif(isset($_POST['deleteDia'])){
+        } elseif (isset($_POST['deleteDia'])) {
             return $this->deleteDia($request);
-        }else{
+        } else {
             return $this->asistencia($request);
         }
     }
 
-    public function adddia(Request $request){
+    public function adddia(Request $request)
+    {
         $dia = new Asistencia();
         $dia->id_clase = $request->clase_id;
         $dia->fecha = date('Y-m-d');

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <!-- ... -->
@@ -87,11 +87,12 @@
 </head>
 
 <body>
-    <h1 class="text-center">Conquistador: {{$conquistador->user->name}}</h1>
+    <h1 class="text-center">Tutor: {{$user->name}} </h1>
     <div class="sidenav">
-        <a href={{route('conquistador')}}>Info</a>
-        @foreach($clasesConquistador as $clases)
-        <a href="{{route('conquistador.clases', $clases->id)}}">{{$clases->nombre}}</a>
+        <a href="{{route('tutor')}}">Home</a>
+        <a href="{{route('register.tutor', $user->id)}}">Añadir pupilo</a>
+        @foreach ($pupilos as $pupilo)
+        <a href="{{route('tutor.show', $pupilo->id)}}">{{$pupilo->user->name}}</a>
         @endforeach
         <form action="/logout" method="get">
             @csrf
@@ -102,39 +103,13 @@
     <div class="main">
         <ul>
             @if ($status == 'nada')
-            <h1>Seleciona una clase</h1>
-            <h2>Tus datos:</h2>
-            <h3>Id: {{$conquistador->id}}</h3>
-            <h3>Nombre: {{$conquistador->user->name}} {{$conquistador->user->apellido}}</h3>
+            <h1>Pupilos por aceptar</h1>
             @endif
-            @if ($status=='clase')
-            <h1>Clase: {{$clase->nombre}}</h1>
-            <table>
-                <tr>
-                    @foreach ($tareas as $tarea)
-                    <th><a style="color: #111" href="/conquistador/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a></th>
-                    @endforeach
-                </tr>
-                <tr>
-
-                    @foreach ($conquistador->tareas as $tareaa)
-                    <td>
-                        @if ($tareaa->clase_id === $clase->id)
-                        {{ Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada) }}
-                        <input onclick="return false;" type="checkbox" name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}" value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
-                        @endif
-                    </td>
-                    @endforeach
-                </tr>
-            </table>
+            @if ($status == 'show')
+            <h2>sus datos:</h2>
+            <h3>Id: {{$hijo->user->name}}</h3>
+            <h3>Nombre: {{$hijo->user->name}} {{$hijo->user->apellido}}</h3>
             @endif
-            @if ($status == 'Mostar Tarea')
-            <h2>Id: {{ $tarea->id }}</h2>
-            <h2>{{ $tarea->nombre }}</h2>
-            <h3>{{ $tarea->descripcion }}</h3>
-            <h3>{{ $tarea->fecha }}</h3>
-            @endif
-
         </ul>
     </div>
 </body>
