@@ -5,7 +5,7 @@
 body {
     display: flex;
     margin: 0;
-    height: 100vh;
+    height: 100%;
 }
 
 .sidenav {
@@ -13,10 +13,10 @@ body {
     align-items: center;
     flex-direction: column;
     width: 18%;
+    height: 100%;
     background-color: #eee;
 }
 
-/* The navigation menu links */
 .sidenav a {
     display: flex;
     align-items: center;

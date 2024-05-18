@@ -18,7 +18,15 @@ class RegisterController extends Controller
         // Obtenidos mediante jquery
         //$paises = Pais::all(); // Retrieve all countries from the database,
         //return view('register', ['paises' => $paises]);
-        return view('register');
+        $status = 'nada';
+        return view('register', compact('status'));
+    }
+
+    public function registerFromTutor($id)
+    {
+        $tutor = User::find($id);
+        $status = 'tutor';
+        return view('register', compact('tutor', 'status'));
     }
 
     public function register(Request $request)
@@ -58,17 +66,34 @@ class RegisterController extends Controller
             'rol' => 'conquistador',
         ]);
 
-        $conquistador = Conquistador::create([
-            'user_id' => $user->id,
-            'tutorLegal_id' => $request->tutorLegal_id,
-            'rol' => 'Amigo',
-        ]);
-        $clubXpersona = ClubXpersona::create([
-            'club_id' => $request->clubes,
-            'user_id' => $user->id,
-        ]);
+        if ($request->autorizado == "1") {
+            $conquistador = Conquistador::create([
+                'user_id' => $user->id,
+                'tutorLegal_id' => $request->tutorLegal_id,
+                'rol' => 'Amigo',
+                'activo' => '1',
+            ]);
+            $clubXpersona = ClubXpersona::create([
+                'club_id' => $request->clubes,
+                'user_id' => $user->id,
+            ]);
 
-        auth()->login($user);
-        return redirect()->action([ConquistadorController::class, 'invoke']);
+            auth()->login($user);
+            return redirect()->action([ConquistadorController::class, 'invoke']);
+        } else {
+            $conquistador = Conquistador::create([
+                'user_id' => $user->id,
+                'tutorLegal_id' => $request->tutorLegal_id,
+                'rol' => 'Amigo',
+                'activo' => '0',
+            ]);
+            $clubXpersona = ClubXpersona::create([
+                'club_id' => $request->clubes,
+                'user_id' => $user->id,
+            ]);
+
+            auth()->login($user);
+            return redirect()->action([ConquistadorController::class, 'invoke']);
+        }
     }
 }

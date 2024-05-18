@@ -46,10 +46,15 @@
                     <table>
                         <tr>
                             <th>Nombre</th>
+                            @if ($tareas->count() == 0)
+                                <th>No hay tareas</th>
+
+                            @else
                             @foreach ($tareas as $tarea)
                                 <th><a style="color: #111"
                                         href="/instructor/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a></th>
                             @endforeach
+                            @endif
                         </tr>
                         @foreach ($conquistadores as $conquistador)
                             <tr>
@@ -79,9 +84,13 @@
                     <table>
                         <tr>
                             <th>Nombre</th>
-                            @foreach ($asistencias as $fechas)
-                                <th>{{ $fechas->fecha }}</th>
-                            @endforeach
+                            @if ($asistencias->count() == 0)
+                                <th>No hay asistencias</th>
+                            @else
+                                @foreach ($asistencias as $asistencia)
+                                    <th>{{ $asistencia->fecha }}</th>
+                                @endforeach
+                            @endif
                             <th><button type="submit" name="adddia">+</button>
                                 <button type="submit" name="deleteDia">-</button>
                             </th>
@@ -229,7 +238,6 @@
             @endif
 
             @if ($status == 'nada')
-                <h1>Selecciona una clase</h1>
                 <h2>Tus datos</h2>
                 <h3>Nombre: {{ $user->name }}</h3>
                 <h3>Edad: {{ $user->edad }}</h3>

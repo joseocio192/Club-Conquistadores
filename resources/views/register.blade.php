@@ -14,19 +14,19 @@
                     <label for="name">Nombre</label>
                     <input id="name" type="text" name="name" required autofocus><br>
                 </div>
-                
+
                 <div>
                     <label for="apellido">Apellido</label>
                     <input id="apellido" type="text" name="apellido" class="Input" required><br>
                 </div>
             </div>
-            
-            <div class='EmailDiv'> 
+
+            <div class='EmailDiv'>
                 <label for="email">Email</label>
                 <input id="email" type="email" name="email" required><br>
             </div>
 
-            <div class='SubSeccionDiv'> 
+            <div class='SubSeccionDiv'>
                 <div>
                     <label for="password">Password</label>
                     <input id="password" type="password" name="password" required><br>
@@ -38,13 +38,13 @@
                 </div>
             </div>
 
-            <div class='SubSeccionDiv'> 
+            <div class='SubSeccionDiv'>
                 <div>
                     <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                     <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" required><br>
                 </div>
 
-                <div> 
+                <div>
                     <label for="sexo">Sexo</label>
                     <select id="sexo" name="sexo" required><br>
                         <option value="">Select a gender</option>
@@ -56,88 +56,94 @@
             </div>
         </div>
         <h2 class='DatosH2'>Datos residencia de conquistador</h2>
-        <div class='SeccionDiv2'> 
-            <div class='SubSeccionDiv'>  
-                <div> 
+        <div class='SeccionDiv2'>
+            <div class='SubSeccionDiv'>
+                <div>
                     <label for="calle">Calle</label>
                     <input id="calle" type="text" name="calle" required><br>
                 </div>
 
-                <div> 
+                <div>
                     <label for="numero_exterior">Numero Exterior</label>
                     <input id="numero_exterior" type="text" name="numero_exterior" required><br>
                 </div>
             </div>
 
-            <div class='SubSeccionDiv'>  
-                <div> 
+            <div class='SubSeccionDiv'>
+                <div>
                     <label for="numero_interior">Numero Interior</label>
                     <input id="numero_interior" type="text" name="numero_interior"><br>
                 </div>
 
-                <div> 
+                <div>
                     <label for="colonia">Colonia</label>
                     <input id="colonia" type="text" name="colonia" required><br>
                 </div>
             </div>
 
-            <div class='SubSeccionDiv'>  
-                <div class="PaisDiv"> 
+            <div class='SubSeccionDiv'>
+                <div class="PaisDiv">
                     <label for="pais">Pais</label>
                     <select id="pais">
                         <option value="">Select a country</option>
                     </select>
-                </div> 
+                </div>
 
-                <div> 
+                <div>
                     <label for="estado">Estado</label>
                     <select id="estado"></select>
-                </div> 
+                </div>
             </div>
 
-            <div class='SubSeccionDiv'>  
-                <div class="MunicipioDiv"> 
+            <div class='SubSeccionDiv'>
+                <div class="MunicipioDiv">
                     <label for="municipio">Municipio</label>
                     <select id="municipio"></select>
-                </div> 
+                </div>
 
-                <div> 
+                <div>
                     <label for="ciudad_id">Ciudad</label>
                     <select id="ciudad_id" name="ciudad_id"></select>
-                </div> 
+                </div>
             </div>
 
-            <div class='SubSeccionDiv'>  
-                <div class="ClubesDiv"> 
+            <div class='SubSeccionDiv'>
+                <div class="ClubesDiv">
                     <label for="clubes">Clubes</label>
                     <select id="clubes" name="clubes"></select>
-                </div> 
+                </div>
 
-                <div> 
+                <div>
                     <label for="codigo_postal">Codigo Postal</label>
                     <input id="codigo_postal" type="text" name="codigo_postal" required><br>
-                </div> 
+                </div>
             </div>
-        </div>        
+        </div>
 
+        @if ($status=='tutor' )
+        <input id="tutorLegal_id" type="hidden" name="tutorLegal_id" required value="{{$tutor->id}}"><br>
+        <input type="hidden" name="autorizado" value="1">
+        @else
         <label for="tutorLegal_id">Tutor id</label>
-        <input id="tutorLegal_id" type="text" name="tutorLegal_id" required><br>
-
+        <input id="tutorLegal_id" type="text" name="tutorLegal_id" require> <br>
+        <input type="hidden" name="autorizado" value="0">
+        @endif
         <div class="ButtonsDiv">
+
             <div> 
-                <button class="HomeBtn" id="home-button" onclick="window.location.href = '/register';">
+                <a class="HomeBtn" id="home-button" onclick="window.location.href = '/';">
                     Volver
-                </button>
+                </a>
             </div>
-            
-            <div> 
+
+            <div>
                 <button class="RegisterBtn" type="submit" id="submit-button" disabled>
                     Registrarse
                 </button>
             </div>
         </div>
     </div>
-    
+
 </form>
 
 <script type="text/javascript">
