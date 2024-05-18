@@ -5,7 +5,7 @@
 body {
     display: flex;
     margin: 0;
-    height: 100%;
+    background-color: #76ABAE;
 }
 
 .sidenav {
@@ -13,8 +13,10 @@ body {
     align-items: center;
     flex-direction: column;
     width: 18%;
-    height: 100%;
+    height: 100vh;
     background-color: #eee;
+    border-top-right-radius: 1.25em;
+    border-bottom-right-radius: 1.25em;
 }
 
 .sidenav a {
@@ -31,7 +33,8 @@ body {
     font-weight: 900;
     width: 70%;
     color: #31363F;
-    border-bottom: 3px solid #76ABAE;
+    fill: #31363F;
+    border-bottom: 2px solid #76ABAE;
 }
 
 .sidenav form {
@@ -42,7 +45,6 @@ body {
 .sidenav svg {
     height: 0.8125em;
     width: 0.8125em;
-    fill: #31363F;
     margin-right: 0.50em;
 }
 
@@ -60,12 +62,10 @@ h1 {
 /* Style page content */
 .main {
     width: 80%;
-    
     height: 100%;
 }
 
 table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -84,7 +84,6 @@ tr:nth-child(even) {
 
 .my-button {
     background-color: #76ABAE;
-    /* Green */
     border: none;
     color: white;
     padding: 4px 32px;
@@ -93,7 +92,6 @@ tr:nth-child(even) {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    /* Your existing CSS */
 }
 
 .my-button:hover {
