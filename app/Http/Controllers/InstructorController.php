@@ -55,7 +55,7 @@ class InstructorController extends Controller
         $user = auth()->user();
         $request->validate([
             'nombre' => 'required',
-            'edadMinima' => 'required|integer|max:20',
+            'edadMinima' => 'required|integer|max:20|min:6',
             'color' => 'required',
             'logo' => 'required',
             'horario' => 'required',
@@ -73,9 +73,11 @@ class InstructorController extends Controller
         $clase->save();
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         $status = "clase";
+        $tareas = Tarea::where('clase_id', $clase->id)->get();
+        $asistencia = Asistencia::where('id_clase', $clase->id)->get();
         $conquistadores = $clase->conquistadores;
 
-        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status'));
+        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas', 'asistencia'));
     }
 
     public function eliminarClase(Request $request)
