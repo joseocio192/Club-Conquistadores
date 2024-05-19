@@ -16,10 +16,11 @@
     <div class="sidenav">
         <h1 class="text-center">Instructor: {{ $user->name }}</h1>
             <a href="{{ route('instructor.index') }}">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                    <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
                 </svg>
-                Clases 
+                Tus datos 
             </a>
             <a href="{{ route('instructor.crear') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -238,12 +239,16 @@
             @endif
 
             @if ($status == 'nada')
-                <h2>Tus datos</h2>
-                <h3>Nombre: {{ $user->name }}</h3>
-                <h3>Edad: {{ $user->edad }}</h3>
-                <h3>Telefono: {{ $user->telefono }}</h3>
-                <h3>Correo: {{ $user->email }}</h3>
-                <h3>Direccion: {{ $user->colonia . ' ' . $user->calle . ' ' . $user->numero_exterior }}</h3>
+                <div class="divInfo">
+                    <div> 
+                        <h2>Tus datos</h2>
+                        <h3>Nombre: {{ $user->name }}</h3>
+                        <h3>Edad: {{ $user->edad }}</h3>
+                        <h3>Telefono: {{ $user->telefono }}</h3>
+                        <h3>Correo: {{ $user->email }}</h3>
+                        <h3>Direccion: {{ $user->colonia . ' ' . $user->calle . ' ' . $user->numero_exterior }}</h3>
+                    </div>
+                </div>
             @endif
         </ul>
         @if ($errors->any())

@@ -1,7 +1,18 @@
+/*Estilos generales*/
 *{
     font-family: "Roboto";
 } 
 
+/* Tipografias */
+h1 {
+    color: #222831;
+    font-family: "Roboto";
+}
+
+.divInfo div h3 {
+    margin: .50em;
+}
+/* Contenedores */
 body {
     display: flex;
     margin: 0;
@@ -12,32 +23,19 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+
     width: 18%;
-    border: 2px solid #76ABAE;
-    background-color: #eee;
-    border-top-right-radius: 1.25em;
-    border-bottom-right-radius: 1.25em;
     min-height: 100vh;
     max-height: 100%;
-}
 
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
 
-.sidenav a {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    margin-top: 0.3125em;
-    margin-bottom: 0.9375em;
-    padding-top: 0.3125em;
-    padding-bottom: 0.3125em;
-    text-decoration: none;
-    text-align: center;
-    font-size: 1.4375em;
-    font-weight: 900;
-    width: 70%;
-    color: #31363F;
-    fill: #31363F;
-    border-bottom: 2px solid #76ABAE;
+    border-top-right-radius: 1.25em;
+    border-bottom-right-radius: 1.25em;
+    border: 2px solid #76ABAE;
+
+    background-color: #eee;
 }
 
 .sidenav form {
@@ -45,26 +43,35 @@ body {
     margin-bottom: 1em;
 }
 
-.sidenav svg {
-    height: 0.8125em;
-    width: 0.8125em;
-    margin-right: 0.50em;
+.divInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+
+    height: 100vh;
+
+    margin: 0;
+    padding: auto;
 }
 
-.sidenav a:hover {  
-    cursor: pointer;
-    color: #76ABAE;
-    fill: #76ABAE;
+.divInfo div {
+    display: flex;
+    flex-direction: column;
+
+    height: 20em;
+    width: 30em;
+
+    margin: 0;
+
+    border: 2px solid #76ABAE;
+    border-radius: 20px;
+
+    background-color: #eee;
 }
 
-h1 {
-    color: #222831;
-    font-family: "Roboto";
-}
-
-/* Style page content */
 .main {
-    width: 80%;
+    margin: 0;
+    width: 100%;
 }
 
 table {
@@ -82,39 +89,79 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
+/* Botones */
+.sidenav a {
+    display: flex;
+    align-items: center;
+    justify-content: start;
 
+    width: 70%;
 
-.my-button {
-    background-color: #76ABAE;
-    border: none;
-    color: white;
-    padding: 4px 32px;
-    text-align: center;
+    border-bottom: 2px solid #76ABAE;
+
+    margin-top: 0.3125em;
+    margin-bottom: 0.9375em;
+
+    padding-top: 0.3125em;
+    padding-bottom: 0.3125em;
+
     text-decoration: none;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
+    text-align: center;
 
-.my-button:hover {
-    background-color: #45a049;
+    font-size: 1.25em;
+    font-weight: 900;
+
+    color: #31363F;
+    fill: #31363F;
 }
 
 .my-button-loggout {
     height: 3.235294117647059em;
     width: 9.6875em;
+
     border-radius: 6px;
     border-width: 0;
+
     font-size: 1.1em;
     font-family: "Roboto";
     font-weight: 900;
-    background-color: #76ABAE;
-    color: #EEEEEE;
+
     transform: translateZ(0);
     transition: all .2s,box-shadow .08s ease-in;
+
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
     box-sizing: border-box;
+
+    background-color: #76ABAE;
+    color: #EEEEEE;
+    
     cursor: pointer;
+}
+
+.my-button {
+    padding: 4px 32px;
+    margin: 4px 2px;margin: 4px 2px;
+   
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+
+    border: none;
+    color: white;
+    background-color: #76ABAE;
+
+    cursor: pointer;
+}
+
+/* Hovers */
+.sidenav a:hover {  
+    cursor: pointer;
+    color: #76ABAE;
+    fill: #76ABAE;
+}
+
+.my-button:hover {
+    background-color: #45a049;
 }
 
 .my-button-loggout:hover {
@@ -123,8 +170,17 @@ tr:nth-child(even) {
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
 }
 
-@media (height: 100%) {
-    .sidenav {
-      overflow-y: auto;
-    }
+/* SVGs */
+.sidenav svg {
+    height: 0.8125em;
+    width: 0.8125em;
+    margin-right: 0.50em;
 }
+
+
+
+
+
+
+
+
