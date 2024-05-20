@@ -73,9 +73,11 @@ class InstructorController extends Controller
         $clase->save();
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         $status = "clase";
+        $tareas = Tarea::where('clase_id', $clase->id)->get();
         $conquistadores = $clase->conquistadores;
+        $asistencias = Asistencia::where('id_clase', $clase->id)->get();
 
-        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status'));
+        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas', 'asistencias'));
     }
 
     public function eliminarClase(Request $request)
