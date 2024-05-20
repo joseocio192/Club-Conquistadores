@@ -76,7 +76,6 @@ class InstructorController extends Controller
         $tareas = Tarea::where('clase_id', $clase->id)->get();
         $asistencia = Asistencia::where('id_clase', $clase->id)->get();
         $conquistadores = $clase->conquistadores;
-
         return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas', 'asistencia'));
     }
 
