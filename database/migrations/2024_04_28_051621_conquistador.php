@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('rol', ['Amigo', 'Compañero', 'Explorador', 'Orientador', 'viajero', 'Guia', 'Guia Mayor Aspirante', 'Guia Mayor Investido']);
             //$table->foreignId('unidad_id')->references('id')->on('Unidad');
             $table->rememberToken();
+            $table->boolean('aceptado')->default(false);
             $table->boolean('activo')->default(true);
             $table->timestamps();
         });

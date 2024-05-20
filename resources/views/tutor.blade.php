@@ -104,6 +104,17 @@
         <ul>
             @if ($status == 'nada')
             <h1>Pupilos por aceptar</h1>
+
+            @foreach ($pupilosSinAceptar as $pupilosn)
+            <form action="{{ route('tutor.aceptar') }}" method="post">
+                @csrf
+                <h2>{{$pupilosn->user->name}}</h2>
+                <input type="hidden" name="idpupilo" value="{{$pupilosn->id}}">
+                <button type="submit">aceptar</button>
+                <button type="submit">No aceptar</button>
+            </form>
+            @endforeach
+
             @endif
             @if ($status == 'show')
             <h2>sus datos:</h2>

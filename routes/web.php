@@ -41,8 +41,9 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/lang/{locale}', 'LocalizationController@set_Lang');
 
-Route::get('/tutor', 'TutorController@index')->name('tutor')->middleware('auth', 'rol:tutor');
+Route::post('/tutor/aceptar', 'TutorController@aceptar')->name('tutor.aceptar')->middleware('auth', 'rol:tutor');
 Route::get('/tutor/pupilo/{id}', 'TutorController@show')->name('tutor.show')->middleware('auth', 'rol:tutor');
+Route::get('/tutor', 'TutorController@index')->name('tutor')->middleware('auth', 'rol:tutor');
 
 Route::get('/conquistador/{id}', 'ConquistadorController@clases')->name('conquistador.clases')->middleware('auth', 'rol:conquistador');
 Route::get('/conquistador/tarea/{id}', 'ConquistadorController@tarea')->name('conquistador.tarea')->middleware('auth', 'rol:conquistador');
