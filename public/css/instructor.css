@@ -9,14 +9,28 @@ h1 {
     font-family: "Roboto";
 }
 
-.divInfo div h3 {
-    margin: .50em;
+.divDatos h3 {
+    margin: 0.2em;
+    color: #222831;
+    
+}
+
+.divDatos .h3Dato {
+    margin: 0.2em;
+    margin-right: 2em;
+    color: #31363F;
+}
+
+.divDatos h2 {
+    margin-top: 0;
+    margin-bottom: 0em;
+    color: #222831;
 }
 /* Contenedores */
 body {
     display: flex;
     margin: 0;
-    background-color: white;
+    background-color: #eee;
 }
 
 .sidenav {
@@ -36,6 +50,7 @@ body {
     border: 2px solid #76ABAE;
 
     background-color: #eee;
+    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.2);
 }
 
 .sidenav form {
@@ -43,35 +58,37 @@ body {
     margin-bottom: 1em;
 }
 
-.divInfo {
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-
-    height: 100vh;
-
-    margin: 0;
-    padding: auto;
-}
-
-.divInfo div {
-    display: flex;
-    flex-direction: column;
-
-    height: 20em;
-    width: 30em;
-
-    margin: 0;
-
-    border: 2px solid #76ABAE;
-    border-radius: 20px;
-
-    background-color: #eee;
-}
-
 .main {
     margin: 0;
     width: 100%;
+}
+
+.divTusDatos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 20em;
+    width: 38em;
+
+    margin-left: 30em;
+    margin-top: 15em;
+
+    padding: auto;
+
+    border: 2px solid #76ABAE;
+    border-radius: 1.875em;
+
+    background-color: #eee;
+
+    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
+}
+
+.divDatos {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    margin-left: 2em;
 }
 
 table {
@@ -177,6 +194,12 @@ tr:nth-child(even) {
     margin-right: 0.50em;
 }
 
+.divDatos svg {
+    height: 4em;
+    width: 4em;
+    fill: #76ABAE;
+    margin-right: 1em;
+}
 
 
 
