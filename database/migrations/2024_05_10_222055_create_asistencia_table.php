@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('Asistencia', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_clase')->references('id')->on('Clase');
+            $table->date('fecha');
             $table->timestamps();
         });
     }
