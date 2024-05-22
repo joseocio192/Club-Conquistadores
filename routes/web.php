@@ -36,6 +36,8 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/registerTutorLegal', [RegisterTutorController::class, 'showRegistrationForm'])->name('registerTutorLegal');
 Route::post('/registerTutorLegal', [RegisterTutorController::class, 'register']);
 
+Route::get('/registerInstructor', [RegisterController::class, 'showRegistrationForm'])->name('registerInstructor');
+Route::post('/registerInstructor', [RegisterController::class, 'register']);
 Route::get('/register/{id}', 'RegisterController@registerFromTutor')->name('register.tutor')->middleware('auth', 'rol:tutor');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
@@ -69,7 +71,7 @@ Route::get('/directivo/stats/{id}', 'DirectivoController@stats')->name('directiv
 Route::get('/directivo/crearclubview', 'DirectivoController@crearclubview')->name('directivo.crearclubview')->middleware('auth', 'rol:directivo');
 Route::post('/directivo/crearclub', 'DirectivoController@crearclub')->name('directivo.crearclub')->middleware('auth', 'rol:directivo');
 Route::get('/directivo', 'DirectivoController@index')->name('directivo')->middleware('auth', 'rol:directivo');
-
+Route::post('/directivo/addInstructor', 'DirectivoController@addInstructor')->name('directivo.addInstructor')->middleware('auth', 'rol:directivo');
 Route::get('/municipios', [MunicipioPaisController::class, '__invoke'])->middleware('auth', 'rol:admin');
 
 Route::post('/pais', 'LocationController@addPais')->name('location.pais.add')->middleware('auth', 'rol:directivo');

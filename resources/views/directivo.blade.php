@@ -23,6 +23,8 @@
         @if ($user->directivo->ciudad_id != null)
         <a href="{{route('directivo.crearclubview')}}">Crear club</a>
         @endif
+        <a>Dar de alta a directivo</a>
+        <a>Alta a instructor</a>
         <form action="/logout" method="get">
             <button type="submit">Cerrar sesion</button>
         </form>
@@ -35,9 +37,21 @@
         @endif
 
         @if ($status == 'club')
-        <h2>Director del club: {{$club->director->name}}</h2>
+        <h2>Director del club: {{$club->director->user->name}}</h2>
         <h2>Cantidad de conquistadores: {{$cantidad}}</h2>
         <h2>Cantidad de instructores: {{$club->instructores->count()}}</h2>
+        <h2>Añadir instructor</h2>
+        <form action="{{route('directivo.addInstructor')}}" method="post">
+            @csrf
+            <input type="text" name="instructor_id" placeholder="id del instructor">
+            <input type="text" name="club_id" value="{{$club->id}}" hidden>
+            <button type="submit">Añadir</button>
+        </form>
+        <h2>Instructores disponibles</h2>
+        @foreach ($instructores as $i)
+        <h2>$i->user->name</h2>
+        @endforeach
+        <a href="{{route('registerInstructor')}}"> Registar a instructor</a>
         @endif
 
         @if ($status == 'ciudad')
@@ -48,7 +62,7 @@
 
         <h2>Cantidad total de conquistadores en la ciudad: {{$totalConquistadores}}</h2>
         @foreach ($clubes as $c)
-        <h5>{{$c->nombre}}: {{$c->users->count()}}</h5>
+        <h5>{{$c->nombre}}: {{$c->users->where('rol','conquistador')->count()}}</h5>
         @endforeach
         @endif
 
@@ -127,8 +141,12 @@
                 <option value="{{$p->id}}">{{$p->nombre}}</option>
                 @endforeach
             </select>
-            <select id="estado" name="estado"></select>
-            <select id="municipio" name="municipio"></select>
+            <select id="estado" name="estado">
+                <option>{{$ciudad->municipio->estado->nombre}}</option>
+            </select>
+            <select id="municipio" name="municipio">
+                <option value="{{$ciudad->municipio->id}}">{{$ciudad->municipio->id}}</option>
+            </select>
             <input type="text" name="locale" placeholder="locale">
             <button type="submit">Crear</button>
         </form>

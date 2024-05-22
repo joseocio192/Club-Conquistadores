@@ -40,7 +40,7 @@ class Clubs extends Model
 
     public function director(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'director_Id');
+        return $this->belongsTo(Directivo::class, 'director_Id');
     }
 
     public function ciudad(): BelongsTo

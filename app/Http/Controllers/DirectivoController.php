@@ -6,6 +6,7 @@ use App\Models\Clubs;
 use Illuminate\Http\Request;
 use App\Models\Pais;
 use App\Models\Especialidad;
+use App\Models\User;
 use GuzzleHttp\TransferStats;
 use Symfony\Component\Uid\NilUlid;
 
@@ -46,8 +47,10 @@ class DirectivoController extends Controller
         $user = auth()->user();
         $status = 'club';
         $club = Clubs::find($id);
-        $cantidad = $club->users->count();
-        return view('directivo', compact('status', 'club', 'cantidad', 'user'));
+        $cantidad = $club->users->where('rol', 'conquistador')->count();
+        $instructores = User::where('ciudad_id', $club->ciudad_id)->where('rol', 'instructor')->get();
+        $instructores = $instructores->diff($club->instructores);
+        return view('directivo', compact('status', 'club', 'cantidad', 'user', 'instructores'));
     }
 
     public function ciudad()
@@ -59,7 +62,7 @@ class DirectivoController extends Controller
         $clubes = $ciudad->clubs;
         $totalConquistadores = 0;
         foreach ($clubes as $club) {
-            $totalConquistadores += $club->users->count();
+            $totalConquistadores += $club->users->where('rol', 'conquistador')->count();
         }
         return view('directivo', compact('status', 'ciudad', 'clubes', 'club', 'user', 'totalConquistadores'));
     }
@@ -149,8 +152,11 @@ class DirectivoController extends Controller
         $club = $user->directivo->club;
         $status = 'crearclub';
         $pais = Pais::all();
+        $estado = $user->directivo->estado;
+        $municipio = $user->directivo->municipio;
+        $ciudad = $user->directivo->ciudad;
         $especialidad = Especialidad::all();
-        return view('directivo', compact('status', 'pais', 'user', 'club', 'especialidad'));
+        return view('directivo', compact('status', 'pais', 'user', 'club', 'especialidad', 'estado', 'municipio', 'ciudad'));
     }
 
     public function crearClub(Request $request)
@@ -172,5 +178,12 @@ class DirectivoController extends Controller
         $club->locale = $request->locale;
         $club->save();
         return redirect()->route('directivo.index');
+    }
+
+    public function addInstructor(Request $request)
+    {
+        $club = Clubs::find($request->club_id);
+        $club->instructores()->attach($request->instructor_id);
+        return redirect()->route('directivo.club', $request->club_id);
     }
 }
