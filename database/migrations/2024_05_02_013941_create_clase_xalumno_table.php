@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('Clase_xalumno', function (Blueprint $table) {
             $table->foreignId('clase_id')->references('id')->on('Clase');
             $table->foreignId('conquistador')->references('id')->on('Conquistador');
+            $table->timestamps();
         });
     }
     /**

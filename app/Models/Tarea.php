@@ -16,16 +16,17 @@ class Tarea extends Model
         'nombre',
         'descripcion',
         'fecha',
+        'locale',
 ];
 
     public function clase(): BelongsTo
     {
-        return $this->belongsTo(Clase::class, 'clase_id');
+        return $this->belongsTo(Clase::class, 'clase_id')->withPivot('completada');
     }
 
     public function conquistadores(): BelongsToMany
     {
-        return $this->belongsToMany(Conquistador::class, 'Tarea_xalumno', 'tarea_id', 'conquistador');
+        return $this->belongsToMany(Conquistador::class, 'tareaxconquistador', 'tarea_id', 'conquistador')->withPivot('completada');
     }
 
 }

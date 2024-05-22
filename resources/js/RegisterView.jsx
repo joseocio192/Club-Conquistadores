@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input } from './components/Input';
-import { ComboBoxSexo } from './components/ComboBox';
+import { ComboBoxSexo, ComboBoxPais, ComboBoxEstado, ComboBoxMunicipio, ComboBoxCiudad, ComboBoxClub } from './components/ComboBox';
 import "../css/RegisterView.css"
 
 function RegisterView() {
@@ -11,19 +11,19 @@ function RegisterView() {
                     Datos del joven aspirante
                 </div>
                 <div className='LayoutCandidateInputs1'>
-                    <Input text='Nombres'
+                    <Input text='Nombres' 
                     classNameLabel='Label'
                     classNameInput='InputLeft'/>
 
-                    <Input text='Apellidos'
+                    <Input text='Apellidos' 
                     classNameLabel='Label'
                     classNameInput='InputLeft'/>
 
-                    <Input text='E-mail'
+                    <Input text='E-mail' 
                     classNameLabel='Label'
                     classNameInput='InputLeft'/>
 
-                    <Input text='Contraseña'
+                    <Input text='Contraseña' 
                     type='password'
                     classNameLabel='Label'
                     classNameInput='InputLeft'/>
@@ -45,17 +45,31 @@ function RegisterView() {
                 </div>
                 <div className='LayoutCandidateInputs2'>
                     <Input text='Calle'
-                    classNameLabel='Label'
+                    classNameLabel='Label' 
                     classNameInput='InputNumber'/>
 
-                    <Input text='Número'
-                    classNameLabel='Label'
+                    <Input text='Número Exterior'
+                    classNameLabel='Label' 
                     classNameInput='InputNumber'/>
+
+                    <Input text='Número Interior'
+                    classNameLabel='Label' 
+                    classNameInput='InputNumber'/>
+
+                    <ComboBoxPais/>
+
+                    <ComboBoxEstado/>
+
+                    <ComboBoxMunicipio/>
+
+                    <ComboBoxCiudad/>
+
+                    <ComboBoxClub/>
 
                     <Input text='Codigo postal'
-                    classNameLabel='Label'
+                    classNameLabel='LabelCP' 
                     classNameInput='InputCP'
-                    placeholder='#4477'/>
+                    placeholder='#80014'/>
 
                     <ComboBoxSexo/>
                 </div>
@@ -83,8 +97,10 @@ function RegisterView() {
                 placeholder='667-231-8212'/>
                 <div className='LayoutButtons'>
                     <button className='Btn'>
+                        Pagina principal
                     </button>
                     <button className='Btn'>
+                        Registrarse
                     </button>
                 </div>
             </div>

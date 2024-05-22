@@ -1,0 +1,359 @@
+/*Estilos generales*/
+*{
+    font-family: "Roboto";
+}
+
+/* Tipografias */
+h1 {
+    color: #222831;
+    font-family: "Roboto";
+}
+
+.divDatos h3 {
+    margin: 0.2em;
+    color: #222831;
+    
+}
+
+.divDatos .h3Dato {
+    margin: 0.2em;
+    margin-right: 2em;
+    color: #31363F;
+}
+
+.divDatos h2 {
+    margin-top: 0;
+    margin-bottom: 0em;
+    color: #222831;
+}
+
+.divCrearClase h3, .divEliminarClase h3 {
+    color: #222831;
+    font-size: 1.5em;
+}
+
+.divEliminarClase h3 {
+    border-top: 2px solid #76ABAE;
+    padding-top: .75em;
+}
+/* Contenedores */
+body {
+    display: flex;
+    margin: 0;
+    background-color: #eee;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding-bottom: 0.5em;
+    width: 100%;
+}
+
+.sidenav {
+    display: flex;
+
+    align-items: center;
+    flex-direction: column;
+
+    width: 18%;
+    min-height: 100vh;
+    max-height: 100%;
+
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+
+    border-top-right-radius: 1.25em;
+    border-bottom-right-radius: 1.25em;
+    border: 2px solid #76ABAE;
+
+    background-color: #eee;
+    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.2);
+}
+
+.sidenav form {
+    margin-top: auto;
+    margin-bottom: 1em;
+}
+
+.divGestionarClases {
+    display: flex;
+    flex-direction: column;
+
+
+    align-items: center;
+
+    width: 30em;
+
+    border: 2px solid #76ABAE;
+    border-radius: 1em;
+
+    background-color: #eee;
+    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
+}
+
+.divCrearClase {
+    display: grid;
+}
+
+
+.divCrearClase div{
+    display: grid;
+    grid-template-columns: 10em 100%;
+
+    width: 22em;
+    height: 1.5em;
+
+    margin-bottom: 1em;
+
+    font-weight: 500;
+    font-size: 1.1em;
+
+    color: #31363F;
+    
+}
+
+.divEliminarClase {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    width: 25em;
+}   
+
+.divEliminarClase div{
+    margin-bottom: 1em;
+
+    font-weight: 500;
+    font-size: 1.1em;
+
+    color: #31363F;
+}   
+
+.divTusDatos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 20em;
+    width: 38em;
+
+    padding: auto;
+
+    border: 2px solid #76ABAE;
+    border-radius: 1.875em;
+
+    background-color: #eee;
+
+    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
+}
+
+.divDatos {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    margin-left: 2em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 2px solid #111;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/* Botones */
+.sidenav a {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    width: 70%;
+
+    border-bottom: 2px solid #76ABAE;
+
+    margin-top: 0.3125em;
+    margin-bottom: 0.9375em;
+
+    padding-top: 0.3125em;
+    padding-bottom: 0.3125em;
+
+    text-decoration: none;
+    text-align: center;
+
+    font-size: 1.25em;
+    font-weight: 900;
+
+    color: #31363F;
+    fill: #31363F;
+
+    transition: all .2s ease;
+}
+
+.my-button-loggout {
+    height: 3.235294117647059em;
+    width: 9.6875em;
+
+    border-radius: 6px;
+    border-width: 0;
+    border: 2px solid #222831;
+
+    font-size: 1.1em;
+    font-family: "Roboto";
+    font-weight: 900;
+
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+
+    background-color: #eee;
+    color: #222831;
+    
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.my-button {
+    padding: 4px 32px;
+    margin: 4px 2px;margin: 4px 2px;
+   
+    text-align: center;
+    text-decoration: none;
+    
+    font-size: 16px;
+
+    border: none;
+
+    color: white;
+    background-color: #76ABAE;
+
+    cursor: pointer;
+}
+
+.btnCrearClase {
+    cursor: pointer;
+    height: 2.25em;
+
+    border:2px solid #222831;
+    border-radius: 5px;
+
+    margin-left: 6.5em;
+    margin-right: 6.5em;
+    margin-top: .75em;
+
+    font-size: 1.1em;
+    font-weight: 500;
+
+    color: #eee;
+    background-color: #222831;
+    transition: all .3s ease;
+}
+
+.btnEliminarClase {
+    cursor: pointer;
+    height: 2.25em;
+
+    border:2px solid #222831;
+    border-radius: 5px;
+
+    margin-left: 6.5em;
+    margin-right: 6.5em;
+    margin-top: .5em;
+    margin-bottom: 1.5em;
+
+    font-size: 1.1em;
+    font-weight: 500;
+
+    color: #222831;
+    background-color: #eee;
+    transition: all .3s ease;
+}
+/* Inputs */
+
+.divCrearClase div input {
+    width: 12em;
+
+    border: 1px solid #31363F;
+    border-radius: 5px;
+    outline: none;
+
+    font-weight: 450;
+    font-size: 1em;
+
+    background-color: #eee;
+    color: #31363F;
+}
+
+.divEliminarClase div input {
+    margin-left: 4em;
+
+    border: 1px solid #31363F;
+    border-radius: 5px;
+
+    font-weight: 450;
+    font-size: 1em;
+
+    background-color: #eee;
+    color: #31363F;
+    
+    outline: none;
+}
+
+/* Hovers */
+.sidenav a:hover {  
+    cursor: pointer;
+    color: #76ABAE;
+    fill: #76ABAE;
+}
+
+.my-button:hover {
+    background-color: #45a049;
+}
+
+.my-button-loggout:hover {
+    font-size: 1.15em;
+
+    background-color: #222831;
+    border: white;
+    color: #eee;
+}
+
+.btnCrearClase:hover {
+    border:2px solid #222831;
+    color: #222831;
+    background-color: #eee;
+}
+
+.btnEliminarClase:hover {
+    border:2px solid #222831;
+    color: #eee;
+    background-color: #222831;
+}
+
+/* SVGs */
+.sidenav svg {
+    height: 0.8125em;
+    width: 0.8125em;
+    margin-right: 0.50em;
+}
+
+.divDatos svg {
+    height: 4em;
+    width: 4em;
+    fill: #76ABAE;
+    margin-right: 1em;
+}
+

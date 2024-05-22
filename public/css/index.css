@@ -1,0 +1,137 @@
+* {
+    font-family: "Roboto";
+}
+
+body {
+    margin: 0;
+    display: flex;
+    background-color: #76ABAE;
+}
+
+.MainLayout {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    min-height: 100vh;
+}
+
+aside {
+    display: flex;
+    width: 15%;
+    background-color: #76ABAE;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    background-color: #96abac;
+}
+
+nav {
+    display: flex;
+    background-color: #eee;
+    padding-bottom: 2em;
+}
+
+section {
+    background-color: #eee;
+    height: 100%;
+}
+
+footer {
+    display: flex;
+    margin-top: auto;
+    background-color: #F7F8FA;
+}
+
+.NavOption1, .NavOption2{
+    display: flex;
+    align-items: center;
+    color: #31363F;
+    height: 2em;
+    margin-top: 1.875em;
+    font-size: 1.25em;
+    font-weight: 900;
+    border-bottom: 3px solid #76ABAE;
+    outline: none;
+}
+
+.NavOption1 {
+    margin-left: auto;
+}
+
+.NavOption2 {
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+}
+
+.NavOption1:hover, .NavOption2:hover {
+    cursor: pointer;
+    color: #76ABAE;
+    fill: #76ABAE;
+    border-bottom: 3px solid #76ABAE;
+}
+
+.LogoNav {
+    width: 7.1em;
+    height: 6.5em;
+    margin-top: 0.6em;
+    margin-left: 7.1em;
+}
+
+.LogoFooter {
+    width: 7.1em;
+    height: 6.9em;
+    margin-top: 2.4em;
+    margin-left: 7.1em;
+}
+
+.LogoAside {
+    width: 7.1em;
+    height: 6.9em;
+    margin-top: 5.1em;
+    margin-left: 5.5em;
+}
+
+.IconArrow {
+    margin-left: 0.3125em;
+    width: 1.1em;
+    height: 1.1em;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    margin-left: 4.5em;
+    font-size: 2.1em;
+    width: 5em;
+    color: #31363F;
+    background-color: rgba(238, 238, 238, 0.5);
+    border-radius: 5px;
+    opacity: 50%;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 1px;
+    margin-left: 5em;
+    color: #31363F;
+    width: 10em;
+    font-size: 2em;
+}
+
+ul {
+    margin-left: 8em;
+    list-style-type: none;
+}
+
+li {
+    color: #31363F;
+    font-size: 1.4em;
+}
+
+.h2Equipo {
+    margin-top: 0.6em;
+}

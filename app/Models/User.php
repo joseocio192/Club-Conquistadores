@@ -59,14 +59,24 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function getEdadAttribute(): int
+    {
+        return date_diff(date_create($this->fecha_nacimiento), date_create('now'))->y;
+    }
+
     public function conquistador(): HasOne
     {
         return $this->hasOne(Conquistador::class, 'user_id');
     }
 
-    public function tutorLegal(): HasOne
+    public function instructor(): HasOne
     {
-        return $this->hasOne(Conquistador::class, 'tutorLegal_id');
+        return $this->hasOne(Instructor::class, 'user_id');
+    }
+
+    public function pupilo(): HasMany
+    {
+        return $this->hasMany(Conquistador::class, 'tutorLegal_id');
     }
 
     public function directivo(): HasOne
@@ -89,8 +99,8 @@ class User extends Authenticatable
         return $this->hasOne(Unidad::class, 'conquistador_id');
     }
 
-    public function clubes(): BelongsToMany
+    public function club(): BelongsToMany
     {
-        return $this->belongsToMany(Clubs::class, 'ClubXpersona', 'user_id', 'club_id')->withTimestamps()->orderBy('fecha_ingreso', 'desc')->using(ClubXpersona::class);
+        return $this->belongsToMany(Clubs::class, 'ClubXpersona', 'user_id', 'club_id')->using(ClubXpersona::class);
     }
 }

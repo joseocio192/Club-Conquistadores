@@ -6,117 +6,137 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <!-- ... -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
+        .sidenav {
+            height: 100%;
+            /* Full-height: remove this if you want "auto" height */
+            width: 160px;
+            /* Set the width of the sidebar */
+            position: fixed;
+            /* Fixed Sidebar (stay in place on scroll) */
+            z-index: 1;
+            /* Stay on top */
+            top: 0;
+            /* Stay at the top */
+            left: 0;
+            background-color: #111;
+            /* Black */
+            overflow-x: hidden;
+            /* Disable horizontal scroll */
+            padding-top: 20px;
         }
 
-        h1 {
-            color: #3490dc;
+        /* The navigation menu links */
+        .sidenav a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        /* When you mouse over the navigation links, change their color */
+        .sidenav a:hover {
+            color: #f1f1f1;
         }
 
-        li {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
+        /* Style page content */
+        .main {
+            margin-left: 160px;
+            /* Same as the width of the sidebar */
+            padding: 0px 10px;
         }
 
-        li:last-child {
-            border-bottom: none;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            padding: 20px;
-        }
-
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            transition: 0.3s;
-            width: 50%;
-        }
-
-        .card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-        }
-
-        #toggleButton {
-            background-color: #3490dc;
-            color: white;
-            padding: 12px 24px;
+        .my-button-loggout {
+            background-color: #4CAF50;
+            /* Green */
             border: none;
-            cursor: pointer;
-            border-radius: 5px;
+            color: white;
+            padding: 4px 32px;
             text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0;
+            /* Your existing CSS */
         }
 
-        #toggleButton:hover {
-            background-color: #1d68a7;
+        .my-button-loggout:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="card">
-            <h1>Conquistador</h1>
-
-            <button id="toggleButton">Mostrar Información</button>
-
-            @if($conquistador)
-            <div id="conquistadorInfo" style="display: none;">
-                <ul>
-                    <li>ID: {{ $conquistador->id }}</li>
-                    <li>UID: {{ $conquistador->uid }}</li>
-                    <li>Apellidos: {{ $conquistador->apellidos }}</li>
-                    <li>Email: {{ $conquistador->email }}</li>
-                    <li>Teléfono: {{ $conquistador->telefono }}</li>
-                    <li>Fecha de Nacimiento: {{ $conquistador->fecha_nacimiento }}</li>
-                    <li>Calle: {{ $conquistador->calle }}</li>
-                    <li>Número Exterior: {{ $conquistador->numero_exterior }}</li>
-                    <li>Número Interior: {{ $conquistador->numero_interior }}</li>
-                    <li>Colonia: {{ $conquistador->colonia }}</li>
-                    <li>Ciudad: {{ $conquistador->ciudad }}</li>
-                    <li>Municipio: {{ $conquistador->municipio }}</li>
-                    <li>Estado: {{ $conquistador->estado }}</li>
-                    <li>País: {{ $conquistador->pais }}</li>
-                    <li>Locale: {{ $conquistador->locale }}</li>
-                    <li>Nombre del Tutor: {{ $conquistador->tutor_nombre }}</li>
-                    <li>Tutor ID: {{ $conquistador->tutorid }}</li>
-                    <li>Rol: {{ $conquistador->rol }}</li>
-                    <li>Activo: {{ $conquistador->activo }}</li>
-                </ul>
-
-                <form action="/logout" method="GET">
-                    @csrf
-                    <button type="submit">Log Out</button>
-                </form>
-            </div>
-            @else
-            <p>No conquistador found.</p>
-            @endif
-        </div>
+    <h1 class="text-center">Conquistador: {{$conquistador->user->name}}</h1>
+    <div class="sidenav">
+        <a href={{route('conquistador')}}>Info</a>
+        @foreach($clasesConquistador as $clases)
+        <a href="{{route('conquistador.clases', $clases->id)}}">{{$clases->nombre}}</a>
+        @endforeach
+        <form action="/logout" method="get">
+            @csrf
+            <button class="my-button-loggout" type="submit">log out</button>
+        </form>
     </div>
 
-    <script>
-        document.getElementById('toggleButton').addEventListener('click', function() {
-            var info = document.getElementById('conquistadorInfo');
-            if (info.style.display === 'none') {
-                info.style.display = 'block';
-                this.textContent = 'Ocultar Información';
-            } else {
-                info.style.display = 'none';
-                this.textContent = 'Mostrar Información';
-            }
-        });
-    </script>
+    <div class="main">
+        <ul>
+            @if ($status == 'nada')
+            <h1>Seleciona una clase</h1>
+            <h2>Tus datos:</h2>
+            <h3>Id: {{$conquistador->id}}</h3>
+            <h3>Nombre: {{$conquistador->user->name}} {{$conquistador->user->apellido}}</h3>
+            @endif
+            @if ($status=='clase')
+            <h1>Clase: {{$clase->nombre}}</h1>
+            <table>
+                <tr>
+                    @foreach ($tareas as $tarea)
+                    <th><a style="color: #111" href="/conquistador/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a></th>
+                    @endforeach
+                </tr>
+                <tr>
+
+                    @foreach ($conquistador->tareas as $tareaa)
+                    <td>
+                        @if ($tareaa->clase_id === $clase->id)
+                        {{ Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada) }}
+                        <input onclick="return false;" type="checkbox" name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}" value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
+                        @endif
+                    </td>
+                    @endforeach
+                </tr>
+            </table>
+            @endif
+            @if ($status == 'Mostar Tarea')
+            <h2>Id: {{ $tarea->id }}</h2>
+            <h2>{{ $tarea->nombre }}</h2>
+            <h3>{{ $tarea->descripcion }}</h3>
+            <h3>{{ $tarea->fecha }}</h3>
+            @endif
+
+        </ul>
+    </div>
 </body>
 
 </html>

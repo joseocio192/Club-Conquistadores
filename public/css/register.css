@@ -1,0 +1,193 @@
+body {
+    width: 99vw;
+    height: 118.5vh;
+    margin: 0;
+    padding: auto;
+    font-family: Arial, sans-serif;
+    background: rgb(118,174,159);
+    background: linear-gradient(90deg, rgba(118,174,159,1) 0%, rgba(118,171,174,1) 47%, rgba(238,238,238,1) 100%);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 43.75em;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 1.25em;
+    padding: 1.25em;
+    opacity: 0.7;
+    background-color: white;
+    border: 2px solid #31363F;
+    border-radius: 0.625em;
+}
+
+form label {
+    display: block;
+    margin-left:  1.0625em;
+    margin-top: 0.625em;
+    margin-bottom: 0.625em;
+    color: #31363F;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="date"],
+form select {
+    width: 22.5em;
+    padding: 0.4375em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 0.625em;
+    margin-left: 1.5em;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="date"]:focus,
+form select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 3px solid #4ea4a8;
+    background-color: #eeeeee;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
+}
+
+form input[type="email"] {
+    width: 47.6em;
+    padding: 0.4375em;
+    margin-left: 1.5em;
+    border-radius: 5px;
+    margin-bottom: 0.4375em;
+    height: 1.3em;
+    border: 1px solid #ccc;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
+}
+
+form input[type="email"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 3px solid #4ea4a8;
+    background-color: #eeeeee;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #222831;
+}
+
+.RegisterBtn {
+    height: 3.235294117647059em;
+    width: 9.6875em;
+    border-radius: 6px;
+    border-width: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 100%;
+    background-color: #76ABAE;
+    color: #EEEEEE;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.RegisterBtn:hover {
+    font-size: 1em;
+    color: #EEEEEE;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
+}
+
+.RegisterBtn[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.RegisterBtn[disabled]:hover {
+    background-color: #ccc;
+}
+
+.RegistroDiv {
+    width: 98%;
+}
+
+h1 {
+    color: #31363F;
+}
+
+h2 {
+    margin: 0;
+    margin-left: 0.9em;
+    margin-bottom: 0.5em;
+    font-size: 1.3em;
+    align-self: self-start;
+    color: #31363F;
+}
+
+.DatosH2 {
+    margin-top: 1em;
+}
+
+.SeccionDiv1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20.58823529411765em;
+    border-bottom: 2px solid #ccc;
+}
+
+.SeccionDiv2 {
+    display: flex;
+    margin-top: 1.1764705882352942em;
+    flex-direction: column;
+    width: 100%;
+    height: 23.529411764705884em;
+}
+
+.SubSeccionDiv {
+    display: flex;
+}
+
+.PaisDiv, .MunicipioDiv, .ClubesDiv {
+    margin-right: 0.9411764705882353em;
+}
+
+.ButtonsDiv {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1.1764705882352942em;
+    width: 100%;
+    height: 4.0625em;
+}
+
+.HomeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.235294117647059em;
+    width: 9.6875em;
+    border-radius: 6px;
+    border-width: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 100%;
+    background-color: #76ABAE;
+    color: #EEEEEE;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.HomeBtn:hover {
+    font-size: 1.1em;
+    color: #EEEEEE;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
+}

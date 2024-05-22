@@ -1,0 +1,175 @@
+body {
+    display: flex;
+    background-image: url(https://aadcdn.msftauth.net/shared/1.0/content/images/backgrounds/2_11d9e3bcdfede9ce5ce5ace2d129f1c4.svg);
+    height: inherit;
+    font-family: "Segoe UI Webfont", -apple-system, "Helvetica Neue", "Lucida Grande", "Roboto", "Ebrima", "Nirmala UI", "Gadugi", "Segoe Xbox Symbol", "Segoe UI Symbol", "Meiryo UI", "Khmer UI", "Tunga", "Lao UI", "Raavi", "Iskoola Pota", "Latha", "Leelawadee", "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic", "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text", "Cambria Math";
+    font-size: .9375rem;
+    line-height: 1.25rem;
+    padding-bottom: .227px;
+    padding-top: .227px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-header {
+    display: flex;
+    padding-left: 0;
+    width: 26em;
+    background-color: white;
+    border-bottom: 2px solid #ccc;
+}
+
+.card-body {
+    width: 30em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* poner la imagen al lado izquierdo del h1 */
+img{
+    width: 3em;
+    height: 3em;
+    margin: 1.2em;
+}
+
+h1 {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    color: #31363F;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 0.5em;
+    font-size: 2em;
+}
+
+label {
+    font-weight: bold;
+    color: #31363F;
+    font-size: 1.05em;
+}
+
+.row{
+    display: grid;
+    width: 90%;
+}
+
+input[type="email"], input[type="password"]{
+    border: 1px solid #4d4747;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid #4ea4a8;
+    background-color: #eeeeee;
+}
+
+label[for="remember"] {
+    align-items: baseline;
+    color: #31363F;
+    font-size: 1.030em;
+    margin-top: 0.37em;
+}
+
+input[type="checkbox"] {
+    width: 1.1em;
+    height: 1.1em;
+    border: 1px solid #31363F;
+    margin-right: 0.7em;
+}
+
+input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+input[type="checkbox"]:focus {
+    outline: 2px solid #000;
+    outline-offset: -2px;
+}
+
+.checkboxDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5em;
+    width: 10em;
+    height: 2em;
+}
+
+.buttonsDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 22em;
+    height: 5em;
+    margin-bottom: 1em;
+}
+
+button{
+    height: 3.2em;
+    width: 9.6875em;
+    border-radius: 6px;
+    border-width: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 100%;
+    background-color: #76ABAE;
+    color: #EEEEEE;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+button:hover {
+    font-size: 1.1em;
+    color: #EEEEEE;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: visible;
+    z-index: 99;
+    clear: both;
+    min-height: 28px;
+}
+
+.footerItems{
+    color: #000;
+    font-size: 12px;
+    line-height: 28px;
+    white-space: nowrap;
+    margin-left: 8px;
+    margin-right: 16px;
+    width: 7em;
+    float: right;
+}
+
+.footerItems:hover {
+    color: #4ea4a8;
+    cursor: pointer;
+}
+
+select {
+    width: 100%;
+    margin-bottom: 1em;
+}
