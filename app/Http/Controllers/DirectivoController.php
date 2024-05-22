@@ -186,4 +186,16 @@ class DirectivoController extends Controller
         $club->instructores()->attach($request->instructor_id);
         return redirect()->route('directivo.club', $request->club_id);
     }
+
+    public function altaInstructor()
+    {
+        $user = auth()->user();
+        return view('registerInstructor', compact('user'));
+    }
+
+    public function altaDirectivo()
+    {
+        $user = auth()->user();
+        return view('registerDirectivo', compact('user'));
+    }
 }

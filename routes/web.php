@@ -66,6 +66,8 @@ Route::get('/instructor/conquistador/{id}', 'InstructorController@showConquistad
 Route::get('/instructor/{id}', 'InstructorController@clases')->name('instructor.clases')->middleware('checkinstructor');
 Route::get('/instructor', 'InstructorController@index')->name('instructor.index')->middleware('auth', 'rol:instructor');
 
+Route::get('/directivo/altaDirectivo', 'DirectivoController@altaDirectivo')->name('directivo.altaDirectivo')->middleware('auth', 'rol:directivo');
+Route::get('/directivo/altaInstructor', 'DirectivoController@altaInstructor')->name('directivo.altaInstructor')->middleware('auth', 'rol:directivo');
 Route::get('/directivo/club/{id}', 'DirectivoController@club')->name('directivo.club')->middleware('auth', 'rol:directivo');
 Route::get('/directivo/stats/{id}', 'DirectivoController@stats')->name('directivo.stats')->middleware('auth', 'rol:directivo');
 Route::get('/directivo/crearclubview', 'DirectivoController@crearclubview')->name('directivo.crearclubview')->middleware('auth', 'rol:directivo');

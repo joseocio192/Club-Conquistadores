@@ -23,8 +23,8 @@
         @if ($user->directivo->ciudad_id != null)
         <a href="{{route('directivo.crearclubview')}}">Crear club</a>
         @endif
-        <a>Dar de alta a directivo</a>
-        <a>Alta a instructor</a>
+        <a href="{{route('directivo.altaDirectivo')}}">Dar de alta a directivo</a>
+        <a href="{{route('directivo.altaInstructor')}}">Alta a instructor</a>
         <form action="/logout" method="get">
             <button type="submit">Cerrar sesion</button>
         </form>

@@ -26,7 +26,6 @@ class clubsSeeder extends Seeder
         $club->colonia = 'Colonia 1';
         $club->lema = 'Lema 1';
         $club->logo = 'logo1.jpg';
-        $club->especialidad = 'Futbol';
         $club->locale = 'es';
         $club->save();
 
