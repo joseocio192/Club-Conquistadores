@@ -52,7 +52,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => trans('app.the_provided_credentials_do_not_match_our_records'),
         ]);
     }
 
