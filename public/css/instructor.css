@@ -1,7 +1,7 @@
 /*Estilos generales*/
 *{
     font-family: "Roboto";
-} 
+}
 
 /* Tipografias */
 h1 {
@@ -82,6 +82,7 @@ body {
     display: flex;
     flex-direction: column;
 
+
     align-items: center;
 
     width: 30em;
@@ -96,6 +97,7 @@ body {
 .divCrearClase {
     display: grid;
 }
+
 
 .divCrearClase div{
     display: grid;
@@ -323,6 +325,7 @@ tr:nth-child(even) {
 
 .my-button-loggout:hover {
     font-size: 1.15em;
+
     background-color: #222831;
     border: white;
     color: #eee;
@@ -353,10 +356,4 @@ tr:nth-child(even) {
     fill: #76ABAE;
     margin-right: 1em;
 }
-
-
-
-
-
-
 

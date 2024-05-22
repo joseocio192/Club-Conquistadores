@@ -12,10 +12,10 @@ class TutorController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $pupilos = conquistador::where('tutorlegal_id', $user->id)->get();
+        $pupilos = conquistador::where('tutorlegal_id', $user->id)->where('aceptado', 1)->get();
         $status = 'nada';
         $pupilosSinAceptar = conquistador::where('tutorlegal_id', $user->id)->where('aceptado', 0)->get();
-        return view('tutor', compact('user', 'pupilos', 'status'));
+        return view('tutor', compact('user', 'pupilos', 'status', 'pupilosSinAceptar'));
     }
 
     public function show($id)
@@ -25,5 +25,17 @@ class TutorController extends Controller
         $hijo = Conquistador::find($id);
         $status = 'show';
         return view('tutor', compact('user', 'pupilos', 'hijo', 'status'));
+    }
+
+    public function aceptar(Request $request)
+    {
+        $user = Auth::user();
+        $pupilos = conquistador::where('tutorlegal_id', $user->id)->get();
+        $status = 'nada';
+        $aceptado = conquistador::find($request->idpupilo);
+        $aceptado->aceptado = 1;
+        $aceptado->save();
+        $pupilosSinAceptar = conquistador::where('tutorlegal_id', $user->id)->where('aceptado', 0)->get();
+        return view('tutor', compact('user', 'pupilos', 'status', 'pupilosSinAceptar'));
     }
 }

@@ -44,6 +44,9 @@ class LoginController extends Controller
             if ($user->rol == 'tutor') {
                 return redirect()->action([TutorController::class, 'index']);
             }
+            if ($user->rol == 'directivo') {
+                return redirect()->action([DirectivoController::class, 'index']);
+            }
 
             return redirect()->intended('welcome');
         }
