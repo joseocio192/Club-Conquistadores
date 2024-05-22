@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConquistadorController;
+use App\Http\Controllers\DirectivoController;
 use App\Http\Controllers\RegisterTutorController;
 use App\Http\Controllers\MunicipioPaisController;
 
@@ -63,4 +64,16 @@ Route::get('/instructor/conquistador/{id}', 'InstructorController@showConquistad
 Route::get('/instructor/{id}', 'InstructorController@clases')->name('instructor.clases')->middleware('checkinstructor');
 Route::get('/instructor', 'InstructorController@index')->name('instructor.index')->middleware('auth', 'rol:instructor');
 
+Route::get('/directivo/club/{id}', 'DirectivoController@club')->name('directivo.club')->middleware('auth', 'rol:directivo');
+Route::get('/directivo/stats/{id}', 'DirectivoController@stats')->name('directivo.stats')->middleware('auth', 'rol:directivo');
+Route::get('/directivo/crearclubview', 'DirectivoController@crearclubview')->name('directivo.crearclubview')->middleware('auth', 'rol:directivo');
+Route::post('/directivo/crearclub', 'DirectivoController@crearclub')->name('directivo.crearclub')->middleware('auth', 'rol:directivo');
+Route::get('/directivo', 'DirectivoController@index')->name('directivo')->middleware('auth', 'rol:directivo');
+
 Route::get('/municipios', [MunicipioPaisController::class, '__invoke'])->middleware('auth', 'rol:admin');
+
+Route::post('/pais', 'LocationController@addPais')->name('location.pais.add')->middleware('auth', 'rol:directivo');
+Route::post('/estado', 'LocationController@addEstado')->name('location.estado.add')->middleware('auth', 'rol:directivo');
+Route::post('/municipio', 'LocationController@addMunicipio')->name('location.municipio.add')->middleware('auth', 'rol:directivo');
+Route::post('/ciudad', 'LocationController@addCiudad')->name('location.ciudad.add')->middleware('auth', 'rol:directivo');
+Route::post('/especialidad', 'LocationController@addEspecialidad')->name('especialidad.add')->middleware('auth', 'rol:directivo');

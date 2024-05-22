@@ -8,13 +8,28 @@ body {
     height: 100%;
 }
 
+
 .sidenav {
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 18%;
-    height: 100%;
     background-color: #eee;
+    height: 100%;
+            /* Full-height: remove this if you want "auto" height */
+
+            /* Set the width of the sidebar */
+    /* position: fixed;
+            /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1;
+            /* Stay on top */
+    top: 0;
+            /* Stay at the top */
+    left: 0;
+            /* Black */
+    overflow-x: hidden;
+            /* Disable horizontal scroll */
+    padding-top: 20px;
 }
 
 .sidenav a {
@@ -122,3 +137,4 @@ tr:nth-child(even) {
     color: #EEEEEE;
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
 }
+
