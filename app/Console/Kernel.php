@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
                     'fecha' => $date
                 ]);
             }
-        })->everyMinute();
+        })->name('numberOfConquistadores')->everyMinute()->onOneServer();
     }
 
     /**

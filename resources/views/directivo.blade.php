@@ -52,6 +52,24 @@
         <h2>$i->user->name</h2>
         @endforeach
         <a href="{{route('registerInstructor')}}"> Registar a instructor</a>
+
+        <h2>Conquistadores por mes</h2>
+
+        <table>
+            <tr>
+                <th>Club</th>
+                @foreach ($fechas as $fecha)
+                <th>{{$fecha->fecha}}</th>
+                @endforeach
+            </tr>
+            <tr>
+                <td>{{$club->nombre}}</td>
+                @foreach ($fechas as $f)
+                <th>{{$f->cantidad}}</th>
+                @endforeach
+            </tr>
+        </table>
+
         @endif
 
         @if ($status == 'ciudad')
@@ -64,6 +82,7 @@
         @foreach ($clubes as $c)
         <h5>{{$c->nombre}}: {{$c->users->where('rol','conquistador')->count()}}</h5>
         @endforeach
+
         @endif
 
         @if ($status == 'crearclub')
