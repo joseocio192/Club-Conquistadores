@@ -42,7 +42,7 @@
             </footer>
         </div>
         <aside>
-            <img class="LogoAside" src="{{ asset('/imgs/logo2.webp') }}"></img>
+            <img class="LogoAside" src="{{ asset('/imgs/logoSimple.webp') }}"></img>
         </aside>
 </body>
 </html>

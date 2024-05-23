@@ -1,0 +1,139 @@
+/*Estilos generales*/
+*{
+    font-family: "Roboto";
+}
+
+h1 {
+    margin-left: 1em;
+    color: #222831;
+}
+
+/* Contenedores */
+body {
+    background-color: #eee;
+    display: flex;
+    margin: 0;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding-bottom: 0.5em;
+    width: 100%;
+}
+
+.sidenav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    width: 18%;
+    min-height: 100vh;
+    max-height: 100%;
+
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+
+    border-top-right-radius: 1.25em;
+    border-bottom-right-radius: 1.25em;
+    border: 2px solid #76ABAE;
+
+    background-color: #eee;
+    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.2);
+}
+
+.sidenav form {
+    margin-top: auto;
+    margin-bottom: 1em;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+/* Botones */
+.sidenav a {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    width: 80%;
+
+    border-bottom: 2px solid #76ABAE;
+
+    margin-top: 0.3125em;
+    margin-bottom: 0.9375em;
+
+    padding-top: 0.3125em;
+    padding-bottom: 0.3125em;
+
+    text-decoration: none;
+    text-align: center;
+
+    font-size: 1.25em;
+    font-weight: 900;
+
+    color: #31363F;
+    fill: #31363F;
+
+    transition: all .2s ease;
+}
+
+.my-button-loggout {
+    height: 3.235294117647059em;
+    width: 9.6875em;
+
+    border-radius: 6px;
+    border-width: 0;
+    border: 2px solid #222831;
+
+    font-size: 1.1em;
+    font-weight: 900;
+
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+
+    background-color: #eee;
+    color: #222831;
+    
+    cursor: pointer;
+    transition: all .3s ease;
+}
+/* Hover */
+.sidenav a:hover {
+    cursor: pointer;
+    color: #76ABAE;
+    fill: #76ABAE;
+}
+
+.my-button-loggout:hover {
+    font-size: 1.15em;
+
+    background-color: #222831;
+    border: white;
+    color: #eee;
+}
+
+/* SVGs*/
+.sidenav svg {
+    height: 1em;
+    width: 1em;
+    margin-right: 0.50em;
+}

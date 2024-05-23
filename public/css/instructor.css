@@ -544,8 +544,8 @@ input[type="number"]:focus{
 
 /* SVGs */
 .sidenav svg {
-    height: 0.8125em;
-    width: 0.8125em;
+    height: 1em;
+    width: 1em;
     margin-right: 0.50em;
 }
 
