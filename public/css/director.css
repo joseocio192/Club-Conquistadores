@@ -1,0 +1,140 @@
+*{
+    font-family: "Roboto";
+}
+
+body {
+    display: flex;
+    margin: 0;
+    height: 100%;
+}
+
+
+.sidenav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 18%;
+    background-color: #eee;
+    height: 100%;
+            /* Full-height: remove this if you want "auto" height */
+
+            /* Set the width of the sidebar */
+    /* position: fixed;
+            /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1;
+            /* Stay on top */
+    top: 0;
+            /* Stay at the top */
+    left: 0;
+            /* Black */
+    overflow-x: hidden;
+            /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+.sidenav a {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: 0.3125em;
+    margin-bottom: 0.9375em;
+    padding-top: 0.3125em;
+    padding-bottom: 0.3125em;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.4375em;
+    font-weight: 900;
+    width: 70%;
+    color: #31363F;
+    border-bottom: 3px solid #76ABAE;
+}
+
+.sidenav form {
+    margin-top: auto;
+    margin-bottom: 1em;
+}
+
+.sidenav svg {
+    height: 0.8125em;
+    width: 0.8125em;
+    fill: #31363F;
+    margin-right: 0.50em;
+}
+
+.sidenav a:hover {
+    cursor: pointer;
+    color: #76ABAE;
+    fill: #76ABAE;
+}
+
+h1 {
+    color: #222831;
+    font-family: "Roboto";
+}
+
+/* Style page content */
+.main {
+    width: 80%;
+
+    height: 100%;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 2px solid #111;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+
+.my-button {
+    background-color: #76ABAE;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 4px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    /* Your existing CSS */
+}
+
+.my-button:hover {
+    background-color: #45a049;
+}
+
+.my-button-loggout {
+    height: 3.235294117647059em;
+    width: 9.6875em;
+    border-radius: 6px;
+    border-width: 0;
+    font-size: 1.1em;
+    font-family: "Roboto";
+    font-weight: 900;
+    background-color: #76ABAE;
+    color: #EEEEEE;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.my-button-loggout:hover {
+    font-size: 1.15em;
+    color: #EEEEEE;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
+}
+

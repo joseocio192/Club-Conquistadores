@@ -6,7 +6,7 @@
     @csrf
 
     <h1>Registro</h1>
-    <h2>Datos personales conquistador</h2>
+    <h2>Datos personales Directivo</h2>
     <div class='RegistroDiv'>
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <h2 class='DatosH2'>Datos residencia de conquistador</h2>
+        <h2 class='DatosH2'>Datos residencia de directivo</h2>
         <div class='SeccionDiv2'>
             <div class='SubSeccionDiv'>
                 <div>
@@ -118,20 +118,25 @@
                     <input id="codigo_postal" type="text" name="codigo_postal" required><br>
                 </div>
             </div>
-        </div>
+            <div class="SubSeccionDiv">
+                <div class="ClubesDiv">
+                    <label for="jefe_id">Jefe ID</label>
+                    <input id="jefe_id" type="text" name="jefe_id">
+                </div>
 
-        @if ($status=='tutor' )
-        <input id="tutorLegal_id" type="hidden" name="tutorLegal_id" required value="{{$tutor->id}}"><br>
-        <input type="hidden" name="autorizado" value="1">
-        @else
-        <label for="tutorLegal_id">Tutor id</label>
-        <input id="tutorLegal_id" type="text" name="tutorLegal_id" require> <br>
-        <input type="hidden" name="autorizado" value="0">
-        @endif
+                <div class="rol">
+                    <label>Rol</label>
+                    <select name="rol" id="rol">
+                        <option id="rol" value="director">Director</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
         <div class="ButtonsDiv">
 
             <div>
-                <a class="HomeBtn" id="home-button" onclick="window.location.href = '/';">
+                <a class="HomeBtn" id="home-button" onclick="window.history.go(-1); return false;">
                     Volver
                 </a>
             </div>

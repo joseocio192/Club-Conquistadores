@@ -11,10 +11,10 @@ class Especialidad extends Model
 {
     use HasFactory;
     protected $table = 'Especialidad';
-    protected $fillable =[
+    protected $fillable = [
         'nombre',
-         'fechaCumplido',
-         'locale'];
+        'locale'
+    ];
 
     public function requisitos(): HasMany
     {
@@ -25,5 +25,4 @@ class Especialidad extends Model
     {
         return $this->belongsToMany(Conquistador::class, 'Requisitos_xconquistador', 'requisito_id', 'conquistador')->using(Requisitos_xconquistador::class);
     }
-
 }

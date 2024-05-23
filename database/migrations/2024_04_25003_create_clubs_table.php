@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('colonia', 100);
             $table->text('lema')->nullable();
             $table->string('logo', 50)->nullable();
-            $table->string('especialidad', 55)->nullable();
             $table->timestamps();
             $table->string('locale', 5);
         });

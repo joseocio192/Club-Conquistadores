@@ -44,12 +44,15 @@ class LoginController extends Controller
             if ($user->rol == 'tutor') {
                 return redirect()->action([TutorController::class, 'index']);
             }
+            if ($user->rol == 'directivo') {
+                return redirect()->action([DirectivoController::class, 'index']);
+            }
 
             return redirect()->intended('welcome');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => trans('app.the_provided_credentials_do_not_match_our_records'),
         ]);
     }
 
