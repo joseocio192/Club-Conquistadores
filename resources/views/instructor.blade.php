@@ -38,9 +38,166 @@
             <button class="my-button-loggout" type="submit">Cerrar sesion</button>
         </form>
     </div>
+
     <div class="main">
-        <ul>
             @if ($status == 'clase')
+<<<<<<< HEAD
+                {{ Log::info($clase) }}
+                <div class="divTareasAsis">
+                    <h2>{{ $clase->nombre}}</h2>
+                    <h3>Tareas</h3>
+                    <form action={{ route('instructor.sendhw') }} method="post">
+                        @csrf
+                        <table>
+                            <tr>
+                                <th>Nombre</th>
+                                @if ($tareas->count() == 0)
+                                    <th>No hay tareas</th>
+                                @else
+                                @foreach ($tareas as $tarea)
+                                    <th><a style="color: #111"
+                                            href="/instructor/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a></th>
+                                @endforeach
+                                @endif
+                            </tr>
+                            @foreach ($conquistadores as $conquistador)
+                                <tr>
+                                    <td><a style="color: #111"
+                                            href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
+                                    </td>
+                                    @foreach ($conquistador->tareas as $tareaa)
+                                        <td>
+                                            @if ($tareaa->clase_id === $clase->id)
+                                                {{ Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada) }}
+                                                <input type="checkbox"
+                                                    name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}"
+                                                    value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
+                                            @endif
+                                        </td>
+                                    @endforeach
+                                </tr>
+                            @endforeach
+                        </table>
+                        <button class="btnEnviar" type="submit">Enviar</button>
+                    </form>
+
+                    <h3>Asistencia</h3>
+                    <form action="{{ route('instructor.definer') }}" method="post">
+                        @csrf
+                        <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                        <table>
+                            <tr>
+                                <th>Nombre</th>
+                                @if ($asistencias->count() == 0)
+                                    <th>No hay asistencias</th>
+                                @else
+                                    @foreach ($asistencias as $asistencia)
+                                        <th>{{ $asistencia->fecha }}</th>
+                                    @endforeach
+                                @endif
+                                <th><button type="submit" name="adddia">+</button>
+                                    <button type="submit" name="deleteDia">-</button>
+                                </th>
+                            </tr>
+                            @foreach ($conquistadores as $conquistador)
+                                <tr>
+                                    <td>{{ $conquistador->user->name }}</td>
+                                    @if ($conquistador->asistencias && $conquistador->asistencias->count() == 0)
+                                        <td>
+                                            <input type="checkbox"
+                                                name="asistencia_{{ $conquistador->id . '-' . $asistencias[0]->id }}"
+                                                value="1">
+                                            <select
+                                                name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
+                                                <option value="1" @if ($asistencia->pivot->pulcritud == 1) selected @endif>1
+                                                </option>
+                                                <option value="2" @if ($asistencia->pivot->pulcritud == 2) selected @endif>2
+                                                </option>
+                                                <option value="3" @if ($asistencia->pivot->pulcritud == 3) selected @endif>3
+                                                </option>
+                                                <option value="4" @if ($asistencia->pivot->pulcritud == 4) selected @endif>4
+                                                </option>
+                                                <option value="5" @if ($asistencia->pivot->pulcritud == 5) selected @endif>5
+                                                </option>
+                                            </select>
+                                        </td>
+                                    @else
+                                        @foreach ($conquistador->asistencia as $asistencia)
+                                            @if ($asistencia->id_clase === $clase->id)
+                                                <td>
+                                                    <input type="checkbox"
+                                                        name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}"
+                                                        value="1" @if ($asistencia->pivot->asistio == 1) checked @endif>
+                                                    <select
+                                                        name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
+                                                        <option value="1"
+                                                            @if ($asistencia->pivot->pulcritud == 1) selected @endif>1</option>
+                                                        <option value="2"
+                                                            @if ($asistencia->pivot->pulcritud == 2) selected @endif>2</option>
+                                                        <option value="3"
+                                                            @if ($asistencia->pivot->pulcritud == 3) selected @endif>3</option>
+                                                        <option value="4"
+                                                            @if ($asistencia->pivot->pulcritud == 4) selected @endif>4</option>
+                                                        <option value="5"
+                                                            @if ($asistencia->pivot->pulcritud == 5) selected @endif>5</option>
+                                                    </select>
+                                                </td>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </tr>
+                            @endforeach
+                        </table>
+                        <button class="btnEnviar" type="submit" name="save">Enviar</button>
+                    </form>
+
+                    <h3 class="h3AddAlumno">Añadir alumnos a la clase</h3>
+                    <form class="frmAlmTar" action="{{ route('instructor.anadirAlumnos') }}" method="post">
+                        @csrf
+                        <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                        Id de los Alumnos:
+                        <input type="text" name="alumnos" placeholder="(Separados por comas)">
+                        <button class="my-button" type="submit">Añadir</button>
+                    </form>
+
+                    <h3>Eliminar alumnos de la clase</h3>
+                    <form class="frmAlmTar" action="{{ route('instructor.eliminarAlumnos') }}" method="post">
+                        @csrf
+                        <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                        Id de los Alumnos:
+                        <input type="text" name="alumnos" placeholder="(Separados por comas)">
+                        <button class="my-button" type="submit">Eliminar</button>
+                    </form>
+
+                    <h3>Crear tarea</h3>
+                    <form class="frmAlmTar" action="{{ route('instructor.crearTarea') }}" method="post">
+                        @csrf
+                        <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                        Nombre:
+                        <input type="text" name="nombre">
+                        Descripción:
+                        <input type="text" name="descripcion">
+                        Fecha de entrega:
+                        <input type="date" name="fecha">
+                        <button class="my-button" type="submit">Crear</button>
+                    </form>
+
+                    <h3>Modificar tarea</h3>
+                    <form class="frmAlmTar" action="{{ route('instructor.modificarTarea') }}" method="post">
+                        @csrf
+                        <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                        ID:
+                        <input type="text" name="tarea_id">
+                        Nombre:
+                        <input type="text" name="nombre">
+                        Descripcion:
+                        <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
+                        Fecha de entrega:
+                        <input type="date" name="fecha" placeholder="Fecha de la tarea">
+                        <button class="btnModTar" type="submit">Modificar</button>
+                    </form>
+                </div>
+=======
             {{ Log::info($clase) }}
             <h2>{{ $clase->nombre }}</h2>
             <form action={{ route('instructor.sendhw') }} method="post">
@@ -170,6 +327,7 @@
                 <input type="date" name="fecha" placeholder="Fecha de la tarea">
                 <button class="my-button" type="submit">Modificar</button>
             </form>
+>>>>>>> b1219df0954076422585344c8fc43fef862edf3d
             @endif
 
             <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
@@ -285,7 +443,6 @@
                         </div>
                     </div>
             @endif
-        </ul>
         @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
