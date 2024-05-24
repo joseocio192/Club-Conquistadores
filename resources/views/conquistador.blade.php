@@ -46,10 +46,37 @@
     <div class="main">
         <ul>
             @if ($status == 'nada')
-            <h1>Seleciona una clase</h1>
-            <h2>Tus datos:</h2>
-            <h3>Id: {{$conquistador->id}}</h3>
-            <h3>Nombre: {{$conquistador->user->name}} {{$conquistador->user->apellido}}</h3>
+            <div class="divTusDatos">
+                <div class="boxTusDatos">
+                <h2>Tus datos</h2>
+                </div>
+                <div class="boxTusDatos">
+                    <svg class="svgPerson" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" >
+                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/>
+                    </svg>
+                    <h3>Nombre: </h3>
+                    <h3 class="h3Dato">{{$conquistador->user->name}} {{$conquistador->user->apellido}}</h3>
+                    <h3>Edad: </h3>
+                    <h3 class="h3Dato">{{$conquistador->user->edad}}</h3>
+                </div>
+                <div class="boxTusDatos">
+                    <h3>Fecha de nacimiento: </h3>
+                    <h3 class="h3Dato">{{$conquistador->user->fecha_nacimiento}}</h3>
+                </div>
+                <div class="boxTusDatos">
+                    <h3>Telefono: </h3>
+                    <h3 class="h3Dato">{{$conquistador->user->telefono}}</h3>
+                </div>
+                <div class="boxTusDatos">
+                    <h3>Correo: </h3>
+                    <h3 class="h3Dato">{{$conquistador->user->email}}</h3>
+                </div>
+                <div class="boxTusDatos">
+                    <h3>Direccion: </h3>
+                    <h3 class="h3Dato">{{ $conquistador->user->colonia . ' ' . $conquistador->user->calle . ' ' . $conquistador->user->numero_exterior }}</h3>
+                </div> 
+            </div>
             @endif
             @if ($status=='clase')
             <h1>Clase: {{$clase->nombre}}</h1>

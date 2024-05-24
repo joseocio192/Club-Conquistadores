@@ -12,10 +12,9 @@ h1 {
 .divDatos h3 {
     margin: 0.2em;
     color: #222831;
-    
 }
 
-.divDatos .h3Dato {
+.h3Dato {
     margin: 0.2em;
     margin-right: 2em;
     color: #31363F;
@@ -190,6 +189,13 @@ body {
     box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
 }
 
+.divDatos {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    margin-left: 2em;
+}
+
 .divTareasAsis {
     border: 2px solid #76ABAE;
     border-radius: 20px;
@@ -240,14 +246,6 @@ tr:nth-child(even) {
     color: #222831;
     font-size: 1.1em;
 }
-
-.divDatos {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1em;
-    margin-left: 2em;
-}
-
 
 /* Botones */
 .sidenav a {

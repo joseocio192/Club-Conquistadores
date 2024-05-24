@@ -305,7 +305,6 @@
 
             @if ($status == 'nada')
                     <div class="divTusDatos"> 
-                        
                         <div class="divDatos">
                             <h2>Tus datos</h2>
                         </div>
