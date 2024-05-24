@@ -199,9 +199,10 @@ body {
 .divTareasAsis {
     border: 2px solid #76ABAE;
     border-radius: 20px;
+    
+    padding-bottom: 1em;
 
     width: 72em;
-    height: 51.5em;
 
     background-color: #eee;
     box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
@@ -213,13 +214,13 @@ body {
     
     color: #31363F;
     font-weight: 450;
-
 }
 
 .divMostrarTarea div{
     display: grid;
     grid-template-columns: 8em 22em;
     grid-template-rows: auto 100px;
+
     justify-content: center;
     gap: .5em;
 }
@@ -229,16 +230,45 @@ table {
     width: 92%;
     margin-left: 3em;
     margin-bottom: .5em;
+    font-size: 0.9em;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.48);
+}
+
+thead {
+    background-color: #76ABAE;
+    color: #eee;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+thead a {
+    color: #eee;
+}
+
+td a {
+    color: #31363F;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 td,
 th {
-    border: 2px solid #76ABAE;
-    text-align: left;
+    padding: 12px 15px;
 }
 
-tr:nth-child(even) {
+tbody tr {
+    border-bottom: 1px solid #76ABAE;
+}
+
+.tdTareas:nth-child(even) {
     background-color: #dddddd;
+}
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #76ABAE;
 }
 
 .frmAlmTar {
@@ -253,7 +283,7 @@ tr:nth-child(even) {
     align-items: center;
     justify-content: start;
 
-    width: 70%;
+    width: 80%;
 
     border-bottom: 2px solid #76ABAE;
 

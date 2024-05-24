@@ -64,25 +64,27 @@
                     <form action={{ route('instructor.sendhw') }} method="post">
                         @csrf
                         <table>
-                            <tr>
-                                <th>Nombre</th>
-                                @if ($tareas->count() == 0)
-                                    <th>No hay tareas</th>
-                                @else
-                                @foreach ($tareas as $tarea)
-                                    <th>
-                                        <a style="color: #111" href="/instructor/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a>
-                                    </th>
-                                @endforeach
-                                @endif
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    @if ($tareas->count() == 0)
+                                        <th>No hay tareas</th>
+                                    @else
+                                    @foreach ($tareas as $tarea)
+                                        <th>
+                                            <a href="/instructor/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a>
+                                        </th>
+                                    @endforeach
+                                    @endif
+                                </tr>
+                            </thead>
                             @foreach ($conquistadores as $conquistador)
                                 <tr>
-                                    <td><a style="color: #111"
-                                            href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
+                                    <td>
+                                        <a href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
                                     </td>
                                     @foreach ($conquistador->tareas as $tareaa)
-                                        <td>
+                                        <td class="tdTareas">
                                             @if ($tareaa->clase_id === $clase->id)
                                                 {{ Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada) }}
                                                 <input type="checkbox"

@@ -79,25 +79,32 @@
             </div>
             @endif
             @if ($status=='clase')
-            <h1>Clase: {{$clase->nombre}}</h1>
+            <div class="divClase"> 
+                <h1>Clase: {{$clase->nombre}}</h1>
             <table>
-                <tr>
-                    @foreach ($tareas as $tarea)
-                    <th><a style="color: #111" href="/conquistador/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a></th>
-                    @endforeach
-                </tr>
-                <tr>
-
-                    @foreach ($conquistador->tareas as $tareaa)
-                    <td>
-                        @if ($tareaa->clase_id === $clase->id)
-                        {{ Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada) }}
-                        <input onclick="return false;" type="checkbox" name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}" value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
-                        @endif
-                    </td>
-                    @endforeach
-                </tr>
+                <thead>
+                    <tr>
+                        @foreach ($tareas as $tarea)
+                        <th>
+                            <a href="/conquistador/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a>
+                        </th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach ($conquistador->tareas as $tareaa)
+                        <td>
+                            @if ($tareaa->clase_id === $clase->id)
+                            {{ Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada) }}
+                            <input onclick="return false;" type="checkbox" name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}" value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
+                            @endif
+                        </td>
+                        @endforeach
+                    </tr>
+                </tbody>
             </table>
+            </div>
             @endif
             @if ($status == 'Mostar Tarea')
             <h2>Id: {{ $tarea->id }}</h2>

@@ -10,7 +10,7 @@ h1 {
 
 /* Tipografias */
 .divTusDatos h2 {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     color: #222831;
 }
 
@@ -65,21 +65,43 @@ body {
     margin-bottom: 1em;
 }
 
+.divClase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 45em;
+    height: 40em;
+
+    border: 2px solid #76ABAE;
+    border-radius: 10px;
+}
+
 table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 95%;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+
+thead tr th a {
+    background-color: #76ABAE;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
 }
 
 td,
 th {
-    border: 1px solid #dddddd;
+    border: 2px solid #76ABAE;
+    color: #31363F;
+    border-radius: 5px;
     text-align: left;
     padding: 8px;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #eee;
 }
 
 .divTusDatos {
