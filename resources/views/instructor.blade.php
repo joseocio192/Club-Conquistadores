@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instructor</title>
     <link href="{{ asset('/css/instructor.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://fontawesome.com/v5/icons/chevron-circle-down?f=classic&s=solid">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     </style>
@@ -104,49 +106,64 @@
                         @csrf
                         <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
                         <table>
-                            <tr>
-                                <th>Nombre</th>
-                                @if ($asistencias->count() == 0)
-                                    <th>No hay asistencias</th>
-                                @else
-                                    @foreach ($asistencias as $asistencia)
-                                        <th>{{ $asistencia->fecha }}</th>
-                                    @endforeach
-                                @endif
-                                <th><button type="submit" name="adddia">+</button>
-                                    <button type="submit" name="deleteDia">-</button>
-                                </th>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    @if ($asistencias->count() == 0)
+                                        <th>No hay asistencias</th>
+                                    @else
+                                        @foreach ($asistencias as $asistencia)
+                                            <th>{{ $asistencia->fecha }}</th>
+                                        @endforeach
+                                    @endif
+                                    <th class="thBtnDia">
+                                        <button class="btnDia" type="submit" name="adddia">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                                <path d="M416 208H272V64c0-17.7-14.3-32-32-32h-32c-17.7 0-32 14.3-32 32v144H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h144v144c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32V304h144c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z"/>
+                                            </svg>
+                                        </button>
+                                        <button class="btnDia" type="submit" name="deleteDia">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                                <path d="M416 208H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z"/>
+                                            </svg>
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
                             @foreach ($conquistadores as $conquistador)
                                 <tr>
                                     <td>{{ $conquistador->user->name }}</td>
                                     @if ($conquistador->asistencias && $conquistador->asistencias->count() == 0)
                                         <td>
-                                            <input type="checkbox"
+                                            <div class="divCheckbox">
+                                                <input type="checkbox" 
                                                 name="asistencia_{{ $conquistador->id . '-' . $asistencias[0]->id }}"
-                                                value="1">
-                                            <select
-                                                name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
-                                                <option value="1" @if ($asistencia->pivot->pulcritud == 1) selected @endif>1
-                                                </option>
-                                                <option value="2" @if ($asistencia->pivot->pulcritud == 2) selected @endif>2
-                                                </option>
-                                                <option value="3" @if ($asistencia->pivot->pulcritud == 3) selected @endif>3
-                                                </option>
-                                                <option value="4" @if ($asistencia->pivot->pulcritud == 4) selected @endif>4
-                                                </option>
-                                                <option value="5" @if ($asistencia->pivot->pulcritud == 5) selected @endif>5
-                                                </option>
-                                            </select>
+                                                value="1"/>
+                                                <select>
+                                                    name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
+                                                    <option value="1" @if ($asistencia->pivot->pulcritud == 1) selected @endif>1
+                                                    </option>
+                                                    <option value="2" @if ($asistencia->pivot->pulcritud == 2) selected @endif>2
+                                                    </option>
+                                                    <option value="3" @if ($asistencia->pivot->pulcritud == 3) selected @endif>3
+                                                    </option>
+                                                    <option value="4" @if ($asistencia->pivot->pulcritud == 4) selected @endif>4
+                                                    </option>
+                                                    <option value="5" @if ($asistencia->pivot->pulcritud == 5) selected @endif>5
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </td>
                                     @else
                                         @foreach ($conquistador->asistencia as $asistencia)
                                             @if ($asistencia->id_clase === $clase->id)
-                                                <td>
+                                                <td >
                                                     <input type="checkbox"
                                                         name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}"
                                                         value="1" @if ($asistencia->pivot->asistio == 1) checked @endif>
-                                                    <select
+                                                    <select class="selectPulcritud"
                                                         name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
                                                         <option value="1"
                                                             @if ($asistencia->pivot->pulcritud == 1) selected @endif>1</option>
@@ -290,21 +307,49 @@
             </div>
             @endif
             @if ($status == 'Mostar Conquistador')
-                <h2>Conquistador: {{ $conquistador->user->id }}</h2>
-                <h3>Nombre: {{ $conquistador->user->name }}</h3>
-                <h3>Edad: {{ $conquistador->edad }}</h3>
-                <h3>Telefono: {{ $conquistador->user->telefono }}</h3>
-                <h3>Correo: {{ $conquistador->user->email }}</h3>
-                <br>
-                <h3>Tutor Legal: {{ $conquistador->tutorLegal->name . ' ' . $conquistador->tutorLegal->apellido }}</h3>
-                <h3>Telefono: {{ $conquistador->tutorLegal->telefono }}</h3>
-                <h3>Correo: {{ $conquistador->tutorLegal->email }}</h3>
-                <h3>Direccion:
-                    {{ $conquistador->tutorLegal->colonia . ' ' . $conquistador->tutorLegal->calle . ' ' . $conquistador->tutorLegal->numero_exterior }}
-                </h3>
-                <br>
+            <div class="divTusDatos"> 
+                <div class="divDatos">
+                    <h2>Conquistador ID: {{ $conquistador->user->id }}</h2>
+                </div>
+                <div class="divDatos">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" >
+                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/>
+                    </svg>
+                    <h3>Nombre: </h3>
+                    <h3 class="h3Dato">{{ $conquistador->user->name }}</h3>
+                    <h3>Edad: </h3>
+                    <h3 class="h3Dato">{{ $conquistador->edad }}</h3>
+                </div>
+                <div class="divDatos">
+                    <h3>Telefono: </h3>     
+                    <h3 class="h3Dato">{{ $conquistador->user->telefono }}</h3>               
+                </div>
+                <div class="divDatos"> 
+                    <h3>Correo: </h3>
+                    <h3 class="h3Dato">{{ $conquistador->user->email }}</h3>
+                </div>
+                <div class="divDatos"> 
+                    <h3>Direccion: </h3>
+                    <h3 class="h3Dato">{{ $conquistador->tutorLegal->colonia . ' ' . 
+                    $conquistador->tutorLegal->calle . ' ' . 
+                    $conquistador->tutorLegal->numero_exterior }}
+                    </h3>
+                </div>
+                <div class="divDatos"> 
+                    <h3>Tutor Legal: </h3>
+                    <h3 class="h3Dato">{{ $conquistador->tutorLegal->name . ' ' . $conquistador->tutorLegal->apellido }}</h3>
+                </div>
+                <div class="divDatos"> 
+                    <h3>Telefono tutor: </h3>
+                    <h3 class="h3Dato">{{ $conquistador->tutorLegal->telefono }}</h3>
+                </div>
+                <div class="divDatos"> 
+                    <h3>Correo tutor: </h3>
+                    <h3 class="h3Dato">{{ $conquistador->tutorLegal->email }}</h3>
+                </div>
+            </div>
             @endif
-
             @if ($status == 'nada')
                     <div class="divTusDatos"> 
                         <div class="divDatos">
