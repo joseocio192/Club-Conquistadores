@@ -83,6 +83,25 @@
         <h5>{{$c->nombre}}: {{$c->users->where('rol','conquistador')->count()}}</h5>
         @endforeach
 
+        <h2>Cantidad de conquistadores por mes por club</h2>
+        @foreach ($clubes as $cl)
+
+        <table>
+            <tr>
+                <th>Club</th>
+                @foreach ($cl->numbers as $fecha)
+                <th>{{$fecha->fecha}}</th>
+                @endforeach
+            </tr>
+            <tr>
+                <td>{{$cl->nombre}}</td>
+                @foreach ($cl->numbers as $f)
+                <th>{{$f->cantidad}}</th>
+                @endforeach
+            </tr>
+        </table>
+
+        @endforeach
         @endif
 
         @if ($status == 'crearclub')
