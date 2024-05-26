@@ -207,6 +207,7 @@ body {
     border: 2px solid #76ABAE;
     border-radius: 20px;
     
+    max-width: 1330px;
     margin-top: .5em;
     padding-bottom: 1em;
 
@@ -214,34 +215,15 @@ body {
     box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
 }
 
-.divMostrarTarea {
-    border: 2px solid #76ABAE;
-    border-radius: 15px;
-    
-    color: #31363F;
-    font-weight: 450;
-}
-
-.divMostrarTarea div{
-    display: grid;
-    grid-template-columns: 8em 22em;
-    grid-template-rows: auto 100px;
-
-    justify-content: center;
-    gap: .5em;
-}
-
 table {
     border-collapse: collapse;
-    overflow: hidden;
+    min-width: max-content;
 
     margin-right: 1em;
     margin-left: 1em;
     margin-bottom: .5em;
 
     border-radius: 5px 5px 0 0;
-
-    text-align: center;
     font-size: 1.1em;
     font-weight: bold;
     
@@ -260,11 +242,22 @@ th {
     padding: 12px 15px;
 }
 
+.tdAsistencia{
+    text-align: start;
+    padding-left: 2.7em;
+}
+
+.divTablaAsis {
+    overflow-x: scroll;
+    height: fit-content;
+}
+
 tr {
+    align-items: start;
     border-bottom: 1px solid #76ABAE;
 }
 
-.tdTareas:nth-child(even) {
+.tdTareas:nth-child(even), .tdAsistencia:nth-child(even) {
     background-color: #dddddd;
 }
 
@@ -280,6 +273,23 @@ tbody tr:last-of-type {
     width: 2em;
 
     transform: translate(-50%, -50%);
+}
+
+.divMostrarTarea {
+    border: 2px solid #76ABAE;
+    border-radius: 15px;
+    
+    color: #31363F;
+    font-weight: 450;
+}
+
+.divMostrarTarea div{
+    display: grid;
+    grid-template-columns: 8em 22em;
+    grid-template-rows: auto 100px;
+
+    justify-content: center;
+    gap: .5em;
 }
 
 .frmAlmTar {
