@@ -33,39 +33,39 @@ class SaveModelTranslation
 
         if ($event instanceof ClaseSaved) {
             $model = $event->clase;
-            $table = 'Clase';
+            $table = $model->getTable();
             $columns = ['nombre', 'color'];
         } elseif ($event instanceof ClubSaved) {
             $model = $event->club;
-            $table = 'Clubs';
+            $table = $model->getTable();
             $columns = ['nombre', 'lema'];
         } elseif ($event instanceof ConquistadorSaved) {
             $model = $event->conquistador;
-            $table = 'Conquistador';
+            $table = $model->getTable();
             $columns = ['rol'];
         } elseif ($event instanceof DirectivoSaved) {
             $model = $event->directivo;
-            $table = 'Directivo';
+            $table = $model->getTable();
             $columns = ['rol'];
         } elseif ($event instanceof EspecialidadSaved) {
             $model = $event->especialidad;
-            $table = 'Especialidad';
+            $table = $model->getTable();
             $columns = ['nombre'];
         } elseif ($event instanceof RequisitosSaved) {
             $model = $event->requisitos;
-            $table = 'Requisitos';
+            $table = $model->getTable();
             $columns = ['nombre', 'descripcion'];
         } elseif ($event instanceof TareaSaved) {
             $model = $event->tarea;
-            $table = 'Tarea';
+            $table = $model->getTable();
             $columns = ['nombre', 'descripcion'];
         } elseif ($event instanceof UnidadSaved) {
             $model = $event->unidad;
-            $table = 'Unidad';
+            $table = $model->getTable();
             $columns = ['nombre', 'lema', 'sexo'];
         } elseif ($event instanceof UserSaved) {
             $model = $event->user;
-            $table = 'User';
+            $table = $model->getTable();
             $columns = ['name', 'apellido', 'sexo', 'rol'];
         }
 

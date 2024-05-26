@@ -22,6 +22,8 @@ trait Translations
             ->where('locale', $locale)
             ->first();
 
+        // dd($translation, $this->table, $column, $this->id, $locale);
+
         if ($translation) {
             return $translation->content;
         } else {

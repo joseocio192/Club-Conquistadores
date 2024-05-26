@@ -23,6 +23,7 @@ class ConquistadorSeeder extends Seeder
         $conquistador = new Conquistador();
         $conquistador->user_id = 2;
         $conquistador->tutorLegal_id = 2;
+        $conquistador->locale = 'es';
         $conquistador->rol = 'Amigo';
         $conquistador->save();
     }

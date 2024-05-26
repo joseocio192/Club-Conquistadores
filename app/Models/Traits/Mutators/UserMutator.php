@@ -8,9 +8,9 @@ trait UserMutator
 {
     use Translations;
 
-    public function getNombreAttribute($value)
+    public function getNameAttribute($value)
     {
-        return $this->Translation('nombre', $value);
+        return $this->Translation('name', $value);
     }
 
     public function getApellidoAttribute($value)
@@ -20,7 +20,14 @@ trait UserMutator
 
     public function getNombreCompletoAttribute()
     {
-        return $this->Translation('nombre_completo', $this->nombre . ' ' . $this->apellido);
+        return $this->Translation('name', $this->name) . ' ' . $this->Translation('apellido', $this->apellido);
+    }
+
+    public function getDireccionAttribute()
+    {
+        return $this->calle . ' ' . $this->numero_exterior . ' ' . $this->numero_interior . ', '
+            . $this->colonia . ', ' . $this->ciudad->nombre . ', '
+            . $this->ciudad->municipio->nombre . ', ' . $this->ciudad->municipio->estado->nombre;
     }
 
     public function getSexoAttribute($value)
@@ -58,7 +65,7 @@ trait UserMutator
 
     public function getRolAttribute($value)
     {
-        return $this->Translation('rol', $value);
+        return $this->translation('rol', $value);
     }
 
     public function setRolAttribute($value)
