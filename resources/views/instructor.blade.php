@@ -101,6 +101,7 @@
                         <button class="btnEnviar" type="submit">Enviar</button>
                     </form>
 
+                    <!--************************************ Tabla Asistencia ************************************-->
                     <h3>Asistencia</h3>
                     <form action="{{ route('instructor.definer') }}" method="post">
                         @csrf
@@ -109,13 +110,9 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
-                                    @if ($asistencias->count() == 0)
-                                        <th>No hay asistencias</th>
-                                    @else
-                                        @foreach ($asistencias as $asistencia)
-                                            <th>{{ $asistencia->fecha }}</th>
-                                        @endforeach
-                                    @endif
+                                    <th>Fecha</th>
+                                    <th>Asistencia</th>
+                                    <th> Nivel de Pulcritud</th>
                                     <th class="thBtnDia">
                                         <button class="btnDia" type="submit" name="adddia">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -134,51 +131,37 @@
                             </thead>
                             @foreach ($conquistadores as $conquistador)
                                 <tr>
-                                    <td>{{ $conquistador->user->name }}</td>
-                                    @if ($conquistador->asistencias && $conquistador->asistencias->count() == 0)
-                                        <td>
-                                            <div class="divCheckbox">
-                                                <input type="checkbox" 
-                                                name="asistencia_{{ $conquistador->id . '-' . $asistencias[0]->id }}"
-                                                value="1"/>
-                                                <select>
-                                                    name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
-                                                    <option value="1" @if ($asistencia->pivot->pulcritud == 1) selected @endif>1
-                                                    </option>
-                                                    <option value="2" @if ($asistencia->pivot->pulcritud == 2) selected @endif>2
-                                                    </option>
-                                                    <option value="3" @if ($asistencia->pivot->pulcritud == 3) selected @endif>3
-                                                    </option>
-                                                    <option value="4" @if ($asistencia->pivot->pulcritud == 4) selected @endif>4
-                                                    </option>
-                                                    <option value="5" @if ($asistencia->pivot->pulcritud == 5) selected @endif>5
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                    @else
-                                        @foreach ($conquistador->asistencia as $asistencia)
-                                            @if ($asistencia->id_clase === $clase->id)
-                                                <td >
-                                                    <input type="checkbox"
-                                                        name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}"
-                                                        value="1" @if ($asistencia->pivot->asistio == 1) checked @endif>
-                                                    <select class="selectPulcritud"
-                                                        name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
-                                                        <option value="1"
-                                                            @if ($asistencia->pivot->pulcritud == 1) selected @endif>1</option>
-                                                        <option value="2"
-                                                            @if ($asistencia->pivot->pulcritud == 2) selected @endif>2</option>
-                                                        <option value="3"
-                                                            @if ($asistencia->pivot->pulcritud == 3) selected @endif>3</option>
-                                                        <option value="4"
-                                                            @if ($asistencia->pivot->pulcritud == 4) selected @endif>4</option>
-                                                        <option value="5"
-                                                            @if ($asistencia->pivot->pulcritud == 5) selected @endif>5</option>
-                                                    </select>
-                                                </td>
-                                            @endif
-                                        @endforeach
+                                    
+                                    @if ($asistencias->count() == 0)
+                                        <th>No hay asistencias</th>
+                                    @else                      
+                                                @foreach ($conquistador->asistencia as $asistencia)
+                                                    @if ($asistencia->id_clase === $clase->id)
+                                                        <td>{{ $conquistador->user->name }}</td>
+                                                        <th>{{ $asistencia->fecha }}</th>
+                                                        <td >
+                                                            <input type="checkbox"
+                                                                name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}"
+                                                                value="1" @if ($asistencia->pivot->asistio == 1) checked @endif
+                                                            >
+                                                        </td>
+                                                        <td>
+                                                            <select class="selectPulcritud"
+                                                                name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
+                                                                <option value="1"
+                                                                    @if ($asistencia->pivot->pulcritud == 1) selected @endif>1</option>
+                                                                <option value="2"
+                                                                    @if ($asistencia->pivot->pulcritud == 2) selected @endif>2</option>
+                                                                <option value="3"
+                                                                    @if ($asistencia->pivot->pulcritud == 3) selected @endif>3</option>
+                                                                <option value="4"
+                                                                    @if ($asistencia->pivot->pulcritud == 4) selected @endif>4</option>
+                                                                <option value="5"
+                                                                    @if ($asistencia->pivot->pulcritud == 5) selected @endif>5</option>
+                                                            </select>
+                                                        </td>
+                                                    @endif
+                                                @endforeach
                                     @endif
                                 </tr>
                             @endforeach
@@ -186,6 +169,7 @@
                         <button class="btnEnviar" type="submit" name="save">Enviar</button>
                     </form>
 
+                    <!--************************************ Añadir Alumnos ************************************-->
                     <h3 class="h3AddAlumno">Añadir alumnos a la clase</h3>
                     <form class="frmAlmTar" action="{{ route('instructor.anadirAlumnos') }}" method="post">
                         @csrf
@@ -195,6 +179,7 @@
                         <button class="my-button" type="submit">Añadir</button>
                     </form>
 
+                    <!--************************************ Eliminar Alumnos ************************************-->
                     <h3>Eliminar alumnos de la clase</h3>
                     <form class="frmAlmTar" action="{{ route('instructor.eliminarAlumnos') }}" method="post">
                         @csrf
@@ -204,6 +189,7 @@
                         <button class="my-button" type="submit">Eliminar</button>
                     </form>
 
+                    <!--************************************ Crear Tarea ************************************-->
                     <h3>Crear tarea</h3>
                     <form class="frmAlmTar" action="{{ route('instructor.crearTarea') }}" method="post">
                         @csrf
@@ -217,6 +203,7 @@
                         <button class="my-button" type="submit">Crear</button>
                     </form>
 
+                    <!--************************************ Modificar Tarea ************************************-->
                     <h3>Modificar tarea</h3>
                     <form class="frmAlmTar" action="{{ route('instructor.modificarTarea') }}" method="post">
                         @csrf
@@ -235,7 +222,7 @@
             @endif
 
             <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
-
+            <!--************************************ Gestionar clases ************************************-->
             @if ($status == 'crear')
             <div class="divGestionarClases"> 
                 <form action="{{ route('instructor.crear') }}" method="post">
@@ -284,6 +271,7 @@
                 @csrf
             </div>
             @endif
+            <!--************************************ Mostrar tarea ************************************-->
             @if ($status == 'Mostar Tarea')
             <div class="divMostrarTarea">
                 <h2>{{ $tarea->nombre }}</h2>
@@ -306,6 +294,8 @@
                 </form>
             </div>
             @endif
+
+            <!--************************************ Mostar Conquistador ************************************-->
             @if ($status == 'Mostar Conquistador')
             <div class="divTusDatos"> 
                 <div class="divDatos">
@@ -350,6 +340,7 @@
                 </div>
             </div>
             @endif
+            <!--************************************ Mostar Datos ************************************-->
             @if ($status == 'nada')
                     <div class="divTusDatos"> 
                         <div class="divDatos">
