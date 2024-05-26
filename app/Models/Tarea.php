@@ -7,17 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+use App\Events\TareaSaved;
+use App\Models\Traits\Mutators\TareaMutator;
+
 class Tarea extends Model
 {
-    use HasFactory;
-    protected $table='Tarea';
-    protected $fillable=[
+    use HasFactory,
+        TareaMutator;
+
+    protected $table = 'Tarea';
+    protected $fillable = [
         'clase_id',
         'nombre',
         'descripcion',
         'fecha',
         'locale',
-];
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => TareaSaved::class
+    ];
 
     public function clase(): BelongsTo
     {
@@ -28,5 +37,4 @@ class Tarea extends Model
     {
         return $this->belongsToMany(Conquistador::class, 'tareaxconquistador', 'tarea_id', 'conquistador')->withPivot('completada');
     }
-
 }

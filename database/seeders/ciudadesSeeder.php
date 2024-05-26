@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Ciudad;
 
-class ciudadesSeeder extends Seeder
+class CiudadesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -40,7 +40,5 @@ class ciudadesSeeder extends Seeder
         $ciudad->nombre = 'San jose del cabo';
         $ciudad->municipio_id = 7;
         $ciudad->save();
-
-
     }
 }

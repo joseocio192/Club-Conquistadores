@@ -23,7 +23,7 @@ class CheckInstructor
     {
         $loginurl = '/login';
         $permisos = 'No tienes permiso para acceder a esta página. Por favor, inicia sesión';
-        if (!Auth::check()) { // I added this check to make sure the user is logged in
+        if (!Auth::check()) {
             return redirect($loginurl)->withErrors($permisos);
         }
         $user = Auth::user();

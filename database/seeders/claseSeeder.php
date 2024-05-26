@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Clase;
 use App\Models\Clase_xalumno;
 
-class claseSeeder extends Seeder
+class ClaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
