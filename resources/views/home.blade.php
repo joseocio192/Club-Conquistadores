@@ -28,19 +28,19 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center">Club de Conquistadores</h1>
-        <p class="text-center">¡Bienvenido!</p>
-        <p class="text-center">Por favor, inicia sesión o regístrate para continuar.</p>
+        <h1 class="text-center">@lang('app.title')</h1>
+        <p class="text-center">@lang('app.welcome')</p>
+        <p class="text-center">@lang('app.sign_in_or_register_home')</p>
         <form action="{{ route('login') }}" method="GET">
-            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            <button type="submit" class="btn btn-primary">@lang('app-login')</button>
         </form>
         <form action="{{ route('registerTutorLegal') }}" method="GET">
-            <button type="submit" class="btn btn-primary">Registrar tutor legal</button>
+            <button type="submit" class="btn btn-primary">@lang('app.register_legal_guardian')</button>
         </form>
         <form action="{{ route('register') }}" method="GET">
-            <button type="submit" class="btn btn-primary">Registrar conquistador</button>
+            <button type="submit" class="btn btn-primary">@lang('app.register_Pathfinder')</button>
         </form>
-        <p class="text-center">¡Gracias por visitarnos!</p>
+        <p class="text-center">@lang('app.thank_you_message_for_visit')</p>
     </div>
 </body>
 </html>
