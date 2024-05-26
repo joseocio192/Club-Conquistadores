@@ -21,7 +21,7 @@ use App\Http\Controllers\MunicipioPaisController;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 
 Route::get('/welcome', function () {

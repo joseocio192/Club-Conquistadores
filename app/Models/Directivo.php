@@ -7,14 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use PhpParser\Node\Scalar\MagicConst\Dir;
+
+use App\Events\DirectivoSaved;
+use App\Models\Traits\Mutators\DirectivoMutator;
 
 class Directivo extends Model
 {
-    use HasFactory;
-    protected $table ='Directivo';
-    protected $fillable= [
+    use HasFactory,
+        DirectivoMutator;
+
+    protected $table = 'Directivo';
+    protected $fillable = [
         'jefe_id',
         'ciudad_id',
         'municipio_id',
@@ -23,6 +26,10 @@ class Directivo extends Model
         'user_id',
         'rol',
         'activo'
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => DirectivoSaved::class
     ];
 
     public function jefe(): BelongsTo
@@ -48,7 +55,6 @@ class Directivo extends Model
     public function estado(): BelongsTo
     {
         return $this->belongsTo(Estados::class, 'estado_id');
-
     }
 
     public function pais(): BelongsTo
@@ -70,5 +76,4 @@ class Directivo extends Model
     {
         return $this->hasMany(Instructor::class, 'jefe_id');
     }
-
 }

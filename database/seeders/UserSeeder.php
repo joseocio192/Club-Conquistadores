@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
-class userSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -26,10 +25,10 @@ class userSeeder extends Seeder
         $user->colonia = 'Colonia';
         $user->ciudad_id = 1;
         $user->codigo_postal = '12345';
+        $user->locale = 'es';
         $user->sexo = 'Hombre';
         $user->rol = 'conquistador';
         $user->Vigente = 1;
-        $user->locale = 'es';
         $user->save();
 
         $user = new User();
@@ -45,9 +44,9 @@ class userSeeder extends Seeder
         $user->colonia = 'Colonia';
         $user->ciudad_id = 1;
         $user->codigo_postal = '12345';
+        $user->locale = 'es';
         $user->sexo = 'Hombre';
         $user->rol = 'tutor';
-        $user->locale = 'es';
         $user->save();
 
         $user = new User();
@@ -62,9 +61,9 @@ class userSeeder extends Seeder
         $user->colonia = 'Colonia';
         $user->ciudad_id = 1;
         $user->codigo_postal = '80020';
+        $user->locale = 'es';
         $user->sexo = 'Hombre';
         $user->rol = 'instructor';
-        $user->locale = 'es';
         $user->save();
 
         $directivo = new User();
@@ -79,17 +78,17 @@ class userSeeder extends Seeder
         $directivo->colonia = 'Colonia';
         $directivo->ciudad_id = 1;
         $directivo->codigo_postal = '80020';
+        $directivo->locale = 'es';
         $directivo->sexo = 'Hombre';
         $directivo->rol = 'directivo';
-        $directivo->locale = 'es';
         $directivo->save();
 
         $directivo = new \App\Models\Directivo();
         $directivo->user_id = 4;
         $directivo->jefe_id = 1;
+        $directivo->locale = 'es';
         $directivo->rol = 'Director';
         $directivo->activo = 1;
-        $directivo->locale = 'es';
         $directivo->save();
     }
 }

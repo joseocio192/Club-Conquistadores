@@ -61,8 +61,9 @@
                     <button type="submit">
                         @lang('app.login')
                     </button>
-                    <button type="button" onclick="window.history.go(-1); return false;"
-                        class="botonInicio">@lang('app.back_home')</button>
+                    <button type="button" onclick="window.location.href='{{ route('home') }}'" class="botonInicio">
+                        @lang('app.back_home')
+                    </button>
                     @if (Route::has('password.request'))
                         <a class="btn btn-link" href="{{ route('password.request') }}">
                             @lang('app.forgot_password')
