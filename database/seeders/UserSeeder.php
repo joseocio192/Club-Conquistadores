@@ -91,5 +91,24 @@ class userSeeder extends Seeder
         $directivo->activo = 1;
         $directivo->locale = 'es';
         $directivo->save();
+
+        $user = new User();
+        $user->name = 'Jose';
+        $user->apellido = 'Ocio';
+        $user->email = 'ocio@gmail.com';
+        $user->password = bcrypt('12345678');
+        $user->telefono = '6672318213';
+        $user->fecha_nacimiento = '2000-01-01';
+        $user->Calle = 'Calle';
+        $user->numero_exterior = '123';
+        $user->numero_interior = '123';
+        $user->colonia = 'Colonia';
+        $user->ciudad_id = 1;
+        $user->codigo_postal = '12345';
+        $user->sexo = 'Hombre';
+        $user->rol = 'conquistador';
+        $user->Vigente = 1;
+        $user->locale = 'es';
+        $user->save();
     }
 }

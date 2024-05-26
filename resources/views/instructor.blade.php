@@ -14,7 +14,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body>    
+<body>
+    <!--************************************ Sidebar ************************************-->    
     <div class="sidenav">
         <h1 class="text-center">Instructor: {{ $user->name }}</h1>
             <a href="{{ route('instructor.index') }}">
@@ -58,10 +59,12 @@
     </div>
 
     <div class="main">
+        <!--************************************ Clases ************************************-->
             @if ($status == 'clase')
                 {{ Log::info($clase) }}
                 <div class="divTareasAsis">
                     <h2>{{ $clase->nombre}}</h2>
+                    <!--************************************ Tabla Tareas ************************************-->
                     <h3>Tareas</h3>
                     <form action={{ route('instructor.sendhw') }} method="post">
                         @csrf
@@ -131,37 +134,38 @@
                             </thead>
                             @foreach ($conquistadores as $conquistador)
                                 <tr>
-                                    
                                     @if ($asistencias->count() == 0)
                                         <th>No hay asistencias</th>
                                     @else                      
-                                                @foreach ($conquistador->asistencia as $asistencia)
-                                                    @if ($asistencia->id_clase === $clase->id)
-                                                        <td>{{ $conquistador->user->name }}</td>
-                                                        <th>{{ $asistencia->fecha }}</th>
-                                                        <td >
-                                                            <input type="checkbox"
-                                                                name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}"
-                                                                value="1" @if ($asistencia->pivot->asistio == 1) checked @endif
-                                                            >
-                                                        </td>
-                                                        <td>
-                                                            <select class="selectPulcritud"
-                                                                name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
-                                                                <option value="1"
-                                                                    @if ($asistencia->pivot->pulcritud == 1) selected @endif>1</option>
-                                                                <option value="2"
-                                                                    @if ($asistencia->pivot->pulcritud == 2) selected @endif>2</option>
-                                                                <option value="3"
-                                                                    @if ($asistencia->pivot->pulcritud == 3) selected @endif>3</option>
-                                                                <option value="4"
-                                                                    @if ($asistencia->pivot->pulcritud == 4) selected @endif>4</option>
-                                                                <option value="5"
-                                                                    @if ($asistencia->pivot->pulcritud == 5) selected @endif>5</option>
-                                                            </select>
-                                                        </td>
-                                                    @endif
-                                                @endforeach
+                                        @foreach ($conquistador->asistencia as $asistencia)
+                                            @if ($asistencia->id_clase === $clase->id)
+                                                <tr>
+                                                    <td>{{ $conquistador->user->name }}</td>
+                                                    <th>{{ $asistencia->fecha }}</th>
+                                                    <td>
+                                                        <input type="checkbox"
+                                                            name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}"
+                                                            value="1" @if ($asistencia->pivot->asistio == 1) checked @endif
+                                                        >
+                                                    </td>
+                                                    <td>
+                                                        <select class="selectPulcritud"
+                                                            name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
+                                                            <option value="1"
+                                                                @if ($asistencia->pivot->pulcritud == 1) selected @endif>1</option>
+                                                            <option value="2"
+                                                                @if ($asistencia->pivot->pulcritud == 2) selected @endif>2</option>
+                                                            <option value="3"
+                                                                @if ($asistencia->pivot->pulcritud == 3) selected @endif>3</option>
+                                                            <option value="4"
+                                                                @if ($asistencia->pivot->pulcritud == 4) selected @endif>4</option>
+                                                            <option value="5"
+                                                                @if ($asistencia->pivot->pulcritud == 5) selected @endif>5</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
                                     @endif
                                 </tr>
                             @endforeach
