@@ -87,7 +87,7 @@ trait UserMutator
         $roles = [
             'es' => ['administrador', 'conquistador', 'tutor', 'directivo', 'instructor'],
             'en' => ['administrator', 'conqueror', 'tutor', 'director', 'instructor'],
-            'ko' => ['관리자', '정복자', '교사', '이사', '강사'],
+            'ko' => ['관리자', '정복자', '교사', '이사', '선생'],
             'zh-Hans' => ['管理员', '征服者', '导师', '董事', '教练'],
             'ja' => ['管理者', '征服者', 'チューター', 'ディレクター', 'インストラクター'],
             'fr' => ['administrateur', 'conquérant', 'tuteur', 'directeur', 'instructeur']
