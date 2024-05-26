@@ -11,6 +11,8 @@ use App\Models\User;
 use App\Models\Clase;
 use App\Models\Instructor;
 
+use Illuminate\Support\Facades\Log;
+
 class CheckInstructor
 {
     /**
@@ -27,8 +29,17 @@ class CheckInstructor
             return redirect($loginurl)->withErrors($permisos);
         }
         $user = Auth::user();
-        if ($user->rol != 'instructor') {
-            return redirect($loginurl)->withErrors($permisos);
+        Log::info('User logged in', ['user' => $user->rol]);
+        switch ($user->rol) {
+            case 'instructor':
+            case '선생':
+            case '教练':
+            case 'インストラクター':
+            case 'instructeur':
+                break;
+            default:
+                return redirect($loginurl)->withErrors($permisos);
+                break;
         }
         $claseId = $request->route('id');
         if (Clase::find($claseId) == null) {
