@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
@@ -8,6 +9,7 @@
     </style>
     <title>@lang('app.Pathfinders_Club')</title>
 </head>
+
 <body>
         <div class="MainLayout">
             <nav>
@@ -37,12 +39,12 @@
                         <li>Luis Xavier Acosta Chang</li>
                         <li>Manuel Alejandro Amezola Chaidez</li>
                     </ul>
-
-                </div>
-            </footer>
-        </div>
-        <aside>
-            <img class="LogoAside" src="{{ asset('/imgs/logo2.webp') }}"></img>
-        </aside>
+            </div>
+        </footer>
+    </div>
+    <aside>
+        <img class="LogoAside" src="{{ asset('/imgs/logoSimple.webp') }}"></img>
+    </aside>
 </body>
+
 </html>
