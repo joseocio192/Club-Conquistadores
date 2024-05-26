@@ -43,7 +43,6 @@ thead a {
 td, td a {
     color: #31363F;
 }
-
 .divTareasAsis h2{
     margin-left: 1.5em;
     color: #222831;
@@ -196,11 +195,15 @@ body {
     box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
 }
 
-.divDatos {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1em;
-    margin-left: 2em;
+.divTareasAsis {
+    border: 2px solid #76ABAE;
+    border-radius: 20px;
+
+    width: 72em;
+    height: 50.75em;
+
+    background-color: #eee;
+    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
 }
 
 .divTareasAsis {
@@ -441,13 +444,11 @@ tbody tr:last-of-type {
 
     color: #eee;
     background-color: #76ABAE;
-
     transition: all .2s ease;
 }
 
 .btnModTar{
     cursor: pointer;
-    
     height: 3em;
     width: 7em;
 
@@ -462,7 +463,6 @@ tbody tr:last-of-type {
 
     color: #eee;
     background-color: #76ABAE;
-
     transition: all .2s ease;
 }
 
@@ -531,6 +531,7 @@ tbody tr:last-of-type {
 }
 
 /********************************************* Inputs *********************************************/
+
 .divCrearClase div input {
     width: 12em;
 
