@@ -11,7 +11,7 @@ class UserSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {
+    {   
         $user = new User();
         $user->name = 'Ilufote';
         $user->apellido = 'garcia';
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
         $user->password = bcrypt('12345678');
         $user->telefono = '6675463263';
         $user->fecha_nacimiento = '2000-01-01';
-        $user->Calle = 'Calle';
+        $user->Calle = 'Calle'; 
         $user->numero_exterior = '123';
         $user->numero_interior = '123';
         $user->colonia = 'Colonia';
@@ -90,5 +90,24 @@ class UserSeeder extends Seeder
         $directivo->rol = 'Director';
         $directivo->activo = 1;
         $directivo->save();
+
+        $user = new User();
+        $user->name = 'Jose';
+        $user->apellido = 'Ocio';
+        $user->email = 'ocio@gmail.com';
+        $user->password = bcrypt('12345678');
+        $user->telefono = '6672318213';
+        $user->fecha_nacimiento = '2000-01-01';
+        $user->Calle = 'Calle';
+        $user->numero_exterior = '123';
+        $user->numero_interior = '123';
+        $user->colonia = 'Colonia';
+        $user->ciudad_id = 1;
+        $user->codigo_postal = '12345';
+        $user->sexo = 'Hombre';
+        $user->rol = 'conquistador';
+        $user->Vigente = 1;
+        $user->locale = 'es';
+        $user->save();
     }
 }
