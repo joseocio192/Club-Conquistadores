@@ -79,9 +79,17 @@ body {
 
 table {
     border-collapse: collapse;
-    width: 95%;
+    min-width: 40em;
+
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-bottom: .5em;
+
     border-radius: 5px 5px 0 0;
-    overflow: hidden;
+    font-size: 1.1em;
+    font-weight: bold;
+    
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.48);
 }
 
 thead tr th a {
@@ -91,17 +99,28 @@ thead tr th a {
     font-weight: bold;
 }
 
-td,
-th {
-    border: 2px solid #76ABAE;
-    color: #31363F;
-    border-radius: 5px;
+thead {
+    background-color: #76ABAE;
+    color: #eee;
     text-align: left;
-    padding: 8px;
+    font-weight: bold;
 }
 
-tr:nth-child(even) {
-    background-color: #eee;
+td,
+th {
+    padding: 12px 15px;
+}
+
+tr {
+    border-bottom: 1px solid #76ABAE;
+}
+
+td:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr {
+    text-align: center;
 }
 
 .divTusDatos {
@@ -179,6 +198,47 @@ tr:nth-child(even) {
     cursor: pointer;
     transition: all .3s ease;
 }
+
+/* Inputs */
+input[type="checkbox"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    height: 1.25em;
+    width: 1.25em;
+
+    border: 1px solid #76ABAE;
+
+    cursor: pointer;
+}
+
+input[type="checkbox"]:after {
+    font-weight: 900;
+    font-size: 1em;
+
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+
+    color: #ffffff;
+    display: none;
+}
+  
+input[type="checkbox"]:hover {
+    background-color: #a5a5a5;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #76ABAE;
+}
+
+input[type="checkbox"]:checked:after {
+    display: block;
+}
+
 /* Hover */
 .sidenav a:hover {
     cursor: pointer;
