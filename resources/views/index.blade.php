@@ -39,12 +39,13 @@
                         <li>Luis Xavier Acosta Chang</li>
                         <li>Manuel Alejandro Amezola Chaidez</li>
                     </ul>
-            </div>
-        </footer>
-    </div>
-    <aside>
-        <img class="LogoAside" src="{{ asset('/imgs/logoSimple.webp') }}"></img>
-    </aside>
+                </div>
+            </footer>
+        </div>
+        <aside>
+            <img class="LogoAside" src="{{ asset('/imgs/logoSimple.webp') }}"></img>
+        </aside>
+
 </body>
 
 </html>

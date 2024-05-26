@@ -29,5 +29,11 @@ class claseSeeder extends Seeder
         $claseAlumno->clase_id = 1;
         $claseAlumno->conquistador = 1;
         $claseAlumno->save();
+
+        $claseAlumno = new Clase_xalumno();
+        $claseAlumno->clase_id = 1;
+        $claseAlumno->conquistador = 2;
+        $claseAlumno->save();
+
     }
 }
