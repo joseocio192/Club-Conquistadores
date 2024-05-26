@@ -350,6 +350,7 @@
                     <div class="divTusDatos"> 
                         <div class="divDatos">
                             <h2>Tus datos</h2>
+                            <button class="btnModificarTusDatos" type="submit">Modificar</button>
                         </div>
                         <div class="divDatos">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" >

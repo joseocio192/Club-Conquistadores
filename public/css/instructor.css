@@ -428,7 +428,6 @@ tbody tr:last-of-type {
     transition: all .3s ease;
 }
 
-
 .frmAlmTar button {
     cursor: pointer;
 
@@ -508,6 +507,27 @@ tbody tr:last-of-type {
 .thBtnDia {
     text-align: start;
     width: 10em;
+}
+
+.btnModificarTusDatos {
+    cursor: pointer;
+    
+    height: 2.25em;
+    width: 7em;
+
+    margin-left: auto;
+    margin-right: 2em;
+    margin-top: 1em;
+
+    border:2px solid #222831;
+    border-radius: 5px;
+
+    font-size: 1.1em;
+    font-weight: 500;
+
+    color: #eee;
+    background-color: #222831;
+    transition: all .3s ease;
 }
 
 /********************************************* Inputs *********************************************/
@@ -671,7 +691,7 @@ input[type="checkbox"]:checked:after {
     background-color: #222831;
 }
 
-.btnEnviar:hover {
+.btnEnviar:hover, .btnModificarTusDatos:hover {
     background-color: #4d5866;
     border: 2px solid #4d5866;
 }
