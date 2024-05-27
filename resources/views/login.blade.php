@@ -14,7 +14,9 @@
 <body>
     <div class="card">
         <div class="card-header">
-            <img src="{{ asset('/imgs/logoSimple.webp') }}" alt="Club Conquistadores Logo">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('/imgs/logoSimple.webp') }}" alt="Club Conquistadores Logo">
+            </a>
             <h1>@lang('app.login')</h1>
         </div>
 
