@@ -2,101 +2,33 @@
 <html>
 
 <head>
-    <!-- ... -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <!-- ... -->
+    <link href="{{ asset('/css/tutor.css') }}" rel="stylesheet">
     <style>
-        .sidenav {
-            height: 100%;
-            /* Full-height: remove this if you want "auto" height */
-            width: 160px;
-            /* Set the width of the sidebar */
-            position: fixed;
-            /* Fixed Sidebar (stay in place on scroll) */
-            z-index: 1;
-            /* Stay on top */
-            top: 0;
-            /* Stay at the top */
-            left: 0;
-            background-color: #111;
-            /* Black */
-            overflow-x: hidden;
-            /* Disable horizontal scroll */
-            padding-top: 20px;
-        }
-
-        /* The navigation menu links */
-        .sidenav a {
-            padding: 6px 8px 6px 16px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-        }
-
-        /* When you mouse over the navigation links, change their color */
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-
-        /* Style page content */
-        .main {
-            margin-left: 160px;
-            /* Same as the width of the sidebar */
-            padding: 0px 10px;
-        }
-
-        .my-button-loggout {
-            background-color: #4CAF50;
-            /* Green */
-            border: none;
-            color: white;
-            padding: 4px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            position: absolute;
-            bottom: 0;
-            /* Your existing CSS */
-        }
-
-        .my-button-loggout:hover {
-            background-color: #45a049;
-        }
-
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     </style>
 </head>
 
 <body>
-    <h1 class="text-center">Tutor: {{$user->name}} </h1>
     <div class="sidenav">
-        <a href="{{route('tutor')}}">Home</a>
-        <a href="{{route('register.tutor', $user->id)}}">Añadir pupilo</a>
+        <h1 class="text-center">Tutor: {{$user->name}} </h1>
+        <a href="{{route('tutor')}}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path d="M280.4 148.3L96 300.1V464a16 16 0 0 0 16 16l112.1-.3a16 16 0 0 0 15.9-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.6a16 16 0 0 0 16 16.1L464 480a16 16 0 0 0 16-16V300L295.7 148.3a12.2 12.2 0 0 0 -15.3 0zM571.6 251.5L488 182.6V44.1a12 12 0 0 0 -12-12h-56a12 12 0 0 0 -12 12v72.6L318.5 43a48 48 0 0 0 -61 0L4.3 251.5a12 12 0 0 0 -1.6 16.9l25.5 31A12 12 0 0 0 45.2 301l235.2-193.7a12.2 12.2 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0 -1.7-16.9z"/>
+            </svg>
+            Home</a>
+        <a href="{{route('register.tutor', $user->id)}}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/>
+            </svg>
+            Añadir pupilo</a>
         @foreach ($pupilos as $pupilo)
         <a href="{{route('tutor.show', $pupilo->id)}}">{{$pupilo->user->name}}</a>
         @endforeach
-        <form action="/logout" method="get">
+        <form class="formLogOut" action="/logout" method="get">
             @csrf
-            <button class="my-button-loggout" type="submit">log out</button>
+            <button class="my-button-loggout" type="submit">Log out</button>
         </form>
     </div>
 
