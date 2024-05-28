@@ -12,6 +12,16 @@ h2 {
     color: #31363F;
 }
 
+.h2Pupilos {
+    font-weight: 500;
+    margin-top: 1.5em;
+    margin-bottom: .5em;
+}
+
+.divAceptarPupilos h1 {
+    margin-bottom: 0;
+}
+
 .divDatos h3 {
     margin-bottom: .6em;
 }
@@ -147,7 +157,7 @@ tr:nth-child(even) {
 
     text-align: center;
     font-weight: 600;
-    font-size: 1.1em;
+    font-size: 1em;
 
     background-color: #222831;
     color: #EEEEEE;

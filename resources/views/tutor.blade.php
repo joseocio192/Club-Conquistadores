@@ -77,9 +77,6 @@
                     $hijo->user->numero_exterior }}
                 </h3>
             </div>
-            
-            
-            
             @endif
         </ul>
     </div>

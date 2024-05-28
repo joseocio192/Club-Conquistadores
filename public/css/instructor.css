@@ -660,7 +660,7 @@ input[type="checkbox"]:checked:after {
 }
 
 .my-button:hover, .btnModTar:hover {
-    background-color: #53797b;
+    background-color: #53888B;
 }
 
 .my-button-loggout:hover {
@@ -684,8 +684,8 @@ input[type="checkbox"]:checked:after {
 }
 
 .btnEnviar:hover, .btnModificarTusDatos:hover {
-    background-color: #4d5866;
-    border: 2px solid #4d5866;
+    background-color: #404352;
+    border: 2px solid #404352;
 }
 
 .divMostrarTarea button:hover {
