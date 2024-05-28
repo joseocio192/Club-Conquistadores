@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('colonia', 100);
             $table->foreignId('ciudad_id')->references('id')->on('Ciudad');
             $table->string('codigo_postal');
-            $table->string('locale', 5)->default('es')->nullable();
+            $table->string('locale')->default('es')->nullable();
             $table->string('sexo', 30);
             $table->string('rol', 35);
             $table->boolean('vigente')->default(1);
