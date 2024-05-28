@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Pais', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre', 100);
-            $table->timestamps();
-            $table->string('locale', 10);
+        Schema::create('onecodeuse', function (Blueprint $table) {
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('onecode');
+            $table->boolean('used');
+            $table->softDeletes();
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Pais');
+        Schema::dropIfExists('onecodeuse');
     }
 };

@@ -42,19 +42,30 @@
         <ul>
             @if ($status == 'nada')
             <div class="divAceptarPupilos">
+                @if (count($pupilos) == 0)
+                <h2>No hay pupilos por aceptar</h2>
+                @else
                 <h1>Pupilos por aceptar</h1>
-                @foreach ($pupilosSinAceptar as $pupilosn)
-                <form class="frmAceptarPupilos" action="{{ route('tutor.aceptar') }}" method="post">
-                @csrf
-                    <h2 class="h2Pupilos">{{$pupilosn->user->name}}</h2>
-                    <input type="hidden" name="idpupilo" value="{{$pupilosn->id}}">
-                    <div>
-                        <button class="btn" type="submit">Aceptar</button>
-                        <button class="btn" type="submit">No aceptar</button>
+                @foreach ($pupilos as $pupilo)
+                    <div class="divPupilo">
+                        <h2>{{$pupilo->user->name}}</h2>
+                        <form action="{{route('tutor.accept', $pupilo->id)}}" method="post">
+                            @csrf
+                            <button type="submit">Aceptar</button>
+                        </form>
                     </div>
-                </form>
-                
+                    @endforeach
+                @endif
+            </div>
+            <div class="divAceptarPupilos">
+                <h2>Codigos</h2>
+                @foreach ($codigos as $codigo)
+                <h3>{{$codigo->onecode}}</h3>
                 @endforeach
+                <form action="{{route('tutor.generateOneTimeCode')}}" method="post">
+                    @csrf
+                    <button type="submit">Generar codigo</button>
+                </form>
             </div>
             @endif
             @if ($status == 'show')
@@ -72,8 +83,8 @@
                 <h3>Telefono: {{$hijo->user->telefono}}</h3>
                 <h3>Fecha de nacimiento: {{$hijo->user->fecha_nacimiento}}</h3>
                 <h3>Direccion:
-                    {{ $hijo->user->colonia . ' ' . 
-                    $hijo->user->calle . ' ' . 
+                    {{ $hijo->user->colonia . ' ' .
+                    $hijo->user->calle . ' ' .
                     $hijo->user->numero_exterior }}
                 </h3>
             </div>

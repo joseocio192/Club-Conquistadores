@@ -24,8 +24,16 @@ class InstructorController extends Controller
 
         $user = auth()->user();
         $instructor = Instructor::where('user_id', $user->id)->first();
-        Log:info($instructor);
+
+        if (!$instructor) {
+            return redirect()->route('home');
+        }
+
+        Log:
+        info($instructor);
+
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
+
         $status = "nada";
         return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status'));
     }
@@ -131,6 +139,25 @@ class InstructorController extends Controller
             }
         }
 
+        //check if the students are already in the class
+        foreach ($conquistador_ids as $conquistador_id) {
+            if ($clase->conquistadores->contains(trim($conquistador_id))) {
+                return back()->withErrors(['alumnos' => 'One or more students are already in the class.']);
+            }
+        }
+
+        //attach tareas to the students
+        $tareas = Tarea::where('clase_id', $clase->id)->get();
+        foreach ($conquistador_ids as $conquistador_id) {
+            $conquistador = Conquistador::find($conquistador_id);
+            foreach ($tareas as $tarea) {
+                //check if the task is already assigned to the student
+                if (!$conquistador->tareas->contains($tarea->id)) {
+                    $conquistador->tareas()->attach($tarea->id, ['completada' => 0]);
+                }
+            }
+        }
+
         // Attach each Conquistador to the Clase
         foreach ($conquistador_ids as $conquistador_id) {
             // Check if the Conquistador is already attached to the Clase
@@ -140,6 +167,7 @@ class InstructorController extends Controller
                 return back()->withErrors(['alumnos' => 'One or more students are already in the class.']);
             }
         }
+
 
         return redirect()->back()->with('success', 'Students added successfully.');
     }
@@ -250,6 +278,14 @@ class InstructorController extends Controller
         $dia = new Asistencia();
         $dia->id_clase = $request->clase_id;
         $dia->fecha = date('Y-m-d');
+        //make sure the date is unique for the class
+        $clase = Clase::find($request->clase_id);
+        $asistencias = Asistencia::where('id_clase', $clase->id)->get();
+        foreach ($asistencias as $asistencia) {
+            if ($asistencia->fecha == $dia->fecha) {
+                return back()->withErrors(['clase_id' => 'There is already a day with this date.']);
+            }
+        }
         $dia->save();
 
         //assign the asistencia to all students in the class

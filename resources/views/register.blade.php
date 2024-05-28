@@ -1,10 +1,18 @@
 <!-- resources/views/register.blade.php -->
 <!DOCTYPE html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link href="{{ asset('/css/register.css') }}" rel="stylesheet">
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-</style>
+<head>
+    <title>Registro</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="{{ asset('/css/register.css') }}" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+</head>
+
+>>>>>>> 320063c81f47333bcc637169f0273f6d73bf60dc
 <form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
     @csrf
 
@@ -124,11 +132,12 @@
         </div>
 
         @if ($status=='tutor' )
-        <input id="tutorLegal_id" type="hidden" name="tutorLegal_id" required value="{{$tutor->id}}"><br>
+        <label for="tutorLegal_id">onecode</label>
+        <input id="tutorLegal_id" type="text" name="onecode" required value="{{$onecode->onecode}}"><br>
         <input type="hidden" name="autorizado" value="1">
         @else
-        <label for="tutorLegal_id">Tutor id</label>
-        <input id="tutorLegal_id" type="text" name="tutorLegal_id" require> <br>
+        <label for="tutorLegal_id">onecode</label>
+        <input id="tutorLegal_id" type="text" name="onecode" require> <br>
         <input type="hidden" name="autorizado" value="0">
         @endif
         <div class="ButtonsDiv">
@@ -148,6 +157,27 @@
     </div>
 
 </form>
+
+@if ($errors->any())
+    <script>
+        let errorsExist = true;
+        let title_error = "{{ __('app.error_title') }}";
+        let error = "{{ __('app.error_message') }}";
+        let button = "{{ __('app.accept_error') }}";
+        let errorList =
+            '@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach';
+
+        if (errorsExist) {
+            Swal.fire({
+                icon: 'error',
+                title: title_error,
+                text: error,
+                confirmButtonText: button,
+                footer: '<ul>' + errorList + '</ul>'
+            });
+        }
+    </script>
+@endif
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -281,3 +311,4 @@
         }
     });
 </script>
+</html>

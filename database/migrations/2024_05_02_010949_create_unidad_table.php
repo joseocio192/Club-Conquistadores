@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->string('logo', 50);
             $table->text('lema');
-            $table->string('locale', 5);
+            $table->string('locale', 10);
             $table->string('sexo', 25);
             $table->timestamps();
         });

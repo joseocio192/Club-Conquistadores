@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->Text('descripcion');
             $table->timestamps();
-            $table->string('locale', 5);
+            $table->string('locale', 10);
         });
     }
 

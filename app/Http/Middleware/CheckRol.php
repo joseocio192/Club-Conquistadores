@@ -17,13 +17,11 @@ class CheckRol
             Log::info("Es verdadero");
             return $next($request);
         }
-        return redirect('/'); // Redirigir a una página de acceso denegado o similar
+        return redirect('/', 403, ['message' => 'No tienes permisos para acceder a esta página']);
     }
 
     private function hasAnyRole($user, $roles)
     {
-        $locale = App::getLocale();
-
         $roleTranslations = [
             'es' => ['administrador' => 'administrator', 'conquistador' => 'conqueror', 'tutor' => 'tutor', 'directivo' => 'director', 'instructor' => 'instructor'],
             'en' => ['administrator', 'conqueror', 'tutor', 'director', 'instructor'],
@@ -32,12 +30,15 @@ class CheckRol
             'ja' => ['管理者' => 'administrator', '征服者' => 'conqueror', 'チューター' => 'tutor', 'ディレクター' => 'director', 'インストラクター' => 'instructor'],
             'fr' => ['administrateur' => 'administrator', 'conquérant' => 'conqueror', 'tuteur' => 'tutor', 'directeur' => 'director', 'instructeur' => 'instructor']
         ];
+
         $firstRole = $roles[0];
+        Log::info($firstRole);
 
         foreach ($roleTranslations[$user->locale] as $key => $value) {
-            if ($firstRole == $key) {
+            if (in_array($key, $roles) || in_array($value, $roles)) {
                 return true;
             }
         }
+        return false;
     }
 }
