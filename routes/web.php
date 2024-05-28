@@ -49,12 +49,16 @@ Route::get('/lang/{locale}', [LocalizationController::class, 'set_Lang']);
 Route::post('/tutor/aceptar', [TutorController::class, 'aceptar'])
     ->name('tutor.aceptar')
     ->middleware('auth', 'rol:tutor');
-Route::get('/tutor/pupilo/{id}', [TutorController::class, 'pupilo'])
+Route::get('/tutor/pupilo/{id}', [TutorController::class, 'show'])
     ->name('tutor.show')
     ->middleware('auth', 'rol:tutor');
 Route::get('/tutor', [TutorController::class, 'index'])
     ->name('tutor')
     ->middleware('auth', 'rol:tutor');
+Route::post('/tutor/generateOneTimeCode', [TutorController::class, 'generateOneTimeCode'])
+    ->name('tutor.generateOneTimeCode')
+    ->middleware('auth', 'rol:tutor');
+
 Route::get('/conquistador/{id}', [ConquistadorController::class, 'clases'])
     ->name('conquistador.clases')
     ->middleware('auth', 'rol:conquistador');

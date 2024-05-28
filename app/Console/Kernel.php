@@ -28,6 +28,11 @@ class Kernel extends ConsoleKernel
                 ]);
             }
         })->everyMinute();
+
+        //reset table oneCodeUse
+        $schedule->call(function () {
+            DB::table('onecodeuse')->delete();
+        })->daily();
     }
 
     /**
