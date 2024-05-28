@@ -14,7 +14,6 @@ class CheckRol
     {
         $user = Auth::user();
         if ($user && $this->hasAnyRole($user, $roles)) {
-            Log::info("Es verdadero");
             return $next($request);
         }
         return redirect('/', 403, ['message' => 'No tienes permisos para acceder a esta página']);
@@ -32,8 +31,6 @@ class CheckRol
         ];
 
         $firstRole = $roles[0];
-        Log::info($firstRole);
-
         foreach ($roleTranslations[$user->locale] as $key => $value) {
             if (in_array($key, $roles) || in_array($value, $roles)) {
                 return true;

@@ -3,6 +3,7 @@
 namespace App\Models\Traits\Mutators;
 
 use App\Traits\Translations;
+use Illuminate\Support\Facades\Log;
 
 trait UserMutator
 {
@@ -41,6 +42,8 @@ trait UserMutator
 
         $allowedSexos = $this->getAllowedSexoByLocale($locale);
         $value = strtolower($value);
+        // imprimir el allowedSexos para ver que trae
+        Log::info($allowedSexos);
 
         if (in_array($value, $allowedSexos)) {
             $this->attributes['sexo'] = $value;
