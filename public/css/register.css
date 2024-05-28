@@ -3,9 +3,8 @@ body {
     height: 118.5vh;
     margin: 0;
     padding: auto;
-    font-family: Arial, sans-serif;
-    background: rgb(118,174,159);
-    background: linear-gradient(90deg, rgba(118,174,159,1) 0%, rgba(118,171,174,1) 47%, rgba(238,238,238,1) 100%);
+    font-family: "Roboto";
+    background: linear-gradient(90deg, rgba(118,174,159,1) 0%, rgba(118,171,174,1) 20%, rgba(238,238,238,1) 100%);
 }
 
 form {
@@ -19,13 +18,13 @@ form {
     padding: 1.25em;
     opacity: 0.7;
     background-color: white;
-    border: 2px solid #31363F;
+    border: 2px solid #222831;
     border-radius: 0.625em;
 }
 
 form label {
     display: block;
-    margin-left:  1.0625em;
+    margin-left:  1.25em;
     margin-top: 0.625em;
     margin-bottom: 0.625em;
     color: #31363F;
@@ -52,8 +51,7 @@ form input[type="password"]:focus,
 form input[type="date"]:focus,
 form select:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    border: 3px solid #4ea4a8;
+    border: 1px solid #4ea4a8;
     background-color: #eeeeee;
     font-family: Verdana;
     font-weight: bold;
@@ -75,8 +73,7 @@ form input[type="email"] {
 
 form input[type="email"]:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    border: 3px solid #4ea4a8;
+    border: 1px solid #4ea4a8;
     background-color: #eeeeee;
     font-family: Verdana;
     font-weight: bold;
@@ -89,24 +86,24 @@ form input[type="email"]:focus {
     border-radius: 6px;
     border-width: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 100%;
+    font-size: 1.07em;
+    font-weight: 500;
     background-color: #76ABAE;
     color: #EEEEEE;
     transform: translateZ(0);
     transition: all .2s,box-shadow .08s ease-in;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
-    box-sizing: border-box;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
     cursor: pointer;
 }
 
 .RegisterBtn:hover {
-    font-size: 1em;
+    font-size: 1.1em;
     color: #EEEEEE;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
 }
 
 .RegisterBtn[disabled] {
     background-color: #ccc;
+    font-weight: 500;
     cursor: not-allowed;
 }
 
@@ -119,12 +116,12 @@ form input[type="email"]:focus {
 }
 
 h1 {
-    color: #31363F;
+    color: #222831;
 }
 
 h2 {
     margin: 0;
-    margin-left: 0.9em;
+    margin-left: 1em;
     margin-bottom: 0.5em;
     font-size: 1.3em;
     align-self: self-start;
@@ -175,13 +172,14 @@ h2 {
     width: 9.6875em;
     border-radius: 6px;
     border-width: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 100%;
+    font-size: 1.07em;
+    font-weight: 500;
     background-color: #76ABAE;
     color: #EEEEEE;
     transform: translateZ(0);
     transition: all .2s,box-shadow .08s ease-in;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
+
     box-sizing: border-box;
     cursor: pointer;
 }
@@ -189,5 +187,4 @@ h2 {
 .HomeBtn:hover {
     font-size: 1.1em;
     color: #EEEEEE;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
 }
