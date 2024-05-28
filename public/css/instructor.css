@@ -163,6 +163,13 @@ table {
     width: 100%;
 }
 
+
+form{
+    width: 1000px;
+    overflow-x: auto;
+}
+
+
 td,
 th {
     border: 2px solid #111;
