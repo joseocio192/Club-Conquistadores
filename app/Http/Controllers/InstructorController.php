@@ -250,6 +250,14 @@ class InstructorController extends Controller
         $dia = new Asistencia();
         $dia->id_clase = $request->clase_id;
         $dia->fecha = date('Y-m-d');
+        //make sure the date is unique for the class
+        $clase = Clase::find($request->clase_id);
+        $asistencias = Asistencia::where('id_clase', $clase->id)->get();
+        foreach ($asistencias as $asistencia) {
+            if ($asistencia->fecha == $dia->fecha) {
+                return back()->withErrors(['clase_id' => 'There is already a day with this date.']);
+            }
+        }
         $dia->save();
 
         //assign the asistencia to all students in the class
