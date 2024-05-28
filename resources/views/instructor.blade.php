@@ -65,7 +65,6 @@
         @endforeach
         <form action="/logout" method="get">
             @csrf
-            <button class="my-button-loggout" type="submit">Cerrar Sesion</button>
             <button class="my-button-loggout" type="submit">@lang('app.log_out')</button>
         </form>
     </div>
