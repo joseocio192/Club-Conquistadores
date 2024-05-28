@@ -7,13 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+use App\Events\EspecialidadSaved;
+use App\Models\Traits\Mutators\EspecialidadMutator;
+
 class Especialidad extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        EspecialidadMutator;
+
     protected $table = 'Especialidad';
     protected $fillable = [
         'nombre',
         'locale'
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => EspecialidadSaved::class
     ];
 
     public function requisitos(): HasMany

@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pais;
 
-class paisSeeder extends Seeder
+class PaisSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -26,6 +26,5 @@ class paisSeeder extends Seeder
         $pais->nombre = 'Canada';
         $pais->locale = 'en_CA';
         $pais->save();
-
     }
 }

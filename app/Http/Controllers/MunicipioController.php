@@ -12,9 +12,7 @@ class MunicipioController extends Controller
      */
     public function index()
     {
-        //obtener los municipios usando municipioMutators para obtener el nombre traducido
-        $municipios = Municipio::MunicipioMutators()->getNombreAttribute('nombre')
-            ->get();
+        $municipios = Municipio::all();
 
         return response()->json($municipios);
     }
