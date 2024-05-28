@@ -47,7 +47,7 @@ class LoginController extends Controller
                     return redirect()->intended('administrador');
                     break;
                 case 'conquistador':
-                case 'conquistator':
+                case 'conqueror':
                 case '정복자':
                 case '征服者':
                 case 'conquérant':
