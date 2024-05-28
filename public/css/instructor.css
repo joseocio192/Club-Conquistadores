@@ -137,7 +137,7 @@ body {
     border-radius: 1em;
 
     background-color: #eee;
-    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 }
 
 .divCrearClase {
@@ -200,24 +200,13 @@ body {
 .divTareasAsis {
     border: 2px solid #76ABAE;
     border-radius: 20px;
-
-    width: 72em;
-    height: 50.75em;
-
-    background-color: #eee;
-    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
-}
-
-.divTareasAsis {
-    border: 2px solid #76ABAE;
-    border-radius: 20px;
     
     max-width: 1330px;
     margin-top: .5em;
     padding-bottom: 1em;
 
     background-color: #eee;
-    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 }
 
 table {
