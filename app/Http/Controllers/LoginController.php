@@ -61,7 +61,7 @@ class LoginController extends Controller
                     return redirect()->action([TutorController::class, 'index']);
                     break;
                 case 'directivo':
-                case 'director':
+                case 'managerial':
                 case '이사':
                 case '董事':
                 case 'ディレクター':
