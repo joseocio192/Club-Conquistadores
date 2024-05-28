@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignID('user_id')->references('id')->on('Users');
             $table->foreignID('tutorLegal_id')->references('id')->on('Users');
-            $table->string('locale', 5)->default('es');
+            $table->string('locale', 10)->default('es');
             $table->string('rol', 35);
             //$table->foreignId('unidad_id')->references('id')->on('Unidad');
             $table->rememberToken();

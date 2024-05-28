@@ -24,8 +24,16 @@ class InstructorController extends Controller
 
         $user = auth()->user();
         $instructor = Instructor::where('user_id', $user->id)->first();
-        Log:info($instructor);
+
+        if (!$instructor) {
+            return redirect()->route('home');
+        }
+
+        Log:
+        info($instructor);
+
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
+
         $status = "nada";
         return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status'));
     }

@@ -109,5 +109,7 @@ class UserSeeder extends Seeder
         $user->rol = 'conquistador';
         $user->Vigente = 1;
         $user->save();
+
+        User::factory()->count(10)->create();
     }
 }
