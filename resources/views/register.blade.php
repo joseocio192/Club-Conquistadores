@@ -1,7 +1,16 @@
 <!-- resources/views/register.blade.php -->
 <!DOCTYPE html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link href="{{ asset('/css/register.css') }}" rel="stylesheet">
+
+<head>
+    <title>Registro</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="{{ asset('/css/register.css') }}" rel="stylesheet">
+
+</head>
+
 <form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
     @csrf
 
@@ -146,6 +155,27 @@
 
 </form>
 
+@if ($errors->any())
+    <script>
+        let errorsExist = true;
+        let title_error = "{{ __('app.error_title') }}";
+        let error = "{{ __('app.error_message') }}";
+        let button = "{{ __('app.accept_error') }}";
+        let errorList =
+            '@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach';
+
+        if (errorsExist) {
+            Swal.fire({
+                icon: 'error',
+                title: title_error,
+                text: error,
+                confirmButtonText: button,
+                footer: '<ul>' + errorList + '</ul>'
+            });
+        }
+    </script>
+@endif
+
 <script type="text/javascript">
     $(document).ready(function() {
         console.log("Hola");
@@ -278,3 +308,4 @@
         }
     });
 </script>
+</html>
