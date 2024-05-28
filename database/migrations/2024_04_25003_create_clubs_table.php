@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('lema')->nullable();
             $table->string('logo', 50)->nullable();
             $table->timestamps();
-            $table->string('locale', 5);
+            $table->string('locale', 10);
         });
     }
 
