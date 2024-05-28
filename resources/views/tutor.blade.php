@@ -2,10 +2,15 @@
 <html>
 
 <head>
+
+    <title>Tutor</title>
     <link href="{{ asset('/css/tutor.css') }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     </style>
+
 </head>
 
 <body>
@@ -42,14 +47,14 @@
         <ul>
             @if ($status == 'nada')
             <div class="divAceptarPupilos">
-                @if (count($pupilos) == 0)
-                <h2>No hay pupilos por aceptar</h2>
+                @if (count($pupilosSinAceptar) == 0)
+                <h1>No hay pupilos por aceptar</h1>
                 @else
                 <h1>Pupilos por aceptar</h1>
-                @foreach ($pupilos as $pupilo)
+                @foreach ($pupilosSinAceptar as $pupilo)
                     <div class="divPupilo">
                         <h2>{{$pupilo->user->name}}</h2>
-                        <form action="{{route('tutor.accept', $pupilo->id)}}" method="post">
+                        <form action="{{route('tutor.aceptar', $pupilo->id)}}" method="post">
                             @csrf
                             <button type="submit">Aceptar</button>
                         </form>
@@ -91,6 +96,27 @@
             @endif
         </ul>
     </div>
+    @if ($errors->any())
+    <script>
+        let errorsExist = true;
+        let title_error = "{{ __('app.error_title') }}";
+        let error = "{{ __('app.error_message') }}";
+        let button = "{{ __('app.accept_error') }}";
+        let errorList =
+            '@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach';
+
+        if (errorsExist) {
+            Swal.fire({
+                icon: 'error',
+                title: title_error,
+                text: error,
+                confirmButtonText: button,
+                footer: '<ul>' + errorList + '</ul>'
+            });
+        }
+    </script>
+@endif
 </body>
+
 
 </html>

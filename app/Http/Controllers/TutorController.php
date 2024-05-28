@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Conquistador;
 use App\Models\Onecodeuse;
-
+use Illuminate\Support\Facades\Log;
 class TutorController extends Controller
 {
     public function index()
@@ -19,6 +19,7 @@ class TutorController extends Controller
         return view('tutor', compact('user', 'pupilos', 'status', 'pupilosSinAceptar', 'codigos'));
     }
 
+    //show the pupil
     public function show($id)
     {
         $user = Auth::user();
@@ -28,16 +29,18 @@ class TutorController extends Controller
         return view('tutor', compact('user', 'pupilos', 'hijo', 'status'));
     }
 
-    public function aceptar(Request $request)
+    public function aceptar($id)
     {
         $user = Auth::user();
         $pupilos = conquistador::where('tutorlegal_id', $user->id)->get();
         $status = 'nada';
-        $aceptado = conquistador::find($request->idpupilo);
+        $aceptado = conquistador::find($id);
         $aceptado->aceptado = 1;
         $aceptado->save();
         $pupilosSinAceptar = conquistador::where('tutorlegal_id', $user->id)->where('aceptado', 0)->get();
-        return view('tutor', compact('user', 'pupilos', 'status', 'pupilosSinAceptar'));
+        $codigos = Onecodeuse::where('user_id', $user->id)->get();
+
+        return view('tutor', compact('user', 'pupilos', 'status', 'pupilosSinAceptar', 'codigos'));
     }
 
     public function generateOneTimeCode()
@@ -51,7 +54,7 @@ class TutorController extends Controller
         if ($count >= 5) {
             $pupilosSinAceptar = conquistador::where('tutorlegal_id', $user->id)->where('aceptado', 0)->get();
             $codigos = Onecodeuse::where('user_id', $user->id)->get();
-            return view('tutor', compact('user', 'pupilos', 'status', 'pupilosSinAceptar', 'codigos'));
+            return view('tutor', compact('user', 'pupilos', 'status', 'pupilosSinAceptar', 'codigos'))->with('error', 'No puedes generar más códigos');
         }
         $onecodeuse = new Onecodeuse();
         $onecodeuse->user_id = $user->id;
