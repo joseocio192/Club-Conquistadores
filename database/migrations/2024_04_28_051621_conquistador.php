@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreignID('user_id')->references('id')->on('Users');
             $table->foreignID('tutorLegal_id')->references('id')->on('Users');
-            //Esto no puede ser una restriccion estatica Esto debe ser una restriccion dinamica por el idioma
-            $table->enum('rol', ['Amigo', 'Compañero', 'Explorador', 'Orientador', 'viajero', 'Guia', 'Guia Mayor Aspirante', 'Guia Mayor Investido']);
+            $table->string('locale', 5)->default('es');
+            $table->string('rol', 35);
             //$table->foreignId('unidad_id')->references('id')->on('Unidad');
             $table->rememberToken();
             $table->boolean('aceptado')->default(false);

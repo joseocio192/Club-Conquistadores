@@ -20,11 +20,10 @@ return new class extends Migration
             $table->foreignId('municipio_id')->nullable()->references('id')->on('Municipios')->nullable();
             $table->foreignId('estado_id')->nullable()->references('id')->on('Estados')->nullable();
             $table->foreignId('pais_id')->nullable()->references('id')->on('Pais')->nullable();
-            //Esto no puede ser una restriccion estatica Esto debe ser una restriccion dinamica por el idioma
-            $table->enum('rol', ['Director', 'Subdirector', 'Tesorero', 'Secretario', 'Asesor', 'Administrador', 'Master']);
+            $table->string('locale', 5);
+            $table->string('rol', 35);
             $table->boolean('activo')->default(true);
             $table->timestamps();
-            $table->string('locale', 5);
         });
     }
 

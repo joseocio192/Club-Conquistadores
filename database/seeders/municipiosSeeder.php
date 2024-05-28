@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Municipio;
 
-class municipiosSeeder extends Seeder
+class MunicipiosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -55,7 +55,5 @@ class municipiosSeeder extends Seeder
         $municipio->estado_id = 4;
         $municipio->nombre = 'Tijuana';
         $municipio->save();
-
-
     }
 }

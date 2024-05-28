@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Log;
+
 class LoginController extends Controller
 {
 
@@ -32,23 +34,52 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             $user = Auth::user();
-            if ($user->rol == 'admin') {
-                return redirect()->intended('admin');
-            }
-            if ($user->rol == 'conquistador') {
-                return redirect()->action([ConquistadorController::class, 'invoke']);
-            }
-            if ($user->rol == 'instructor') {
-                return redirect()->action([InstructorController::class, 'index']);
-            }
-            if ($user->rol == 'tutor') {
-                return redirect()->action([TutorController::class, 'index']);
-            }
-            if ($user->rol == 'directivo') {
-                return redirect()->action([DirectivoController::class, 'index']);
-            }
 
-            return redirect()->intended('welcome');
+            Log::info('User logged in', ['user' => $user]);
+
+            switch ($user->rol) {
+                case 'administrador':
+                case 'administrator':
+                case '관리자':
+                case '管理员':
+                case '管理者':
+                case 'administrateur':
+                    return redirect()->intended('administrador');
+                    break;
+                case 'conquistador':
+                case 'conquistator':
+                case '정복자':
+                case '征服者':
+                case 'conquérant':
+                    return redirect()->action([ConquistadorController::class, 'invoke']);
+                    break;
+                case 'tutor':
+                case '교사':
+                case '导师':
+                case 'チューター':
+                case 'tuteur':
+                    return redirect()->action([TutorController::class, 'index']);
+                    break;
+                case 'directivo':
+                case 'director':
+                case '이사':
+                case '董事':
+                case 'ディレクター':
+                case 'directeur':
+                    return redirect()->action([DirectivoController::class, 'index']);
+                    break;
+                case 'instructor':
+                case '선생':
+                case '教练':
+                case 'インストラクター':
+                case 'instructeur':
+                    return redirect()->action([InstructorController::class, 'index']);
+                    break;
+                default:
+                    return redirect()->intended('/');
+                    break;
+            }
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([
