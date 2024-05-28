@@ -6,17 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+use App\Events\UnidadSaved;
+use App\Models\Traits\Mutators\UnidadMutator;
+
 class Unidad extends Model
 {
-    use HasFactory;
-    protected $table= 'Unidad';
-    protected $fillable= [
+    use HasFactory,
+        UnidadMutator;
+
+    protected $table = 'Unidad';
+    protected $fillable = [
         'consejero_id',
         'capitan',
         'nombre',
         'logo',
         'lema',
         'sexo'
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => UnidadSaved::class
     ];
 
     public function consejero(): BelongsTo

@@ -10,9 +10,11 @@ use App\Models\User;
 use App\Models\Tarea;
 use App\Models\Conquistador;
 use App\Models\Asistencia;
+use Illuminate\Support\Facades\Log;
 
 use function PHPSTORM_META\elementType;
 use Illuminate\Support\Str;
+use PgSql\Lob;
 
 class InstructorController extends Controller
 {
@@ -22,6 +24,7 @@ class InstructorController extends Controller
 
         $user = auth()->user();
         $instructor = Instructor::where('user_id', $user->id)->first();
+        Log:info($instructor);
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         $status = "nada";
         return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status'));

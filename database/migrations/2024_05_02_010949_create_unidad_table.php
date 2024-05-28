@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('Unidad', function (Blueprint $table) {
             $table->id();
             $table->foreignId('consejero_id')->references('id')->on('Instructor');
-            $table->foreignId('capitan')->references('id')->on('Conquistador');
+            $table->foreignId('capitan_id')->references('id')->on('Conquistador');
             $table->string('nombre', 100);
             $table->string('logo', 50);
             $table->text('lema');
+            $table->string('locale', 5);
             $table->string('sexo', 25);
             $table->timestamps();
-            $table->string('locale', 5);
         });
     }
     /**

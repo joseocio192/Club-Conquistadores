@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Conquistador;
 
-class conquistadorSeeder extends Seeder
+class ConquistadorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +16,15 @@ class conquistadorSeeder extends Seeder
         $conquistador = new Conquistador();
         $conquistador->user_id = 1;
         $conquistador->tutorLegal_id = 2;
+        $conquistador->locale = 'es';
         $conquistador->rol = 'Amigo';
         $conquistador->save();
 
+        $conquistador = new Conquistador();
+        $conquistador->user_id = 2;
+        $conquistador->tutorLegal_id = 2;
+        $conquistador->locale = 'es';
+        $conquistador->rol = 'Amigo';
+        $conquistador->save();
     }
 }

@@ -9,9 +9,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+use App\Events\ClubSaved;
+use App\Models\Traits\Mutators\ClubMutator;
+
 class Clubs extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        ClubMutator;
+
     protected $table = 'Clubs';
     protected $filable = [
         'nombre',
@@ -25,7 +30,10 @@ class Clubs extends Model
         'lema',
         'logo',
         'especialidad',
+    ];
 
+    protected $dispatchesEvents = [
+        'saved' => ClubSaved::class
     ];
 
     public function clase(): HasMany
