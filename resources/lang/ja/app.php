@@ -1,0 +1,61 @@
+<?php
+
+return [
+    'title' => 'コンキスタドーレスクラブ',
+    'welcome' => 'コンキスタドーレスクラブへようこそ',
+    'Pathfinders_Club' => 'コンキスタドーレスクラブ',
+
+    'log_out' => 'ログアウト',
+    'login' => 'ログイン',
+    'register' => '登録',
+    'email' => 'メールアドレス',
+    'password' => 'パスワード',
+    'remember_me' => '私を覚えてますか',
+    'back_home' => 'ホームに戻る',
+    'forgot' => 'パスワードを忘れましたか？',
+
+    'error_title' => 'おっと！',
+    'error_message' => '入力にいくつか問題がありました。',
+    'accept_error' => '承認する',
+    'the_provided_credentials_do_not_match_our_records' => '提供された資格情報は、私たちの記録と一致しません。',
+    'sign_in_or_register_home' => '続行するには、ログインまたは登録してください',
+    'thank_you_message_for_visit' => 'ご訪問ありがとうございます！',
+
+    //vista instructor
+    'instructor' => 'インストラクター',
+
+    //vista directivo
+    'Selection' => '選択',
+    'home' => 'ホーム',
+    'stadistics' => '統計',
+    'create_club' => 'クラブを作成',
+    'sign_up_directive' => '役員を登録',
+    'sign_up_instructor' => 'インストラクターを登録',
+    'directive' => '役員',
+    'club_director' => 'クラブディレクター',
+    'pathfinders_quantity' => 'コンキスタドーレの数',
+    'instructors_quantity' => 'インストラクターの数',
+    'add_instructor' => 'インストラクターを追加',
+    'add' => '追加',
+    'instructors_avaible' => '利用可能なインストラクター',
+    'instructor_register' => 'インストラクター登録',
+    'clubs' => 'クラブ',
+    'create_club' => 'クラブを作成',
+    'create' => '作成',
+    'create_country' => '国を作成',
+    'create_state' => '州を作成',
+    'create_municipality' => '市区町村を作成',
+    'create_city' => '都市を作成',
+    'create_speciality' => '専門分野を作成',
+    'register_legal_guardian' => '法的保護者を登録',
+    'register_Pathfinder' => 'コンキスタドーレを登録',
+    'club' => 'クラブ',
+    'pathfinders' => 'コンキスタドーレ',
+    'your_data' => 'あなたのデータ',
+    'manage_class' => 'クラスを管理',
+    'name' => '名前',
+    'there_are_no_tasks' => 'タスクがありません',
+    'send' => '送信',
+    'assitence' => '出席',
+    'there_are_no_assists' => '出席記録がありません'
+];

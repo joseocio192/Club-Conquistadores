@@ -1,0 +1,61 @@
+<?php
+
+return [
+    'title' => '정복자 클럽',
+    'welcome' => '정복자 클럽에 오신 것을 환영합니다',
+    'Pathfinders_Club' => '정복자 클럽',
+
+    'log_out' => '로그아웃',
+    'login' => '로그인',
+    'register' => '회원가입',
+    'email' => '이메일',
+    'password' => '비밀번호',
+    'remember_me' => '기억하기',
+    'back_home' => '홈으로 돌아가기',
+    'forgot' => '비밀번호를 잊으셨나요?',
+
+    'error_title' => '이런!',
+    'error_message' => '입력에 문제가 있었습니다.',
+    'accept_error' => '확인',
+    'the_provided_credentials_do_not_match_our_records' => '제공된 자격 증명이 기록과 일치하지 않습니다.',
+    'sign_in_or_register_home' => '계속하려면 로그인하거나 등록하십시오',
+    'thank_you_message_for_visit' => '방문해 주셔서 감사합니다!',
+
+    //vista instructor
+    'instructor' => '강사',
+
+    //vista directivo
+    'Selection' => '선택',
+    'home' => '홈',
+    'stadistics' => '통계',
+    'create_club' => '클럽 만들기',
+    'sign_up_directive' => '임원 등록',
+    'sign_up_instructor' => '강사 등록',
+    'directive' => '임원',
+    'club_director' => '클럽 디렉터',
+    'pathfinders_quantity' => '정복자 수',
+    'instructors_quantity' => '강사 수',
+    'add_instructor' => '강사 추가',
+    'add' => '추가',
+    'instructors_avaible' => '사용 가능한 강사',
+    'instructor_register' => '강사 등록',
+    'clubs' => '클럽',
+    'create_club' => '클럽 만들기',
+    'create' => '만들기',
+    'create_country' => '국가 만들기',
+    'create_state' => '주 만들기',
+    'create_municipality' => '지방자치단체 만들기',
+    'create_city' => '도시 만들기',
+    'create_speciality' => '전문 분야 만들기',
+    'register_legal_guardian' => '법적 보호자 등록',
+    'register_Pathfinder' => '정복자 등록',
+    'club' => '클럽',
+    'pathfinders' => '정복자',
+    'your_data' => '당신의 데이터',
+    'manage_class' => '수업 관리',
+    'name' => '이름',
+    'there_are_no_tasks' => '작업이 없습니다',
+    'send' => '보내기',
+    'assitence' => '출석',
+    'there_are_no_assists' => '출석 기록이 없습니다'
+];
