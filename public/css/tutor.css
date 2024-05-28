@@ -6,7 +6,10 @@
 /********************************************* Tipografias *********************************************/
 h1 {
     color: #222831;
-    font-family: "Roboto";
+}
+
+h2 {
+    color: #31363F;
 }
 
 /********************************************* Cotenedores *********************************************/
@@ -44,6 +47,20 @@ body {
 
     background-color: #eee;
     box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.2);
+}
+
+.divAceptarPupilos {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 2px solid #76ABAE;
+    padding: 0 10em 1em 1em;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
+
+.frmAceptarPupilos {
+    display: flex;
+    flex-direction: column;
 }
 
 .formLogOut {
@@ -95,6 +112,26 @@ tr:nth-child(even) {
     transition: all .2s ease;
 }
 
+.btn {
+    border: 1px solid #31363F;
+    border-radius: 5px;
+
+    padding: .75em 1.6em .75em 1.6em;
+
+    outline: none;
+
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1em;
+
+    background-color: #222831;
+    color: #EEEEEE;
+}
+
+.btn:first-of-type {
+    margin-right: 1em;
+}
+
 .my-button-loggout {
     height: 3.235294117647059em;
     width: 9.6875em;
@@ -135,9 +172,16 @@ tr:nth-child(even) {
     color: #eee;
 }
 
+.btn:hover {
+    cursor: pointer;
+    background-color: #474D57;
+    border: 1px solid #474D57;
+}
+
 /********************************************* SVGs *********************************************/
 .sidenav svg {
     height: 1em;
     width: 1em;
     margin-right: 0.50em;
 }
+

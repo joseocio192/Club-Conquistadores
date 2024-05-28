@@ -24,7 +24,7 @@
             </svg>
             Añadir pupilo</a>
         @foreach ($pupilos as $pupilo)
-        <a href="{{route('tutor.show', $pupilo->id)}}">{{$pupilo->user->name}}</a>
+            <a href="{{route('tutor.show', $pupilo->id)}}">{{$pupilo->user->name}}</a>
         @endforeach
         <form class="formLogOut" action="/logout" method="get">
             @csrf
@@ -35,18 +35,21 @@
     <div class="main">
         <ul>
             @if ($status == 'nada')
-            <h1>Pupilos por aceptar</h1>
-
-            @foreach ($pupilosSinAceptar as $pupilosn)
-            <form action="{{ route('tutor.aceptar') }}" method="post">
+            <div class="divAceptarPupilos">
+                <h1>Pupilos por aceptar</h1>
+                @foreach ($pupilosSinAceptar as $pupilosn)
+                <form class="frmAceptarPupilos" action="{{ route('tutor.aceptar') }}" method="post">
                 @csrf
-                <h2>{{$pupilosn->user->name}}</h2>
-                <input type="hidden" name="idpupilo" value="{{$pupilosn->id}}">
-                <button type="submit">aceptar</button>
-                <button type="submit">No aceptar</button>
-            </form>
-            @endforeach
-
+                    <h2 class="h2Pupilos">{{$pupilosn->user->name}}</h2>
+                    <input type="hidden" name="idpupilo" value="{{$pupilosn->id}}">
+                    <div>
+                        <button class="btn" type="submit">Aceptar</button>
+                        <button class="btn" type="submit">No aceptar</button>
+                    </div>
+                </form>
+                
+                @endforeach
+            </div>
             @endif
             @if ($status == 'show')
             <h2>sus datos:</h2>
