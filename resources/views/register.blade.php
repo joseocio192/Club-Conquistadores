@@ -130,11 +130,12 @@
         </div>
 
         @if ($status=='tutor' )
-        <input id="tutorLegal_id" type="hidden" name="tutorLegal_id" required value="{{$tutor->id}}"><br>
+        <label for="tutorLegal_id">onecode</label>
+        <input id="tutorLegal_id" type="text" name="onecode" required value="{{$onecode->onecode}}"><br>
         <input type="hidden" name="autorizado" value="1">
         @else
-        <label for="tutorLegal_id">Tutor id</label>
-        <input id="tutorLegal_id" type="text" name="tutorLegal_id" require> <br>
+        <label for="tutorLegal_id">onecode</label>
+        <input id="tutorLegal_id" type="text" name="onecode" require> <br>
         <input type="hidden" name="autorizado" value="0">
         @endif
         <div class="ButtonsDiv">

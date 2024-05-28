@@ -2,124 +2,92 @@
 <html>
 
 <head>
-    <!-- ... -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <!-- ... -->
+    <link href="{{ asset('/css/tutor.css') }}" rel="stylesheet">
     <style>
-        .sidenav {
-            height: 100%;
-            /* Full-height: remove this if you want "auto" height */
-            width: 160px;
-            /* Set the width of the sidebar */
-            position: fixed;
-            /* Fixed Sidebar (stay in place on scroll) */
-            z-index: 1;
-            /* Stay on top */
-            top: 0;
-            /* Stay at the top */
-            left: 0;
-            background-color: #111;
-            /* Black */
-            overflow-x: hidden;
-            /* Disable horizontal scroll */
-            padding-top: 20px;
-        }
-
-        /* The navigation menu links */
-        .sidenav a {
-            padding: 6px 8px 6px 16px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-        }
-
-        /* When you mouse over the navigation links, change their color */
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-
-        /* Style page content */
-        .main {
-            margin-left: 160px;
-            /* Same as the width of the sidebar */
-            padding: 0px 10px;
-        }
-
-        .my-button-loggout {
-            background-color: #4CAF50;
-            /* Green */
-            border: none;
-            color: white;
-            padding: 4px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            position: absolute;
-            bottom: 0;
-            /* Your existing CSS */
-        }
-
-        .my-button-loggout:hover {
-            background-color: #45a049;
-        }
-
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     </style>
 </head>
 
 <body>
-    <h1 class="text-center">Tutor: {{$user->name}} </h1>
     <div class="sidenav">
-        <a href="{{route('tutor')}}">Home</a>
-        <a href="{{route('register.tutor', $user->id)}}">Añadir pupilo</a>
+        <h1 class="text-center">Tutor: {{$user->name}} </h1>
+        <a href="{{route('tutor')}}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path d="M280.4 148.3L96 300.1V464a16 16 0 0 0 16 16l112.1-.3a16 16 0 0 0 15.9-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.6a16 16 0 0 0 16 16.1L464 480a16 16 0 0 0 16-16V300L295.7 148.3a12.2 12.2 0 0 0 -15.3 0zM571.6 251.5L488 182.6V44.1a12 12 0 0 0 -12-12h-56a12 12 0 0 0 -12 12v72.6L318.5 43a48 48 0 0 0 -61 0L4.3 251.5a12 12 0 0 0 -1.6 16.9l25.5 31A12 12 0 0 0 45.2 301l235.2-193.7a12.2 12.2 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0 -1.7-16.9z"/>
+            </svg>
+            Home</a>
+        <a href="{{route('register.tutor', $user->id)}}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/>
+            </svg>
+            Añadir pupilo</a>
         @foreach ($pupilos as $pupilo)
-        <a href="{{route('tutor.show', $pupilo->id)}}">{{$pupilo->user->name}}</a>
+            <a href="{{route('tutor.show', $pupilo->id)}}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path d="M319.4 320.6L224 416l-95.4-95.4C57.1 323.7 0 382.2 0 454.4v9.6c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-9.6c0-72.2-57.1-130.7-128.6-133.8zM13.6 79.8l6.4 1.5v58.4c-7 4.2-12 11.5-12 20.3 0 8.4 4.6 15.4 11.1 19.7L3.5 242c-1.7 6.9 2.1 14 7.6 14h41.8c5.5 0 9.3-7.1 7.6-14l-15.6-62.3C51.4 175.4 56 168.4 56 160c0-8.8-5-16.1-12-20.3V87.1l66 15.9c-8.6 17.2-14 36.4-14 57 0 70.7 57.3 128 128 128s128-57.3 128-128c0-20.6-5.3-39.8-14-57l96.3-23.2c18.2-4.4 18.2-27.1 0-31.5l-190.4-46c-13-3.1-26.7-3.1-39.7 0L13.6 48.2c-18.1 4.4-18.1 27.2 0 31.6z"/>
+                </svg>
+                {{$pupilo->user->name}}
+            </a>
         @endforeach
-        <form action="/logout" method="get">
+        <form class="formLogOut" action="/logout" method="get">
             @csrf
-            <button class="my-button-loggout" type="submit">log out</button>
+            <button class="my-button-loggout" type="submit">Log out</button>
         </form>
     </div>
 
     <div class="main">
         <ul>
             @if ($status == 'nada')
-            <h1>Pupilos por aceptar</h1>
-
-            @foreach ($pupilosSinAceptar as $pupilosn)
-            <form action="{{ route('tutor.aceptar') }}" method="post">
-                @csrf
-                <h2>{{$pupilosn->user->name}}</h2>
-                <input type="hidden" name="idpupilo" value="{{$pupilosn->id}}">
-                <button type="submit">aceptar</button>
-                <button type="submit">No aceptar</button>
-            </form>
-            @endforeach
-
+            <div class="divAceptarPupilos">
+                @if (count($pupilos) == 0)
+                <h2>No hay pupilos por aceptar</h2>
+                @else
+                <h1>Pupilos por aceptar</h1>
+                @foreach ($pupilos as $pupilo)
+                    <div class="divPupilo">
+                        <h2>{{$pupilo->user->name}}</h2>
+                        <form action="{{route('tutor.accept', $pupilo->id)}}" method="post">
+                            @csrf
+                            <button type="submit">Aceptar</button>
+                        </form>
+                    </div>
+                    @endforeach
+                @endif
+            </div>
+            <div class="divAceptarPupilos">
+                <h2>Codigos</h2>
+                @foreach ($codigos as $codigo)
+                <h3>{{$codigo->onecode}}</h3>
+                @endforeach
+                <form action="{{route('tutor.generateOneTimeCode')}}" method="post">
+                    @csrf
+                    <button type="submit">Generar codigo</button>
+                </form>
+            </div>
             @endif
             @if ($status == 'show')
-            <h2>sus datos:</h2>
-            <h3>Id: {{$hijo->user->name}}</h3>
-            <h3>Nombre: {{$hijo->user->name}} {{$hijo->user->apellido}}</h3>
+            <div class="divDatos">
+                <h2>Datos del pupilo:</h2>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" >
+                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/>
+                    </svg>
+                    <h3>Id: {{$hijo->user->id}}</h3>
+                    <h3>Nombre: {{$hijo->user->name}} {{$hijo->user->apellido}}</h3>
+                    <h3>Edad: {{$hijo->user->edad}}</h3>
+                </div>
+                <h3>Telefono: {{$hijo->user->telefono}}</h3>
+                <h3>Fecha de nacimiento: {{$hijo->user->fecha_nacimiento}}</h3>
+                <h3>Direccion:
+                    {{ $hijo->user->colonia . ' ' .
+                    $hijo->user->calle . ' ' .
+                    $hijo->user->numero_exterior }}
+                </h3>
+            </div>
             @endif
         </ul>
     </div>
