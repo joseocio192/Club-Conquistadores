@@ -10,7 +10,7 @@ use App\Models\Conquistador;
 use App\Models\Pais;
 use App\Models\ClubXpersona;
 use App\Http\Controllers\ConquistadorController;
-
+use App\Models\Onecodeuse;
 class RegisterController extends Controller
 {
     public function showRegistrationForm()
@@ -26,7 +26,20 @@ class RegisterController extends Controller
     {
         $tutor = User::find($id);
         $status = 'tutor';
-        return view('register', compact('tutor', 'status'));
+        //max of 5 codes per user
+        $count = Onecodeuse::where('user_id', $tutor->id)->count();
+        if ($count >= 5) {
+            $pupilosSinAceptar = conquistador::where('tutorlegal_id', $tutor->id)->where('aceptado', 0)->get();
+            $codigos = Onecodeuse::where('user_id', $tutor->id)->get();
+            $onecode = $codigos->first();
+            return view('register', compact('onecode', 'status'));
+        }
+        $onecode = new Onecodeuse();
+        $onecode->user_id = $tutor->id;
+        $onecode->onecode = rand(100000, 999999);
+        $onecode->used = 0;
+        $onecode->save();
+        return view('register', compact('onecode', 'status'));
     }
 
     public function register(Request $request)
@@ -45,9 +58,22 @@ class RegisterController extends Controller
             'ciudad_id' => 'required|integer',
             'codigo_postal' => 'required|string|max:255',
             'sexo' => 'required|string|max:255',
-            'tutorLegal_id' => 'required|integer',
+            'onecode' => 'required|integer',
             'clubes' => 'required|integer',
         ]);
+
+        //check if onecode is valid and not used
+        $onecode = Onecodeuse::where('onecode', $request->onecode)->where('used', 0)->first();
+        if ($onecode == null) {
+            return view('register')->with('error', 'OTC no válido o ya usado');
+        }else if ($onecode->used == 1) {
+            return view('register')->with('error', 'OTC ya usado');
+        } else {
+            $onecode->used = 1;
+            $tutorid = Onecodeuse::find($request->onecode)->user_id;
+            $onecode->softDelete();
+            $onecode->save();
+        }
 
         $user = User::create([
             'name' => $request->name,
@@ -83,7 +109,7 @@ class RegisterController extends Controller
         } else {
             $conquistador = Conquistador::create([
                 'user_id' => $user->id,
-                'tutorLegal_id' => $request->tutorLegal_id,
+                'tutorLegal_id' => $tutorid,
                 'rol' => 'Amigo',
                 'activo' => '0',
             ]);
