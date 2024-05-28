@@ -20,37 +20,41 @@
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="name">@lang ('app.Name')</label>
-                    <input id="name" type="text" name="name" required autofocus><br>
+                    <label for="name">Nombre</label>
+                    <input id="name" type="text" name="name" required autofocus value="{{old('name')}}"><br>
                 </div>
 
                 <div>
-                    <label for="apellido">@lang('app.lastName')</label>
-                    <input id="apellido" type="text" name="apellido" class="Input" required><br>
+                    <label for="apellido">Apellido</label>
+                    <input id="apellido" type="text" name="apellido" class="Input" value="{{old('apellido')}}" required><br>
                 </div>
             </div>
 
             <div class='EmailDiv'>
-                <label for="email">@lang('app.Email')</label>
-                <input id="email" type="email" name="email" required><br>
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" value="{{old('email')}}" required><br>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="password">@lang('app.Password')</label>
-                    <input id="password" type="password" name="password" required><br>
+
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" value="{{old('password')}}"  required><br>
                 </div>
 
                 <div>
-                    <label for="telefono">@lang('app.Phone')</label>
-                    <input id="telefono" type="text" name="telefono"><br>
+                    <label for="telefono">Telefono</label>
+                    <input id="telefono" type="text" name="telefono" value="{{old('telefono')}}"><br>
+
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="fecha_nacimiento">@lang('app.Birthdate')</label>
-                    <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" required><br>
+
+                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                    <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" value="{{old('fecha_nacimiento')}}" required><br>
+
                 </div>
 
                 <div>
@@ -68,25 +72,28 @@
         <div class='SeccionDiv2'>
             <div class='SubSeccionDiv'>
                 <div>
+
                     <label for="calle">@lang('app.Street')</label>
-                    <input id="calle" type="text" name="calle" required><br>
+                    <input id="calle" type="text" name="calle" value="{{old('calle')}}" required><br>
                 </div>
 
                 <div>
-                    <label for="numero_exterior"> @lang('app.street_number')</label>
-                    <input id="numero_exterior" type="text" name="numero_exterior" required><br>
+                <label for="numero_exterior"> @lang('app.street_number')</label>
+                    <input id="numero_exterior" type="text" name="numero_exterior" value="{{old('numero_exterior')}}" required><br>
+
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
                     <label for="numero_interior">@lang('app.Suite_number')</label>
-                    <input id="numero_interior" type="text" name="numero_interior"><br>
+                    <input id="numero_interior" type="text" name="numero_interior" value="{{old('numero_interior')}}"><br>
                 </div>
 
                 <div>
                     <label for="colonia">@lang('app.Neighborhood')</label>
-                    <input id="colonia" type="text" name="colonia" required><br>
+                    <input id="colonia" type="text" name="colonia" value="{{old('colonia')}}" required><br>
+
                 </div>
             </div>
 
@@ -124,22 +131,25 @@
 
                 <div>
                     <label for="codigo_postal"> @lang(app.postal_code)</label>
-                    <input id="codigo_postal" type="text" name="codigo_postal" required><br>
+                    <input id="codigo_postal" type="text" name="codigo_postal" value="{{old('codigo_postal')}}" required><br>
+
                 </div>
             </div>
         </div>
 
-        @if ($status=='tutor' )
+
+        @if ($status=='tutor')
         <label for="tutorLegal_id">@lang('app.onecode')</label>
         <input id="tutorLegal_id" type="text" name="onecode" required value="{{$onecode->onecode}}"><br>
         <input type="hidden" name="autorizado" value="1">
         @else
         <label for="tutorLegal_id">@lang('app.onecode')</label>
-        <input id="tutorLegal_id" type="text" name="onecode" require> <br>
+        <input id="tutorLegal_id" type="text" name="onecode" value="{{old('onecode')}}"  require> <br>
+
         <input type="hidden" name="autorizado" value="0">
+        <input type="hidden" name="rol" value="conquistador">
         @endif
         <div class="ButtonsDiv">
-
             <div>
                 <a class="HomeBtn" id="home-button" onclick="window.location.href = '/';">
                     @lang('app.Back')

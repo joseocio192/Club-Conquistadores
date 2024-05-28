@@ -122,7 +122,7 @@ return [
     'Role'=>'Role',
     'Executive'=>'Executive',
     'Back'=>'Back',
-    'Sign_in'='Sign in',
+    'Sign_in'=>'Sign in',
 
     //registerInstructor
     'Instructor personal information'=>'Instructor personal information',
@@ -150,7 +150,7 @@ return [
     'postal_code'=>'postal code',
     'Back'=>'Back',
     'Sign_in'=>'Sign in',
-    
+
 
 
 

@@ -19,7 +19,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $locale = $this->faker->randomElement(['es', 'en', 'ko', 'ja', 'zh_Hans', 'fr']);
+        $locale = $this->faker->randomElement(['es', 'en', 'ko', 'zh-Hans', 'ja', 'fr']);
         $faker = \Faker\Factory::create($locale);
 
         return [
@@ -53,7 +53,7 @@ class UserFactory extends Factory
                 return $faker->randomElement(['남자', '여자']);
             case 'ja':
                 return $faker->randomElement(['男性', '女性']);
-            case 'zh_Hans':
+            case 'zh-Hans':
                 return $faker->randomElement(['男人', '女人']);
             case 'fr':
                 return $faker->randomElement(['Homme', 'Femme']);
@@ -69,7 +69,7 @@ class UserFactory extends Factory
                 return $faker->randomElement(['administrator', 'conqueror', 'tutor', 'managerial', 'instructor']);
             case 'ko':
                 return $faker->randomElement(['관리자', '정복자', '가정 교사', '관리', '선생']);
-            case 'zh_Hans':
+            case 'zh-Hans':
                 return $faker->randomElement(['管理员', '征服者', '导师', '管理', '教练']);
             case 'ja':
                 return $faker->randomElement(['管理者', '征服者', 'チューター', '経営', 'インストラクター']);

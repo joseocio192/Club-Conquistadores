@@ -125,7 +125,7 @@ return [
     'Role'=>'Rol',
     'Executive'=>'Director',
     'Back'=>'Regresar',
-    'Sign_in'='Registrarse',
+    'Sign_in'=>'Registrarse',
 
     //registerInstructor
     'Instructor personal information'=>'Datos personales del instructor',
@@ -153,7 +153,7 @@ return [
     'Postal_Code'=>'Codigo postal',
     'Back'=>'Regresar',
     'Sign_in'=>'Registrarse',
-    
+
 
 
 ];

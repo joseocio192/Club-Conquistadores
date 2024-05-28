@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('onecodeuse', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->string('onecode');
             $table->boolean('used');

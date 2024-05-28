@@ -46,7 +46,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/lang/{locale}', [LocalizationController::class, 'set_Lang']);
 
-Route::post('/tutor/aceptar', [TutorController::class, 'aceptar'])
+Route::post('/tutor/aceptar/{id}', [TutorController::class, 'aceptar'])
     ->name('tutor.aceptar')
     ->middleware('auth', 'rol:tutor');
 Route::get('/tutor/pupilo/{id}', [TutorController::class, 'show'])

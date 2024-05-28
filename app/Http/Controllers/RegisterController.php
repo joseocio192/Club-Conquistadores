@@ -11,6 +11,8 @@ use App\Models\Pais;
 use App\Models\ClubXpersona;
 use App\Http\Controllers\ConquistadorController;
 use App\Models\Onecodeuse;
+use Illuminate\Support\Facades\Log;
+
 class RegisterController extends Controller
 {
     public function showRegistrationForm()
@@ -50,7 +52,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:Users',
             'password' => 'required|string|min:8',
             'telefono' => 'required|string|max:10',
-            'fecha_nacimiento' => 'required|date_format:Y/m/d|after:1900/01/01|before:today',
+            'fecha_nacimiento' => 'required|after:1900/01/01|before:today',
             'calle' => 'required|string|max:255',
             'numero_exterior' => 'required|string|max:255',
             'numero_interior' => 'nullable|string|max:255',
@@ -70,13 +72,13 @@ class RegisterController extends Controller
             return view('register')->with('error', 'OTC ya usado');
         } else {
             $onecode->used = 1;
-            $tutorid = Onecodeuse::find($request->onecode)->user_id;
-            $onecode->softDelete();
+            $tutorid = Onecodeuse::where('onecode', $request->onecode)->first()->user_id;
             $onecode->save();
         }
-
+        Log::info($request->all());
         $user = User::create([
             'name' => $request->name,
+            'rol' => $request->rol,
             'apellido' => $request->apellido,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -89,7 +91,6 @@ class RegisterController extends Controller
             'ciudad_id' => $request->ciudad_id,
             'codigo_postal' => $request->codigo_postal,
             'sexo' => $request->sexo,
-            'rol' => 'conquistador',
         ]);
 
         if ($request->autorizado == "1") {
