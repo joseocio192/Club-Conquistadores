@@ -32,8 +32,8 @@ trait DirectivoMutator
         $roles = [
             'es' => ['director', 'subdirector', 'tesorero', 'secretario', 'asesor', 'administrador', 'master'],
             'en' => ['director', 'subdirector', 'treasurer', 'secretary', 'advisor', 'administrator', 'master'],
-            'ko' => ['이사', '부이사', '회계사', '비서', '고문', '관리자', '마스터'],
-            'zh-Hans' => ['主任', '副主任', '财务主管', '秘书', '顾问', '管理员', '大师'],
+            'ko' => ['감독', '부이사', '회계사', '비서', '고문', '관리자', '마스터'],
+            'zh-Hans' => ['导演', '副主任', '财务主管', '秘书', '顾问', '管理员', '大师'],
             'ja' => ['ディレクター', 'サブディレクター', '会計係', '秘書', 'アドバイザー', '管理者', 'マスター'],
             'fr' => ['directeur', 'sous-directeur', 'trésorier', 'secrétaire', 'conseiller', 'administrateur', 'maître'],
         ];

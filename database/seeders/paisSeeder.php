@@ -16,15 +16,40 @@ class PaisSeeder extends Seeder
     {
         $pais = new Pais();
         $pais->nombre = 'Mexico';
-        $pais->locale = 'es_MX';
+        $pais->locale = 'es';
         $pais->save();
         $pais = new Pais();
         $pais->nombre = 'United States';
-        $pais->locale = 'en_US';
+        $pais->locale = 'en';
         $pais->save();
         $pais = new Pais();
         $pais->nombre = 'Canada';
-        $pais->locale = 'en_CA';
+        $pais->locale = 'en';
+        $pais->save();
+
+        $pais = new Pais();
+        $pais->nombre = '한국어';
+        $pais->locale = 'ko';
+        $pais->save();
+
+        $pais = new Pais();
+        $pais->nombre = '日本語';
+        $pais->locale = 'ja';
+        $pais->save();
+
+        $pais = new Pais();
+        $pais->nombre = '简体中文';
+        $pais->locale = 'zh-hans';
+        $pais->save();
+
+        $pais = new Pais();
+        $pais->nombre = '繁體中文';
+        $pais->locale = 'zh-hant';
+        $pais->save();
+
+        $pais = new Pais();
+        $pais->nombre = 'Français';
+        $pais->locale = 'fr';
         $pais->save();
     }
 }

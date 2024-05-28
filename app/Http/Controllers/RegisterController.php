@@ -37,7 +37,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:Users',
             'password' => 'required|string|min:8',
             'telefono' => 'required|string|max:10',
-            'fecha_nacimiento' => 'required|date',
+            'fecha_nacimiento' => 'required|date_format:Y/m/d|after:1900/01/01|before:today',
             'calle' => 'required|string|max:255',
             'numero_exterior' => 'required|string|max:255',
             'numero_interior' => 'nullable|string|max:255',

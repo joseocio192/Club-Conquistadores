@@ -17,14 +17,14 @@ return new class extends Migration
             $table->string('apellido', 100);
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('telefono', 10)->nullable();
+            $table->string('telefono')->nullable();
             $table->date('fecha_nacimiento');
             $table->string('calle');
             $table->string('numero_exterior', 10);
             $table->string('numero_interior', 10)->nullable();
             $table->string('colonia', 100);
             $table->foreignId('ciudad_id')->references('id')->on('Ciudad');
-            $table->string('codigo_postal', 7);
+            $table->string('codigo_postal');
             $table->string('locale', 5)->default('es')->nullable();
             $table->string('sexo', 30);
             $table->string('rol', 35);
