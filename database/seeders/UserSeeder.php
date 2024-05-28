@@ -110,6 +110,6 @@ class UserSeeder extends Seeder
         $user->Vigente = 1;
         $user->save();
 
-        User::factory()->count(10)->create();
+        User::factory()->count(20)->create();
     }
 }

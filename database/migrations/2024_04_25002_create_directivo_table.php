@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('municipio_id')->nullable()->references('id')->on('Municipios')->nullable();
             $table->foreignId('estado_id')->nullable()->references('id')->on('Estados')->nullable();
             $table->foreignId('pais_id')->nullable()->references('id')->on('Pais')->nullable();
-            $table->string('locale', 10);
+            $table->string('locale');
             $table->string('rol', 35);
             $table->boolean('activo')->default(true);
             $table->timestamps();

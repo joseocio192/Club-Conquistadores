@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('logo', 50)->nullable();
             $table->string('horario', 50);
             $table->integer('edadMinima')->default(12);
-            $table->string('locale', 10);
+            $table->string('locale');
             $table->softDeletes();
             $table->timestamps();
         });
