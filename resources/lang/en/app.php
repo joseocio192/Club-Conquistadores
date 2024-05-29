@@ -130,17 +130,10 @@ return [
     'instructor personal information' => 'Instructor personal information',
     'name' => 'Name',
     'lastname' => 'lastname',
-<<<<<<< HEAD
-    'Email' => 'Email',
-    'Password' => 'Password',
-    'Phone' => 'Phone',
-    'Birthdate' => 'Birthdate',
-=======
     'email' => 'Email',
     'password' => 'Password',
     'phone' => 'Phone',
     'birthdate' => 'Birthdate',
->>>>>>> fee68a17b4ff2d803d893bd8d4946005f4e74991
     'sex' => 'Sex',
     'select_a_gender' => 'Select a gender',
     'man' => 'Man',
