@@ -4,6 +4,10 @@ return [
     'title' => 'コンキスタドールクラブ',
     'welcome' => 'コンキスタドールクラブへようこそ',
     'Pathfinders_Club' => 'コンキスタドールクラブ',
+    'registerTutor' => 'チューター登録',
+
+    'men' => '男性',
+    'women' => '女性',
 
     'log_out' => 'ログアウト',
     'login' => 'ログイン',

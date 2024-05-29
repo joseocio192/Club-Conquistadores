@@ -22,14 +22,14 @@
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="name">@lang('app.Name')</label>
+                    <label for="name">@lang('app.name')</label>
                     <input id="name" type="text" name="name" required autofocus
                         value="{{ old('name') }}"><br>
                 </div>
 
                 <div>
 
-                    <label for="apellido">@lang('app.lastname')</label>
+                    <label for="apellido">@lang('app.lastName')</label>
                     <input id="apellido" type="text" name="apellido" class="Input" required
                         value="{{ old('apellido') }}"><br>
                 </div>
@@ -47,14 +47,14 @@
                 </div>
 
                 <div>
-                    <label for="telefono">@lang('app.Phone')</label>
+                    <label for="telefono">@lang('app.phone')</label>
                     <input id="telefono" type="text" name="telefono" value="{{ old('telefono') }}"><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="fecha_nacimiento">@lang('app.Birthdate')</label>
+                    <label for="fecha_nacimiento">@lang('app.birthdate')</label>
                     <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" required
                         value="{{ old('fecha_nacimiento') }}"><br>
                 </div>
@@ -62,12 +62,12 @@
                 <div>
                     <label for="sexo">@lang('app.Sex')</label>
                     <select id="sexo" name="sexo" required>
-                        <option value="">{{ __('app.Select_a_gender') }}</option>
-                        <option value="{{ __('app.Men') }}" {{ old('sexo') == __('app.Men') ? 'selected' : '' }}>
-                            {{ __('app.Man') }}
+                        <option value="">{{ __('app.select_a_gender') }}</option>
+                        <option value="{{ __('app.men') }}" {{ old('sexo') == __('app.men') ? 'selected' : '' }}>
+                            {{ __('app.man') }}
                         </option>
-                        <option value="{{ __('app.Women') }}" {{ old('sexo') == __('app.Women') ? 'selected' : '' }}>
-                            {{ __('app.Women') }}
+                        <option value="{{ __('app.women') }}" {{ old('sexo') == __('app.women') ? 'selected' : '' }}>
+                            {{ __('app.women') }}
                         </option>
                         <option value="{{ __('app.Other') }}" {{ old('sexo') == __('app.Other') ? 'selected' : '' }}>
                             {{ __('app.Other') }}
@@ -106,21 +106,21 @@
 
             <div class='SubSeccionDiv'>
                 <div class="PaisDiv">
-                    <label for="pais">@lang('app.Country')</label>
+                    <label for="pais">@lang('app.country')</label>
                     <select id="pais">
-                        <option value="">@lang('app.Select a country')</option>
+                        <option value="">@lang('app.select a country')</option>
                     </select>
                 </div>
 
                 <div>
-                    <label for="estado">@lang('app.State')</label>
+                    <label for="estado">@lang('app.state')</label>
                     <select id="estado"></select>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div class="MunicipioDiv">
-                    <label for="municipio">@lang('app.Municipality')</label>
+                    <label for="municipio">@lang('app.municipality')</label>
                     <select id="municipio"></select>
                 </div>
 
@@ -132,7 +132,7 @@
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="codigo_postal">@lang('app.Postal code')</label>
+                    <label for="codigo_postal">@lang('app.postal_code')</label>
                     <input id="codigo_postal" type="text" name="codigo_postal" required><br>
                 </div>
             </div>

@@ -4,6 +4,7 @@ return [
     'title' => 'Club des Conquérants',
     'welcome' => 'Bienvenue au Club des Conquérants',
     'Pathfinders_Club' => 'Club des Conquérants',
+    'registerTutor' => 'Inscrire le tuteur',
 
     'log_out' => 'Déconnexion',
     'login' => 'Se connecter',
@@ -106,7 +107,7 @@ return [
     'sex' => 'Sexe',
     'select_a_gender' => 'Sélectionnez un sexe',
     'men' => 'Homme',
-    'woman' => 'Femme',
+    'women' => 'Femme',
     'other' => 'Autre',
     'details_of_the_conqueror_residence' => 'Détails de la résidence du Conquérant',
     'street' => 'Rue',
