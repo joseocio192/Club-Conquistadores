@@ -58,7 +58,13 @@ class ConquistadorController extends Controller
         $especialidades = Especialidad::whereHas('conquistadores', function ($query) use ($conquistador) {
             $query->where('conquistador_id', $conquistador->id);
         })->get();
-        Log::info($especialidades);
-        return view('conquistador', compact('clasesConquistador', 'conquistador', 'status', 'especialidades'));
+        //especialidades completadas
+        $especialidadesCompletadas = $especialidades->filter(function ($especialidad) use ($conquistador) {
+            return $especialidad->conquistadores->find($conquistador->id)->pivot->fechaCumplido;
+        });
+        //especialidades sin completar
+        $especialidadesNoCompletadas = $especialidades->diff($especialidadesCompletadas);
+
+        return view('conquistador', compact('clasesConquistador', 'conquistador', 'status', 'especialidadesNoCompletadas', 'especialidadesCompletadas'));
     }
 }

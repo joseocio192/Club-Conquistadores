@@ -224,9 +224,22 @@ class InstructorController extends Controller
 
                 if ($conquistador) {
                     Log::info('antes');
-                    Log::info($conquistador->requisitos->toArray());
                     $conquistador->requisitos()->updateExistingPivot($requisito_id, ['completado' => $value]);
-                    Log::info($conquistador->requisitos->toArray());
+                    //if conquistador has all requisitos of a especialidad, then update pivot table to show when fechaCumplido was completed
+                    $especialidad = Especialidad::find($requisito_id);
+                    $requisitos = $especialidad->requisitos;
+                    $completado = true;
+                    foreach ($requisitos as $requisito) {
+                        if (!$conquistador->requisitos->contains($requisito->id)) {
+                            $completado = false;
+                        }
+                    }
+                    if ($completado) {
+                        $conquistador->especialidad()->updateExistingPivot($especialidad->id, ['fechaCumplido' => date('Y-m-d')]);
+                    }
+
+                    $especialidades = $conquistador->especialidades;
+
                 }
             }
         }
@@ -373,5 +386,43 @@ class InstructorController extends Controller
         $instructor = Instructor::where('user_id', $user->id)->first();
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status', 'conquistador'));
+    }
+
+    public function modificar(Request $request)
+    {
+        $user = auth()->user();
+        $instructor = Instructor::where('user_id', $user->id)->first();
+        $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
+        $status = "instructor";
+        //return view('modificarUsuario', compact('user', 'status', 'instructor'));
+
+        return view('instructor', compact('clasesDeInstructor', 'user', 'status', 'instructor'));
+    }
+
+    public function modificarDatos(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $user->name = $request->name;
+        $user->apellido = $request->apellido;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->telefono = $request->telefono;
+        $user->fecha_nacimiento = $request->fecha_nacimiento;
+        $user->calle = $request->calle;
+        $user->numero_exterior = $request->numero_exterior;
+        $user->numero_interior = $request->numero_interior;
+        $user->colonia = $request->colonia;
+        $user->ciudad_id = $request->ciudad_id;
+        $user->codigo_postal = $request->codigo_postal;
+        $user->sexo = $request->sexo;
+        $user->save();
+
+        $instructor = Instructor::where('user_id', $user->id)->first();
+        $instructor->activo = $request->activo;
+        $instructor->jefe_id;
+        $instructor->save();
+        $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
+        $status = "nada";
+        return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status'));
     }
 }
