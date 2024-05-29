@@ -3,7 +3,7 @@
 
 <head>
     <link href="{{ asset('/css/conquistador.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     </style>
@@ -48,7 +48,7 @@
                 {{ $clases->nombre }}
             </a>
         @endforeach
-        <a href="{{route('conquistador.especialidad')}}">@lang('app.speciality')</a>
+        <a href="{{ route('conquistador.especialidad') }}">@lang('app.speciality')</a>
         <form action="/logout" method="get">
             @csrf
             <button class="my-button-loggout" type="submit">@lang('app.log_out')</button>
@@ -95,56 +95,83 @@
                 </div>
             @endif
 
-            @if ($status=='clase')
-            <div class="divClase">
-                <h1>@lang('app.class'){{$clase->nombre}}</h1>
-            <table>
-                <thead>
-                    <tr>
-                        @foreach ($tareas as $tarea)
-                        <th>
-                            <a href="/conquistador/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a>
-                        </th>
-                        @endforeach
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        @foreach ($conquistador->tareas as $tareaa)
-                        <td>
-                            @if ($tareaa->clase_id === $clase->id)
-                            {{ Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada) }}
-                            <input type="checkbox"
-                             onclick="return false;" name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}" value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
-                            @endif
-                        </td>
-                        @endforeach
-                    </tr>
-                </tbody>
-            </table>
-            </div>
+            @if ($status == 'clase')
+                <div class="divClase">
+                    <h1>Clase: {{ $clase->nombre }}</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                @foreach ($tareas as $tarea)
+                                    <th>
+                                        <a href="/conquistador/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a>
+                                    </th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                @foreach ($conquistador->tareas as $tareaa)
+                                    <td>
+                                        @if ($tareaa->clase_id === $clase->id)
+                                            {{ Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada) }}
+                                            <input type="checkbox" onclick="return false;"
+                                                name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}"
+                                                value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
+                                        @endif
+                                    </td>
+                                @endforeach
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             @endif
 
             @if ($status == 'Mostar Tarea')
-                <h2>Id: {{ $tarea->id }}</h2>
-                <h2>{{ $tarea->nombre }}</h2>
-                <h3>{{ $tarea->descripcion }}</h3>
-                <h3>{{ $tarea->fecha }}</h3>
+                <div class="divTarea">
+                    <h2>Datos de la tarea</h2>
+                    <div>
+                        <svg class="svgHomework" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                            <path d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152V424c0 48.6 39.4 88 88 88H360c48.6 0 88-39.4 88-88V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V424c0 22.1-17.9 40-40 40H88c-22.1 0-40-17.9-40-40V152c0-22.1 17.9-40 40-40H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H88z"/>
+                        </svg>
+                        <h3>Id: {{ $tarea->id }}</h3>
+                        <h3>Nombre: {{ $tarea->nombre }}</h3>
+                    </div>
+                    <h3>Descripción: {{ $tarea->descripcion }}</h3>
+                    <h3>Fecha: {{ $tarea->fecha }}</h3>
+                </div>
             @endif
 
             @if ($status == 'especialidad')
                 <h1>@lang('app.specialty')</h1>
-                @if (is_null($especialidades) || $especialidades->isEmpty())
+                @if (is_null($especialidadesCompletadas) || $especialidadesCompletadas->isEmpty())
                     <h2>@lang('app.no_specialties')</h2>
                 @else
-                    @foreach ($especialidades as $especialidad)
-                    <div class="divEspecialidad">
-                        <h2>{{ $especialidad->nombre }}</h2>
-                    </div>
+                    @foreach ($especialidadesCompletadas as $especialidad)
+                        <div class="divEspecialidad">
+                            <h2>{{ $especialidad->nombre }}</h2>
+                        </div>
                         @foreach ($especialidad->requisitos as $requisito)
                         <div class="divRequisito">
                             <h3>{{ $requisito->nombre }}</h3>
+                            @if($requisito->pivot)
+                                <h3>{{ $requisito->pivot->completado }}</h3>
+                            @endif
                         </div>
+                    @endforeach
+                    @endforeach
+                @endif
+                @if (is_null($especialidadesNoCompletadas) || $especialidadesNoCompletadas->isEmpty())
+                @else
+                    <h2>Especialidades empezadas no completadas</h2>
+                    @foreach ($especialidadesNoCompletadas as $especialidad)
+                        <div class="divEspecialidad">
+                            <h2>{{ $especialidad->nombre }}</h2>
+                        </div>
+                        @foreach ($especialidad->requisitos as $requisito)
+                            <div class="divRequisito">
+                                <h3>{{ $requisito->nombre }}</h3>
+                            </div>
                         @endforeach
                     @endforeach
                 @endif

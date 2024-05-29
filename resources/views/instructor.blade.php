@@ -107,36 +107,27 @@
                                                 value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
                                         @endif
                                     </td>
-                                    @foreach ($conquistador->tareas as $tareaa)
-                                        <td class="tdTareas">
-                                            @if ($tareaa->clase_id === $clase->id)
-                                                {{ Log::info($tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador . '-' . $tareaa->pivot->completada) }}
-                                                <input type="checkbox"
-                                                    name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}"
-                                                    value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
-                                            @endif
-                                        </td>
-                                    @endforeach
-                                </tr>
-                            @endforeach
-                        </table>
-                        <button class="btnEnviar" type="submit">@lang('app.send')</button>
-                    </form>
+                                @endforeach
+                            </tr>
+                        @endforeach
+                    </table>
+                    <button class="btnEnviar" type="submit">@lang('app.send')</button>
+                </form>
 
-                    <!--************************************ Tabla Asistencia ************************************-->
-                    <h3>@lang('app.assitence')</h3>
-                    <form action="{{ route('instructor.definer') }}" method="post">
-                        @csrf
-                        <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                        <div class="divTablaAsis">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>@lang('app.name')</th>
-                                        @if ($asistencias->count() == 0)
-                                            <th>@lang('app.there_are_no_assists')</th>
-                                        @else
-                                            @foreach ($conquistador->asistencia as $asistencia)
+                <!--************************************ Tabla Asistencia ************************************-->
+                <h3>@lang('app.assitence')</h3>
+                <form action="{{ route('instructor.definer') }}" method="post">
+                    @csrf
+                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                    <div class="divTablaAsis">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>@lang('app.name')</th>
+                                    @if ($asistencias->count() == 0)
+                                        <th>@lang('app.there_are_no_assists')</th>
+                                    @else
+                                        @foreach ($conquistador->asistencia as $asistencia)
                                             <th>{{ $asistencia->fecha }}</th>
                                             @endforeach
                                         @endif
@@ -191,11 +182,11 @@
                         </div>
                         <button class="btnEnviar" type="submit" name="save">@lang('app.send')</button>
                 </form>
-                <h3>Especialidad</h3>
+
                 <form action={{ route('instructor.sendRequisitos') }} method="post">
                     @csrf
                     @foreach ($especialidades as $especialidad)
-                        <h4>{{ $especialidad->nombre }}</h4>
+                        <h3>Especialidad: {{ $especialidad->nombre }}</h3>
                         <table>
                             <thead>
                                 <tr>
@@ -214,12 +205,13 @@
                                             href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
                                     </td>
                                     @foreach ($conquistador->requisitos as $requisitoss)
-                                        <td class="tdTareas">
-                                            <input type="checkbox"
-                                                name="{{ $requisitoss->pivot->requisito_id . '-' . $requisitoss->pivot->conquistador_id }}"
-                                                value="1" @if ($requisitoss->pivot->completado == 1) checked @endif>
-                                                {{Log::info($requisitoss->pivot->requisito_id . '-' . $requisitoss->pivot->conquistador_id . '-' . $requisitoss->pivot->completado )}}
-                                        </td>
+                                        @if ($requisitoss->especialidad_id === $especialidad->id)
+                                            <td class="tdTareas">
+                                                <input type="checkbox"
+                                                    name="{{ $requisitoss->pivot->requisito_id . '-' . $requisitoss->pivot->conquistador_id }}"
+                                                    value="1" @if ($requisitoss->pivot->completado == 1) checked @endif>
+                                            </td>
+                                        @endif
                                     @endforeach
                                 </tr>
                             @endforeach
@@ -278,17 +270,74 @@
     </div>
     @endif
 
-    <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
-    <!--************************************ Gestionar clases ************************************-->
-    @if ($status == 'crear')
-        <div class="divGestionarClases">
-            <form action="{{ route('instructor.crear') }}" method="post">
+        <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
+        <!--************************************ Gestionar clases ************************************-->
+        @if ($status == 'crear')
+            <div class="divGestionarClases">
+                <form action="{{ route('instructor.crear') }}" method="post">
+                    @csrf
+                    <div class="divCrearClase">
+                        <h3> @lang('app.create_class')</h3>
+                        <div>
+                            @lang('app.class_name')
+                            <input type="text" name="nombre">
+                        </div>
+                        <div>
+                            @lang('app.minimum_age')
+                            <input type="number" name="edadMinima">
+                        </div>
+                        <div>
+                            @lang('app.color')
+                            <input type="text" name="color">
+                        </div>
+                        <div>
+                            @lang('app.logo')
+                            <input type="text" name="logo">
+                        </div>
+                        <div>
+                            @lang('app.entry_time')
+                            <input type="time" name="horario">
+                        </div>
+                        <div>
+                            @lang('app.exit_time')
+                            <input type="time" name="horario2">
+                        </div>
+                        <button class="btnCrearClase" type="submit">Crear</button>
+                    </div>
+
+                </form>
+                <div class="divEliminarClase">
+                    <form action="{{ route('instructor.eliminarClase') }}" method="post">
+                        <h3> @lang('app.delete_class') </h3>
+                        <div>
+                            @lang('app.class_id')
+                            <input type="text" name="clase_id">
+                        </div>
+
+                    </form>
+                    <button class="btnEliminarClase" type="submit">@lang('app.delete')</button>
+                </div>
                 @csrf
-                <div class="divCrearClase">
-                    <h3> @lang('app.create_class')</h3>
+            </div>
+        @endif
+        <!--************************************ Mostrar tarea ************************************-->
+        @if ($status == 'Mostar Tarea')
+            <div class="divMostrarTarea">
+                <h2>{{ $tarea->nombre }}</h2>
+                <h2>@lang('app.task_id') {{ $tarea->id }}</h2>
+                <h3 class="h3Descripcion">@lang('app.description') {{ $tarea->descripcion }}</h3>
+                <h3>@lang('app.due_date') {{ $tarea->fecha }}</h3>
+                <h2 class="h2ModificarTarea">@lang('app.modify_task')</h2>
+                <form action="{{ route('instructor.modificarTarea') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="tarea_id" value="{{ $tarea->id }}">
                     <div>
                         @lang('app.class_name')
                         <input type="text" name="nombre">
+                        @lang('app.description')
+                        <textarea name="descripcion" maxlength="450"> </textarea>
+                        @lang('app.due_date')
+                        <input type="date" name="fecha">
                     </div>
                     <div>
                         @lang('app.minimum_age')
@@ -322,118 +371,106 @@
                         <input type="text" name="clase_id">
                     </div>
 
+                    <button class="my-button" type="submit">@lang('app.modify')</button>
                 </form>
-                <button class="btnEliminarClase" type="submit">@lang('app.delete')</button>
             </div>
-            @csrf
-        </div>
-    @endif
-    <!--************************************ Mostrar tarea ************************************-->
-    @if ($status == 'Mostar Tarea')
-        <div class="divMostrarTarea">
-            <h2>{{ $tarea->nombre }}</h2>
-            <h2>@lang('app.task_id') {{ $tarea->id }}</h2>
-            <h3 class="h3Descripcion">@lang('app.description') {{ $tarea->descripcion }}</h3>
-            <h3>@lang('app.due_date') {{ $tarea->fecha }}</h3>
-            <h2 class="h2ModificarTarea">@lang('app.modify_task')</h2>
-            <form action="{{ route('instructor.modificarTarea') }}" method="post">
-                @csrf
-                <input type="hidden" name="tarea_id" value="{{ $tarea->id }}">
-                <div>
-                    @lang('app.class_name')
-                    <input type="text" name="nombre">
-                    @lang('app.description')
-                    <textarea name="descripcion" maxlength="450"> </textarea>
-                    @lang('app.due_date')
-                    <input type="date" name="fecha">
+        @endif
+        <!--************************************ Mostar Conquistador ************************************-->
+        @if ($status == 'Mostar Conquistador')
+            <div class="divTusDatos">
+                <div class="divDatos">
+                    <h2>@lang('app.pathfinder_id') {{ $conquistador->user->id }}</h2>
+
                 </div>
-                <button class="my-button" type="submit">@lang('app.modify')</button>
-            </form>
+                <div class="divDatos">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path
+                            d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
+                    </svg>
+                    <h3>@lang('app.name') </h3>
+                    <h3 class="h3Dato">{{ $conquistador->user->name }}</h3>
+                    <h3>@lang('app.age') </h3>
+                    <h3 class="h3Dato">{{ $conquistador->edad }}</h3>
+                </div>
+                <div class="divDatos">
+                    <h3>@lang('app.phone') </h3>
+                    <h3 class="h3Dato">{{ $conquistador->user->telefono }}</h3>
+                </div>
+                <div class="divDatos">
+                    <h3>@lang('app.email') </h3>
+                    <h3 class="h3Dato">{{ $conquistador->user->email }}</h3>
+                </div>
+                <div class="divDatos">
+                    <h3>@lang('app.address') </h3>
+                    <h3 class="h3Dato">
+                        {{ $conquistador->tutorLegal->colonia .
+                            ' ' .
+                            $conquistador->tutorLegal->calle .
+                            ' ' .
+                            $conquistador->tutorLegal->numero_exterior }}
+                    </h3>
+                </div>
+                <div class="divDatos">
+                    <h3>Tutor Legal: </h3>
+                    <h3 class="h3Dato">
+                        {{ $conquistador->tutorLegal->name . ' ' . $conquistador->tutorLegal->apellido }}
+                    </h3>
+                </div>
+                <div class="divDatos">
+                    <h3>@lang('app.guardian_phone') </h3>
+                    <h3 class="h3Dato">{{ $conquistador->tutorLegal->telefono }}</h3>
+                </div>
+                <div class="divDatos">
+                    <h3>@lang('app.guardian_email') </h3>
+                    <h3 class="h3Dato">{{ $conquistador->tutorLegal->email }}</h3>
+                </div>
+            </div>
+        @endif
+        <!--************************************ Mostar Datos ************************************-->
+        @if ($status == 'nada')
+            <div class="divTusDatos">
+                <div class="divDatos">
+                    <h2>@lang('app.your_data')</h2>
+                    <a class="btnModificarTusDatos">Modificar</a>
+
+                </div>
+                <div class="divDatos">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path
+                            d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
+                    </svg>
+                    <h3>@lang('app.name')</h3>
+                    <h3 class="h3Dato">{{ $user->name }}</h3>
+                    <h3>@lang('app.age')</h3>
+                    <h3 class="h3Dato">{{ $user->edad }}</h3>
+                </div>
+                <div class="divDatos">
+                    <h3>@lang('app.phone')</h3>
+                    <h3 class="h3Dato"> {{ $user->telefono }}</h3>
+                </div>
+                <div class="divDatos">
+                    <h3>@lang('app.email') </h3>
+                    <h3 class="h3Dato">{{ $user->email }}</h3>
+                </div>
+                <div class="divDatos">
+                    <h3>@lang('app.address')</h3>
+                    <h3 class="h3Dato">{{ $user->colonia . ' ' . $user->calle . ' ' . $user->numero_exterior }}</h3>
+                </div>
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     @endif
 
-    <!--************************************ Mostar Conquistador ************************************-->
-    @if ($status == 'Mostar Conquistador')
-        <div class="divTusDatos">
-            <div class="divDatos">
-                <h2>@lang('app.pathfinder_id') {{ $conquistador->user->id }}</h2>
-            </div>
-            <div class="divDatos">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                    <path
-                        d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
-                </svg>
-                <h3>@lang('app.name') </h3>
-                <h3 class="h3Dato">{{ $conquistador->user->name }}</h3>
-                <h3>@lang('app.age') </h3>
-                <h3 class="h3Dato">{{ $conquistador->edad }}</h3>
-            </div>
-            <div class="divDatos">
-                <h3>@lang('app.phone') </h3>
-                <h3 class="h3Dato">{{ $conquistador->user->telefono }}</h3>
-            </div>
-            <div class="divDatos">
-                <h3>@lang('app.email') </h3>
-                <h3 class="h3Dato">{{ $conquistador->user->email }}</h3>
-            </div>
-            <div class="divDatos">
-                <h3>@lang('app.address') </h3>
-                <h3 class="h3Dato">
-                    {{ $conquistador->tutorLegal->colonia .
-                        ' ' .
-                        $conquistador->tutorLegal->calle .
-                        ' ' .
-                        $conquistador->tutorLegal->numero_exterior }}
-                </h3>
-            </div>
-            <div class="divDatos">
-                <h3>Tutor Legal: </h3>
-                <h3 class="h3Dato">
-                    {{ $conquistador->tutorLegal->name . ' ' . $conquistador->tutorLegal->apellido }}
-                </h3>
-            </div>
-            <div class="divDatos">
-                <h3>@lang('app.guardian_phone') </h3>
-                <h3 class="h3Dato">{{ $conquistador->tutorLegal->telefono }}</h3>
-            </div>
-            <div class="divDatos">
-                <h3>@lang('app.guardian_email') </h3>
-                <h3 class="h3Dato">{{ $conquistador->tutorLegal->email }}</h3>
-            </div>
-        </div>
-    @endif
-    <!--************************************ Mostar Datos ************************************-->
-    @if ($status == 'nada')
-        <div class="divTusDatos">
-            <div class="divDatos">
-                <h2>@lang('app.your_data')</h2>
-            </div>
-            <div class="divDatos">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                    <path
-                        d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
-                </svg>
-                <h3>@lang('app.name')</h3>
-                <h3 class="h3Dato">{{ $user->name }}</h3>
-                <h3>@lang('app.age')</h3>
-                <h3 class="h3Dato">{{ $user->edad }}</h3>
-            </div>
-            <div class="divDatos">
-                <h3>@lang('app.phone')</h3>
-                <h3 class="h3Dato"> {{ $user->telefono }}</h3>
-            </div>
-            <div class="divDatos">
-                <h3>@lang('app.email') </h3>
-                <h3 class="h3Dato">{{ $user->email }}</h3>
-            </div>
-            <div class="divDatos">
-                <h3>@lang('app.address')</h3>
-                <h3 class="h3Dato">{{ $user->colonia . ' ' . $user->calle . ' ' . $user->numero_exterior }}</h3>
-            </div>
-        </div>
-    @endif
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -444,16 +481,16 @@
         </div>
     @endif
 
-    @if ($errors->any())
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Upss...',
-                text: 'Algo salio mal!',
-                footer: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>'
-            })
-        </script>
-    @endif
+        @if ($errors->any())
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Upss...',
+                    text: 'Algo salio mal!',
+                    footer: '<ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>'
+                })
+            </script>
+        @endif
     </div>
 
 </body>

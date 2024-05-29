@@ -501,6 +501,9 @@ tbody tr:last-of-type {
 }
 
 .btnModificarTusDatos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     
     height: 2.25em;

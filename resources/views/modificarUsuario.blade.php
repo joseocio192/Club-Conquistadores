@@ -1,21 +1,21 @@
 <!-- resources/views/register.blade.php -->
 <!DOCTYPE html>
 <head>
-    <title>@lang('app.registration')</title>
+    <title>Modificar Usuario</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="{{ asset('/css/register.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/modificarUsuario.css') }}" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     </style>
 </head>
 
-<form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
-    @csrf
-    <div class='RegistroDiv'>
-        <h1>@lang ('app.Register')</h1>
+<form class="FormLayout" method="POST" action="{{ route('modificarUsuario') }}" id="registro">
+    @csrf   
+    <div class='ModificarDiv'>
+        <h1>Modificar Usuario</h1>
         <h2>@lang('app.Conquerors_personal_data')</h2>
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
@@ -37,7 +37,6 @@
 
             <div class='SubSeccionDiv'>
                 <div>
-
                     <label for="password">@lang('app.password')</label>
                     <input id="password" type="password" name="password" value="{{old('password')}}"  required><br>
                 </div>
@@ -45,16 +44,13 @@
                 <div>
                     <label for="telefono">@lang('app.phone')</label>
                     <input id="telefono" type="text" name="telefono" value="{{old('telefono')}}"><br>
-
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-
                     <label for="fecha_nacimiento">@lang('app.birthdate')</label>
                     <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" value="{{old('fecha_nacimiento')}}" required><br>
-
                 </div>
 
                 <div>
@@ -72,7 +68,6 @@
         <div class='SeccionDiv2'>
             <div class='SubSeccionDiv'>
                 <div>
-
                     <label for="calle">@lang('app.Street')</label>
                     <input id="calle" type="text" name="calle" value="{{old('calle')}}" required><br>
                 </div>
@@ -80,7 +75,6 @@
                 <div>
                 <label for="numero_exterior"> @lang('app.street_number')</label>
                     <input id="numero_exterior" type="text" name="numero_exterior" value="{{old('numero_exterior')}}" required><br>
-
                 </div>
             </div>
 
@@ -93,7 +87,6 @@
                 <div>
                     <label for="colonia">@lang('app.Neighborhood')</label>
                     <input id="colonia" type="text" name="colonia" value="{{old('colonia')}}" required><br>
-
                 </div>
             </div>
 
@@ -133,32 +126,6 @@
                     <label for="codigo_postal"> @lang('app.postal_code')</label>
                     <input id="codigo_postal" type="text" name="codigo_postal" value="{{old('codigo_postal')}}" required><br>
                 </div>
-            </div>
-        </div>
-
-
-        @if ($status=='tutor')
-        <label for="tutorLegal_id">@lang('app.onecode')</label>
-        <input id="tutorLegal_id" type="text" name="onecode" required value="{{$onecode->onecode}}"><br>
-        <input type="hidden" name="autorizado" value="1">
-        @else
-        <label for="tutorLegal_id">@lang('app.onecode')</label>
-        <input id="tutorLegal_id" type="text" name="onecode" value="{{old('onecode')}}"  require> <br>
-
-        <input type="hidden" name="autorizado" value="0">
-        <input type="hidden" name="rol" value="conquistador">
-        @endif
-        <div class="ButtonsDiv">
-            <div>
-                <a class="HomeBtn" id="home-button" onclick="window.location.href = '/';">
-                    @lang('app.Back')
-                </a>
-            </div>
-
-            <div>
-                <button class="RegisterBtn" type="submit" id="submit-button" disabled>
-                    @lang('app.Sign_in')
-                </button>
             </div>
         </div>
     </div>
