@@ -448,22 +448,44 @@
                         <path
                             d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
                     </svg>
-                    <h3>@lang('app.name')</h3>
+                    <h3>@lang('app.name'):</h3>
                     <h3 class="h3Dato">{{ $user->name }}</h3>
                     <h3>@lang('app.age')</h3>
                     <h3 class="h3Dato">{{ $user->edad }}</h3>
                 </div>
                 <div class="divDatos">
-                    <h3>@lang('app.phone')</h3>
+                    <h3>@lang('app.phone'):</h3>
                     <h3 class="h3Dato"> {{ $user->telefono }}</h3>
                 </div>
                 <div class="divDatos">
-                    <h3>@lang('app.email') </h3>
+                    <h3>@lang('app.email'): </h3>
                     <h3 class="h3Dato">{{ $user->email }}</h3>
                 </div>
                 <div class="divDatos">
                     <h3>@lang('app.address')</h3>
                     <h3 class="h3Dato">{{ $user->colonia . ' ' . $user->calle . ' ' . $user->numero_exterior }}</h3>
+                </div>
+                <div class="divDatos"><h2>Historial</h2></div>
+                <div class="divDatos">
+
+                    @foreach ($historial as $historia)
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Club</th>
+                                <th>Fecha entrada</th>
+                                <th>Fecha salida</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $historia->nombre }}</td>
+                                <td>{{ $historia->pivot->fechaIngreso }}</td>
+                                <td>{{ $historia->pivot->fechaSalida }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @endforeach
                 </div>
             </div>
         @endif

@@ -59,7 +59,9 @@ Route::post('/tutor/generateOneTimeCode', [TutorController::class, 'generateOneT
     ->name('tutor.generateOneTimeCode')
     ->middleware('auth', 'rol:tutor');
 
-
+Route::post('/conquistador/sendcode', [ConquistadorController::class, 'sendcode'])
+    ->name('conquistador.sendcode')
+    ->middleware('auth', 'rol:conquistador');
 Route::get('/conquistador/especialidad/', [ConquistadorController::class, 'especialidad'])
     ->name('conquistador.especialidad')
     ->middleware('auth', 'rol:conquistador');

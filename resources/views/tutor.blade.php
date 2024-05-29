@@ -72,11 +72,40 @@
                     @foreach ($codigos as $codigo)
                         <h3>{{ $codigo->onecode }}</h3>
                     @endforeach
-                    <form action="{{ route('tutor.generateOneTimeCode') }}" method="post">
-                        @csrf
-                        <button type="submit">@lang('app.generate_code') </button>
-                    </form>
-                </div>
+                @endif
+            </div>
+            <div class="divAceptarPupilos">
+                <h2>@lang('app.Codes')</h2>
+                @foreach ($codigos as $codigo)
+                <h3>{{$codigo->onecode}}</h3>
+                @endforeach
+                <form action="{{route('tutor.generateOneTimeCode')}}" method="post">
+                    @csrf
+                    <button type="submit">@lang('app.generate_code') </button>
+                </form>
+            </div>
+            <div class="divDatos"><h2>Historial</h2></div>
+            <div class="divDatos">
+
+                @foreach ($historial as $historia)
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Club</th>
+                            <th>Fecha entrada</th>
+                            <th>Fecha salida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ $historia->nombre }}</td>
+                            <td>{{ $historia->pivot->fechaIngreso }}</td>
+                            <td>{{ $historia->pivot->fechaSalida }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                @endforeach
+            </div>
             @endif
             @if ($status == 'show')
                 <div class="divDatos">

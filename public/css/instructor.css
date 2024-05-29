@@ -14,6 +14,10 @@ h1 {
     color: #222831;
 }
 
+.divDatos:last-of-type {
+    margin-top: 1em;
+}
+
 .h3Dato {
     margin: 0.2em;
     padding-right: 2em;
@@ -167,7 +171,7 @@ body {
     justify-content: center;
 
     width: 25em;
-}   
+}
 
 .divEliminarClase div{
     margin-bottom: 1em;
@@ -176,7 +180,7 @@ body {
     font-size: 1.1em;
 
     color: #31363F;
-}   
+}
 
 .divTusDatos {
     display: flex;
@@ -200,7 +204,7 @@ body {
 .divTareasAsis {
     border: 2px solid #76ABAE;
     border-radius: 20px;
-    
+
     max-width: 1330px;
     margin-top: .5em;
     padding-bottom: 1em;
@@ -220,7 +224,7 @@ table {
     border-radius: 5px 5px 0 0;
     font-size: 1.1em;
     font-weight: bold;
-    
+
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.48);
 }
 
@@ -279,7 +283,7 @@ tbody tr:last-of-type {
 .divMostrarTarea {
     border: 2px solid #76ABAE;
     border-radius: 15px;
-    
+
     color: #31363F;
     font-weight: 450;
 }
@@ -347,7 +351,7 @@ tbody tr:last-of-type {
 
     background-color: #eee;
     color: #222831;
-    
+
     cursor: pointer;
     transition: all .3s ease;
 }
@@ -355,10 +359,10 @@ tbody tr:last-of-type {
 .my-button {
     padding: 4px 32px;
     margin: 4px 2px;margin: 4px 2px;
-   
+
     text-align: center;
     text-decoration: none;
-    
+
     font-size: 16px;
 
     border: none;
@@ -490,7 +494,7 @@ tbody tr:last-of-type {
     height: 24px;
 
     margin-top: 2em;
-    
+
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: white;
@@ -512,7 +516,8 @@ tbody tr:last-of-type {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    
+
+    text-decoration: none;
     height: 2.25em;
     width: 7em;
 
@@ -558,7 +563,7 @@ tbody tr:last-of-type {
 
     background-color: #eee;
     color: #31363F;
-    
+
     outline: none;
 }
 
@@ -573,7 +578,7 @@ tbody tr:last-of-type {
 
     background-color: #eee;
     color: #31363F;
-    
+
     outline: none;
 }
 
@@ -620,7 +625,7 @@ input[type="checkbox"]:after {
     color: #ffffff;
     display: none;
 }
-  
+
 input[type="checkbox"]:hover {
     background-color: #a5a5a5;
 }
@@ -639,7 +644,7 @@ input[type="checkbox"]:checked:after {
     outline: none;
 
     width: 2em;
-    
+
     margin-top: .5em;
     padding: 2px;
 
@@ -663,7 +668,7 @@ input[type="checkbox"]:checked:after {
 }
 
 /********************************************* Hovers *********************************************/
-.sidenav a:hover {  
+.sidenav a:hover {
     cursor: pointer;
     color: #76ABAE;
     fill: #76ABAE;
@@ -704,9 +709,9 @@ input[type="checkbox"]:checked:after {
 }
 
 /********************************************* Focus *********************************************/
-input[type="text"]:focus, 
+input[type="text"]:focus,
 input[type="date"]:focus,
-input[type="time"]:focus, 
+input[type="time"]:focus,
 input[type="number"]:focus{
     border: 2px solid #76ABAE;
     cursor: text;

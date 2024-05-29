@@ -4,7 +4,11 @@
 
 <head>
     <link href="{{ asset('/css/conquistador.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Conquistador</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     </style>
@@ -21,6 +25,7 @@
             </svg>
             @lang('app.your_data')
         </a>
+        @if ($conquistador->tutorLegal)
         @foreach ($clasesConquistador as $clases)
             <a href="{{ route('conquistador.clases', $clases->id) }}">
                 <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
@@ -50,6 +55,7 @@
             </a>
         @endforeach
         <a href="{{ route('conquistador.especialidad') }}">@lang('app.speciality')</a>
+        @endif
         <form action="/logout" method="get">
             @csrf
             <button class="my-button-loggout" type="submit">@lang('app.log_out')</button>
@@ -93,6 +99,59 @@
                             {{ $conquistador->user->direccion }}
                         </h3>
                     </div>
+                    @if (!$conquistador->tutorLegal)
+                        <div class="boxTusDatos">
+                            <h3 class="h3Dato">@lang('app.no_tutor')</h3>
+                            <h3 class="h3Dato">@lang('app.add_code_tutor')</h3>
+                            <form action="{{route('conquistador.sendcode')}}" method="POST">
+                                @csrf
+                                <input type="text" name="onecode" id="onecode">
+                                <input type="submit" value="Enviar">
+                            </form>
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                    <script>
+                        let errorsExist = true;
+                        let title_error = "{{ __('app.error_title') }}";
+                        let error = "{{ __('app.error_message') }}";
+                        let button = "{{ __('app.accept_error') }}";
+                        let errorList =
+                            '@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach';
+
+                        if (errorsExist) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: title_error,
+                                text: error,
+                                confirmButtonText: button,
+                                footer: '<ul>' + errorList + '</ul>'
+                            });
+                        }
+                    </script>
+                @endif
+                    <div class="divDatos"><h2>Historial</h2></div>
+                <div class="divDatos">
+
+                    @foreach ($historial as $historia)
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Club</th>
+                                <th>Fecha entrada</th>
+                                <th>Fecha salida</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $historia->nombre }}</td>
+                                <td>{{ $historia->pivot->fechaIngreso }}</td>
+                                <td>{{ $historia->pivot->fechaSalida }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @endforeach
+                </div>
                 </div>
             @endif
 
