@@ -10,11 +10,11 @@ trait RequisitosMutator
 
     public function getNombreAttribute($value)
     {
-        return $this->getTranslation('nombre', $value);
+        return $this->Translation('nombre', $value);
     }
 
     public function getDescripcionAttribute($value)
     {
-        return $this->getTranslation('descripcion', $value);
+        return $this->Translation('descripcion', $value);
     }
 }

@@ -72,32 +72,40 @@
     <div class="main">
         <!--************************************ Clases ************************************-->
         @if ($status == 'clase')
-            {{ Log::info($clase) }}
             <div class="divTareasAsis">
                 <h2>{{ $clase->nombre }}</h2>
                 <!--************************************ Tabla Tareas ************************************-->
-                <h3>@lang('app.tasks')</h3>
-                    <form action={{ route('instructor.sendhw') }} method="post">
-                        @csrf
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>@lang('app.name')</th>
-                                    @if ($tareas->count() == 0)
-                                        <th>@lang('app.there_are_no_tasks')</th>
-                                    @else
+                <h3>Tareas</h3>
+                <form action={{ route('instructor.sendhw') }} method="post">
+                    @csrf
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                @if ($tareas->count() == 0)
+                                    <th>No hay tareas</th>
+                                @else
                                     @foreach ($tareas as $tarea)
                                         <th>
                                             <a href="/instructor/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a>
                                         </th>
                                     @endforeach
-                                    @endif
-                                </tr>
-                            </thead>
-                            @foreach ($conquistadores as $conquistador)
-                                <tr>
-                                    <td>
-                                        <a href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
+                                @endif
+                            </tr>
+                        </thead>
+                        @foreach ($conquistadores as $conquistador)
+                            <tr>
+                                <td>
+                                    <a
+                                        href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
+                                </td>
+                                @foreach ($conquistador->tareas as $tareaa)
+                                    <td class="tdTareas">
+                                        @if ($tareaa->clase_id === $clase->id)
+                                            <input type="checkbox"
+                                                name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}"
+                                                value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
+                                        @endif
                                     </td>
                                     @foreach ($conquistador->tareas as $tareaa)
                                         <td class="tdTareas">
@@ -181,10 +189,44 @@
                                 @endforeach
                             </table>
                         </div>
-
                         <button class="btnEnviar" type="submit" name="save">@lang('app.send')</button>
-                    </form>
-
+                </form>
+                <h3>Especialidad</h3>
+                <form action={{ route('instructor.sendRequisitos') }} method="post">
+                    @csrf
+                    @foreach ($especialidades as $especialidad)
+                        <h4>{{ $especialidad->nombre }}</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Alumno </th>
+                                    @foreach ($especialidad->requisitos as $requisito)
+                                        <th>
+                                            <a href="">{{ $requisito->nombre }}</a>
+                                        </th>
+                                    @endforeach
+                                </tr>
+                            </thead>
+                            @foreach ($conquistadores as $conquistador)
+                                <tr>
+                                    <td>
+                                        <a
+                                            href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
+                                    </td>
+                                    @foreach ($conquistador->requisitos as $requisitoss)
+                                        <td class="tdTareas">
+                                            <input type="checkbox"
+                                                name="{{ $requisitoss->pivot->requisito_id . '-' . $requisitoss->pivot->conquistador_id }}"
+                                                value="1" @if ($requisitoss->pivot->completado == 1) checked @endif>
+                                                {{Log::info($requisitoss->pivot->requisito_id . '-' . $requisitoss->pivot->conquistador_id . '-' . $requisitoss->pivot->completado )}}
+                                        </td>
+                                    @endforeach
+                                </tr>
+                            @endforeach
+                        </table>
+                        <button class="btnEnviar" type="submit" name="save">@lang('app.send')</button>
+                </form>
+        @endforeach
         <!--************************************ Añadir Alumnos ************************************-->
         <h3 class="h3AddAlumno">@lang('app.add_students_to_class')</h3>
         <form class="frmAlmTar" action="{{ route('instructor.anadirAlumnos') }}" method="post">
@@ -346,8 +388,9 @@
                 </h3>
             </div>
             <div class="divDatos">
-                <h3>@lang('app.legal_guardian') </h3>
-                <h3 class="h3Dato">{{ $conquistador->tutorLegal->name . ' ' . $conquistador->tutorLegal->apellido }}
+                <h3>Tutor Legal: </h3>
+                <h3 class="h3Dato">
+                    {{ $conquistador->tutorLegal->name . ' ' . $conquistador->tutorLegal->apellido }}
                 </h3>
             </div>
             <div class="divDatos">

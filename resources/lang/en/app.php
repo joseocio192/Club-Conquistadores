@@ -97,6 +97,7 @@ return [
     'municipality' => 'Municipality',
     'city' => 'City',
 
+
     // Register
     'conquerors_personal_data' => 'Conquerors personal data',
     'lastName' => 'Last Name',
