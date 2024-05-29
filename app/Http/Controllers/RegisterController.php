@@ -12,6 +12,9 @@ use App\Models\ClubXpersona;
 use App\Http\Controllers\ConquistadorController;
 use App\Models\Onecodeuse;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\App;
+
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -21,6 +24,7 @@ class RegisterController extends Controller
         //$paises = Pais::all(); // Retrieve all countries from the database,
         //return view('register', ['paises' => $paises]);
         $status = 'nada';
+
         return view('register', compact('status'));
     }
 
@@ -28,6 +32,7 @@ class RegisterController extends Controller
     {
         $tutor = User::find($id);
         $status = 'tutor';
+        Log::info($status);
         //max of 5 codes per user
         $count = Onecodeuse::where('user_id', $tutor->id)->count();
         if ($count >= 5) {
@@ -46,81 +51,133 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'apellido' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:Users',
-            'password' => 'required|string|min:8',
-            'telefono' => 'required|string|max:10',
-            'fecha_nacimiento' => 'required|after:1900/01/01|before:today',
-            'calle' => 'required|string|max:255',
-            'numero_exterior' => 'required|string|max:255',
-            'numero_interior' => 'nullable|string|max:255',
-            'colonia' => 'required|string|max:255',
-            'ciudad_id' => 'required|integer',
-            'codigo_postal' => 'required|string|max:255',
-            'sexo' => 'required|string|max:255',
-            'onecode' => 'required|integer',
-            'clubes' => 'required|integer',
-        ]);
+        try {
+            DB::beginTransaction();
 
-        //check if onecode is valid and not used
-        $onecode = Onecodeuse::where('onecode', $request->onecode)->where('used', 0)->first();
-        if ($onecode == null) {
-            return view('register')->with('error', 'OTC no válido o ya usado');
-        }else if ($onecode->used == 1) {
-            return view('register')->with('error', 'OTC ya usado');
-        } else {
-            $onecode->used = 1;
-            $tutorid = Onecodeuse::where('onecode', $request->onecode)->first()->user_id;
-            $onecode->save();
-        }
-        Log::info($request->all());
-        $user = User::create([
-            'name' => $request->name,
-            'rol' => $request->rol,
-            'apellido' => $request->apellido,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'telefono' => $request->telefono,
-            'fecha_nacimiento' => $request->fecha_nacimiento,
-            'calle' => $request->calle,
-            'numero_exterior' => $request->numero_exterior,
-            'numero_interior' => $request->numero_interior,
-            'colonia' => $request->colonia,
-            'ciudad_id' => $request->ciudad_id,
-            'codigo_postal' => $request->codigo_postal,
-            'sexo' => $request->sexo,
-        ]);
-
-        if ($request->autorizado == "1") {
-            $conquistador = Conquistador::create([
-                'user_id' => $user->id,
-                'tutorLegal_id' => $request->tutorLegal_id,
-                'rol' => 'Amigo',
-                'activo' => '1',
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'apellido' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:Users',
+                'password' => 'required|string|min:8',
+                'telefono' => 'required|string|max:10',
+                'fecha_nacimiento' => 'required|after:1900/01/01|before:today',
+                'calle' => 'required|string|max:255',
+                'numero_exterior' => 'required|string|max:255',
+                'numero_interior' => 'nullable|string|max:255',
+                'colonia' => 'required|string|max:255',
+                'ciudad' => 'required|integer',
+                'codigo_postal' => 'required|string|max:255',
+                'sexo' => 'required|string|max:255',
+                'onecode' => 'required|integer',
+                'clubes' => 'required|integer',
+                'status' => 'required|string',
             ]);
-            $clubXpersona = ClubXpersona::create([
+
+            $status = $request->input('status');
+            $tutorid = null;
+
+            if ($status == 'tutor') {
+                $onecode = Onecodeuse::where('onecode', $request->onecode)->where('used', 0)->first();
+                if ($onecode == null) {
+                    return view('register')->with('error', 'OTC no válido o ya usado');
+                } elseif ($onecode->used == 1) {
+                    return view('register')->with('error', 'OTC ya usado');
+                } else {
+                    $onecode->used = 1;
+                    $onecode->save();
+                    $tutorid = $onecode->user_id;
+                }
+            } else {
+                $tutorid = null;
+            }
+
+            // Crear usuario
+            $user = User::create([
+                'name' => $request->name,
+                'apellido' => $request->apellido,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'telefono' => $request->telefono,
+                'fecha_nacimiento' => $request->fecha_nacimiento,
+                'calle' => $request->calle,
+                'numero_exterior' => $request->numero_exterior,
+                'numero_interior' => $request->numero_interior,
+                'colonia' => $request->colonia,
+                'ciudad_id' => $request->ciudad,
+                'codigo_postal' => $request->codigo_postal,
+                'sexo' => $request->sexo,
+                'rol' => $this->getUserRolAllowedByLocale(),
+
+            ]);
+
+            if ($request->autorizado == "1") {
+                Conquistador::create([
+                    'user_id' => $user->id,
+                    'tutorLegal_id' => $request->tutorLegal_id,
+                    'rol' => $this->getConqRolAllowedByLocale(),
+                    'activo' => '1',
+                ]);
+            } else {
+                Conquistador::create([
+                    'user_id' => $user->id,
+                    'tutorLegal_id' => $tutorid,
+                    'rol' => $this->getConqRolAllowedByLocale(),
+                    'activo' => '0',
+                ]);
+            }
+
+            ClubXpersona::create([
                 'club_id' => $request->clubes,
                 'user_id' => $user->id,
             ]);
 
+            DB::commit();
+
             auth()->login($user);
+
             return redirect()->action([ConquistadorController::class, 'invoke']);
-        } else {
-            $conquistador = Conquistador::create([
-                'user_id' => $user->id,
-                'tutorLegal_id' => $tutorid,
-                'rol' => 'Amigo',
-                'activo' => '0',
-            ]);
-            $clubXpersona = ClubXpersona::create([
-                'club_id' => $request->clubes,
-                'user_id' => $user->id,
-            ]);
-            $onecode->delete();
-            auth()->login($user);
-            return redirect()->action([ConquistadorController::class, 'invoke']);
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return view('error')->with('message', 'Ha ocurrido un error durante el registro.');
         }
+    }
+
+
+    public function getConqRolAllowedByLocale(): string
+    {
+        $locale = App::getLocale();
+        $rol = 'Amigo';
+        if ($locale == 'en')
+            $rol = 'Friend';
+        else if ($locale == 'fr')
+            $rol = 'Ami';
+        else if ($locale == 'ko')
+            $rol = '친구';
+        else if ($locale == 'ja')
+            $rol = '友達';
+        else if ($locale == 'zh-Hans')
+            $rol = '朋友';
+
+
+        return $rol;
+    }
+
+    public function getUserRolAllowedByLocale(): string
+    {
+        $locale = App::getLocale();
+        $rol = 'Conquistador';
+        if ($locale == 'en')
+            $rol = 'Conqueror';
+        else if ($locale == 'fr')
+            $rol = 'Conquérant';
+        else if ($locale == 'ko')
+            $rol = '정복자';
+        else if ($locale == 'ja')
+            $rol = '征服者';
+        else if ($locale == 'zh-Hans')
+            $rol = '征服者';
+
+        return $rol;
     }
 }

@@ -231,6 +231,13 @@ thead {
     font-weight: bold;
 }
 
+
+form{
+    width: 1000px;
+    overflow-x: auto;
+}
+
+
 td,
 th {
     padding: 12px 15px;
