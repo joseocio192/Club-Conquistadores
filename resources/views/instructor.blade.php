@@ -111,7 +111,7 @@
                             </tr>
                         @endforeach
                     </table>
-                    <button class="btnEnviar" type="submit">Enviar</button>
+                    <button class="btnEnviar" type="submit">@lang('app.send')</button>
                 </form>
 
                 <!--************************************ Tabla Asistencia ************************************-->
@@ -129,66 +129,60 @@
                                     @else
                                         @foreach ($conquistador->asistencia as $asistencia)
                                             <th>{{ $asistencia->fecha }}</th>
-                                        @endforeach
-                                    @endif
-                                    <th class="thBtnDia">
-                                        <button class="btnDia" type="submit" name="adddia">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                                <path
-                                                    d="M416 208H272V64c0-17.7-14.3-32-32-32h-32c-17.7 0-32 14.3-32 32v144H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h144v144c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32V304h144c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z" />
-                                            </svg>
-                                        </button>
-                                        <button class="btnDia" type="submit" name="deleteDia">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                                <path
-                                                    d="M416 208H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z" />
-                                            </svg>
-                                        </button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            @foreach ($conquistadores as $conquistador)
-                                <tr>
-                                    @if ($asistencias->count() == 0)
-                                        <th>@lang('app.there_are_no_assists')</th>
-                                    @else
-                                        <td>{{ $conquistador->user->name }}</td>
-                                        @foreach ($conquistador->asistencia as $asistencia)
-                                            @if ($asistencia->id_clase === $clase->id)
-                                                <td class="tdAsistencia">
-                                                    <input type="checkbox"
-                                                        name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}"
-                                                        value="1"
-                                                        @if ($asistencia->pivot->asistio == 1) checked @endif />
-                                                    <select class="selectPulcritud"
-                                                        name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
-                                                        <option value="1"
-                                                            @if ($asistencia->pivot->pulcritud == 1) selected @endif>1</option>
-                                                        <option value="2"
-                                                            @if ($asistencia->pivot->pulcritud == 2) selected @endif>2</option>
-                                                        <option value="3"
-                                                            @if ($asistencia->pivot->pulcritud == 3) selected @endif>3
-                                                        </option>
-                                                        <option value="4"
-                                                            @if ($asistencia->pivot->pulcritud == 4) selected @endif>4
-                                                        </option>
-                                                        <option value="5"
-                                                            @if ($asistencia->pivot->pulcritud == 5) selected @endif>5
-                                                        </option>
-                                                    </select>
-                                                </td>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </tr>
-                            @endforeach
-                        </table>
-                    </div>
-                    <button class="btnEnviar" type="submit" name="save">Enviar</button>
+                                            @endforeach
+                                        @endif
+                                        <th class="thBtnDia">
+                                            <button class="btnDia" type="submit" name="adddia">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                                    <path d="M416 208H272V64c0-17.7-14.3-32-32-32h-32c-17.7 0-32 14.3-32 32v144H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h144v144c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32V304h144c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z"/>
+                                                </svg>
+                                            </button>
+                                            <button class="btnDia" type="submit" name="deleteDia">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                                    <path d="M416 208H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z"/>
+                                                </svg>
+                                            </button>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                @foreach ($conquistadores as $conquistador)
+                                    <tr>
+                                        @if ($asistencias->count() == 0)
+                                            <th>@lang('app.there_are_no_assists')</th>
+                                        @else
+                                            <td>{{ $conquistador->user->name }}</td>
+                                            @foreach ($conquistador->asistencia as $asistencia)
+                                                @if ($asistencia->id_clase === $clase->id)
+                                                        <td class="tdAsistencia">
+                                                            <input type="checkbox"
+                                                                name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}"
+                                                                value="1" @if ($asistencia->pivot->asistio == 1) checked @endif/>
+                                                            <select class="selectPulcritud"
+                                                                name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
+                                                                <option value="1"
+                                                                    @if ($asistencia->pivot->pulcritud == 1) selected @endif>1</option>
+                                                                <option value="2"
+                                                                    @if ($asistencia->pivot->pulcritud == 2) selected @endif>2</option>
+                                                                <option value="3"
+                                                                    @if ($asistencia->pivot->pulcritud == 3) selected @endif>3</option>
+                                                                <option value="4"
+                                                                    @if ($asistencia->pivot->pulcritud == 4) selected @endif>4</option>
+                                                                <option value="5"
+                                                                    @if ($asistencia->pivot->pulcritud == 5) selected @endif>5</option>
+                                                            </select>
+                                                        </td>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                        <button class="btnEnviar" type="submit" name="save">@lang('app.send')</button>
                 </form>
-                
+
                 <form action={{ route('instructor.sendRequisitos') }} method="post">
                     @csrf
                     @foreach ($especialidades as $especialidad)
@@ -222,59 +216,59 @@
                                 </tr>
                             @endforeach
                         </table>
-                    @endforeach
-                    <button class="btnEnviar" type="submit" name="save">Enviar</button>
+                        <button class="btnEnviar" type="submit" name="save">@lang('app.send')</button>
                 </form>
-                <!--************************************ Añadir Alumnos ************************************-->
-                <h3 class="h3AddAlumno">@lang('app.add_students_to_class')</h3>
-                <form class="frmAlmTar" action="{{ route('instructor.anadirAlumnos') }}" method="post">
-                    @csrf
-                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                    @lang('app.students_id')
-                    <input type="text" name="alumnos" placeholder="(Separados por comas)">
-                    <button class="my-button" type="submit">Añadir</button>
-                </form>
+        @endforeach
+        <!--************************************ Añadir Alumnos ************************************-->
+        <h3 class="h3AddAlumno">@lang('app.add_students_to_class')</h3>
+        <form class="frmAlmTar" action="{{ route('instructor.anadirAlumnos') }}" method="post">
+            @csrf
+            <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+            @lang('app.students_id')
+            <input type="text" name="alumnos" placeholder="(Separados por comas)">
+            <button class="my-button" type="submit">@lang('app.add')</button>
+        </form>
 
-                <!--************************************ Eliminar Alumnos ************************************-->
-                <h3>@lang('app.remove_students_from_class')</h3>
-                <form class="frmAlmTar" action="{{ route('instructor.eliminarAlumnos') }}" method="post">
-                    @csrf
-                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                    @lang('app.students_id')
-                    <input type="text" name="alumnos" placeholder="(Separados por comas)">
-                    <button class="my-button" type="submit">Eliminar</button>
-                </form>
+        <!--************************************ Eliminar Alumnos ************************************-->
+        <h3>@lang('app.remove_students_from_class')</h3>
+        <form class="frmAlmTar" action="{{ route('instructor.eliminarAlumnos') }}" method="post">
+            @csrf
+            <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+            @lang('app.students_id')
+            <input type="text" name="alumnos" placeholder="(Separados por comas)">
+            <button class="my-button" type="submit">@lang('app.delete')</button>
+        </form>
 
-                <!--************************************ Crear Tarea ************************************-->
-                <h3>@lang('app.create_task')</h3>
-                <form class="frmAlmTar" action="{{ route('instructor.crearTarea') }}" method="post">
-                    @csrf
-                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                    @lang('app.name')
-                    <input type="text" name="nombre">
-                    @lang('app.description')
-                    <input type="text" name="descripcion">
-                    @lang('app.due_date')
-                    <input type="date" name="fecha">
-                    <button class="my-button" type="submit">Crear</button>
-                </form>
-                <!--************************************ Modificar Tarea ************************************-->
-                <h3>@lang('app.modify_task')</h3>
-                <form class="frmAlmTar" action="{{ route('instructor.modificarTarea') }}" method="post">
-                    @csrf
-                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                    ID:
-                    <input type="text" name="tarea_id">
-                    @lang('app.name')
-                    <input type="text" name="nombre">
-                    @lang('app.description')
-                    <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
-                    @lang('app.due_date')
-                    <input type="date" name="fecha" placeholder="Fecha de la tarea">
-                    <button class="btnModTar" type="submit">Modificar</button>
-                </form>
-            </div>
-        @endif
+        <!--************************************ Crear Tarea ************************************-->
+        <h3>@lang('app.create_task')</h3>
+        <form class="frmAlmTar" action="{{ route('instructor.crearTarea') }}" method="post">
+            @csrf
+            <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+            @lang('app.name')
+            <input type="text" name="nombre">
+            @lang('app.description')
+            <input type="text" name="descripcion">
+            @lang('app.due_date')
+            <input type="date" name="fecha">
+            <button class="my-button" type="submit">@lang('app.create')</button>
+        </form>
+        <!--************************************ Modificar Tarea ************************************-->
+        <h3>@lang('app.modify_task')</h3>
+        <form class="frmAlmTar" action="{{ route('instructor.modificarTarea') }}" method="post">
+            @csrf
+            <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+            @lang('app.id_:')
+            <input type="text" name="tarea_id">
+            @lang('app.name')
+            <input type="text" name="nombre">
+            @lang('app.description')
+            <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
+            @lang('app.due_date')
+            <input type="date" name="fecha" placeholder="Fecha de la tarea">
+            <button class="btnModTar" type="submit">@lang('app.modify')</button>
+        </form>
+    </div>
+    @endif
 
         <!-- SI estamos en la ruta instructor.clases mostrar estudiantes de dicha clase -->
         <!--************************************ Gestionar clases ************************************-->
@@ -345,6 +339,38 @@
                         @lang('app.due_date')
                         <input type="date" name="fecha">
                     </div>
+                    <div>
+                        @lang('app.minimum_age')
+                        <input type="number" name="edadMinima">
+                    </div>
+                    <div>
+                        @lang('app.color')
+                        <input type="text" name="color">
+                    </div>
+                    <div>
+                        @lang('app.logo')
+                        <input type="text" name="logo">
+                    </div>
+                    <div>
+                        @lang('app.entry_time')
+                        <input type="time" name="horario">
+                    </div>
+                    <div>
+                        @lang('app.exit_time')
+                        <input type="time" name="horario2">
+                    </div>
+                    <button class="btnCrearClase" type="submit">@lang('app.create')</button>
+                </div>
+
+            </form>
+            <div class="divEliminarClase">
+                <form action="{{ route('instructor.eliminarClase') }}" method="post">
+                    <h3> @lang('app.delete_class') </h3>
+                    <div>
+                        @lang('app.class_id')
+                        <input type="text" name="clase_id">
+                    </div>
+
                     <button class="my-button" type="submit">@lang('app.modify')</button>
                 </form>
             </div>

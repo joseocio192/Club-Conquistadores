@@ -11,14 +11,14 @@
 
 <body>
     <div class="sidenav">
-        <h1>Conquistador: {{ $conquistador->user->nombreCompleto }}</h1>
+        <h1>@lang('app.pathfinders') {{ $conquistador->user->nombreCompleto }}</h1>
         <a href={{ route('conquistador') }}>
             <svg xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                 <path
                     d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
             </svg>
-            Tus Datos
+            @lang('app.your_data')
         </a>
         @foreach ($clasesConquistador as $clases)
             <a href="{{ route('conquistador.clases', $clases->id) }}">
@@ -51,7 +51,7 @@
         <a href="{{ route('conquistador.especialidad') }}">@lang('app.speciality')</a>
         <form action="/logout" method="get">
             @csrf
-            <button class="my-button-loggout" type="submit">Cerrar Sesion</button>
+            <button class="my-button-loggout" type="submit">@lang('app.log_out')</button>
         </form>
     </div>
 
@@ -60,7 +60,7 @@
             @if ($status == 'nada')
                 <div class="divTusDatos">
                     <div class="boxTusDatos">
-                        <h2>Tus datos</h2>
+                        <h2>@lang('app.your_data')</h2>
                     </div>
                     <div class="boxTusDatos">
                         <svg class="svgPerson" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -68,26 +68,26 @@
                             <path
                                 d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
                         </svg>
-                        <h3>Nombre: </h3>
+                        <h3>@lang('app.name') </h3>
                         <h3 class="h3Dato">{{ $conquistador->user->nombreCompleto }}
                         </h3>
-                        <h3>Edad: </h3>
+                        <h3>@lang('app.age') </h3>
                         <h3 class="h3Dato">{{ $conquistador->user->edad }}</h3>
                     </div>
                     <div class="boxTusDatos">
-                        <h3>Fecha de nacimiento: </h3>
+                        <h3>@lang('app.birthdate')</h3>
                         <h3 class="h3Dato">{{ $conquistador->user->fecha_nacimiento }}</h3>
                     </div>
                     <div class="boxTusDatos">
-                        <h3>Telefono: </h3>
+                        <h3>@lang('app.phone')</h3>
                         <h3 class="h3Dato">{{ $conquistador->user->telefono }}</h3>
                     </div>
                     <div class="boxTusDatos">
-                        <h3>Correo: </h3>
+                        <h3>@lang('app.email') </h3>
                         <h3 class="h3Dato">{{ $conquistador->user->email }}</h3>
                     </div>
                     <div class="boxTusDatos">
-                        <h3>Direccion: </h3>
+                        <h3>@lang('app.address') </h3>
                         <h3 class="h3Dato">
                             {{ $conquistador->user->direccion }}
                         </h3>
@@ -143,9 +143,9 @@
             @endif
 
             @if ($status == 'especialidad')
-                <h1>Especialidad</h1>
+                <h1>@lang('app.specialty')</h1>
                 @if (is_null($especialidadesCompletadas) || $especialidadesCompletadas->isEmpty())
-                    <h2>No tienes especialidades</h2>
+                    <h2>@lang('app.no_specialties')</h2>
                 @else
                     @foreach ($especialidadesCompletadas as $especialidad)
                         <div class="divEspecialidad">

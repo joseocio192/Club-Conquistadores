@@ -89,6 +89,7 @@ return [
     'select_country' => 'Select a country',
     'tutor' => 'Tutor',
     'add_pupil' => 'Add pupil',
+    'specialty' => 'Specialty',
 
     // Municipalities
     'country' => 'Country',
@@ -141,6 +142,13 @@ return [
     'Accept' => 'Accept',
     'Codes' => 'Codes',
     'generate_code' => 'Generate code',
-    'pupil_details:' => 'Pupil details:'
+    'pupil_details:' => 'Pupil details:',
+
+
+    'submit' => 'Submit',
+    'pathfinders_per_month_per_club' => 'Pathfinders per month per club',
+    'Pathfinders_per_moth' => 'Pathfinders per month',
+    'instructor_id' => 'Instructor ID:',
+    'no_specialties' => 'You don\'t have any specialties'
 
 ];
