@@ -216,9 +216,9 @@
                                 </tr>
                             @endforeach
                         </table>
+                        @endforeach
                         <button class="btnEnviar" type="submit" name="save">@lang('app.send')</button>
-                </form>
-        @endforeach
+                    </form>
         <!--************************************ Añadir Alumnos ************************************-->
         <h3 class="h3AddAlumno">@lang('app.add_students_to_class')</h3>
         <form class="frmAlmTar" action="{{ route('instructor.anadirAlumnos') }}" method="post">
@@ -432,7 +432,7 @@
             <div class="divTusDatos">
                 <div class="divDatos">
                     <h2>@lang('app.your_data')</h2>
-                    <a class="btnModificarTusDatos">Modificar</a>
+                    <a class="btnModificarTusDatos" href="instructor/modificar">Modificar</a>
 
                 </div>
                 <div class="divDatos">

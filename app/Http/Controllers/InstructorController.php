@@ -394,9 +394,9 @@ class InstructorController extends Controller
         $instructor = Instructor::where('user_id', $user->id)->first();
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         $status = "instructor";
-        //return view('modificarUsuario', compact('user', 'status', 'instructor'));
+        return view('modificarUsuario', compact('user', 'status', 'instructor'));
 
-        return view('instructor', compact('clasesDeInstructor', 'user', 'status', 'instructor'));
+        //return view('instructor', compact('clasesDeInstructor', 'user', 'status', 'instructor'));
     }
 
     public function modificarDatos(Request $request)
@@ -418,7 +418,6 @@ class InstructorController extends Controller
         $user->save();
 
         $instructor = Instructor::where('user_id', $user->id)->first();
-        $instructor->activo = $request->activo;
         $instructor->jefe_id;
         $instructor->save();
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
