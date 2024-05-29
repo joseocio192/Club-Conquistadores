@@ -139,32 +139,6 @@ button:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    overflow: visible;
-    z-index: 99;
-    clear: both;
-    min-height: 28px;
-}
-
-.footerItems{
-    color: #000;
-    font-size: 12px;
-    line-height: 28px;
-    white-space: nowrap;
-    margin-left: 8px;
-    margin-right: 16px;
-    width: 7em;
-    float: right;
-}
-
-.footerItems:hover {
-    color: #4ea4a8;
-    cursor: pointer;
-}
-
 select {
     width: 100%;
     margin-bottom: 1em;

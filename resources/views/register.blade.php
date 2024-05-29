@@ -1,3 +1,4 @@
+@extends('layouts.app')
 <!-- resources/views/register.blade.php -->
 <!DOCTYPE html>
 
@@ -67,11 +68,19 @@
 
                     <div>
                         <label for="sexo">@lang('app.Sex')</label>
-                        <select id="sexo" name="sexo" required><br>
-                            <option value="">@lang('app.Select_a_gender')</option>
-                            <option value="{{ trans('app.Man') }}">{{ __('app.Man') }}</option>
-                            <option value="{{ trans('app.Women') }}">{{ __('app.Women') }}</option>
-                            <option value="{{ trans('app.Other') }}">{{ __('app.Other') }}</option>
+                        <select id="sexo" name="sexo" required>
+                            <option value="">{{ __('app.Select_a_gender') }}</option>
+                            <option value="{{ __('app.Men') }}" {{ old('sexo') == __('app.Men') ? 'selected' : '' }}>
+                                {{ __('app.Man') }}
+                            </option>
+                            <option value="{{ __('app.Women') }}"
+                                {{ old('sexo') == __('app.Women') ? 'selected' : '' }}>
+                                {{ __('app.Women') }}
+                            </option>
+                            <option value="{{ __('app.Other') }}"
+                                {{ old('sexo') == __('app.Other') ? 'selected' : '' }}>
+                                {{ __('app.Other') }}
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -148,7 +157,7 @@
                 </div>
             </div>
 
-            <input type="hidden" name="status" value="{{ $status }}">
+            {{-- <input type="hidden" name="status" value="{{ $status }}"> --}}
 
             @if ($status == 'tutor')
                 <label for="tutorLegal_id">@lang('app.onecode')</label>
@@ -176,6 +185,8 @@
             </div>
         </div>
     </form>
+    @section('content')
+    @endsection
 </body>
 @if ($errors->any())
     <script>
@@ -199,11 +210,11 @@
 @endif
 <script type="text/javascript">
     $(document).ready(function() {
-        var oldPais = "{{ old('pais') }}";
-        var oldEstado = "{{ old('estado') }}";
-        var oldMunicipio = "{{ old('municipio') }}";
-        var oldCiudad = "{{ old('ciudad') }}";
-        var oldClub = "{{ old('clubes') }}";
+        let oldPais = "{{ old('pais') }}";
+        let oldEstado = "{{ old('estado') }}";
+        let oldMunicipio = "{{ old('municipio') }}";
+        let oldCiudad = "{{ old('ciudad') }}";
+        let oldClub = "{{ old('clubes') }}";
 
         $.ajax({
             url: "{{ url('api/get-pais-list') }}",
