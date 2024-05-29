@@ -3,13 +3,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <div class="container">
-        <h1>Select Location</h1>
+        <h1>@lang('app.select_location')</h1>
 
         <form>
             <div class="form-group">
                 <label for="pais">@lang('app.Country')</label>
                 <select id="pais" class="form-control">
-                    <option value="">Select a country</option>
+                    <option value="">@lang('app.select_country')</option>
                     @foreach($paises as $pais)
                         <option value="{{ $pais->id }}">{{ $pais->nombre }}</option>
                     @endforeach
@@ -57,7 +57,7 @@
                 success: function(res) {
                     if(res) {
                         $('#estado').empty();
-                        $('#estado').append('<option>Seleccionar</option>');
+                        $('#estado').append('<option>{{__("app.select")}}</option>');
                         $.each(res,function(key,value){
                             $('#estado').append('<option value="'+key+'">'+value+'</option>');
                         });
@@ -84,7 +84,7 @@
                 success: function(res) {
                     if(res) {
                         $('#municipio').empty();
-                        $('#municipio').append('<option>Seleccionar</option>');
+                        $('#municipio').append('<option>{{__("app.select")}}</option>');
                         $.each(res,function(key,value){
                             $('#municipio').append('<option value="'+key+'">'+value+'</option>');
                         });
@@ -110,7 +110,7 @@
                 success: function(res) {
                     if(res) {
                         $('#ciudad').empty();
-                        $('#ciudad').append('<option>Seleccionar</option>');
+                        $('#ciudad').append('<option>{{__("app.select")}}</option>');
                         $.each(res,function(key,value){
                             $('#ciudad').append('<option value="'+key+'">'+value+'</option>');
                         });

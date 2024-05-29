@@ -2,51 +2,119 @@
     font-family: "Roboto";
 }
 
+/* Tipografias */
+.sidenav h1 {
+    color: #222831;
+    margin-left: 1.5em;
+}
+
+h2 {
+    color: #222831;
+}
+
+.divDatos h3 {
+    margin-bottom: .6em;
+    color: #31363F;
+}
+
+.divDatos div h3 {
+    margin-right: 1em;
+}
+
+.divClub h2 {
+    color: #222831;
+}
+
+.divClub h3 {
+    color: #31363F;
+}
+
+.divDatosClub h3 {
+    color: #31363F;
+    margin-top: .25em;
+}
+
+.frmAddInstructor div h3 {
+    margin-right: .75em;
+}
+
+.h2InstructoresDisponibles {
+    border-top: 2px solid #76ABAE;
+    padding-top: .65em;
+    margin-bottom: 1em;
+}
+
+.h2ConqPorMes {
+    width: 100%;
+
+    padding-top: .65em;
+    padding-bottom: .5em;
+
+    border-top: 2px solid #76ABAE;
+}
+
+/********************************************* Cotenedores *********************************************/
 body {
     display: flex;
     margin: 0;
-    height: 100%;
+    background-color: #eee;
 }
 
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding-bottom: 0.5em;
+    width: 100%;
+}
 
 .sidenav {
     display: flex;
+
     align-items: center;
     flex-direction: column;
-    width: 18%;
-    background-color: #eee;
-    height: 100%;
-            /* Full-height: remove this if you want "auto" height */
 
-            /* Set the width of the sidebar */
-    /* position: fixed;
-            /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1;
-            /* Stay on top */
-    top: 0;
-            /* Stay at the top */
-    left: 0;
-            /* Black */
-    overflow-x: hidden;
-            /* Disable horizontal scroll */
-    padding-top: 20px;
+    width: 18%;
+    min-height: 100vh;
+    max-height: 100%;
+
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+
+    border-top-right-radius: 1.25em;
+    border-bottom-right-radius: 1.25em;
+    border: 2px solid #76ABAE;
+
+    background-color: #eee;
+    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.2);
 }
 
 .sidenav a {
     display: flex;
     align-items: center;
     justify-content: start;
+
+    width: 80%;
+
+    border-bottom: 2px solid #76ABAE;
+
     margin-top: 0.3125em;
     margin-bottom: 0.9375em;
+
     padding-top: 0.3125em;
     padding-bottom: 0.3125em;
+
     text-decoration: none;
     text-align: center;
-    font-size: 1.4375em;
+
+    font-size: 1.25em;
     font-weight: 900;
-    width: 70%;
+
     color: #31363F;
-    border-bottom: 3px solid #76ABAE;
+    fill: #31363F;
+
+    transition: all .2s ease;
 }
 
 .sidenav form {
@@ -54,52 +122,101 @@ body {
     margin-bottom: 1em;
 }
 
-.sidenav svg {
-    height: 0.8125em;
-    width: 0.8125em;
-    fill: #31363F;
-    margin-right: 0.50em;
+.divDatos {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 4em 1em 2em;
+
+    border: 2px solid #76ABAE;
+    border-radius: 20px;
+
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 }
 
-.sidenav a:hover {
-    cursor: pointer;
-    color: #76ABAE;
-    fill: #76ABAE;
+.divDatos div {
+    display: flex;
 }
 
-h1 {
-    color: #222831;
-    font-family: "Roboto";
+.divClub {
+    padding: 0 1em 1em 1em;
+
+    border: 2px solid #76ABAE;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 }
 
-/* Style page content */
-.main {
-    width: 80%;
+.divDatosClub {
+    display: flex;
+} 
 
-    height: 100%;
+.divDatosClub h3:last-of-type {
+    margin-left: 3em;
+}
+
+.divTable {
+    margin-top: 2.5em;
+}
+
+.frmAddInstructor div {
+    display: flex;
+    align-items: center;
+    height: 2em;
 }
 
 table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    min-width: 40em;
+
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-bottom: .5em;
+
+    border-radius: 5px 5px 0 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.48);
+}
+
+thead tr th {
+    text-align: left;
+    font-weight: bold;
+}
+
+tr th {
+    background-color: #76ABAE;
+    color: #ffffff;
+}
+
+thead {
+    background-color: #76ABAE;
+    color: #eee;
+    text-align: left;
+    font-weight: bold;
 }
 
 td,
 th {
-    border: 2px solid #111;
-    text-align: left;
+    padding: 12px 15px;
 }
 
-tr:nth-child(even) {
+tr {
+    border-bottom: 1px solid #76ABAE;
+}
+
+td:nth-child(even) {
     background-color: #dddddd;
 }
 
+tr {
+    text-align: center;
+}
 
 
+/********************************************* Botones *********************************************/
 .my-button {
     background-color: #76ABAE;
-    /* Green */
     border: none;
     color: white;
     padding: 4px 32px;
@@ -108,33 +225,109 @@ tr:nth-child(even) {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    /* Your existing CSS */
-}
-
-.my-button:hover {
-    background-color: #45a049;
 }
 
 .my-button-loggout {
     height: 3.235294117647059em;
     width: 9.6875em;
+
     border-radius: 6px;
     border-width: 0;
+    border: 2px solid #222831;
+
     font-size: 1.1em;
-    font-family: "Roboto";
     font-weight: 900;
-    background-color: #76ABAE;
-    color: #EEEEEE;
+
     transform: translateZ(0);
     transition: all .2s,box-shadow .08s ease-in;
+
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
     box-sizing: border-box;
+
+    background-color: #eee;
+    color: #222831;
+    
     cursor: pointer;
+    transition: all .3s ease;
 }
 
+.frmAddInstructor button, .divClub a {
+    text-decoration: none;
+
+    border: 1px solid #31363F;
+    border-radius: 5px;
+
+    margin-top: .5em;
+    padding: .75em 2em;
+
+    cursor: pointer;
+    outline: none;
+
+    text-align: center;
+    font-weight: 600;
+    font-size: 1em;
+
+    background-color: #222831;
+    color: #EEEEEE;
+}
+
+.frmAddInstructor button {
+    padding: .65em 2em; 
+}
+
+.inputIDInstructor {
+    padding: 5px;
+    outline: none;
+
+    border-radius: 5px;
+    border: 1px #222831 solid;
+
+    font-size: .9em;
+    font-weight: bold;
+    color: #31363F;
+
+    background-color: #eee;
+}
+
+/********************************************* Hovers *********************************************/
 .my-button-loggout:hover {
     font-size: 1.15em;
-    color: #EEEEEE;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
+
+    background-color: #222831;
+    border: white;
+    color: #eee;   
 }
 
+.sidenav a:hover, .sidenav a:hover svg {  
+    cursor: pointer;
+    color: #76ABAE;
+    fill: #76ABAE;
+}
+
+.frmAddInstructor button:hover, .divClub a:hover {
+    cursor: pointer;
+    background-color: #474D57;
+    border: 1px solid #474D57;
+}
+
+/********************************************* focus *********************************************/
+.inputIDInstructor:focus{
+    border: 1px solid #76ABAE;
+}
+
+/********************************************* SVGs *********************************************/
+.sidenav svg {
+    height: 0.8125em;
+    width: 0.8125em;
+    fill: #31363F;
+    margin-right: 0.50em;
+}
+
+.divDatos svg {
+    height: 4em;
+    width: 4em;
+
+    margin-right: 1em;
+
+    fill: #76ABAE;
+}

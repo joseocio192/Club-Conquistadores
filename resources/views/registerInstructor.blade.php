@@ -1,13 +1,15 @@
 <!-- resources/views/register.blade.php -->
 <!DOCTYPE html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+</style>
 <link href="{{ asset('/css/register.css') }}" rel="stylesheet">
 <form class="FormLayout" method="POST" action="{{ route('registerInstructor') }}" id="registro">
     @csrf
-
-    <h1>@lang('app.Register')</h1>
-    <h2>@lang('app.Instructor personal information')</h2>
     <div class='RegistroDiv'>
+        <h1>@lang('app.Register')</h1>
+        <h2>@lang('app.Instructor personal information')</h2>
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
                 <div>
@@ -55,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <h2 class='DatosH2'>@lang(app.Instructor_residency_data)</h2>
+        <h2 class='DatosH2'>@lang('app.Instructor_residency_data')</h2>
         <div class='SeccionDiv2'>
             <div class='SubSeccionDiv'>
                 <div>
@@ -147,7 +149,7 @@
             success: function(res) {
                 if (res) {
                     $('#pais').empty();
-                    $('#pais').append('<option>Seleccionar</option>');
+                    $('#pais').append('<option>{{__("app.select")}}</option>');
                     $.each(res, function(key, value) {
                         $('#pais').append('<option value="' + key + '">' + value +
                             '</option>');
@@ -168,7 +170,7 @@
                 success: function(res) {
                     if (res) {
                         $('#estado').empty();
-                        $('#estado').append('<option>Seleccionar</option>');
+                        $('#estado').append('<option>{{__("app.select")}}</option>');
                         $.each(res, function(key, value) {
                             $('#estado').append('<option value="' + key + '">' + value +
                                 '</option>');
@@ -196,7 +198,7 @@
                 success: function(res) {
                     if (res) {
                         $('#municipio').empty();
-                        $('#municipio').append('<option>Seleccionar</option>');
+                        $('#municipio').append('<option>{{__("app.select")}}</option>');
                         $.each(res, function(key, value) {
                             $('#municipio').append('<option value="' + key + '">' + value +
                                 '</option>');
@@ -223,7 +225,7 @@
                 success: function(res) {
                     if (res) {
                         $('#ciudad_id').empty();
-                        $('#ciudad_id').append('<option>Seleccionar</option>');
+                        $('#ciudad_id').append('<option>{{__("app.select")}}</option>');
                         $.each(res, function(key, value) {
                             $('#ciudad_id').append('<option value="' + key + '">' + value +
                                 '</option>');
