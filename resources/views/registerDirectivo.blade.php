@@ -1,22 +1,24 @@
 <!-- resources/views/register.blade.php -->
 <!DOCTYPE html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+</style>
 <link href="{{ asset('/css/register.css') }}" rel="stylesheet">
 <form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
     @csrf
-
-    <h1>Registro</h1>
-    <h2>@lang('app.personal_data_of_a_executive')</h2>
     <div class='RegistroDiv'>
         <div class='SeccionDiv1'>
+            <h1>Registro</h1>
+            <h2>@lang('app.personal_data_of_a_executive')</h2>
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="name">@lang(app.name')</label>
+                    <label for="name">@lang('app.name')</label>
                     <input id="name" type="text" name="name" required autofocus><br>
                 </div>
 
                 <div>
-                    <label for="apellido">@lang(app.lastName')</label>
+                    <label for="apellido">@lang('app.lastName')</label>
                     <input id="apellido" type="text" name="apellido" class="Input" required><br>
                 </div>
             </div>
@@ -55,8 +57,8 @@
                 </div>
             </div>
         </div>
-        <h2 class='DatosH2'>@lang('app.Personal_data_of_An_executive')</h2>
         <div class='SeccionDiv2'>
+            <h2 class='DatosH2'>@lang('app.Personal_data_of_An_executive')</h2>
             <div class='SubSeccionDiv'>
                 <div>
                     <label for="calle">@lang('app.Street')</label>
@@ -119,12 +121,12 @@
                 </div>
             </div>
             <div class="SubSeccionDiv">
-                <div class="ClubesDiv">
+                <div>
                     <label for="jefe_id">@lang('app.BossId')</label>
                     <input id="jefe_id" type="text" name="jefe_id">
                 </div>
 
-                <div class="rol">
+                <div class="ClubesDiv">
                     <label>@lang('app.Role')</label>
                     <select name="rol" id="rol">
                         <option id="rol" value="director">@lang('app.Executive')</option>
@@ -134,7 +136,6 @@
             </div>
         </div>
         <div class="ButtonsDiv">
-
             <div>
                 <a class="HomeBtn" id="home-button" onclick="window.history.go(-1); return false;">
                     @lang('app.Back')

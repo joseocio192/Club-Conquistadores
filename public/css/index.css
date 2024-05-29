@@ -58,9 +58,14 @@ footer {
 
 .NavOption1 {
     margin-left: auto;
+    margin-right: 2.5em;
 }
 
-.NavOption2 {
+.NavOption2:first-of-type {
+    margin-right: 0;
+}
+
+.NavOption2:last-of-type {
     margin-left: 2.5em;
     margin-right: 2.5em;
 }
