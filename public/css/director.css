@@ -2,51 +2,74 @@
     font-family: "Roboto";
 }
 
+/* Tipografias */
+.sidenav h1 {
+    margin-left: 1.5em;
+}
+
+/********************************************* Cotenedores *********************************************/
 body {
     display: flex;
     margin: 0;
-    height: 100%;
+    background-color: #eee;
 }
 
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding-bottom: 0.5em;
+    width: 100%;
+}
 
 .sidenav {
     display: flex;
+
     align-items: center;
     flex-direction: column;
-    width: 18%;
-    background-color: #eee;
-    height: 100%;
-            /* Full-height: remove this if you want "auto" height */
 
-            /* Set the width of the sidebar */
-    /* position: fixed;
-            /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1;
-            /* Stay on top */
-    top: 0;
-            /* Stay at the top */
-    left: 0;
-            /* Black */
-    overflow-x: hidden;
-            /* Disable horizontal scroll */
-    padding-top: 20px;
+    width: 18%;
+    min-height: 100vh;
+    max-height: 100%;
+
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+
+    border-top-right-radius: 1.25em;
+    border-bottom-right-radius: 1.25em;
+    border: 2px solid #76ABAE;
+
+    background-color: #eee;
+    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.2);
 }
+
 
 .sidenav a {
     display: flex;
     align-items: center;
     justify-content: start;
+
+    width: 80%;
+
+    border-bottom: 2px solid #76ABAE;
+
     margin-top: 0.3125em;
     margin-bottom: 0.9375em;
+
     padding-top: 0.3125em;
     padding-bottom: 0.3125em;
+
     text-decoration: none;
     text-align: center;
-    font-size: 1.4375em;
+
+    font-size: 1.25em;
     font-weight: 900;
-    width: 70%;
+
     color: #31363F;
-    border-bottom: 3px solid #76ABAE;
+    fill: #31363F;
+
+    transition: all .2s ease;
 }
 
 .sidenav form {
@@ -69,14 +92,6 @@ body {
 
 h1 {
     color: #222831;
-    font-family: "Roboto";
-}
-
-/* Style page content */
-.main {
-    width: 80%;
-
-    height: 100%;
 }
 
 table {
@@ -96,6 +111,12 @@ tr:nth-child(even) {
 }
 
 
+
+.sidenav a:hover {  
+    cursor: pointer;
+    color: #76ABAE;
+    fill: #76ABAE;
+}
 
 .my-button {
     background-color: #76ABAE;

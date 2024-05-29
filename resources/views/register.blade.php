@@ -12,7 +12,6 @@
     </style>
 </head>
 
->>>>>>> 320063c81f47333bcc637169f0273f6d73bf60dc
 <form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
     @csrf
 
