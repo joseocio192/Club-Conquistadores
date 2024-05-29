@@ -5,6 +5,8 @@ return [
     'welcome' => 'コンキスタドールクラブへようこそ',
     'pathfinders_Club' => 'コンキスタドールクラブ',
     'registerTutor' => 'チューターを登録する',
+    'men' => '男性',
+    'women' => '女性',
 
     'log_out' => 'ログアウト',
     'login' => 'ログイン',

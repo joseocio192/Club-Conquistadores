@@ -31,11 +31,33 @@ class RegisterTutorController extends Controller
             'colonia' => $request->colonia,
             'ciudad' => $request->ciudad,
             'codigo_postal' => $request->codigo_postal,
+            'locale' => app()->getLocale(),
             'sexo' => $request->sexo,
-            'rol' => 'tutorLegal',
+            'rol' => $this->getAllowedRoles(),
         ]);
 
         auth()->login($user);
         return redirect()->route('users/{id}', ['id' => $user->id]);
+    }
+
+    public function getAllowedRoles(): string
+    {
+        switch (app()->getLocale()) {
+            case 'en':
+                return 'tutor';
+            case 'es':
+                return 'tutor';
+            case 'fr':
+                return 'tuteur';
+            case 'ko':
+                return '가정 교사';
+            case 'ja':
+                return 'チューター';
+            case 'zh-hans':
+                return '导师';
+
+            default:
+                return 'tutor';
+        }
     }
 }

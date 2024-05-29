@@ -6,6 +6,9 @@ return [
     'Pathfinders_Club' => '探路者俱乐部',
     'registerTutor' => '注册导师',
 
+    'men' => '男性',
+    'women' => '女性',
+
     'log_out' => '登出',
     'login' => '登录',
     'register' => '注册',
@@ -106,6 +109,7 @@ return [
     'birthdate' => '出生日期',
     'sex' => '性别',
     'select_a_gender' => '选择性别',
+
     'man' => '男性',
     'woman' => '女性',
     'other' => '其他',
@@ -135,7 +139,7 @@ return [
     'tutors_personal_details' => '导师个人详情',
     'man' => '男性',
     'tutors_residence_information' => '导师居住信息',
-    'Postal code' => '邮政编码',
+    'postal code' => '邮政编码',
 
     // Tutor
     'There_are_no_pupils_to_accept' => '没有学生可接受',

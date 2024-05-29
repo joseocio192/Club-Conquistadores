@@ -29,7 +29,7 @@
 
                 <div>
 
-                    <label for="apellido">@lang('app.lastname')</label>
+                    <label for="apellido">@lang('app.lastName')</label>
                     <input id="apellido" type="text" name="apellido" class="Input" required
                         value="{{ old('apellido') }}"><br>
                 </div>
@@ -63,6 +63,7 @@
                     <label for="sexo">@lang('app.sex')</label>
                     <select id="sexo" name="sexo" required>
                         <option value="">{{ __('app.select_a_gender') }}</option>
+
                         <option value="{{ __('app.man') }}" {{ old('sexo') == __('app.man') ? 'selected' : '' }}>
                             {{ __('app.man') }}
                         </option>
@@ -132,7 +133,7 @@
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="codigo_postal">@lang('app.postal code')</label>
+                    <label for="codigo_postal">@lang('app.postal_code')</label>
                     <input id="codigo_postal" type="text" name="codigo_postal" required><br>
                 </div>
             </div>

@@ -99,12 +99,15 @@ return [
     'State' => ' Estado',
     'municipality' => 'Municipio',
     'city' => 'Ciudad',
+    'tutors_personal_details' => 'Datos personales del tutor.',
+    'tutors_residence_information' => 'Informacion residencial del tutor',
     'clubs' => 'Clubes',
     //register
     'register' => 'Registro',
     'conquerors_personal_data' => 'Datos personales del conquistador',
     'name' => 'Nombre',
     'lastName' => 'Apellido',
+
     'email' => 'Correo electronico',
     'password' => 'Contraseña',
     'phone' => 'Telefono',
@@ -160,7 +163,6 @@ return [
     'role' => 'Rol',
     'executive' => 'Director',
     'back' => 'Regresar',
-
     //registerInstructor
     'instructor personal information' => 'Datos personales del instructor',
     'name' => 'Nombre',

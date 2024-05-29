@@ -71,6 +71,7 @@ return [
     'conquerors_personal_data' => 'Conquerors personal data',
     'name' => 'Name',
     'lastName' => 'lastName',
+
     'email' => 'Email',
     'password' => 'Password',
     'phone' => 'Phone',
@@ -88,6 +89,7 @@ return [
     'Country' => 'Country',
     'Select_a_country' => 'Select a country',
     'State' => 'State',
+
     'municipality' => 'Municipality',
     'city' => 'City',
     'clubs' => 'Clubs',
