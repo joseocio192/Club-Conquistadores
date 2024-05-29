@@ -90,6 +90,8 @@ Route::post('/instructor/sendRequisitos', [InstructorController::class, 'sendReq
     ->name('instructor.sendRequisitos')
     ->middleware('auth', 'rol:instructor');
 
+Route::get('/instructor/modificarDatos', [InstructorController::class, 'modificar'])->name('instructor.modificar')->middleware('auth', 'rol:instructor');
+Route::post('/instructor/modificarDatos', [InstructorController::class, 'modificarDatos'])->name('instructor.modificarDatos')->middleware('auth', 'rol:instructor');
 Route::post('/instructor/eliminarAlumnos', [InstructorController::class, 'eliminarAlumnos'])
     ->name('instructor.eliminarAlumnos')
     ->middleware('auth', 'rol:instructor');

@@ -63,7 +63,7 @@ class Conquistador extends Model
 
     public function especialidad(): BelongsToMany
     {
-        return $this->belongsToMany(Especialidad::class, 'Conquistador_xespecialidad', 'conquistador_id', 'especialidad_id');
+        return $this->belongsToMany(Especialidad::class, 'Conquistador_xespecialidad', 'conquistador_id', 'especialidad_id')->withPivot('fechaCumplido');
     }
 
     public function tareas(): BelongsToMany
