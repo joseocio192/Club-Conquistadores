@@ -3,25 +3,53 @@
     font-family: "Roboto";
 }
 
-h1 {
+/* Tipografias */
+
+.sidenav h1 {
     margin-left: 1em;
+    max-width: 10em;
     color: #222831;
 }
 
-/* Tipografias */
 .divTusDatos h2 {
     margin-bottom: 1.5em;
     color: #222831;
 }
 
 .h3Dato {
-    max-width:12em;
+    max-width:100%;
     padding-right: 2em;
     color: #31363F;
 }
 
 .boxTusDatos h3 {
+    margin-top: .5em;
+    margin-bottom: .5em;
     margin-left: .5em;
+}
+
+.boxTusDatos h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.divTarea h3 {
+    margin-top: 0;
+    color: #31363F;
+}
+
+.divTarea div h3 {
+    margin-top: 1.1em;
+}
+
+.divTarea div h3:first-of-type {
+    margin-left: .5em;
+    margin-right: 1em;
+}
+
+.divTarea h2 {
+    color: #222831;
+    margin-bottom: 0;
 }
 
 /* Contenedores */
@@ -45,7 +73,6 @@ body {
     align-items: center;
     flex-direction: column;
 
-    width: 18%;
     min-height: 100vh;
     max-height: 100%;
 
@@ -69,12 +96,31 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    width: 45em;
     height: 40em;
 
     border: 2px solid #76ABAE;
     border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
+
+.divTarea {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    padding-left: 1em;
+    padding-right: 10em;
+
+    border: 2px solid #76ABAE;
+    border-radius: 20px;
+
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
+
+.divTarea div {
+    display: flex;
+    align-items: center;
+    padding-bottom: .5em;
 }
 
 table {
@@ -127,24 +173,22 @@ tr {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-    height: 22em;
-    width: 38em;
+
+    padding: 1em 0;
 
     border: 2px solid #76ABAE;
     border-radius: 1.875em;
 
     background-color: #eee;
-
-    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 }
 
 .boxTusDatos {
     display: flex;
     align-items: center;
-    height: 2.5em;
-    margin-top: 1.1em;
-    margin-left: 2em;
+    margin-top: .25em;
+    margin-bottom: 0;
+    margin-left: 1.5em;
 }
 
 /* Botones */
@@ -153,12 +197,14 @@ tr {
     align-items: center;
     justify-content: start;
 
-    width: 80%;
+    width: 85%;
 
     border-bottom: 2px solid #76ABAE;
 
     margin-top: 0.3125em;
     margin-bottom: 0.9375em;
+    margin-left: 1em;
+    margin-right: 1em;
 
     padding-top: 0.3125em;
     padding-bottom: 0.3125em;
@@ -264,5 +310,12 @@ input[type="checkbox"]:checked:after {
 .svgPerson {
     height: 4em;
     width: 4em;
+    fill: #76ABAE;
+}
+
+.svgHomework {
+    height: 2em;
+    width: 2em;
+
     fill: #76ABAE;
 }
