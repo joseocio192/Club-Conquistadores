@@ -125,6 +125,9 @@ Route::get('/instructor', [InstructorController::class, 'index'])
 Route::get('/directivo/altaDirectivo', [DirectivoController::class, 'altaDirectivo'])
     ->name('directivo.altaDirectivo')
     ->middleware('auth', 'rol:directivo');
+Route::post('/directivo/altaDirectivopost', [DirectivoController::class, 'altaDirectivoPost'])
+    ->name('directivo.altaDirectivoPost')
+    ->middleware('auth', 'rol:directivo');
 Route::get('/directivo/altaInstructor', [DirectivoController::class, 'altaInstructor'])
     ->name('directivo.altaInstructor')
     ->middleware('auth', 'rol:directivo');

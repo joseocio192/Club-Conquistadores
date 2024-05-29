@@ -8,12 +8,12 @@
 <form class="FormLayout" method="POST" action="{{ route('registerInstructor') }}" id="registro">
     @csrf
     <div class='RegistroDiv'>
-        <h1>@lang('app.Register')</h1>
-        <h2>@lang('app.Instructor personal information')</h2>
+        <h1>@lang('app.register')</h1>
+        <h2>@lang('app.instructor personal information')</h2>
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="name">@lang('app.Name')</label>
+                    <label for="name">@lang('app.name')</label>
                     <input id="name" type="text" name="name" required autofocus><br>
                 </div>
 
@@ -24,99 +24,99 @@
             </div>
 
             <div class='EmailDiv'>
-                <label for="email">@lang('app.Email')</label>
+                <label for="email">@lang('app.email')</label>
                 <input id="email" type="email" name="email" required><br>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="password">@lang('app.Password')</label>
+                    <label for="password">@lang('app.password')</label>
                     <input id="password" type="password" name="password" required><br>
                 </div>
 
                 <div>
-                    <label for="telefono">@lang('app.Phone')</label>
+                    <label for="telefono">@lang('app.phone')</label>
                     <input id="telefono" type="text" name="telefono"><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="fecha_nacimiento">@lang('app.Birthdate')</label>
+                    <label for="fecha_nacimiento">@lang('app.birthdate')</label>
                     <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" required><br>
                 </div>
 
                 <div>
-                    <label for="sexo">@lang('app.Sex')</label>
+                    <label for="sexo">@lang('app.sex')</label>
                     <select id="sexo" name="sexo" required><br>
-                        <option value="">@lang('app.Select_a_gender')</option>
-                        <option value="Hombre">@lang('app.Men')</option>
-                        <option value="Mujer">@lang('app.Woman')</option>
-                        <option value="Otro">@lang('app.Other')</option>
+                        <option value="">@lang('app.select_a_gender')</option>
+                        <option value="Hombre">@lang('app.men')</option>
+                        <option value="Mujer">@lang('app.woman')</option>
+                        <option value="Otro">@lang('app.other')</option>
                     </select>
                 </div>
             </div>
         </div>
-        <h2 class='DatosH2'>@lang('app.Instructor_residency_data')</h2>
+        <h2 class='DatosH2'>@lang('app.instructor_residency_data')</h2>
         <div class='SeccionDiv2'>
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="calle">@lang('app.Street')</label>
+                    <label for="calle">@lang('app.street')</label>
                     <input id="calle" type="text" name="calle" required><br>
                 </div>
 
                 <div>
-                    <label for="numero_exterior">@lang('app.Street_number')</label>
+                    <label for="numero_exterior">@lang('app.street_number')</label>
                     <input id="numero_exterior" type="text" name="numero_exterior" required><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="numero_interior">@lang('app.Suite_number')</label>
+                    <label for="numero_interior">@lang('app.suite_number')</label>
                     <input id="numero_interior" type="text" name="numero_interior"><br>
                 </div>
 
                 <div>
-                    <label for="colonia">@lang('app.Neighborhood')</label>
+                    <label for="colonia">@lang('app.neighborhood')</label>
                     <input id="colonia" type="text" name="colonia" required><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div class="PaisDiv">
-                    <label for="pais">@lang('app.Country')</label>
+                    <label for="pais">@lang('app.country')</label>
                     <select id="pais">
-                        <option value="">@lang('app.Select a country')</option>
+                        <option value="">@lang('app.select a country')</option>
                     </select>
                 </div>
 
                 <div>
-                    <label for="estado">@lang('app.State')</label>
+                    <label for="estado">@lang('app.state')</label>
                     <select id="estado"></select>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div class="MunicipioDiv">
-                    <label for="municipio">@lang('app.Municipality')</label>
+                    <label for="municipio">@lang('app.municipality')</label>
                     <select id="municipio"></select>
                 </div>
 
                 <div>
-                    <label for="ciudad_id">@lang('app.City')</label>
+                    <label for="ciudad_id">@lang('app.city')</label>
                     <select id="ciudad_id" name="ciudad_id"></select>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div class="ClubesDiv">
-                    <label for="clubes">@lang('app.Clubs')</label>
+                    <label for="clubes">@lang('app.clubs')</label>
                     <select id="clubes" name="clubes"></select>
                 </div>
 
                 <div>
-                    <label for="codigo_postal">@lang('postal_code')</label>
+                    <label for="codigo_postal">@lang('app.postal_code')</label>
                     <input id="codigo_postal" type="text" name="codigo_postal" required><br>
                 </div>
             </div>
@@ -126,13 +126,13 @@
 
             <div>
                 <a class="HomeBtn" id="home-button" onclick="window.history.go(-1); return false;">
-                    @lang('app.Back')
+                    @lang('app.back')
                 </a>
             </div>
 
             <div>
                 <button class="RegisterBtn" type="submit" id="submit-button" disabled>
-                    @lang('app.Sign_in')
+                    @lang('app.sign_in')
                 </button>
             </div>
         </div>
