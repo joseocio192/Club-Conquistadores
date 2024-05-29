@@ -78,10 +78,14 @@
         @if ($status == 'club')
         <div class="divClub">
             <h2>{{$club->nombre}}</h2>
-            <h3>@lang('app.club_director'): {{$club->director->user->name}}</h3>
-            <h3>@lang('app.pathfinders_quantity'): {{$cantidad}}</h3>
-            <h3>@lang('app.instructors_quantity'): {{$club->instructores->count()}}</h3>
-            <h3>@lang('add.add_instructor')</h2>
+            <div class="divDatosClub"> 
+                <h3>@lang('app.club_director'): {{$club->director->user->name}}</h3>
+                <h3>@lang('app.pathfinders_quantity'): {{$cantidad}}</h3>
+            </div>
+            <div class="divDatosClub">
+                <h3>@lang('app.instructors_quantity'): {{$club->instructores->count()}}</h3>
+                <h3>@lang('add.add_instructor')</h2>
+            </div>
             <form class="frmAddInstructor" action="{{route('directivo.addInstructor')}}" method="post">
                 @csrf
                 <div>
@@ -91,26 +95,28 @@
                 </div>
                 <button type="submit">@lang('app.add')</button>
             </form>
-            <h2>@lang('app.instructors_avaible')</h2>
+            <h2 class="h2InstructoresDisponibles">@lang('app.instructors_avaible')</h2>
             @foreach ($instructores as $i)
-            <h2>$i->user->name</h2>
+            <h3>$i->user->name</h3>
             @endforeach
-            <a href="{{route('registerInstructor')}}"> @lang('app.instructor_register')</a>
-            <h2>Conquistadores por mes</h2>
-            <table>
-                <tr>
-                    <th>Club</th>
-                    @foreach ($fechas as $fecha)
-                    <th>{{$fecha->fecha}}</th>
-                    @endforeach
-                </tr>
-                <tr>
-                    <td>{{$club->nombre}}</td>
-                    @foreach ($fechas as $f)
-                    <th>{{$f->cantidad}}</th>
-                    @endforeach
-                </tr>
-            </table>
+            <a class="btnRegisterInstructor" href="{{route('registerInstructor')}}"> @lang('app.instructor_register')</a>
+            <div class="divTable">
+                <h2 class="h2ConqPorMes">Conquistadores por mes</h2>
+                <table>
+                    <tr>
+                        <th>Club</th>
+                        @foreach ($fechas as $fecha)
+                        <th>{{$fecha->fecha}}</th>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        <td>{{$club->nombre}}</td>
+                        @foreach ($fechas as $f)
+                        <th>{{$f->cantidad}}</th>
+                        @endforeach
+                    </tr>
+                </table>
+            </div>
             @endif
         </div>
         
