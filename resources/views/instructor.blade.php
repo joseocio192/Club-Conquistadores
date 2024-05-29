@@ -94,23 +94,27 @@
                                 @endif
                             </tr>
                         </thead>
-                        @foreach ($conquistadores as $conquistador)
-                            <tr>
-                                <td>
-                                    <a
-                                        href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
-                                </td>
-                                @foreach ($conquistador->tareas as $tareaa)
-                                    <td class="tdTareas">
-                                        @if ($tareaa->clase_id === $clase->id)
-                                            <input type="checkbox"
-                                                name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}"
-                                                value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
-                                        @endif
+                        @if ($conquistadores->count() == 0)
+                            <th>@lang('app.there_are_no_students')</th>
+                        @else
+                            @foreach ($conquistadores as $conquistador)
+                                <tr>
+                                    <td>
+                                        <a
+                                            href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
                                     </td>
-                                @endforeach
-                            </tr>
-                        @endforeach
+                                    @foreach ($conquistador->tareas as $tareaa)
+                                        <td class="tdTareas">
+                                            @if ($tareaa->clase_id === $clase->id)
+                                                <input type="checkbox"
+                                                    name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}"
+                                                    value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
+                                            @endif
+                                        </td>
+                                    @endforeach
+                                </tr>
+                            @endforeach
+                        @endif
                     </table>
                     <button class="btnEnviar" type="submit">@lang('app.send')</button>
                 </form>
@@ -128,9 +132,13 @@
                                     @if ($asistencias->count() == 0)
                                         <th>@lang('app.there_are_no_assists')</th>
                                     @else
-                                        @foreach ($conquistador->asistencia as $asistencia)
-                                            <th>{{ $asistencia->fecha }}</th>
-                                        @endforeach
+                                        @if ($conquistadores->count() == 0)
+                                            <th>{{ $asistencias->first()->fecha }}</th>
+                                        @else
+                                            @foreach ($conquistador->asistencia as $asistencia)
+                                                <th>{{ $asistencia->fecha }}</th>
+                                            @endforeach
+                                        @endif
                                     @endif
                                     <th class="thBtnDia">
                                         <button class="btnDia" type="submit" name="adddia">
@@ -166,9 +174,11 @@
                                                     <select class="selectPulcritud"
                                                         name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
                                                         <option value="1"
-                                                            @if ($asistencia->pivot->pulcritud == 1) selected @endif>1</option>
+                                                            @if ($asistencia->pivot->pulcritud == 1) selected @endif>1
+                                                        </option>
                                                         <option value="2"
-                                                            @if ($asistencia->pivot->pulcritud == 2) selected @endif>2</option>
+                                                            @if ($asistencia->pivot->pulcritud == 2) selected @endif>2
+                                                        </option>
                                                         <option value="3"
                                                             @if ($asistencia->pivot->pulcritud == 3) selected @endif>3
                                                         </option>
@@ -465,26 +475,28 @@
                     <h3>@lang('app.address')</h3>
                     <h3 class="h3Dato">{{ $user->colonia . ' ' . $user->calle . ' ' . $user->numero_exterior }}</h3>
                 </div>
-                <div class="divDatos"><h2>@lang('app.record')</h2></div>
+                <div class="divDatos">
+                    <h2>@lang('app.record')</h2>
+                </div>
                 <div class="divDatos">
 
                     @foreach ($historial as $historia)
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>@lang('app.club')</th>
-                                <th>@lang('app.entry_date')</th>
-                                <th>@lang('app.depure_date')</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ $historia->nombre }}</td>
-                                <td>{{ $historia->pivot->fechaIngreso }}</td>
-                                <td>{{ $historia->pivot->fechaSalida }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>@lang('app.club')</th>
+                                    <th>@lang('app.entry_date')</th>
+                                    <th>@lang('app.depure_date')</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ $historia->nombre }}</td>
+                                    <td>{{ $historia->pivot->fechaIngreso }}</td>
+                                    <td>{{ $historia->pivot->fechaSalida }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     @endforeach
                 </div>
             </div>

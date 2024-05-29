@@ -253,7 +253,7 @@ th {
 }
 
 .divTablaAsis {
-    overflow-x: scroll;
+    overflow-x: auto;
     height: fit-content;
 }
 
