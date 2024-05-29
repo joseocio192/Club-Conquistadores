@@ -8,7 +8,7 @@ return [
     'log_out' => '登出',
     'login' => '登录',
     'register' => '注册',
-    'email' => '邮箱',
+    'email' => '电子邮箱',
     'password' => '密码',
     'remember_me' => '记住我',
     'back_home' => '返回首页',
