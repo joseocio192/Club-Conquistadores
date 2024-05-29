@@ -6,6 +6,9 @@ use App\Models\Clase;
 use App\Models\Conquistador;
 use Illuminate\Support\Facades\DB;
 use App\Models\Tarea;
+use App\Models\Especialidad;
+use Illuminate\Support\Facades\Log;
+
 
 class ConquistadorController extends Controller
 {
@@ -44,5 +47,18 @@ class ConquistadorController extends Controller
         $tarea = Tarea::find($id);
         $clasesConquistador = $conquistador->clases;
         return view('conquistador', compact('conquistador', 'status', 'tarea', 'clasesConquistador'));
+    }
+
+    public function especialidad()
+    {
+        $userId = auth()->user()->id;
+        $conquistador = Conquistador::where('user_id', $userId)->first();
+        $clasesConquistador = $conquistador->clases;
+        $status = 'especialidad';
+        $especialidades = Especialidad::whereHas('conquistadores', function ($query) use ($conquistador) {
+            $query->where('conquistador_id', $conquistador->id);
+        })->get();
+        Log::info($especialidades);
+        return view('conquistador', compact('clasesConquistador', 'conquistador', 'status', 'especialidades'));
     }
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Especialidad;
+use App\Models\Conquistador_xespecialidad;
 
 class EspecialidadSeeder extends Seeder
 {
@@ -16,6 +17,11 @@ class EspecialidadSeeder extends Seeder
         $especialidad->nombre = 'Avicultura';
         $especialidad->locale = 'es';
         $especialidad->save();
+
+        $Conquistador_xespecialidad = new Conquistador_xespecialidad();
+        $Conquistador_xespecialidad->conquistador_id = 1;
+        $Conquistador_xespecialidad->especialidad_id = 1;
+        $Conquistador_xespecialidad->save();
 
         $especialidad = new Especialidad();
         $especialidad->nombre = 'Pintura en vidrio';

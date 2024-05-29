@@ -26,21 +26,12 @@ class Kernel extends ConsoleKernel
                     'cantidad' => $conquistadores,
                     'fecha' => $date
                 ]);
-            })->name('numberOfConquistadores')->everyMinute()->onOneServer();
+            }
+        })->name('numberOfConquistadores')->everyMinute()->onOneServer();
 
         //reset table oneCodeUse
         $schedule->call(function () {
             DB::table('onecodeuse')->delete();
         })->daily();
-    }
-
-    /**
-     * Register the commands for the application.
-     */
-    protected function commands(): void
-    {
-        $this->load(__DIR__ . '/Commands');
-
-        require base_path('routes/console.php');
     }
 }
