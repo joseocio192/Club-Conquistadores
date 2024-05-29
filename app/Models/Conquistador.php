@@ -10,15 +10,24 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Clase;
 
+use App\Events\ConquistadorSaved;
+use App\Models\Traits\Mutators\ConquistadorMutator;
+
 
 class Conquistador extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        ConquistadorMutator;
+
     protected $table = 'Conquistador';
     protected $fillable = [
         'user_id',
         'tutorLegal_id',
-        'rol'
+        'rol',
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => ConquistadorSaved::class
     ];
 
     public function getEdadAttribute(): int

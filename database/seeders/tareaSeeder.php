@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Tarea;
 use App\Models\Tareaxconquistador;
 
-class tareaSeeder extends Seeder
+class TareaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -65,6 +65,5 @@ class tareaSeeder extends Seeder
         $tareaxconquistador->tarea_id = 4;
         $tareaxconquistador->conquistador = 1;
         $tareaxconquistador->save();
-
     }
 }

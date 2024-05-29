@@ -14,7 +14,9 @@
 <body>
     <div class="card">
         <div class="card-header">
-            <img src="{{ asset('/imgs/logoSimple.webp') }}" alt="Club Conquistadores Logo">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('/imgs/logoSimple.webp') }}" alt="Club Conquistadores Logo">
+            </a>
             <h1>@lang('app.login')</h1>
         </div>
 
@@ -61,8 +63,9 @@
                     <button type="submit">
                         @lang('app.login')
                     </button>
-                    <button type="button" onclick="window.history.go(-1); return false;"
-                        class="botonInicio">@lang('app.back_home')</button>
+                    <button type="button" onclick="window.location.href='{{ route('home') }}'" class="botonInicio">
+                        @lang('app.back_home')
+                    </button>
                     @if (Route::has('password.request'))
                         <a class="btn btn-link" href="{{ route('password.request') }}">
                             @lang('app.forgot_password')
@@ -77,6 +80,10 @@
             <select id="lang">
                 <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English</option>
                 <option value="es" {{ session('locale') == 'es' ? 'selected' : '' }}>Español</option>
+                <option value="ko" {{ session('locale') == 'ko' ? 'selected' : '' }}>한국어</option>
+                <option value="zh-hans" {{ session('locale') == 'zh-Hans' ? 'selected' : '' }}>简体中文</option>
+                <option value="ja" {{ session('locale') == 'ja' ? 'selected' : '' }}>日本語</option>
+                <option value="fr" {{ session('locale') == 'fr' ? 'selected' : '' }}>Français</option>
             </select>
         </div>
     </footer>

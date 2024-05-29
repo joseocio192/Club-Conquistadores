@@ -7,7 +7,7 @@
 
         <form>
             <div class="form-group">
-                <label for="pais">Pais</label>
+                <label for="pais">@lang('app.Country')</label>
                 <select id="pais" class="form-control">
                     <option value="">Select a country</option>
                     @foreach($paises as $pais)
@@ -17,27 +17,27 @@
             </div>
 
             <div class="form-group">
-                <label for="estado">Estado</label>
+                <label for="estado">@lang('app.State')</label>
                 <select id="estado" class="form-control">
 
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="municipio">Municipio</label>
+                <label for="municipio">@lang(app.municipality)</label>
                 <select id="municipio" class="form-control">
 
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="ciudad">Ciudad</label>
+                <label for="ciudad">@lang('app.City')</label>
                 <select id="ciudad" class="form-control">
 
                 </select>
             </div>
             <div class="form-group">
-                <label for= "clubes">Clubes</label>
+                <label for= "clubes">@lang('app.Clubs')</label>
                 <select id="clubes" class="form-control">
 
                 </select>

@@ -7,14 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+use App\Events\RequisitosSaved;
+use App\Models\Traits\Mutators\RequisitosMutator;
+
 class requisitos extends Model
 {
-    use HasFactory;
-    protected $table='Requisitos';
-    protected $fillable=[
+    use HasFactory,
+        RequisitosMutator;
+
+    protected $table = 'Requisitos';
+    protected $fillable = [
         'especialidad_id',
         'nombre',
         'descripcion'
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => RequisitosSaved::class
     ];
 
     public function especialidad(): BelongsTo

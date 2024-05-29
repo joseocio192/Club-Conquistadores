@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_translations_', function (Blueprint $table) {
+        Schema::create('translations', function (Blueprint $table) {
             $table->id();
             $table->String('Table');
             $table->String('column');
             $table->integer('Row_ID');
-            $table->String('locale', 7);
-            $table->Text('Content');
+            $table->String('locale');
+            $table->Text('content');
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->Text('descripcion');
             $table->date('fecha');
             $table->timestamps();
-            $table->string('locale', 5)->default('es');
+            $table->string('locale')->default('es');
         });
     }
 

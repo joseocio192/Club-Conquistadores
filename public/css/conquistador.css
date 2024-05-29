@@ -1,0 +1,268 @@
+/*Estilos generales*/
+*{
+    font-family: "Roboto";
+}
+
+h1 {
+    margin-left: 1em;
+    color: #222831;
+}
+
+/* Tipografias */
+.divTusDatos h2 {
+    margin-bottom: 1.5em;
+    color: #222831;
+}
+
+.h3Dato {
+    max-width:12em;
+    padding-right: 2em;
+    color: #31363F;
+}
+
+.boxTusDatos h3 {
+    margin-left: .5em;
+}
+
+/* Contenedores */
+body {
+    background-color: #eee;
+    display: flex;
+    margin: 0;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding-bottom: 0.5em;
+    width: 100%;
+}
+
+.sidenav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    width: 18%;
+    min-height: 100vh;
+    max-height: 100%;
+
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+
+    border-top-right-radius: 1.25em;
+    border-bottom-right-radius: 1.25em;
+    border: 2px solid #76ABAE;
+
+    background-color: #eee;
+    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.2);
+}
+
+.sidenav form {
+    margin-top: auto;
+    margin-bottom: 1em;
+}
+
+.divClase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 45em;
+    height: 40em;
+
+    border: 2px solid #76ABAE;
+    border-radius: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 40em;
+
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-bottom: .5em;
+
+    border-radius: 5px 5px 0 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.48);
+}
+
+thead tr th a {
+    background-color: #76ABAE;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+thead {
+    background-color: #76ABAE;
+    color: #eee;
+    text-align: left;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 12px 15px;
+}
+
+tr {
+    border-bottom: 1px solid #76ABAE;
+}
+
+td:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr {
+    text-align: center;
+}
+
+.divTusDatos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    height: 22em;
+    width: 38em;
+
+    border: 2px solid #76ABAE;
+    border-radius: 1.875em;
+
+    background-color: #eee;
+
+    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
+}
+
+.boxTusDatos {
+    display: flex;
+    align-items: center;
+    height: 2.5em;
+    margin-top: 1.1em;
+    margin-left: 2em;
+}
+
+/* Botones */
+.sidenav a {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    width: 80%;
+
+    border-bottom: 2px solid #76ABAE;
+
+    margin-top: 0.3125em;
+    margin-bottom: 0.9375em;
+
+    padding-top: 0.3125em;
+    padding-bottom: 0.3125em;
+
+    text-decoration: none;
+    text-align: center;
+
+    font-size: 1.25em;
+    font-weight: 900;
+
+    color: #31363F;
+    fill: #31363F;
+
+    transition: all .2s ease;
+}
+
+.my-button-loggout {
+    height: 3.235294117647059em;
+    width: 9.6875em;
+
+    border-radius: 6px;
+    border-width: 0;
+    border: 2px solid #222831;
+
+    font-size: 1.1em;
+    font-weight: 900;
+
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+
+    background-color: #eee;
+    color: #222831;
+    
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+/* Inputs */
+input[type="checkbox"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    height: 1.25em;
+    width: 1.25em;
+
+    border: 1px solid #76ABAE;
+
+    cursor: pointer;
+}
+
+input[type="checkbox"]:after {
+    font-weight: 900;
+    font-size: 1em;
+
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+
+    color: #ffffff;
+    display: none;
+}
+  
+input[type="checkbox"]:hover {
+    background-color: #a5a5a5;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #76ABAE;
+}
+
+input[type="checkbox"]:checked:after {
+    display: block;
+}
+
+/* Hover */
+.sidenav a:hover {
+    cursor: pointer;
+    color: #76ABAE;
+    fill: #76ABAE;
+}
+
+.my-button-loggout:hover {
+    font-size: 1.15em;
+
+    background-color: #222831;
+    border: white;
+    color: #eee;
+}
+
+/* SVGs*/
+.sidenav svg {
+    height: 1em;
+    width: 1em;
+    margin-right: 0.50em;
+}
+
+.svgPerson {
+    height: 4em;
+    width: 4em;
+    fill: #76ABAE;
+}

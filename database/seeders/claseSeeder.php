@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Clase;
 use App\Models\Clase_xalumno;
 
-class claseSeeder extends Seeder
+class ClaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -29,5 +29,6 @@ class claseSeeder extends Seeder
         $claseAlumno->clase_id = 1;
         $claseAlumno->conquistador = 1;
         $claseAlumno->save();
+
     }
 }

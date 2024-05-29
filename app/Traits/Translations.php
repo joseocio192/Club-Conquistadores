@@ -15,15 +15,17 @@ trait Translations
             return $default;
         }
 
-        $translation = $this->translations()
+        $translation = DB::table('translations')
             ->where('table', $this->table)
             ->where('column', $column)
             ->where('row_id', $this->id)
             ->where('locale', $locale)
             ->first();
 
+        // dd($translation, $this->table, $column, $this->id, $locale);
+
         if ($translation) {
-            return $translation->value;
+            return $translation->content;
         } else {
             return $default;
         }

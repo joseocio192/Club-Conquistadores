@@ -8,7 +8,7 @@ use App\Models\Clubs;
 use App\Models\ClubXpersona;
 use App\Models\Instructor;
 
-class clubsSeeder extends Seeder
+class ClubsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
