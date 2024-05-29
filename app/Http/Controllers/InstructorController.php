@@ -29,7 +29,8 @@ class InstructorController extends Controller
         }
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         $status = "nada";
-        return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status'));
+        $historial = $user->club;
+        return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status', 'historial'));
     }
 
 

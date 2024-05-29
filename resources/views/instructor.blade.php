@@ -458,6 +458,28 @@
                     <h3>@lang('app.address')</h3>
                     <h3 class="h3Dato">{{ $user->colonia . ' ' . $user->calle . ' ' . $user->numero_exterior }}</h3>
                 </div>
+                <div class="divDatos"><h2>Historial</h2></div>
+                <div class="divDatos">
+
+                    @foreach ($historial as $historia)
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Club</th>
+                                <th>Fecha entrada</th>
+                                <th>Fecha salida</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $historia->nombre }}</td>
+                                <td>{{ $historia->pivot->fechaIngreso }}</td>
+                                <td>{{ $historia->pivot->fechaSalida }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @endforeach
+                </div>
             </div>
         @endif
         @if ($errors->any())

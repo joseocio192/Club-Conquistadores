@@ -14,18 +14,21 @@ class ConquistadorController extends Controller
 {
     public function show($id)
     {
+        $user = auth()->user();
         $conquistador = DB::table('vw_conquistador')->where('id', $id)->first();
-
-        return view('conquistador', ['conquistador' => $conquistador]);
+        $historial = $user->club;
+        return view('conquistador', compact('conquistador', 'historial'));
     }
 
     public function invoke()
     {
+        $user = auth()->user();
         $userId = auth()->user()->id;
         $conquistador = Conquistador::where('user_id', $userId)->first();
         $clasesConquistador = $conquistador->clases;
         $status = 'nada';
-        return view('conquistador', compact('clasesConquistador', 'conquistador', 'status'));
+        $historial = $user->club;
+        return view('conquistador', compact('clasesConquistador', 'conquistador', 'status', 'historial'));
     }
 
     public function clases($id)
