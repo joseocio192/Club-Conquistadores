@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('onecodeuse', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->references('id')->on('Users');
             $table->string('onecode');
             $table->boolean('used');
             $table->softDeletes();
