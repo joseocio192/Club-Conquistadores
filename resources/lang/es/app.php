@@ -198,16 +198,16 @@ return [
     'pathfinders_per_month_per_club' => 'Conquistadores por mes por club',
     'pathfinders_per_moth' => 'Conquistadores por mes',
     'instructor_id' => 'ID del Instructor:',
-    'no_specialties' => 'No tienes especialidades',
+    'no_specialties' => 'No tienes especialidades terminadas',
 
 
     'date' => 'Fecha',
     'task_data' => 'Datos de la tarea',
-    'specialties_started_but_not_completed'=>'Especialidades empezadas no completadas',
-    'student'=>'Alumno',
-    'entry_date'=>'Fecha de entrada',
-    'depure_date'=>'Fecha de salida',
-    'modify_user'=>'Modificar usuario',
-    'personal_information'=>'Datos personales'
+    'specialties_started_but_not_completed' => 'Especialidades empezadas no completadas',
+    'student' => 'Alumno',
+    'entry_date' => 'Fecha de entrada',
+    'depure_date' => 'Fecha de salida',
+    'modify_user' => 'Modificar usuario',
+    'personal_information' => 'Datos personales'
 
 ];
