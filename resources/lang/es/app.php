@@ -174,7 +174,7 @@ return [
     'sex' => 'Sexo',
     'select_a_gender' => 'Selecciona el genero',
     'men' => 'Hombre',
-    'woman' => 'Mujer',
+    'women' => 'Mujer',
     'oher' => 'Otro',
     'instructor_residency_data' => 'Datos de la residencia del instrcutor',
     'street' => 'Calle',
@@ -203,11 +203,11 @@ return [
 
     'date' => 'Fecha',
     'task_data' => 'Datos de la tarea',
-    'specialties_started_but_not_completed'=>'Especialidades empezadas no completadas',
-    'student'=>'Alumno',
-    'entry_date'=>'Fecha de entrada',
-    'depure_date'=>'Fecha de salida',
-    'modify_user'=>'Modificar usuario',
-    'personal_information'=>'Datos personales'
+    'specialties_started_but_not_completed' => 'Especialidades empezadas no completadas',
+    'student' => 'Alumno',
+    'entry_date' => 'Fecha de entrada',
+    'depure_date' => 'Fecha de salida',
+    'modify_user' => 'Modificar usuario',
+    'personal_information' => 'Datos personales'
 
 ];
