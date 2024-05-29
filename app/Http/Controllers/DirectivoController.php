@@ -50,7 +50,8 @@ class DirectivoController extends Controller
         $cantidad = $club->users->where('rol', 'conquistador')->count();
         $instructores = User::where('ciudad_id', $club->ciudad_id)->where('rol', 'instructor')->get();
         $instructores = $instructores->diff($club->instructores);
-        return view('directivo', compact('status', 'club', 'cantidad', 'user', 'instructores'));
+        $fechas = $club->numbers;
+        return view('directivo', compact('status', 'club', 'cantidad', 'user', 'instructores', 'fechas'));
     }
 
     public function ciudad()
