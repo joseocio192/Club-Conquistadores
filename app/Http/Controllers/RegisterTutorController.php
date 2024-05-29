@@ -18,6 +18,22 @@ class RegisterTutorController extends Controller
     public function register(Request $request)
     {
 
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'telefono' => 'required|string|max:10',
+            'fecha_nacimiento' => 'required|date',
+            'calle' => 'required|string|max:255',
+            'numero_exterior' => 'required|string|max:255',
+            'numero_interior' => 'nullable|string|max:255',
+            'colonia' => 'required|string|max:255',
+            'ciudad' => 'required|integer',
+            'codigo_postal' => 'required|string|max:5',
+            'sexo' => 'required|string',
+        ]);
+
         $user = User::create([
             'name' => $request->name,
             'apellido' => $request->apellido,
@@ -29,7 +45,7 @@ class RegisterTutorController extends Controller
             'numero_exterior' => $request->numero_exterior,
             'numero_interior' => $request->numero_interior,
             'colonia' => $request->colonia,
-            'ciudad' => $request->ciudad,
+            'ciudad_id' => $request->ciudad,
             'codigo_postal' => $request->codigo_postal,
             'locale' => app()->getLocale(),
             'sexo' => $request->sexo,
@@ -37,7 +53,7 @@ class RegisterTutorController extends Controller
         ]);
 
         auth()->login($user);
-        return redirect()->route('users/{id}', ['id' => $user->id]);
+        return redirect()->route('tutor');
     }
 
     public function getAllowedRoles(): string

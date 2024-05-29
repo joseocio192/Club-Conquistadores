@@ -89,7 +89,6 @@ class RegisterController extends Controller
             } else {
                 $tutorid = null;
             }
-
             // Crear usuario
             $user = User::create([
                 'name' => $request->name,
@@ -104,6 +103,7 @@ class RegisterController extends Controller
                 'colonia' => $request->colonia,
                 'ciudad_id' => $request->ciudad,
                 'codigo_postal' => $request->codigo_postal,
+                'locale' => app()->getLocale(),
                 'sexo' => $request->sexo,
                 'rol' => $this->getUserRolAllowedByLocale(),
 

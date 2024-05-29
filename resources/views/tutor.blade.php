@@ -72,62 +72,64 @@
                     @foreach ($codigos as $codigo)
                         <h3>{{ $codigo->onecode }}</h3>
                     @endforeach
-                @endif
-            </div>
-            <div class="divAceptarPupilos">
-                <h2>@lang('app.Codes')</h2>
-                @foreach ($codigos as $codigo)
-                <h3>{{$codigo->onecode}}</h3>
-                @endforeach
-                <form action="{{route('tutor.generateOneTimeCode')}}" method="post">
-                    @csrf
-                    <button type="submit">@lang('app.generate_code') </button>
-                </form>
-            </div>
-            <div class="divDatos"><h2>Historial</h2></div>
-            <div class="divDatos">
+            @endif
+    </div>
+    <div class="divAceptarPupilos">
+        <h2>@lang('app.Codes')</h2>
+        @foreach ($codigos as $codigo)
+            <h3>{{ $codigo->onecode }}</h3>
+        @endforeach
+        <form action="{{ route('tutor.generateOneTimeCode') }}" method="post">
+            @csrf
+            <button type="submit">@lang('app.generate_code') </button>
+        </form>
+    </div>
+    <div class="divDatos">
+        <h2>Historial</h2>
+    </div>
+    <div class="divDatos">
 
-                @foreach ($historial as $historia)
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Club</th>
-                            <th>Fecha entrada</th>
-                            <th>Fecha salida</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{ $historia->nombre }}</td>
-                            <td>{{ $historia->pivot->fechaIngreso }}</td>
-                            <td>{{ $historia->pivot->fechaSalida }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                @endforeach
+        @foreach ($historial as $historia)
+            <table>
+                <thead>
+                    <tr>
+                        <th>Club</th>
+                        <th>Fecha entrada</th>
+                        <th>Fecha salida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ $historia->nombre }}</td>
+                        <td>{{ $historia->pivot->fechaIngreso }}</td>
+                        <td>{{ $historia->pivot->fechaSalida }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        @endforeach
+    </div>
+
+    @if ($status == 'show')
+        <div class="divDatos">
+            <h2>@lang('app.pupil_details:')</h2>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
+                </svg>
+                <h3>@lang('app.id_:') {{ $hijo->user->id }}</h3>
+                <h3>@lang('app.name') {{ $hijo->user->name }} {{ $hijo->user->apellido }}</h3>
+                <h3>@lang('app.name') {{ $hijo->user->edad }}</h3>
             </div>
-            @endif
-            @if ($status == 'show')
-                <div class="divDatos">
-                    <h2>@lang('app.pupil_details:')</h2>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                            <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                            <path
-                                d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
-                        </svg>
-                        <h3>@lang('app.id_:') {{ $hijo->user->id }}</h3>
-                        <h3>@lang('app.name') {{ $hijo->user->name }} {{ $hijo->user->apellido }}</h3>
-                        <h3>@lang('app.name') {{ $hijo->user->edad }}</h3>
-                    </div>
-                    <h3>@lang('app.phone') {{ $hijo->user->telefono }}</h3>
-                    <h3>@lang('app.birthdate') {{ $hijo->user->fecha_nacimiento }}</h3>
-                    <h3>@lang('app.address')
-                        {{ $hijo->user->colonia . ' ' . $hijo->user->calle . ' ' . $hijo->user->numero_exterior }}
-                    </h3>
-                </div>
-            @endif
-        </ul>
+            <h3>@lang('app.phone') {{ $hijo->user->telefono }}</h3>
+            <h3>@lang('app.birthdate') {{ $hijo->user->fecha_nacimiento }}</h3>
+            <h3>@lang('app.address')
+                {{ $hijo->user->colonia . ' ' . $hijo->user->calle . ' ' . $hijo->user->numero_exterior }}
+            </h3>
+        </div>
+    @endif
+    </ul>
     </div>
     @if ($errors->any())
         <script>
