@@ -4,6 +4,7 @@ return [
     'title' => 'Club de Conquistadores',
     'welcome' => 'Welcome to the Pathfinders Club',
     'Pathfinders_Club' => 'Pathfinders Club',
+    'registerTutor' => 'Register Tutor',
 
     'log_out' => 'Log out',
     'login' => 'Log in',
