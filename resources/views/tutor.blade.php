@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Tutor</title>
+    <title>@lang('app.tutor')</title>
     <link href="{{ asset('/css/tutor.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -15,19 +15,19 @@
 
 <body>
     <div class="sidenav">
-        <h1 class="text-center">Tutor: {{$user->name}} </h1>
+        <h1 class="text-center">@lang('app.tutor') {{$user->name}} </h1>
         <a href="{{route('tutor')}}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                 <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                 <path d="M280.4 148.3L96 300.1V464a16 16 0 0 0 16 16l112.1-.3a16 16 0 0 0 15.9-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.6a16 16 0 0 0 16 16.1L464 480a16 16 0 0 0 16-16V300L295.7 148.3a12.2 12.2 0 0 0 -15.3 0zM571.6 251.5L488 182.6V44.1a12 12 0 0 0 -12-12h-56a12 12 0 0 0 -12 12v72.6L318.5 43a48 48 0 0 0 -61 0L4.3 251.5a12 12 0 0 0 -1.6 16.9l25.5 31A12 12 0 0 0 45.2 301l235.2-193.7a12.2 12.2 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0 -1.7-16.9z"/>
             </svg>
-            Home</a>
+            @lang('app.home')</a>
         <a href="{{route('register.tutor', $user->id)}}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                 <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                 <path d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/>
             </svg>
-            Añadir pupilo</a>
+            @lang('app.add_pupil')</a>
         @foreach ($pupilos as $pupilo)
             <a href="{{route('tutor.show', $pupilo->id)}}">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -81,13 +81,13 @@
                         <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/>
                     </svg>
-                    <h3>Id: {{$hijo->user->id}}</h3>
-                    <h3>Nombre: {{$hijo->user->name}} {{$hijo->user->apellido}}</h3>
-                    <h3>Edad: {{$hijo->user->edad}}</h3>
+                    <h3>@lang('app.id_:') {{$hijo->user->id}}</h3>
+                    <h3>@lang('app.name') {{$hijo->user->name}} {{$hijo->user->apellido}}</h3>
+                    <h3>@lang('app.name') {{$hijo->user->edad}}</h3>
                 </div>
-                <h3>Telefono: {{$hijo->user->telefono}}</h3>
-                <h3>Fecha de nacimiento: {{$hijo->user->fecha_nacimiento}}</h3>
-                <h3>Direccion:
+                <h3>@lang('app.phone') {{$hijo->user->telefono}}</h3>
+                <h3>@lang('app.birthdate') {{$hijo->user->fecha_nacimiento}}</h3>
+                <h3>@lang('app.address')
                     {{ $hijo->user->colonia . ' ' .
                     $hijo->user->calle . ' ' .
                     $hijo->user->numero_exterior }}
