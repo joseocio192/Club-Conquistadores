@@ -35,9 +35,6 @@ class Kernel extends ConsoleKernel
         })->daily();
     }
 
-    /**
-     * Register the commands for the application.
-     */
     protected function commands(): void
     {
         $this->load(__DIR__ . '/Commands');

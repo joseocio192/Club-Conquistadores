@@ -76,15 +76,15 @@
             <div class="divTareasAsis">
                 <h2>{{ $clase->nombre }}</h2>
                 <!--************************************ Tabla Tareas ************************************-->
-                <h3>Tareas</h3>
+                <h3>@lang('app.tasks')</h3>
                     <form action={{ route('instructor.sendhw') }} method="post">
                         @csrf
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
+                                    <th>@lang('app.name')</th>
                                     @if ($tareas->count() == 0)
-                                        <th>No hay tareas</th>
+                                        <th>@lang('app.there_are_no_tasks')</th>
                                     @else
                                     @foreach ($tareas as $tarea)
                                         <th>
@@ -116,7 +116,7 @@
                     </form>
 
                     <!--************************************ Tabla Asistencia ************************************-->
-                    <h3>Asistencia</h3>
+                    <h3>@lang('app.assitence')</h3>
                     <form action="{{ route('instructor.definer') }}" method="post">
                         @csrf
                         <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
@@ -124,9 +124,9 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Nombre</th>
+                                        <th>@lang('app.name')</th>
                                         @if ($asistencias->count() == 0)
-                                            <th>No hay asistencias</th>
+                                            <th>@lang('app.there_are_no_assists')</th>
                                         @else
                                             @foreach ($conquistador->asistencia as $asistencia)
                                             <th>{{ $asistencia->fecha }}</th>
@@ -151,11 +151,11 @@
                                 @foreach ($conquistadores as $conquistador)
                                     <tr>
                                         @if ($asistencias->count() == 0)
-                                            <th>No hay asistencias</th>
-                                        @else       
-                                            <td>{{ $conquistador->user->name }}</td>                 
+                                            <th>@lang('app.there_are_no_assists')</th>
+                                        @else
+                                            <td>{{ $conquistador->user->name }}</td>
                                             @foreach ($conquistador->asistencia as $asistencia)
-                                                @if ($asistencia->id_clase === $clase->id)            
+                                                @if ($asistencia->id_clase === $clase->id)
                                                         <td class="tdAsistencia">
                                                             <input type="checkbox"
                                                                 name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}"
@@ -181,55 +181,55 @@
                                 @endforeach
                             </table>
                         </div>
-                        
+
                         <button class="btnEnviar" type="submit" name="save">Enviar</button>
                     </form>
 
         <!--************************************ Añadir Alumnos ************************************-->
-        <h3 class="h3AddAlumno">Añadir alumnos a la clase</h3>
+        <h3 class="h3AddAlumno">@lang('app.add_students_to_class')</h3>
         <form class="frmAlmTar" action="{{ route('instructor.anadirAlumnos') }}" method="post">
             @csrf
             <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-            Id de los Alumnos:
+            @lang('app.students_id')
             <input type="text" name="alumnos" placeholder="(Separados por comas)">
             <button class="my-button" type="submit">Añadir</button>
         </form>
 
         <!--************************************ Eliminar Alumnos ************************************-->
-        <h3>Eliminar alumnos de la clase</h3>
+        <h3>@lang('app.remove_students_from_class')</h3>
         <form class="frmAlmTar" action="{{ route('instructor.eliminarAlumnos') }}" method="post">
             @csrf
             <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-            Id de los Alumnos:
+            @lang('app.students_id')
             <input type="text" name="alumnos" placeholder="(Separados por comas)">
             <button class="my-button" type="submit">Eliminar</button>
         </form>
 
         <!--************************************ Crear Tarea ************************************-->
-        <h3>Crear tarea</h3>
+        <h3>@lang('app.create_task')</h3>
         <form class="frmAlmTar" action="{{ route('instructor.crearTarea') }}" method="post">
             @csrf
             <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-            Nombre:
+            @lang('app.name')
             <input type="text" name="nombre">
-            Descripción:
+            @lang('app.description')
             <input type="text" name="descripcion">
-            Fecha de entrega:
+            @lang('app.due_date')
             <input type="date" name="fecha">
             <button class="my-button" type="submit">Crear</button>
         </form>
         <!--************************************ Modificar Tarea ************************************-->
-        <h3>Modificar tarea</h3>
+        <h3>@lang('app.modify_task')</h3>
         <form class="frmAlmTar" action="{{ route('instructor.modificarTarea') }}" method="post">
             @csrf
             <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
             ID:
             <input type="text" name="tarea_id">
-            Nombre:
+            @lang('app.name')
             <input type="text" name="nombre">
-            Descripcion:
+            @lang('app.description')
             <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
-            Fecha de entrega:
+            @lang('app.due_date')
             <input type="date" name="fecha" placeholder="Fecha de la tarea">
             <button class="btnModTar" type="submit">Modificar</button>
         </form>
@@ -243,29 +243,29 @@
             <form action="{{ route('instructor.crear') }}" method="post">
                 @csrf
                 <div class="divCrearClase">
-                    <h3> Crear clase </h3>
+                    <h3> @lang('app.create_class')</h3>
                     <div>
-                        Nombre de la clase:
+                        @lang('app.class_name')
                         <input type="text" name="nombre">
                     </div>
                     <div>
-                        Edad minima:
+                        @lang('app.minimum_age')
                         <input type="number" name="edadMinima">
                     </div>
                     <div>
-                        Color:
+                        @lang('app.color')
                         <input type="text" name="color">
                     </div>
                     <div>
-                        Logo:
+                        @lang('app.logo')
                         <input type="text" name="logo">
                     </div>
                     <div>
-                        Hora de entrada:
+                        @lang('app.entry_time')
                         <input type="time" name="horario">
                     </div>
                     <div>
-                        Hora de salida:
+                        @lang('app.exit_time')
                         <input type="time" name="horario2">
                     </div>
                     <button class="btnCrearClase" type="submit">Crear</button>
@@ -274,14 +274,14 @@
             </form>
             <div class="divEliminarClase">
                 <form action="{{ route('instructor.eliminarClase') }}" method="post">
-                    <h3> Eliminar clase </h3>
+                    <h3> @lang('app.delete_class') </h3>
                     <div>
-                        ID de la clase:
+                        @lang('app.class_id')
                         <input type="text" name="clase_id">
                     </div>
 
                 </form>
-                <button class="btnEliminarClase" type="submit">Eliminar</button>
+                <button class="btnEliminarClase" type="submit">@lang('app.delete')</button>
             </div>
             @csrf
         </div>
@@ -290,22 +290,22 @@
     @if ($status == 'Mostar Tarea')
         <div class="divMostrarTarea">
             <h2>{{ $tarea->nombre }}</h2>
-            <h2>Tarea ID: {{ $tarea->id }}</h2>
-            <h3 class="h3Descripcion">Descripcion: {{ $tarea->descripcion }}</h3>
-            <h3>Fecha de entrega: {{ $tarea->fecha }}</h3>
-            <h2 class="h2ModificarTarea">Modificar tarea</h2>
+            <h2>@lang('app.task_id') {{ $tarea->id }}</h2>
+            <h3 class="h3Descripcion">@lang('app.description') {{ $tarea->descripcion }}</h3>
+            <h3>@lang('app.due_date') {{ $tarea->fecha }}</h3>
+            <h2 class="h2ModificarTarea">@lang('app.modify_task')</h2>
             <form action="{{ route('instructor.modificarTarea') }}" method="post">
                 @csrf
                 <input type="hidden" name="tarea_id" value="{{ $tarea->id }}">
                 <div>
-                    Nombre:
+                    @lang('app.class_name')
                     <input type="text" name="nombre">
-                    Descripcion:
+                    @lang('app.description')
                     <textarea name="descripcion" maxlength="450"> </textarea>
-                    Fecha de entrega:
+                    @lang('app.due_date')
                     <input type="date" name="fecha">
                 </div>
-                <button class="my-button" type="submit">Modificar</button>
+                <button class="my-button" type="submit">@lang('app.modify')</button>
             </form>
         </div>
     @endif
@@ -314,7 +314,7 @@
     @if ($status == 'Mostar Conquistador')
         <div class="divTusDatos">
             <div class="divDatos">
-                <h2>Conquistador ID: {{ $conquistador->user->id }}</h2>
+                <h2>@lang('app.pathfinder_id') {{ $conquistador->user->id }}</h2>
             </div>
             <div class="divDatos">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -322,21 +322,21 @@
                     <path
                         d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
                 </svg>
-                <h3>Nombre: </h3>
+                <h3>@lang('app.name') </h3>
                 <h3 class="h3Dato">{{ $conquistador->user->name }}</h3>
-                <h3>Edad: </h3>
+                <h3>@lang('app.age') </h3>
                 <h3 class="h3Dato">{{ $conquistador->edad }}</h3>
             </div>
             <div class="divDatos">
-                <h3>Telefono: </h3>
+                <h3>@lang('app.phone') </h3>
                 <h3 class="h3Dato">{{ $conquistador->user->telefono }}</h3>
             </div>
             <div class="divDatos">
-                <h3>Correo: </h3>
+                <h3>@lang('app.email') </h3>
                 <h3 class="h3Dato">{{ $conquistador->user->email }}</h3>
             </div>
             <div class="divDatos">
-                <h3>Direccion: </h3>
+                <h3>@lang('app.address') </h3>
                 <h3 class="h3Dato">
                     {{ $conquistador->tutorLegal->colonia .
                         ' ' .
@@ -346,16 +346,16 @@
                 </h3>
             </div>
             <div class="divDatos">
-                <h3>Tutor Legal: </h3>
+                <h3>@lang('app.legal_guardian') </h3>
                 <h3 class="h3Dato">{{ $conquistador->tutorLegal->name . ' ' . $conquistador->tutorLegal->apellido }}
                 </h3>
             </div>
             <div class="divDatos">
-                <h3>Telefono tutor: </h3>
+                <h3>@lang('app.guardian_phone') </h3>
                 <h3 class="h3Dato">{{ $conquistador->tutorLegal->telefono }}</h3>
             </div>
             <div class="divDatos">
-                <h3>Correo tutor: </h3>
+                <h3>@lang('app.guardian_email') </h3>
                 <h3 class="h3Dato">{{ $conquistador->tutorLegal->email }}</h3>
             </div>
         </div>
@@ -364,7 +364,7 @@
     @if ($status == 'nada')
         <div class="divTusDatos">
             <div class="divDatos">
-                <h2>Tus datos</h2>
+                <h2>@lang('app.your_data')</h2>
             </div>
             <div class="divDatos">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -372,21 +372,21 @@
                     <path
                         d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
                 </svg>
-                <h3>Nombre:</h3>
+                <h3>@lang('app.name')</h3>
                 <h3 class="h3Dato">{{ $user->name }}</h3>
-                <h3>Edad:</h3>
+                <h3>@lang('app.age')</h3>
                 <h3 class="h3Dato">{{ $user->edad }}</h3>
             </div>
             <div class="divDatos">
-                <h3>Telefono:</h3>
+                <h3>@lang('app.phone')</h3>
                 <h3 class="h3Dato"> {{ $user->telefono }}</h3>
             </div>
             <div class="divDatos">
-                <h3>Correo: </h3>
+                <h3>@lang('app.email') </h3>
                 <h3 class="h3Dato">{{ $user->email }}</h3>
             </div>
             <div class="divDatos">
-                <h3>Direccion:</h3>
+                <h3>@lang('app.address')</h3>
                 <h3 class="h3Dato">{{ $user->colonia . ' ' . $user->calle . ' ' . $user->numero_exterior }}</h3>
             </div>
         </div>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Registro</title>
+    <title>@lang('app.registration')</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -14,111 +14,114 @@
 <form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
     @csrf
 
-    <h1>Registro</h1>
-    <h2>Datos personales tutor</h2>
+
+    <h1>@lang('app.Register')@lang('app.registration')</h1>
+
+    <h2>@lang('app.tutors_personal_details')</h2>
     <div class='RegistroDiv'>
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="name">Nombre</label>
+                    <label for="name">@lang('app.Name')</label>
                     <input id="name" type="text" name="name" required autofocus><br>
                 </div>
 
                 <div>
-                    <label for="apellido">Apellido</label>
+
+                    <label for="apellido">@lang('app.lastname')</label>
                     <input id="apellido" type="text" name="apellido" class="Input" required><br>
                 </div>
             </div>
 
             <div class='EmailDiv'>
-                <label for="email">Email</label>
+                <label for="email">@lang('app.email')</label>
                 <input id="email" type="email" name="email" required><br>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="password">Password</label>
+                    <label for="password">@lang('app.Password')</label>
                     <input id="password" type="password" name="password" required><br>
                 </div>
 
                 <div>
-                    <label for="telefono">Telefono</label>
+                    <label for="telefono">@lang('app.Phone')</label>
                     <input id="telefono" type="text" name="telefono"><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                    <label for="fecha_nacimiento">@lang('app.Birthdate')</label>
                     <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" required><br>
                 </div>
 
                 <div>
-                    <label for="sexo">Sexo</label>
+                    <label for="sexo">@lang('app.Sex')</label>
                     <select id="sexo" name="sexo" required><br>
-                        <option value="">Select a gender</option>
-                        <option value="Hombre">Hombre</option>
-                        <option value="Mujer">Mujer</option>
-                        <option value="Otro">Otro</option>
+                        <option value="">@lang('app.Select_a_gender')</option>
+                        <option value="Hombre">@lang('app.man')</option>
+                        <option value="Mujer">@lang('app.woman')</option>
+                        <option value="Otro">@lang('app.Other')</option>
                     </select>
                 </div>
             </div>
         </div>
-        <h2 class='DatosH2'>Datos residencia de tutor</h2>
+        <h2 class='DatosH2'>@lang('app.tutors_residence_information')</h2>
         <div class='SeccionDiv2'>
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="calle">Calle</label>
+                    <label for="calle">@lang('app.street')</label>
                     <input id="calle" type="text" name="calle" required><br>
                 </div>
 
                 <div>
-                    <label for="numero_exterior">Numero Exterior</label>
+                    <label for="numero_exterior">@lang('app.street_number') </label>
                     <input id="numero_exterior" type="text" name="numero_exterior" required><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="numero_interior">Numero Interior</label>
+                    <label for="numero_interior">@lang('app.suite_number')</label>
                     <input id="numero_interior" type="text" name="numero_interior"><br>
                 </div>
 
                 <div>
-                    <label for="colonia">Colonia</label>
+                    <label for="colonia">@lang('app.neighborhood')</label>
                     <input id="colonia" type="text" name="colonia" required><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div class="PaisDiv">
-                    <label for="pais">Pais</label>
+                    <label for="pais">@lang('app.Country')</label>
                     <select id="pais">
-                        <option value="">Select a country</option>
+                        <option value="">@lang('app.Select a country')</option>
                     </select>
                 </div>
 
                 <div>
-                    <label for="estado">Estado</label>
+                    <label for="estado">@lang('app.State')</label>
                     <select id="estado"></select>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div class="MunicipioDiv">
-                    <label for="municipio">Municipio</label>
+                    <label for="municipio">@lang('app.Municipality')</label>
                     <select id="municipio"></select>
                 </div>
 
                 <div>
-                    <label for="ciudad_id">Ciudad</label>
+                    <label for="ciudad_id">@lang('app.city')</label>
                     <select id="ciudad_id" name="ciudad_id"></select>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="codigo_postal">Codigo Postal</label>
+                    <label for="codigo_postal">@lang('app.Postal code')</label>
                     <input id="codigo_postal" type="text" name="codigo_postal" required><br>
                 </div>
             </div>
@@ -128,13 +131,13 @@
 
             <div>
                 <a class="HomeBtn" id="home-button" onclick="window.location.href = '/';">
-                    Volver
+                    @lang('app.Back')
                 </a>
             </div>
 
             <div>
                 <button class="RegisterBtn" type="submit" id="submit-button" disabled>
-                    Registrarse
+                    @lang('app.sign_in')
                 </button>
             </div>
         </div>
@@ -172,7 +175,7 @@
             success: function(res) {
                 if (res) {
                     $('#pais').empty();
-                    $('#pais').append('<option>Seleccionar</option>');
+                    $('#pais').append('<option>{{__("app.select")}}</option>');
                     $.each(res, function(key, value) {
                         $('#pais').append('<option value="' + key + '">' + value +
                             '</option>');
@@ -193,7 +196,7 @@
                 success: function(res) {
                     if (res) {
                         $('#estado').empty();
-                        $('#estado').append('<option>Seleccionar</option>');
+                        $('#estado').append('<option>{{__("app.select")}}</option>');
                         $.each(res, function(key, value) {
                             $('#estado').append('<option value="' + key + '">' + value +
                                 '</option>');
@@ -221,7 +224,7 @@
                 success: function(res) {
                     if (res) {
                         $('#municipio').empty();
-                        $('#municipio').append('<option>Seleccionar</option>');
+                        $('#municipio').append('<option>{{__("app.select")}}</option>');
                         $.each(res, function(key, value) {
                             $('#municipio').append('<option value="' + key + '">' + value +
                                 '</option>');
@@ -248,7 +251,7 @@
                 success: function(res) {
                     if (res) {
                         $('#ciudad_id').empty();
-                        $('#ciudad_id').append('<option>Seleccionar</option>');
+                        $('#ciudad_id').append('<option>{{__("app.select")}}</option>');
                         $.each(res, function(key, value) {
                             $('#ciudad_id').append('<option value="' + key + '">' + value +
                                 '</option>');

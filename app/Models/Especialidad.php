@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use Illuminate\Support\Facades\Log;
 use App\Events\EspecialidadSaved;
 use App\Models\Traits\Mutators\EspecialidadMutator;
 
@@ -32,6 +32,6 @@ class Especialidad extends Model
 
     public function conquistadores(): BelongsToMany
     {
-        return $this->belongsToMany(Conquistador::class, 'Requisitos_xconquistador', 'requisito_id', 'conquistador')->using(Requisitos_xconquistador::class);
+        return $this->belongsToMany(Conquistador::class, 'Conquistador_xespecialidad', 'especialidad_id', 'conquistador_id');
     }
 }

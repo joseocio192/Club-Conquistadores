@@ -48,6 +48,7 @@
                 {{ $clases->nombre }}
             </a>
         @endforeach
+        <a href="{{route('conquistador.especialidad')}}">@lang('app.speciality')</a>
         <form action="/logout" method="get">
             @csrf
             <button class="my-button-loggout" type="submit">Cerrar Sesion</button>
@@ -93,9 +94,9 @@
                     </div>
                 </div>
             @endif
-            
+
             @if ($status=='clase')
-            <div class="divClase"> 
+            <div class="divClase">
                 <h1>Clase: {{$clase->nombre}}</h1>
             <table>
                 <thead>
@@ -123,7 +124,7 @@
             </table>
             </div>
             @endif
-            
+
             @if ($status == 'Mostar Tarea')
                 <div class="divTarea">
                     <h2>Datos de la tarea</h2>
@@ -138,6 +139,24 @@
                     <h3>Descripción: {{ $tarea->descripcion }}</h3>
                     <h3>Fecha: {{ $tarea->fecha }}</h3>
                 </div>
+            @endif
+
+            @if ($status == 'especialidad')
+                <h1>Especialidad</h1>
+                @if (is_null($especialidades) || $especialidades->isEmpty())
+                    <h2>No tienes especialidades</h2>
+                @else
+                    @foreach ($especialidades as $especialidad)
+                    <div class="divEspecialidad">
+                        <h2>{{ $especialidad->nombre }}</h2>
+                    </div>
+                        @foreach ($especialidad->requisitos as $requisito)
+                        <div class="divRequisito">
+                            <h3>{{ $requisito->nombre }}</h3>
+                        </div>
+                        @endforeach
+                    @endforeach
+                @endif
             @endif
 
         </ul>
