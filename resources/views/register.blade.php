@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <h2 class='DatosH2'>@lang('app.'Details_of_the_conqueror_residence')</h2>
+        <h2 class='DatosH2'>@lang('app.Details_of_the_conqueror_residence')</h2>
         <div class='SeccionDiv2'>
             <div class='SubSeccionDiv'>
                 <div>
@@ -126,14 +126,13 @@
 
             <div class='SubSeccionDiv'>
                 <div class="ClubesDiv">
-                    <label for="clubes">@lang(app.Clubs)</label>
+                    <label for="clubes">@lang('app.Clubs')</label>
                     <select id="clubes" name="clubes"></select>
                 </div>
 
                 <div>
-                    <label for="codigo_postal"> @lang(app.postal_code)</label>
+                    <label for="codigo_postal"> @lang('app.postal_code')</label>
                     <input id="codigo_postal" type="text" name="codigo_postal" value="{{old('codigo_postal')}}" required><br>
-
                 </div>
             </div>
         </div>

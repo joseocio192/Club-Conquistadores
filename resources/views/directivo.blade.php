@@ -76,37 +76,44 @@
         @endif
 
         @if ($status == 'club')
-        <h2>@lang('app.club_director') {{$club->director->user->name}}</h2>
-        <h2>@lang('app.pathfinders_quantity') {{$cantidad}}</h2>
-        <h2>@lang('app.instructors_quantity') {{$club->instructores->count()}}</h2>
-        <h2>@lang('add.add_instructor')</h2>
-        <form action="{{route('directivo.addInstructor')}}" method="post">
-            @csrf
-            <input type="text" name="instructor_id" placeholder="id del instructor">
-            <input type="text" name="club_id" value="{{$club->id}}" hidden>
-            <button type="submit">@lang('app.add')</button>
-        </form>
-        <h2>@lang('app.instructors_avaible')</h2>
-        @foreach ($instructores as $i)
-        <h2>$i->user->name</h2>
-        @endforeach
-        <a href="{{route('registerInstructor')}}"> @lang('app.instructor_register')</a>
-        <h2>Conquistadores por mes</h2>
-        <table>
-            <tr>
-                <th>Club</th>
-                @foreach ($fechas as $fecha)
-                <th>{{$fecha->fecha}}</th>
-                @endforeach
-            </tr>
-            <tr>
-                <td>{{$club->nombre}}</td>
-                @foreach ($fechas as $f)
-                <th>{{$f->cantidad}}</th>
-                @endforeach
-            </tr>
-        </table>
-        @endif
+        <div class="divClub">
+            <h2>{{$club->nombre}}</h2>
+            <h3>@lang('app.club_director'): {{$club->director->user->name}}</h3>
+            <h3>@lang('app.pathfinders_quantity'): {{$cantidad}}</h3>
+            <h3>@lang('app.instructors_quantity'): {{$club->instructores->count()}}</h3>
+            <h3>@lang('add.add_instructor')</h2>
+            <form class="frmAddInstructor" action="{{route('directivo.addInstructor')}}" method="post">
+                @csrf
+                <div>
+                    <h3>ID del Instructor:</h3>
+                    <input class="inputIDInstructor" type="text" name="instructor_id">
+                    <input type="text" name="club_id" value="{{$club->id}}" hidden>
+                </div>
+                <button type="submit">@lang('app.add')</button>
+            </form>
+            <h2>@lang('app.instructors_avaible')</h2>
+            @foreach ($instructores as $i)
+            <h2>$i->user->name</h2>
+            @endforeach
+            <a href="{{route('registerInstructor')}}"> @lang('app.instructor_register')</a>
+            <h2>Conquistadores por mes</h2>
+            <table>
+                <tr>
+                    <th>Club</th>
+                    @foreach ($fechas as $fecha)
+                    <th>{{$fecha->fecha}}</th>
+                    @endforeach
+                </tr>
+                <tr>
+                    <td>{{$club->nombre}}</td>
+                    @foreach ($fechas as $f)
+                    <th>{{$f->cantidad}}</th>
+                    @endforeach
+                </tr>
+            </table>
+            @endif
+        </div>
+        
 
         @if ($status == 'ciudad')
         <h2>@lang('app.clubs') {{$ciudad->nombre}}</h2>

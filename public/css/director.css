@@ -4,10 +4,11 @@
 
 /* Tipografias */
 .sidenav h1 {
+    color: #222831;
     margin-left: 1.5em;
 }
 
-.divDatos h2 {
+h2 {
     color: #222831;
 }
 
@@ -18,6 +19,18 @@
 
 .divDatos div h3 {
     margin-right: 1em;
+}
+
+.divClub h2 {
+    color: #222831;
+}
+
+.divClub h3 {
+    color: #31363F;
+}
+
+.frmAddInstructor div h3 {
+    margin-right: .5em;
 }
 
 /********************************************* Cotenedores *********************************************/
@@ -105,40 +118,73 @@ body {
     display: flex;
 }
 
-.sidenav a:hover {
-    cursor: pointer;
-    color: #76ABAE;
-    fill: #76ABAE;
+.divClub {
+    padding: 0 15em 1em 1em;
+
+    border: 2px solid #76ABAE;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
+
+.frmAddInstructor div {
+    display: flex;
+    align-items: center;
+    height: 2em;
 }
 
 table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    min-width: 40em;
+
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-bottom: .5em;
+
+    border-radius: 5px 5px 0 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.48);
+}
+
+thead tr th {
+    text-align: left;
+    font-weight: bold;
+}
+
+tr th {
+    background-color: #76ABAE;
+    color: #ffffff;
+}
+
+thead {
+    background-color: #76ABAE;
+    color: #eee;
+    text-align: left;
+    font-weight: bold;
 }
 
 td,
 th {
-    border: 2px solid #111;
-    text-align: left;
+    padding: 12px 15px;
 }
 
-tr:nth-child(even) {
+tr {
+    border-bottom: 1px solid #76ABAE;
+}
+
+td:nth-child(even) {
     background-color: #dddddd;
 }
 
-
-
-.sidenav a:hover {  
-    cursor: pointer;
-    color: #76ABAE;
-    fill: #76ABAE;
+tr {
+    text-align: center;
 }
+
 
 /********************************************* Botones *********************************************/
 .my-button {
     background-color: #76ABAE;
-    /* Green */
     border: none;
     color: white;
     padding: 4px 32px;
@@ -147,11 +193,6 @@ tr:nth-child(even) {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    /* Your existing CSS */
-}
-
-.my-button:hover {
-    background-color: #45a049;
 }
 
 .my-button-loggout {
@@ -163,7 +204,6 @@ tr:nth-child(even) {
     border: 2px solid #222831;
 
     font-size: 1.1em;
-    font-family: "Roboto";
     font-weight: 900;
 
     transform: translateZ(0);
@@ -179,12 +219,68 @@ tr:nth-child(even) {
     transition: all .3s ease;
 }
 
+.frmAddInstructor button, .divClub a {
+    text-decoration: none;
+
+    border: 1px solid #31363F;
+    border-radius: 5px;
+
+    margin-top: .5em;
+    padding: .75em 2em;
+
+    cursor: pointer;
+    outline: none;
+
+    text-align: center;
+    font-weight: 600;
+    font-size: 1em;
+
+    background-color: #222831;
+    color: #EEEEEE;
+}
+
+.frmAddInstructor button {
+    padding: .65em 2em; 
+}
+
+.inputIDInstructor {
+    padding: 5px;
+    outline: none;
+
+    border-radius: 5px;
+    border: 1px #222831 solid;
+
+    font-size: .9em;
+    font-weight: bold;
+    color: #31363F;
+
+    background-color: #eee;
+}
+
+/********************************************* Hovers *********************************************/
 .my-button-loggout:hover {
     font-size: 1.15em;
 
     background-color: #222831;
     border: white;
     color: #eee;   
+}
+
+.sidenav a:hover, .sidenav a:hover svg {  
+    cursor: pointer;
+    color: #76ABAE;
+    fill: #76ABAE;
+}
+
+.frmAddInstructor button:hover, .divClub a:hover {
+    cursor: pointer;
+    background-color: #474D57;
+    border: 1px solid #474D57;
+}
+
+/********************************************* focus *********************************************/
+.inputIDInstructor:focus{
+    border: 1px solid #76ABAE;
 }
 
 /********************************************* SVGs *********************************************/
