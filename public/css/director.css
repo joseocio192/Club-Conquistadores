@@ -7,6 +7,19 @@
     margin-left: 1.5em;
 }
 
+.divDatos h2 {
+    color: #222831;
+}
+
+.divDatos h3 {
+    margin-bottom: .6em;
+    color: #31363F;
+}
+
+.divDatos div h3 {
+    margin-right: 1em;
+}
+
 /********************************************* Cotenedores *********************************************/
 body {
     display: flex;
@@ -44,7 +57,6 @@ body {
     box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.2);
 }
 
-
 .sidenav a {
     display: flex;
     align-items: center;
@@ -77,21 +89,26 @@ body {
     margin-bottom: 1em;
 }
 
-.sidenav svg {
-    height: 0.8125em;
-    width: 0.8125em;
-    fill: #31363F;
-    margin-right: 0.50em;
+.divDatos {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 4em 1em 2em;
+
+    border: 2px solid #76ABAE;
+    border-radius: 20px;
+
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
+
+.divDatos div {
+    display: flex;
 }
 
 .sidenav a:hover {
     cursor: pointer;
     color: #76ABAE;
     fill: #76ABAE;
-}
-
-h1 {
-    color: #222831;
 }
 
 table {
@@ -118,6 +135,7 @@ tr:nth-child(even) {
     fill: #76ABAE;
 }
 
+/********************************************* Botones *********************************************/
 .my-button {
     background-color: #76ABAE;
     /* Green */
@@ -139,23 +157,49 @@ tr:nth-child(even) {
 .my-button-loggout {
     height: 3.235294117647059em;
     width: 9.6875em;
+
     border-radius: 6px;
     border-width: 0;
+    border: 2px solid #222831;
+
     font-size: 1.1em;
     font-family: "Roboto";
     font-weight: 900;
-    background-color: #76ABAE;
-    color: #EEEEEE;
+
     transform: translateZ(0);
     transition: all .2s,box-shadow .08s ease-in;
+
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
     box-sizing: border-box;
+
+    background-color: #eee;
+    color: #222831;
+    
     cursor: pointer;
+    transition: all .3s ease;
 }
 
 .my-button-loggout:hover {
     font-size: 1.15em;
-    color: #EEEEEE;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
+
+    background-color: #222831;
+    border: white;
+    color: #eee;   
 }
 
+/********************************************* SVGs *********************************************/
+.sidenav svg {
+    height: 0.8125em;
+    width: 0.8125em;
+    fill: #31363F;
+    margin-right: 0.50em;
+}
+
+.divDatos svg {
+    height: 4em;
+    width: 4em;
+
+    margin-right: 1em;
+
+    fill: #76ABAE;
+}

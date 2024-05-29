@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <h2 class='DatosH2'>@lang(app.Instructor_residency_data)</h2>
+        <h2 class='DatosH2'>@lang('app.Instructor_residency_data')</h2>
         <div class='SeccionDiv2'>
             <div class='SubSeccionDiv'>
                 <div>

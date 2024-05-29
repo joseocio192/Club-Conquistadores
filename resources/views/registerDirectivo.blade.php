@@ -11,12 +11,12 @@
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="name">@lang(app.name')</label>
+                    <label for="name">@lang('app.name')</label>
                     <input id="name" type="text" name="name" required autofocus><br>
                 </div>
 
                 <div>
-                    <label for="apellido">@lang(app.lastName')</label>
+                    <label for="apellido">@lang('app.lastName')</label>
                     <input id="apellido" type="text" name="apellido" class="Input" required><br>
                 </div>
             </div>
