@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Tarea;
 use App\Models\Conquistador;
 use App\Models\Asistencia;
+use App\Models\Especialidad;
 use Illuminate\Support\Facades\Log;
 
 use function PHPSTORM_META\elementType;
@@ -21,19 +22,12 @@ class InstructorController extends Controller
 
     public function index()
     {
-
         $user = auth()->user();
         $instructor = Instructor::where('user_id', $user->id)->first();
-
         if (!$instructor) {
             return redirect()->route('home');
         }
-
-        Log:
-        info($instructor);
-
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
-
         $status = "nada";
         return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status'));
     }
@@ -49,7 +43,9 @@ class InstructorController extends Controller
         $status = "clase";
         $tareas = Tarea::where('clase_id', $id)->get();
         $asistencias = Asistencia::where('id_clase', $id)->get();
-        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas', 'asistencias'));
+        $especialidades = $clase->especialidades;
+
+        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas', 'asistencias', 'especialidades'));
     }
 
     public function crear()
@@ -215,8 +211,26 @@ class InstructorController extends Controller
                 $conquistador->tareas()->updateExistingPivot($tarea_id, ['completada' => $value]);
             }
         }
-
         return redirect()->back()->with('success', 'Homework status updated successfully.');
+    }
+
+    public function sendRequisitos(Request $request)
+    {
+        foreach ($request->except(['_token', 'clase_id']) as $key => $value) {
+            if (strpos($key, '-') !== false) {
+                list($requisito_id, $conquistador_id) = explode('-', $key);
+
+                $conquistador = Conquistador::find($conquistador_id);
+
+                if ($conquistador) {
+                    Log::info('antes');
+                    Log::info($conquistador->requisitos->toArray());
+                    $conquistador->requisitos()->updateExistingPivot($requisito_id, ['completado' => $value]);
+                    Log::info($conquistador->requisitos->toArray());
+                }
+            }
+        }
+        return redirect()->back()->with('success', 'Requirements status updated successfully.');
     }
 
     public function crearTarea(Request $request)

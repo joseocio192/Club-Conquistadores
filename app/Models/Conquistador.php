@@ -71,9 +71,9 @@ class Conquistador extends Model
         return $this->belongsToMany(Tarea::class, 'Tareaxconquistador', 'conquistador', 'tarea_id')->withPivot('completada');
     }
 
-    public function requisitos(): hasMany
+    public function requisitos(): BelongsToMany
     {
-        return $this->hasMany(Requisitos::class, 'conquistador_id')->using(Requisitos_xconquistador::class);
+        return $this->belongsToMany(Requisitos::class, 'requisitos_xconsquitador', 'conquistador_id', 'requisito_id')->withPivot('completado');
     }
 
     public function asistencia(): BelongsToMany
