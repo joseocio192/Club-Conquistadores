@@ -15,14 +15,14 @@
     @csrf
 
 
-    <h1>@lang('app.Register')@lang('app.registration')</h1>
+    <h1>@lang('app.register')</h1>
 
     <h2>@lang('app.tutors_personal_details')</h2>
     <div class='RegistroDiv'>
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="name">@lang('app.Name')</label>
+                    <label for="name">@lang('app.name')</label>
                     <input id="name" type="text" name="name" required autofocus><br>
                 </div>
 
@@ -40,29 +40,29 @@
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="password">@lang('app.Password')</label>
+                    <label for="password">@lang('app.password')</label>
                     <input id="password" type="password" name="password" required><br>
                 </div>
 
                 <div>
-                    <label for="telefono">@lang('app.Phone')</label>
+                    <label for="telefono">@lang('app.phone')</label>
                     <input id="telefono" type="text" name="telefono"><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="fecha_nacimiento">@lang('app.Birthdate')</label>
+                    <label for="fecha_nacimiento">@lang('app.birthdate')</label>
                     <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" required><br>
                 </div>
 
                 <div>
-                    <label for="sexo">@lang('app.Sex')</label>
+                    <label for="sexo">@lang('app.sex')</label>
                     <select id="sexo" name="sexo" required><br>
-                        <option value="">@lang('app.Select_a_gender')</option>
+                        <option value="">@lang('app.select_a_gender')</option>
                         <option value="Hombre">@lang('app.man')</option>
                         <option value="Mujer">@lang('app.woman')</option>
-                        <option value="Otro">@lang('app.Other')</option>
+                        <option value="Otro">@lang('app.other')</option>
                     </select>
                 </div>
             </div>
@@ -95,21 +95,21 @@
 
             <div class='SubSeccionDiv'>
                 <div class="PaisDiv">
-                    <label for="pais">@lang('app.Country')</label>
+                    <label for="pais">@lang('app.country')</label>
                     <select id="pais">
-                        <option value="">@lang('app.Select a country')</option>
+                        <option value="">@lang('app.select a country')</option>
                     </select>
                 </div>
 
                 <div>
-                    <label for="estado">@lang('app.State')</label>
+                    <label for="estado">@lang('app.state')</label>
                     <select id="estado"></select>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div class="MunicipioDiv">
-                    <label for="municipio">@lang('app.Municipality')</label>
+                    <label for="municipio">@lang('app.municipality')</label>
                     <select id="municipio"></select>
                 </div>
 
@@ -121,7 +121,7 @@
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="codigo_postal">@lang('app.Postal code')</label>
+                    <label for="codigo_postal">@lang('app.postal code')</label>
                     <input id="codigo_postal" type="text" name="codigo_postal" required><br>
                 </div>
             </div>
@@ -131,7 +131,7 @@
 
             <div>
                 <a class="HomeBtn" id="home-button" onclick="window.location.href = '/';">
-                    @lang('app.Back')
+                    @lang('app.back')
                 </a>
             </div>
 

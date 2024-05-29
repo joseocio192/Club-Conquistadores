@@ -81,9 +81,9 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Nombre</th>
+                                <th>@lang('app.name')</th>
                                 @if ($tareas->count() == 0)
-                                    <th>No hay tareas</th>
+                                    <th>@lang('app.there_are_no_tasks')</th>
                                 @else
                                     @foreach ($tareas as $tarea)
                                         <th>
@@ -186,11 +186,11 @@
                 <form action={{ route('instructor.sendRequisitos') }} method="post">
                     @csrf
                     @foreach ($especialidades as $especialidad)
-                        <h3>Especialidad: {{ $especialidad->nombre }}</h3>
+                        <h3>@lang('app.speciality') {{ $especialidad->nombre }}</h3>
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Alumno </th>
+                                    <th>@lang('app.student') </th>
                                     @foreach ($especialidad->requisitos as $requisito)
                                         <th>
                                             <a href="">{{ $requisito->nombre }}</a>
@@ -412,7 +412,7 @@
                     </h3>
                 </div>
                 <div class="divDatos">
-                    <h3>Tutor Legal: </h3>
+                    <h3>@lang('app.legal_guardian') </h3>
                     <h3 class="h3Dato">
                         {{ $conquistador->tutorLegal->name . ' ' . $conquistador->tutorLegal->apellido }}
                     </h3>
@@ -458,16 +458,16 @@
                     <h3>@lang('app.address')</h3>
                     <h3 class="h3Dato">{{ $user->colonia . ' ' . $user->calle . ' ' . $user->numero_exterior }}</h3>
                 </div>
-                <div class="divDatos"><h2>Historial</h2></div>
+                <div class="divDatos"><h2>@lang('app.record')</h2></div>
                 <div class="divDatos">
 
                     @foreach ($historial as $historia)
                     <table>
                         <thead>
                             <tr>
-                                <th>Club</th>
-                                <th>Fecha entrada</th>
-                                <th>Fecha salida</th>
+                                <th>@lang('app.club')</th>
+                                <th>@lang('app.entry_date')</th>
+                                <th>@lang('app.depure_date')</th>
                             </tr>
                         </thead>
                         <tbody>
