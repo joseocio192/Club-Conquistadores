@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Tarea;
 use App\Models\Especialidad;
 use Illuminate\Support\Facades\Log;
+use App\Models\Onecodeuse;
+use Illuminate\Http\Request;
 
 
 class ConquistadorController extends Controller
@@ -69,5 +71,27 @@ class ConquistadorController extends Controller
         $especialidadesNoCompletadas = $especialidades->diff($especialidadesCompletadas);
 
         return view('conquistador', compact('clasesConquistador', 'conquistador', 'status', 'especialidadesNoCompletadas', 'especialidadesCompletadas'));
+    }
+    public function sendcode(Request $request)
+    {
+        Log::info('Enviando código');
+        $userId = auth()->user()->id;
+        $user = auth()->user();
+        $conquistador = Conquistador::where('user_id', $userId)->first();
+        $onecodeuse = Onecodeuse::where('onecode', $request->onecode)->first();
+        if ($onecodeuse && !$onecodeuse->used) {
+            $onecodeuse->used = true;
+            $onecodeuse->save();
+            $conquistador->tutorLegal_id = $onecodeuse->id_user;
+            $conquistador->save();
+        }else{
+            Log::info('Código inválido');
+            return redirect()->route('conquistador')->with('Código inválido');
+        }
+        $clasesConquistador = $conquistador->clases;
+        $status = 'nada';
+        $historial = $user->club;
+        return view('conquistador', compact('clasesConquistador', 'conquistador', 'status', 'historial'));
+
     }
 }
