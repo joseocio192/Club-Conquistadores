@@ -51,31 +51,24 @@
     <div class="main">
         <ul>
             @if ($status == 'nada')
-                <div class="divAceptarPupilos">
-                    @if (count($pupilosSinAceptar) == 0)
-                        <h1>@lang('app.There_are_no_pupils_to_accept')</h1>
-                    @else
-                        <h1>@lang('app.pupils_to_be_assigned')</h1>
-                        @foreach ($pupilosSinAceptar as $pupilo)
-                            <div class="divPupilo">
-                                <h2>{{ $pupilo->user->name }}</h2>
-                                <form action="{{ route('tutor.aceptar', $pupilo->id) }}" method="post">
-                                    @csrf
-                                    <button type="submit">@lang('app.Accept')</button>
-                                </form>
-                            </div>
-                        @endforeach
-                    @endif
-                </div>
-                <div class="divAceptarPupilos">
-                    <h2>@lang('app.Codes')</h2>
-                    @foreach ($codigos as $codigo)
-                        <h3>{{ $codigo->onecode }}</h3>
+            <div class="divAceptarPupilos">
+                @if (count($pupilosSinAceptar) == 0)
+                <h1>@lang('app.there_are_no_pupils_to_accept')</h1>
+                @else
+                <h1>@lang('app.pupils_to_be_assigned')</h1>
+                @foreach ($pupilosSinAceptar as $pupilo)
+                    <div class="divPupilo">
+                        <h2>{{$pupilo->user->name}}</h2>
+                        <form action="{{route('tutor.aceptar', $pupilo->id)}}" method="post">
+                            @csrf
+                            <button type="submit">@lang('app.accept')</button>
+                        </form>
+                    </div>
                     @endforeach
                 @endif
             </div>
             <div class="divAceptarPupilos">
-                <h2>@lang('app.Codes')</h2>
+                <h2>@lang('app.codes')</h2>
                 @foreach ($codigos as $codigo)
                 <h3>{{$codigo->onecode}}</h3>
                 @endforeach
@@ -84,16 +77,16 @@
                     <button type="submit">@lang('app.generate_code') </button>
                 </form>
             </div>
-            <div class="divDatos"><h2>Historial</h2></div>
+            <div class="divDatos"><h2>@lang('app.record')</h2></div>
             <div class="divDatos">
 
                 @foreach ($historial as $historia)
                 <table>
                     <thead>
                         <tr>
-                            <th>Club</th>
-                            <th>Fecha entrada</th>
-                            <th>Fecha salida</th>
+                            <th>@lang('app.club')</th>
+                            <th>@lang('app.entry_date')</th>
+                            <th>@lang('app.depure_date')</th>
                         </tr>
                     </thead>
                     <tbody>

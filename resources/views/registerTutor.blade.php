@@ -15,7 +15,7 @@
     @csrf
 
 
-    <h1>@lang('app.Register')@lang('app.registration')</h1>
+    <h1>@lang('app.register')</h1>
 
     <h2>@lang('app.tutors_personal_details')</h2>
     <div class='RegistroDiv'>
@@ -42,7 +42,7 @@
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="password">@lang('app.Password')</label>
+                    <label for="password">@lang('app.password')</label>
                     <input id="password" type="password" name="password" required value="{{ old('password') }}"><br>
                 </div>
 
@@ -60,17 +60,18 @@
                 </div>
 
                 <div>
-                    <label for="sexo">@lang('app.Sex')</label>
+                    <label for="sexo">@lang('app.sex')</label>
                     <select id="sexo" name="sexo" required>
                         <option value="">{{ __('app.select_a_gender') }}</option>
-                        <option value="{{ __('app.men') }}" {{ old('sexo') == __('app.men') ? 'selected' : '' }}>
+
+                        <option value="{{ __('app.man') }}" {{ old('sexo') == __('app.man') ? 'selected' : '' }}>
                             {{ __('app.man') }}
                         </option>
                         <option value="{{ __('app.women') }}" {{ old('sexo') == __('app.women') ? 'selected' : '' }}>
                             {{ __('app.women') }}
                         </option>
-                        <option value="{{ __('app.Other') }}" {{ old('sexo') == __('app.Other') ? 'selected' : '' }}>
-                            {{ __('app.Other') }}
+                        <option value="{{ __('app.other') }}" {{ old('sexo') == __('app.other') ? 'selected' : '' }}>
+                            {{ __('app.tther') }}
                         </option>
                     </select>
                 </div>
@@ -142,7 +143,7 @@
 
             <div>
                 <a class="HomeBtn" id="home-button" onclick="window.location.href = '/';">
-                    @lang('app.Back')
+                    @lang('app.back')
                 </a>
             </div>
 
