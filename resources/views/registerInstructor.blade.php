@@ -149,7 +149,7 @@
             success: function(res) {
                 if (res) {
                     $('#pais').empty();
-                    $('#pais').append('<option>Seleccionar</option>');
+                    $('#pais').append('<option>{{__("app.select")}}</option>');
                     $.each(res, function(key, value) {
                         $('#pais').append('<option value="' + key + '">' + value +
                             '</option>');
@@ -170,7 +170,7 @@
                 success: function(res) {
                     if (res) {
                         $('#estado').empty();
-                        $('#estado').append('<option>Seleccionar</option>');
+                        $('#estado').append('<option>{{__("app.select")}}</option>');
                         $.each(res, function(key, value) {
                             $('#estado').append('<option value="' + key + '">' + value +
                                 '</option>');
@@ -198,7 +198,7 @@
                 success: function(res) {
                     if (res) {
                         $('#municipio').empty();
-                        $('#municipio').append('<option>Seleccionar</option>');
+                        $('#municipio').append('<option>{{__("app.select")}}</option>');
                         $.each(res, function(key, value) {
                             $('#municipio').append('<option value="' + key + '">' + value +
                                 '</option>');
@@ -225,7 +225,7 @@
                 success: function(res) {
                     if (res) {
                         $('#ciudad_id').empty();
-                        $('#ciudad_id').append('<option>Seleccionar</option>');
+                        $('#ciudad_id').append('<option>{{__("app.select")}}</option>');
                         $.each(res, function(key, value) {
                             $('#ciudad_id').append('<option value="' + key + '">' + value +
                                 '</option>');
