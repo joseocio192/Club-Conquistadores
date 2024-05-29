@@ -4,7 +4,7 @@ return [
     'title' => 'Club des Conquérants',
     'welcome' => 'Bienvenue au Club des Conquérants',
     'Pathfinders_Club' => 'Club des Conquérants',
-    'registerTutor' => 'Inscrire le tuteur',
+    'registerTutor' => 'Enregistrer un tuteur',
 
     'log_out' => 'Déconnexion',
     'login' => 'Se connecter',
@@ -14,6 +14,7 @@ return [
     'remember_me' => 'Se souvenir de moi',
     'back_home' => 'Retour à la maison',
     'forgot' => 'Mot de passe oublié?',
+    'code_postal' => 'Code postal',
 
     'error_title' => 'Oups!',
     'error_message' => 'Il y a eu quelques problèmes avec votre entrée.',
@@ -106,8 +107,8 @@ return [
     'birthdate' => 'Date de naissance',
     'sex' => 'Sexe',
     'select_a_gender' => 'Sélectionnez un sexe',
-    'men' => 'Homme',
-    'women' => 'Femme',
+    'man' => 'Homme',
+    'woman' => 'Femme',
     'other' => 'Autre',
     'details_of_the_conqueror_residence' => 'Détails de la résidence du Conquérant',
     'street' => 'Rue',
@@ -118,11 +119,12 @@ return [
     'onecode' => 'Code unique',
     'back' => 'Retour',
     'sign_in' => 'Se connecter',
+    'record' => 'Enregistrement',
 
     //registerDirectivo
     'personal_data_of_a_executive' => "Données personnelles d'un cadre",
     'personal_data_of_An_executive' => "Données personnelles d'un cadre",
-    'BossId' => 'ID du patron',
+    'bossId' => 'ID du patron',
     'role' => 'Rôle',
     'executive' => 'Cadre',
 
@@ -137,18 +139,28 @@ return [
     'tutors_residence_information' => 'Informations de résidence du tuteur',
     'Postal code' => 'Code postal',
 
-    'There_are_no_pupils_to_accept' => "Il n'y a pas d'élèves à accepter",
+    'there_are_no_pupils_to_accept' => "Il n'y a pas d'élèves à accepter",
     'pupils_to_be_assigned' => 'Élèves à attribuer',
-    'Accept' => 'Accepter',
-    'Codes' => 'Codes',
+    'accept' => 'Accepter',
+    'codes' => 'Codes',
     'generate_code' => 'Générer un code',
     'pupil_details:' => "Détails de l'élève :",
 
 
     'submit' => 'Soumettre',
     'pathfinders_per_month_per_club' => 'Conquérants par mois par club',
-    'Pathfinders_per_moth' => 'Conquérants par mois',
+    'pathfinders_per_moth' => 'Conquérants par mois',
     'instructor_id' => 'ID de l\'instructeur :',
-    'no_specialties' => 'Vous n\'avez aucune spécialité'
+    'no_specialties' => 'Vous n\'avez aucune spécialité',
+
+
+    'date' => 'Date',
+    'task_data' => 'Données de la tâche',
+    'specialties_started_but_not_completed' => 'Spécialités commencées mais non terminées',
+    'student' => 'Étudiant',
+    'entry_date' => 'Date d\'entrée',
+    'depure_date' => 'Date de sortie',
+    'modify_user' => 'Modifier l\'utilisateur',
+    'personal_information' => 'Informations personnelles',
 
 ];

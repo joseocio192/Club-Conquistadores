@@ -1,7 +1,7 @@
 <!-- resources/views/register.blade.php -->
 <!DOCTYPE html>
 <head>
-    <title>Modificar Usuario</title>
+    <title>@lang('app.modify_user')</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -15,8 +15,8 @@
 <form class="FormLayout" method="POST" action="{{ route('instructor.modificarDatos') }}" id="registro">
     @csrf
     <div class='ModificarDiv'>
-        <h1>Modificar Usuario</h1>
-        <h2>Datos personales</h2>
+        <h1>@lang('app.modify_user')</h1>
+        <h2>@lang('app.personal_information')</h2>
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
                 <div>
@@ -57,14 +57,14 @@
                     <label for="sexo">@lang('app.sex')</label>
                     <select id="sexo" name="sexo" required><br>
                         <option value="">@lang('app.select_a_gender')</option>
-                        <option value="Hombre">@lang('app.men')</option>
-                        <option value="Mujer">@lang('app.women')</option>
+                        <option value="Hombre">@lang('app.man')</option>
+                        <option value="Mujer">@lang('app.woman')</option>
                         <option value="Otro">@lang('app.other')</option>
                     </select>
                 </div>
             </div>
         </div>
-        <h2 class='DatosH2'>Datos de residencia</h2>
+        <h2 class='DatosH2'>@lang('app.address')</h2>
         <div class='SeccionDiv2'>
             <div class='SubSeccionDiv'>
                 <div>
@@ -137,7 +137,7 @@
 
             <div>
                 <button class="RegisterBtn" type="submit" id="submit-button" disabled>
-                    Modificar
+                    @lang('app.modify')
                 </button>
             </div>
         </div>

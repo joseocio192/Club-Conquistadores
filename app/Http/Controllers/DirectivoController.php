@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Pais;
 use App\Models\Especialidad;
 use App\Models\User;
+use App\Models\Directivo;
 use GuzzleHttp\TransferStats;
 use Symfony\Component\Uid\NilUlid;
 
@@ -188,6 +189,8 @@ class DirectivoController extends Controller
         return redirect()->route('directivo.club', $request->club_id);
     }
 
+
+
     public function altaInstructor()
     {
         $user = auth()->user();
@@ -198,5 +201,44 @@ class DirectivoController extends Controller
     {
         $user = auth()->user();
         return view('registerDirectivo', compact('user'));
+    }
+
+    public function altaDirectivoPost(Request $request)
+    {
+        $user = auth()->user();
+        $directivo = $user->directivo;
+        $status = 'nada';
+        $club = $user->directivo->club;
+
+        $usernew = new User;
+        $usernew->name = $request->name;
+        $usernew->apellido = $request->apellido;
+        $usernew->email = $request->email;
+        $usernew->password = bcrypt($request->password);
+        $usernew->telefono = $request->telefono;
+        $usernew->fecha_nacimiento = $request->fecha_nacimiento;
+        $usernew->calle = $request->calle;
+        $usernew->numero_exterior = $request->numero_exterior;
+        $usernew->numero_interior = $request->numero_interior;
+        $usernew->colonia = $request->colonia;
+        $usernew->ciudad_id = $directivo->ciudad_id;
+        $usernew->codigo_postal = $request->codigo_postal;
+        $usernew->locale = $request->locale;
+        $usernew->sexo = $request->sexo;
+        $usernew->rol = 'directivo';
+        $usernew->vigente = 1;
+
+        $directivoNew = new Directivo;
+        $directivoNew->user_id = $usernew->id;
+        $directivoNew->jefe_id = $request->jefe_id;
+        $directivoNew->ciudad_id = $directivo->ciudad_id;
+        $directivoNew->municipio_id = $directivo->municipio_id;
+        $directivoNew->estado_id = $directivo->estado_id;
+        $directivoNew->pais_id = $directivo->pais_id;
+        $directivoNew->rol = $request->roldir;
+        $directivoNew->activo = 1;
+        $directivoNew->club_id = $directivo->club_id;
+
+        return view('directivo', compact('status', 'club', 'user'));
     }
 }
