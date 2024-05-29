@@ -506,6 +506,7 @@ tbody tr:last-of-type {
     justify-content: center;
     cursor: pointer;
     
+    text-decoration: none;
     height: 2.25em;
     width: 7em;
 
