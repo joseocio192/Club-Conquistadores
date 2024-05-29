@@ -14,7 +14,9 @@
 <form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
     @csrf
 
+
     <h1>@lang('app.Register')@lang('app.registration')</h1>
+
     <h2>@lang('app.tutors_personal_details')</h2>
     <div class='RegistroDiv'>
         <div class='SeccionDiv1'>
@@ -25,7 +27,8 @@
                 </div>
 
                 <div>
-                    <label for="apellido">@lang('app.lastname')@lang('app.lastName')</label>
+
+                    <label for="apellido">@lang('app.lastname')</label>
                     <input id="apellido" type="text" name="apellido" class="Input" required><br>
                 </div>
             </div>
