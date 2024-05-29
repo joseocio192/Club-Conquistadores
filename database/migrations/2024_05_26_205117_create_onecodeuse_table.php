@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Tarea', function (Blueprint $table) {
+        Schema::create('onecodeuse', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('clase_id')->references('id')->on('Clase');
-            $table->string('nombre', 150);
-            $table->Text('descripcion');
-            $table->date('fecha');
-            $table->timestamps();
-            $table->string('locale')->default('es');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('onecode');
+            $table->boolean('used');
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Tarea');
+        Schema::dropIfExists('onecodeuse');
     }
 };

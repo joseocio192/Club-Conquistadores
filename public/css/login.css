@@ -75,7 +75,7 @@ input[type="email"], input[type="password"]{
 
 input[type="email"]:focus, input[type="password"]:focus {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    border: 2px solid #4ea4a8;
+    border: 1px solid #4ea4a8;
     background-color: #eeeeee;
 }
 
@@ -136,7 +136,7 @@ button{
 
 button:hover {
     font-size: 1.1em;
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(5, 104, 161, 0.3) 0 0 0 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 footer{

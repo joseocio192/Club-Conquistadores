@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Tarea;
 use App\Models\Conquistador;
 use App\Models\Asistencia;
+use App\Models\Especialidad;
 use Illuminate\Support\Facades\Log;
 
 use function PHPSTORM_META\elementType;
@@ -21,10 +22,11 @@ class InstructorController extends Controller
 
     public function index()
     {
-
         $user = auth()->user();
         $instructor = Instructor::where('user_id', $user->id)->first();
-        Log:info($instructor);
+        if (!$instructor) {
+            return redirect()->route('home');
+        }
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         $status = "nada";
         return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status'));
@@ -41,7 +43,9 @@ class InstructorController extends Controller
         $status = "clase";
         $tareas = Tarea::where('clase_id', $id)->get();
         $asistencias = Asistencia::where('id_clase', $id)->get();
-        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas', 'asistencias'));
+        $especialidades = $clase->especialidades;
+
+        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas', 'asistencias', 'especialidades'));
     }
 
     public function crear()
@@ -131,6 +135,25 @@ class InstructorController extends Controller
             }
         }
 
+        //check if the students are already in the class
+        foreach ($conquistador_ids as $conquistador_id) {
+            if ($clase->conquistadores->contains(trim($conquistador_id))) {
+                return back()->withErrors(['alumnos' => 'One or more students are already in the class.']);
+            }
+        }
+
+        //attach tareas to the students
+        $tareas = Tarea::where('clase_id', $clase->id)->get();
+        foreach ($conquistador_ids as $conquistador_id) {
+            $conquistador = Conquistador::find($conquistador_id);
+            foreach ($tareas as $tarea) {
+                //check if the task is already assigned to the student
+                if (!$conquistador->tareas->contains($tarea->id)) {
+                    $conquistador->tareas()->attach($tarea->id, ['completada' => 0]);
+                }
+            }
+        }
+
         // Attach each Conquistador to the Clase
         foreach ($conquistador_ids as $conquistador_id) {
             // Check if the Conquistador is already attached to the Clase
@@ -140,6 +163,7 @@ class InstructorController extends Controller
                 return back()->withErrors(['alumnos' => 'One or more students are already in the class.']);
             }
         }
+
 
         return redirect()->back()->with('success', 'Students added successfully.');
     }
@@ -187,8 +211,39 @@ class InstructorController extends Controller
                 $conquistador->tareas()->updateExistingPivot($tarea_id, ['completada' => $value]);
             }
         }
-
         return redirect()->back()->with('success', 'Homework status updated successfully.');
+    }
+
+    public function sendRequisitos(Request $request)
+    {
+        foreach ($request->except(['_token', 'clase_id']) as $key => $value) {
+            if (strpos($key, '-') !== false) {
+                list($requisito_id, $conquistador_id) = explode('-', $key);
+
+                $conquistador = Conquistador::find($conquistador_id);
+
+                if ($conquistador) {
+                    Log::info('antes');
+                    $conquistador->requisitos()->updateExistingPivot($requisito_id, ['completado' => $value]);
+                    //if conquistador has all requisitos of a especialidad, then update pivot table to show when fechaCumplido was completed
+                    $especialidad = Especialidad::find($requisito_id);
+                    $requisitos = $especialidad->requisitos;
+                    $completado = true;
+                    foreach ($requisitos as $requisito) {
+                        if (!$conquistador->requisitos->contains($requisito->id)) {
+                            $completado = false;
+                        }
+                    }
+                    if ($completado) {
+                        $conquistador->especialidad()->updateExistingPivot($especialidad->id, ['fechaCumplido' => date('Y-m-d')]);
+                    }
+
+                    $especialidades = $conquistador->especialidades;
+
+                }
+            }
+        }
+        return redirect()->back()->with('success', 'Requirements status updated successfully.');
     }
 
     public function crearTarea(Request $request)
@@ -250,6 +305,14 @@ class InstructorController extends Controller
         $dia = new Asistencia();
         $dia->id_clase = $request->clase_id;
         $dia->fecha = date('Y-m-d');
+        //make sure the date is unique for the class
+        $clase = Clase::find($request->clase_id);
+        $asistencias = Asistencia::where('id_clase', $clase->id)->get();
+        foreach ($asistencias as $asistencia) {
+            if ($asistencia->fecha == $dia->fecha) {
+                return back()->withErrors(['clase_id' => 'There is already a day with this date.']);
+            }
+        }
         $dia->save();
 
         //assign the asistencia to all students in the class
@@ -323,5 +386,42 @@ class InstructorController extends Controller
         $instructor = Instructor::where('user_id', $user->id)->first();
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
         return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status', 'conquistador'));
+    }
+
+    public function modificar(Request $request)
+    {
+        $user = auth()->user();
+        $instructor = Instructor::where('user_id', $user->id)->first();
+        $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
+        $status = "instructor";
+        return view('modificarUsuario', compact('user', 'status', 'instructor'));
+
+        //return view('instructor', compact('clasesDeInstructor', 'user', 'status', 'instructor'));
+    }
+
+    public function modificarDatos(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $user->name = $request->name;
+        $user->apellido = $request->apellido;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->telefono = $request->telefono;
+        $user->fecha_nacimiento = $request->fecha_nacimiento;
+        $user->calle = $request->calle;
+        $user->numero_exterior = $request->numero_exterior;
+        $user->numero_interior = $request->numero_interior;
+        $user->colonia = $request->colonia;
+        $user->ciudad_id = $request->ciudad_id;
+        $user->codigo_postal = $request->codigo_postal;
+        $user->sexo = $request->sexo;
+        $user->save();
+
+        $instructor = Instructor::where('user_id', $user->id)->first();
+        $instructor->jefe_id;
+        $instructor->save();
+        $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
+        $status = "nada";
+        return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status'));
     }
 }

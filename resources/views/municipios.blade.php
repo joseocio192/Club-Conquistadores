@@ -3,13 +3,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <div class="container">
-        <h1>Select Location</h1>
+        <h1>@lang('app.select_location')</h1>
 
         <form>
             <div class="form-group">
-                <label for="pais">Pais</label>
+                <label for="pais">@lang('app.Country')</label>
                 <select id="pais" class="form-control">
-                    <option value="">Select a country</option>
+                    <option value="">@lang('app.select_country')</option>
                     @foreach($paises as $pais)
                         <option value="{{ $pais->id }}">{{ $pais->nombre }}</option>
                     @endforeach
@@ -17,33 +17,33 @@
             </div>
 
             <div class="form-group">
-                <label for="estado">Estado</label>
+                <label for="estado">@lang('app.State')</label>
                 <select id="estado" class="form-control">
 
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="municipio">Municipio</label>
+                <label for="municipio">@lang(app.municipality)</label>
                 <select id="municipio" class="form-control">
 
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="ciudad">Ciudad</label>
+                <label for="ciudad">@lang('app.City')</label>
                 <select id="ciudad" class="form-control">
 
                 </select>
             </div>
             <div class="form-group">
-                <label for= "clubes">Clubes</label>
+                <label for= "clubes">@lang('app.Clubs')</label>
                 <select id="clubes" class="form-control">
 
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary" id="submit-button" disabled>Submit</button>
+            <button type="submit" class="btn btn-primary" id="submit-button" disabled>@lang('app.submit')</button>
         </form>
     </div>
 
@@ -57,7 +57,7 @@
                 success: function(res) {
                     if(res) {
                         $('#estado').empty();
-                        $('#estado').append('<option>Seleccionar</option>');
+                        $('#estado').append('<option>{{__("app.select")}}</option>');
                         $.each(res,function(key,value){
                             $('#estado').append('<option value="'+key+'">'+value+'</option>');
                         });
@@ -84,7 +84,7 @@
                 success: function(res) {
                     if(res) {
                         $('#municipio').empty();
-                        $('#municipio').append('<option>Seleccionar</option>');
+                        $('#municipio').append('<option>{{__("app.select")}}</option>');
                         $.each(res,function(key,value){
                             $('#municipio').append('<option value="'+key+'">'+value+'</option>');
                         });
@@ -110,7 +110,7 @@
                 success: function(res) {
                     if(res) {
                         $('#ciudad').empty();
-                        $('#ciudad').append('<option>Seleccionar</option>');
+                        $('#ciudad').append('<option>{{__("app.select")}}</option>');
                         $.each(res,function(key,value){
                             $('#ciudad').append('<option value="'+key+'">'+value+'</option>');
                         });

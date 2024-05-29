@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Requisitos_xconquistador', function (Blueprint $table) {
-            $table->foreignId('requisito_id')->references('id')->on('Requisitos');
-            $table->foreignId('conquistador_id')->references('id')->on('Conquistador');
-            $table->boolean('completado');
+        Schema::create('Clase_xespecialidad', function (Blueprint $table) {
+            $table->foreignId('clase_id')->constrained('Clase');
+            $table->foreignId('especialidad_id')->constrained('Especialidad');
         });
     }
 
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Requisitos_xconsquitador');
+        Schema::dropIfExists('clase_xespecialidad');
     }
 };

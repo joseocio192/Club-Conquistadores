@@ -3,6 +3,7 @@
 namespace App\Models\Traits\Mutators;
 
 use App\Traits\Translations;
+use Illuminate\Support\Facades\Log;
 
 trait UserMutator
 {
@@ -41,6 +42,8 @@ trait UserMutator
 
         $allowedSexos = $this->getAllowedSexoByLocale($locale);
         $value = strtolower($value);
+        // imprimir el allowedSexos para ver que trae
+        Log::info($allowedSexos);
 
         if (in_array($value, $allowedSexos)) {
             $this->attributes['sexo'] = $value;
@@ -86,11 +89,11 @@ trait UserMutator
     {
         $roles = [
             'es' => ['administrador', 'conquistador', 'tutor', 'directivo', 'instructor'],
-            'en' => ['administrator', 'conqueror', 'tutor', 'director', 'instructor'],
-            'ko' => ['관리자', '정복자', '교사', '이사', '선생'],
-            'zh-Hans' => ['管理员', '征服者', '导师', '董事', '教练'],
-            'ja' => ['管理者', '征服者', 'チューター', 'ディレクター', 'インストラクター'],
-            'fr' => ['administrateur', 'conquérant', 'tuteur', 'directeur', 'instructeur']
+            'en' => ['administrator', 'conqueror', 'tutor', 'managerial', 'instructor'],
+            'ko' => ['관리자', '정복자', '가정 교사', '관리', '선생'],
+            'zh-Hans' => ['管理员', '征服者', '导师', '管理', '教练'],
+            'ja' => ['管理者', '征服者', 'チューター', '経営', 'インストラクター'],
+            'fr' => ['administrateur', 'conquérant', 'tuteur', 'directorial', 'instructeur']
         ];
 
         return $roles[$locale] ?? $roles['en'];

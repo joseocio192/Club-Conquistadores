@@ -137,7 +137,7 @@ body {
     border-radius: 1em;
 
     background-color: #eee;
-    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 }
 
 .divCrearClase {
@@ -181,70 +181,43 @@ body {
 .divTusDatos {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
-    width: 38em;
+    padding: .5em 4em 1em 2em;
 
-    padding: auto;
-
-    border: 2px solid #76ABAE;
-    border-radius: 1.875em;
-
-    background-color: #eee;
-
-    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
-}
-
-.divTareasAsis {
     border: 2px solid #76ABAE;
     border-radius: 20px;
 
-    width: 72em;
-    height: 50.75em;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
 
-    background-color: #eee;
-    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
+.divTusDatos div {
+    display: flex;
+    align-items: center;
+    margin-bottom: .65em;
+
 }
 
 .divTareasAsis {
     border: 2px solid #76ABAE;
     border-radius: 20px;
     
+    max-width: 1330px;
     margin-top: .5em;
     padding-bottom: 1em;
 
     background-color: #eee;
-    box-shadow: 2px 2px 4px 0px rgba(34,40,49,0.35);
-}
-
-.divMostrarTarea {
-    border: 2px solid #76ABAE;
-    border-radius: 15px;
-    
-    color: #31363F;
-    font-weight: 450;
-}
-
-.divMostrarTarea div{
-    display: grid;
-    grid-template-columns: 8em 22em;
-    grid-template-rows: auto 100px;
-
-    justify-content: center;
-    gap: .5em;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 }
 
 table {
     border-collapse: collapse;
-    overflow: hidden;
+    min-width: max-content;
 
     margin-right: 1em;
     margin-left: 1em;
     margin-bottom: .5em;
 
     border-radius: 5px 5px 0 0;
-
-    text-align: center;
     font-size: 1.1em;
     font-weight: bold;
     
@@ -270,11 +243,22 @@ th {
     padding: 12px 15px;
 }
 
+.tdAsistencia{
+    text-align: start;
+    padding-left: 2.7em;
+}
+
+.divTablaAsis {
+    overflow-x: scroll;
+    height: fit-content;
+}
+
 tr {
+    align-items: start;
     border-bottom: 1px solid #76ABAE;
 }
 
-.tdTareas:nth-child(even) {
+.tdTareas:nth-child(even), .tdAsistencia:nth-child(even) {
     background-color: #dddddd;
 }
 
@@ -290,6 +274,23 @@ tbody tr:last-of-type {
     width: 2em;
 
     transform: translate(-50%, -50%);
+}
+
+.divMostrarTarea {
+    border: 2px solid #76ABAE;
+    border-radius: 15px;
+    
+    color: #31363F;
+    font-weight: 450;
+}
+
+.divMostrarTarea div{
+    display: grid;
+    grid-template-columns: 8em 22em;
+    grid-template-rows: auto 100px;
+
+    justify-content: center;
+    gap: .5em;
 }
 
 .frmAlmTar {
@@ -428,7 +429,6 @@ tbody tr:last-of-type {
     transition: all .3s ease;
 }
 
-
 .frmAlmTar button {
     cursor: pointer;
 
@@ -505,6 +505,30 @@ tbody tr:last-of-type {
 .thBtnDia {
     text-align: start;
     width: 10em;
+}
+
+.btnModificarTusDatos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+    height: 2.25em;
+    width: 7em;
+
+    margin-left: auto;
+    margin-right: 2em;
+    margin-top: 1em;
+
+    border:2px solid #222831;
+    border-radius: 5px;
+
+    font-size: 1.1em;
+    font-weight: 500;
+
+    color: #eee;
+    background-color: #222831;
+    transition: all .3s ease;
 }
 
 /********************************************* Inputs *********************************************/
@@ -646,7 +670,7 @@ input[type="checkbox"]:checked:after {
 }
 
 .my-button:hover, .btnModTar:hover {
-    background-color: #53797b;
+    background-color: #53888B;
 }
 
 .my-button-loggout:hover {
@@ -669,9 +693,9 @@ input[type="checkbox"]:checked:after {
     background-color: #222831;
 }
 
-.btnEnviar:hover {
-    background-color: #4d5866;
-    border: 2px solid #4d5866;
+.btnEnviar:hover, .btnModificarTusDatos:hover {
+    background-color: #404352;
+    border: 2px solid #404352;
 }
 
 .divMostrarTarea button:hover {

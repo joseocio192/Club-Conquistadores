@@ -14,4 +14,14 @@ class Conquistador_xespecialidad extends Pivot
         'especialidad_id',
         'fechaCumplido',
     ];
+
+    public function conquistador()
+    {
+        return $this->belongsTo(Conquistador::class, 'conquistador_id');
+    }
+
+    public function especialidad()
+    {
+        return $this->belongsTo(Especialidad::class, 'especialidad_id');
+    }
 }

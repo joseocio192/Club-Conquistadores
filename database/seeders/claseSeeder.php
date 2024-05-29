@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Clase;
 use App\Models\Clase_xalumno;
+use App\Models\clasex_especialidad;
 
 class ClaseSeeder extends Seeder
 {
@@ -30,10 +31,9 @@ class ClaseSeeder extends Seeder
         $claseAlumno->conquistador = 1;
         $claseAlumno->save();
 
-        $claseAlumno = new Clase_xalumno();
-        $claseAlumno->clase_id = 1;
-        $claseAlumno->conquistador = 2;
-        $claseAlumno->save();
-
+        $claseEspecialidad = new clasex_especialidad();
+        $claseEspecialidad->clase_id = 1;
+        $claseEspecialidad->especialidad_id = 1;
+        $claseEspecialidad->save();
     }
 }

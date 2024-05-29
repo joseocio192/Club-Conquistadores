@@ -1,95 +1,92 @@
 <!-- resources/views/register.blade.php -->
 <!DOCTYPE html>
-
 <head>
-    <title>@lang('app.registration')</title>
+    <title>Modificar Usuario</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="{{ asset('/css/register.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('/css/modificarUsuario.css') }}" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
 </head>
 
-<form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
+<form class="FormLayout" method="POST" action="{{ route('instructor.modificarDatos') }}" id="registro">
     @csrf
-
-
-    <h1>@lang('app.Register')@lang('app.registration')</h1>
-
-    <h2>@lang('app.tutors_personal_details')</h2>
-    <div class='RegistroDiv'>
+    <div class='ModificarDiv'>
+        <h1>Modificar Usuario</h1>
+        <h2>@lang('app.Conquerors_personal_data')</h2>
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="name">@lang('app.Name')</label>
-                    <input id="name" type="text" name="name" required autofocus><br>
+                    <label for="name">@lang('app.name')</label>
+                    <input id="name" type="text" name="name" required autofocus value="{{old('name')}}"><br>
                 </div>
 
                 <div>
-
-                    <label for="apellido">@lang('app.lastname')</label>
-                    <input id="apellido" type="text" name="apellido" class="Input" required><br>
+                    <label for="apellido">@lang('app.lastName')</label>
+                    <input id="apellido" type="text" name="apellido" class="Input" value="{{old('apellido')}}" required><br>
                 </div>
             </div>
 
             <div class='EmailDiv'>
                 <label for="email">@lang('app.email')</label>
-                <input id="email" type="email" name="email" required><br>
+                <input id="email" type="email" name="email" value="{{old('email')}}" required><br>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="password">@lang('app.Password')</label>
-                    <input id="password" type="password" name="password" required><br>
+                    <label for="password">@lang('app.password')</label>
+                    <input id="password" type="password" name="password" value="{{old('password')}}"  required><br>
                 </div>
 
                 <div>
-                    <label for="telefono">@lang('app.Phone')</label>
-                    <input id="telefono" type="text" name="telefono"><br>
+                    <label for="telefono">@lang('app.phone')</label>
+                    <input id="telefono" type="text" name="telefono" value="{{old('telefono')}}"><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="fecha_nacimiento">@lang('app.Birthdate')</label>
-                    <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" required><br>
+                    <label for="fecha_nacimiento">@lang('app.birthdate')</label>
+                    <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" value="{{old('fecha_nacimiento')}}" required><br>
                 </div>
 
                 <div>
                     <label for="sexo">@lang('app.Sex')</label>
                     <select id="sexo" name="sexo" required><br>
                         <option value="">@lang('app.Select_a_gender')</option>
-                        <option value="Hombre">@lang('app.man')</option>
-                        <option value="Mujer">@lang('app.woman')</option>
+                        <option value="Hombre">@lang('app.Men')</option>
+                        <option value="Mujer">@lang('app.Women')</option>
                         <option value="Otro">@lang('app.Other')</option>
                     </select>
                 </div>
             </div>
         </div>
-        <h2 class='DatosH2'>@lang('app.tutors_residence_information')</h2>
+        <h2 class='DatosH2'>@lang('app.Details_of_the_conqueror_residence')</h2>
         <div class='SeccionDiv2'>
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="calle">@lang('app.street')</label>
-                    <input id="calle" type="text" name="calle" required><br>
+                    <label for="calle">@lang('app.Street')</label>
+                    <input id="calle" type="text" name="calle" value="{{old('calle')}}" required><br>
                 </div>
 
                 <div>
-                    <label for="numero_exterior">@lang('app.street_number') </label>
-                    <input id="numero_exterior" type="text" name="numero_exterior" required><br>
+                <label for="numero_exterior"> @lang('app.street_number')</label>
+                    <input id="numero_exterior" type="text" name="numero_exterior" value="{{old('numero_exterior')}}" required><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
-                    <label for="numero_interior">@lang('app.suite_number')</label>
-                    <input id="numero_interior" type="text" name="numero_interior"><br>
+                    <label for="numero_interior">@lang('app.Suite_number')</label>
+                    <input id="numero_interior" type="text" name="numero_interior" value="{{old('numero_interior')}}"><br>
                 </div>
 
                 <div>
-                    <label for="colonia">@lang('app.neighborhood')</label>
-                    <input id="colonia" type="text" name="colonia" required><br>
+                    <label for="colonia">@lang('app.Neighborhood')</label>
+                    <input id="colonia" type="text" name="colonia" value="{{old('colonia')}}" required><br>
                 </div>
             </div>
 
@@ -97,7 +94,7 @@
                 <div class="PaisDiv">
                     <label for="pais">@lang('app.Country')</label>
                     <select id="pais">
-                        <option value="">@lang('app.Select a country')</option>
+                        <option value="">@lang('app.Select_a_country')</option>
                     </select>
                 </div>
 
@@ -114,35 +111,37 @@
                 </div>
 
                 <div>
-                    <label for="ciudad_id">@lang('app.city')</label>
+                    <label for="ciudad_id">@lang('app.City')</label>
                     <select id="ciudad_id" name="ciudad_id"></select>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
+                <div class="ClubesDiv">
+                    <label for="clubes">@lang('app.Clubs')</label>
+                    <select id="clubes" name="clubes"></select>
+                </div>
+
                 <div>
-                    <label for="codigo_postal">@lang('app.Postal code')</label>
-                    <input id="codigo_postal" type="text" name="codigo_postal" required><br>
+                    <label for="codigo_postal"> @lang('app.postal_code')</label>
+                    <input id="codigo_postal" type="text" name="codigo_postal" value="{{old('codigo_postal')}}" required><br>
                 </div>
             </div>
         </div>
-
         <div class="ButtonsDiv">
-
             <div>
-                <a class="HomeBtn" id="home-button" onclick="window.location.href = '/';">
+                <a class="HomeBtn" id="home-button" onclick="history.back()">
                     @lang('app.Back')
                 </a>
             </div>
 
             <div>
                 <button class="RegisterBtn" type="submit" id="submit-button" disabled>
-                    @lang('app.sign_in')
+                    @lang('app.Sign_in')
                 </button>
             </div>
         </div>
     </div>
-
 </form>
 
 @if ($errors->any())

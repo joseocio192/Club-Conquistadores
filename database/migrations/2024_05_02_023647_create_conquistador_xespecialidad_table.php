@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('Conquistador_xespecialidad', function (Blueprint $table) {
             $table->foreignId('conquistador_id')->references('id')->on('Conquistador');
             $table->foreignId('especialidad_id')->references('id')->on('Especialidad');
-            $table->date('fechaCumplido');
+            $table->date('fechaCumplido')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ConquistadorXespecialidad');
+        Schema::dropIfExists('Conquistador_xespecialidad');
     }
 };

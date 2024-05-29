@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Log;
 use App\Models\Clase;
 
 use App\Events\ConquistadorSaved;
@@ -60,9 +61,9 @@ class Conquistador extends Model
         return $this->belongsTo(unidad::class, 'capitan_id');
     }
 
-    public function especialidad(): hasMany
+    public function especialidad(): BelongsToMany
     {
-        return $this->hasMany(Especialidad::class, 'Conquistador_xespecialidad', 'conquistador_id', 'especialidad_id')->using(Conquistador_xespecialidad::class);
+        return $this->belongsToMany(Especialidad::class, 'Conquistador_xespecialidad', 'conquistador_id', 'especialidad_id')->withPivot('fechaCumplido');
     }
 
     public function tareas(): BelongsToMany
@@ -70,9 +71,9 @@ class Conquistador extends Model
         return $this->belongsToMany(Tarea::class, 'Tareaxconquistador', 'conquistador', 'tarea_id')->withPivot('completada');
     }
 
-    public function requisitos(): hasMany
+    public function requisitos(): BelongsToMany
     {
-        return $this->hasMany(Requisitos::class, 'conquistador_id')->using(Requisitos_xconquistador::class);
+        return $this->belongsToMany(Requisitos::class, 'Requisitos_xconquistador', 'conquistador_id', 'requisito_id')->withPivot('completado');
     }
 
     public function asistencia(): BelongsToMany
