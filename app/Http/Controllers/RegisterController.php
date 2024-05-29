@@ -118,7 +118,7 @@ class RegisterController extends Controller
                 'club_id' => $request->clubes,
                 'user_id' => $user->id,
             ]);
-
+            $onecode->delete();
             auth()->login($user);
             return redirect()->action([ConquistadorController::class, 'invoke']);
         }

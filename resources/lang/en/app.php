@@ -151,6 +151,43 @@ return [
     'Back'=>'Back',
     'Sign_in'=>'Sign in',
 
+    //registerTutor
+    'Register'=>'Register',
+    'tutors_personal_details'=>'tutors personal details',
+    'Name'=>'Name',
+    'lastname'=>'lastname',
+    'email'=> 'email',
+    'Password'=>'Password',
+    'Phone'=>'Phone',
+    'Birthdate'=>'Birthdate',
+    'Sex'=>'Sex',
+    'Select_a_gender'=>'Select_a_gender',
+    'man'=>'Man',
+    'woman'=>'Woman',
+    'Other'=>'Other',
+    'tutors_residence_information'=>'tutors residence information',
+    'street_number'=>'street number',
+    'suite_number'=>'suite number',
+    'neighborhood'=>'neighborhood',
+    'Country'=>'Country',
+    'Select a country'=>'Select a country',
+    'State'=>'State',
+    'Municipality'=>'Municipality',
+    'city'=>'City',
+    'Postal code'=> 'Postal code',
+    'Back'=>'Back',
+    'sign_in'=>'sign in',
+
+    //tutor
+    'There_are_no_pupils_to_accept'=>'There are no pupils to accept',
+    'pupils_to_be_assigned'=>'pupils to be assigned',
+    'Accept'=>'Accept',
+    'Codes'=>'Codes',
+    'generate_code'=>'generate code',
+    'pupil_details:'=>'pupil details:'
+    
+
+
 
 
 
