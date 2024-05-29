@@ -26,8 +26,7 @@ class Kernel extends ConsoleKernel
                     'cantidad' => $conquistadores,
                     'fecha' => $date
                 ]);
-            }
-        })->everyMinute();
+            })->name('numberOfConquistadores')->everyMinute()->onOneServer();
 
         //reset table oneCodeUse
         $schedule->call(function () {

@@ -71,6 +71,21 @@
         <h2>$i->user->name</h2>
         @endforeach
         <a href="{{route('registerInstructor')}}"> @lang('app.instructor_register')</a>
+        <h2>Conquistadores por mes</h2>
+        <table>
+            <tr>
+                <th>Club</th>
+                @foreach ($fechas as $fecha)
+                <th>{{$fecha->fecha}}</th>
+                @endforeach
+            </tr>
+            <tr>
+                <td>{{$club->nombre}}</td>
+                @foreach ($fechas as $f)
+                <th>{{$f->cantidad}}</th>
+                @endforeach
+            </tr>
+        </table>
         @endif
 
         @if ($status == 'ciudad')
@@ -82,6 +97,26 @@
         <h2>@lang('app.total_number_of_pathfinders_in_the_city') {{$totalConquistadores}}</h2>
         @foreach ($clubes as $c)
         <h5>{{$c->nombre}}: {{$c->users->where('rol','conquistador')->count()}}</h5>
+        @endforeach
+
+        <h2>Cantidad de conquistadores por mes por club</h2>
+        @foreach ($clubes as $cl)
+
+        <table>
+            <tr>
+                <th>Club</th>
+                @foreach ($cl->numbers as $fecha)
+                <th>{{$fecha->fecha}}</th>
+                @endforeach
+            </tr>
+            <tr>
+                <td>{{$cl->nombre}}</td>
+                @foreach ($cl->numbers as $f)
+                <th>{{$f->cantidad}}</th>
+                @endforeach
+            </tr>
+        </table>
+
         @endforeach
         @endif
 
