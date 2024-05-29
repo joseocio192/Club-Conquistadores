@@ -12,8 +12,8 @@
     </style>
 </head>
 
-<form class="FormLayout" method="POST" action="{{ route('modificarUsuario') }}" id="registro">
-    @csrf   
+<form class="FormLayout" method="POST" action="{{ route('instructor.modificarDatos') }}" id="registro">
+    @csrf
     <div class='ModificarDiv'>
         <h1>Modificar Usuario</h1>
         <h2>@lang('app.Conquerors_personal_data')</h2>
@@ -128,8 +128,20 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="ButtonsDiv">
+            <div>
+                <a class="HomeBtn" id="home-button" onclick="history.back()">
+                    @lang('app.Back')
+                </a>
+            </div>
 
+            <div>
+                <button class="RegisterBtn" type="submit" id="submit-button" disabled>
+                    @lang('app.Sign_in')
+                </button>
+            </div>
+        </div>
+    </div>
 </form>
 
 @if ($errors->any())

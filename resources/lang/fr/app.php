@@ -90,6 +90,7 @@ return [
 'registration' => 'Inscription',
 'tutor' => 'Tuteur',
 'add_pupil' => 'Ajouter un élève',
+'specialty' => 'Spécialité',
 
 //municipios
 'country' => 'Pays',
@@ -141,5 +142,12 @@ return [
 'Codes' => 'Codes',
 'generate_code' => 'Générer un code',
 'pupil_details:' => "Détails de l'élève :",
+
+
+'submit' => 'Soumettre',
+'pathfinders_per_month_per_club' => 'Conquérants par mois par club',
+'Pathfinders_per_moth' => 'Conquérants par mois',
+'instructor_id' => 'ID de l\'instructeur :',
+'no_specialties' => 'Vous n\'avez aucune spécialité'
 
 ];

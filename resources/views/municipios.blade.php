@@ -43,7 +43,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary" id="submit-button" disabled>Submit</button>
+            <button type="submit" class="btn btn-primary" id="submit-button" disabled>@lang('app.submit')</button>
         </form>
     </div>
 

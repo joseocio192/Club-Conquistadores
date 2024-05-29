@@ -90,6 +90,7 @@ return [
     'registration' => '등록',
     'tutor' => '튜터',
     'add_pupil' => '학생 추가',
+    'specialty' => '전공',
 
     // Municipalities
     'country' => '국가',
@@ -141,6 +142,13 @@ return [
     'Accept' => '수락',
     'Codes' => '코드',
     'generate_code' => '코드 생성',
-    'pupil_details:' => '학생 세부 정보:'
+    'pupil_details:' => '학생 세부 정보:',
+
+
+    'submit' => '제출',
+    'pathfinders_per_month_per_club' => '클럽별 월별 정복자',
+    'Pathfinders_per_moth' => '월별 정복자',
+    'instructor_id' => '강사 ID:',
+    'no_specialties' => '전공이 없습니다'
 
 ];

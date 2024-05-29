@@ -90,6 +90,7 @@ return [
     'registration' => '登録',
     'tutor' => 'チューター',
     'add_pupil' => '生徒を追加する',
+    'specialty' => '専門',
 
     // 都市
     'country' => '国',
@@ -141,6 +142,15 @@ return [
 'Accept' => '受け入れる',
 'Codes' => 'コード',
 'generate_code' => 'コードを生成する',
-'pupil_details:' => '生徒の詳細:'
+'pupil_details:' => '生徒の詳細:',
+
+
+
+
+'submit' => '提出する',
+'pathfinders_per_month_per_club' => 'クラブごとの月間征服者',
+'Pathfinders_per_moth' => '月ごとの征服者',
+'instructor_id' => 'インストラクターID:',
+'no_specialties' => '専門がありません'
 
 ];

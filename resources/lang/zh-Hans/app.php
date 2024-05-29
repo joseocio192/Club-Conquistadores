@@ -89,6 +89,7 @@ return [
 'select_country' => '选择国家',
 'tutor' => '导师',
 'add_pupil' => '添加学生',
+'specialty' => '专业',
 
 // Municipalities
 'country' => '国家',
@@ -140,7 +141,15 @@ return [
 'Accept' => '接受',
 'Codes' => '代码',
 'generate_code' => '生成代码',
-'pupil_details:' => '学生详情：'
+'pupil_details:' => '学生详情：',
+
+
+
+'submit' => '提交',
+'pathfinders_per_month_per_club' => '每个俱乐部每月征服者',
+'Pathfinders_per_moth' => '每月征服者',
+'instructor_id' => '教练ID：',
+'no_specialties' => '您没有任何专业'
 
 
 ];
