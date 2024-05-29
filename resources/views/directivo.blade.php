@@ -55,19 +55,19 @@
         <!--******************************* Card Datos *******************************-->
         @if ($status == 'nada')
         <div class="divDatos">
-            <h2>Tus Datos</h2>
+            <h2>@lang('app.your_data')</h2>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" >
                     <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                     <path d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/>
                 </svg>
-                <h3>Id: {{$user->id}}</h3>
-                <h3>Nombre: {{$user->name}} {{$user->apellido}}</h3>
-                <h3>Edad: {{$user->edad}}</h3>
+                <h3>@lang('app.id_:') {{$user->id}}</h3>
+                <h3>@lang('app.name'){{$user->name}} {{$user->apellido}}</h3>
+                <h3>@lang('app.age'){{$user->edad}}</h3>
             </div>
-            <h3>Telefono: {{$user->telefono}}</h3>
-            <h3>Fecha de nacimiento: {{$user->fecha_nacimiento}}</h3>
-            <h3>Direccion:
+            <h3>@lang('app.phone'){{$user->telefono}}</h3>
+            <h3>@lang('app.birthdate') {{$user->fecha_nacimiento}}</h3>
+            <h3>@lang('app.address')
                 {{ $user->colonia . ' ' .
                 $user->calle . ' ' .
                 $user->numero_exterior }}
@@ -78,7 +78,7 @@
         @if ($status == 'club')
         <div class="divClub">
             <h2>{{$club->nombre}}</h2>
-            <div class="divDatosClub"> 
+            <div class="divDatosClub">
                 <h3>@lang('app.club_director'): {{$club->director->user->name}}</h3>
                 <h3>@lang('app.pathfinders_quantity'): {{$cantidad}}</h3>
             </div>
@@ -89,7 +89,7 @@
             <form class="frmAddInstructor" action="{{route('directivo.addInstructor')}}" method="post">
                 @csrf
                 <div>
-                    <h3>ID del Instructor:</h3>
+                    <h3>@lang('app.instructor_id')</h3>
                     <input class="inputIDInstructor" type="text" name="instructor_id">
                     <input type="text" name="club_id" value="{{$club->id}}" hidden>
                 </div>
@@ -97,14 +97,14 @@
             </form>
             <h2 class="h2InstructoresDisponibles">@lang('app.instructors_avaible')</h2>
             @foreach ($instructores as $i)
-            <h3>$i->user->name</h3>
+            <h3>{{$i->user->name}}</h3>
             @endforeach
             <a class="btnRegisterInstructor" href="{{route('registerInstructor')}}"> @lang('app.instructor_register')</a>
             <div class="divTable">
-                <h2 class="h2ConqPorMes">Conquistadores por mes</h2>
+                <h2 class="h2ConqPorMes">@lang('app.Pathfinders_per_moth')</h2>
                 <table>
                     <tr>
-                        <th>Club</th>
+                        <th>@lang('app.club')</th>
                         @foreach ($fechas as $fecha)
                         <th>{{$fecha->fecha}}</th>
                         @endforeach
@@ -119,7 +119,7 @@
             </div>
             @endif
         </div>
-        
+
 
         @if ($status == 'ciudad')
         <h2>@lang('app.clubs') {{$ciudad->nombre}}</h2>
@@ -132,12 +132,12 @@
         <h5>{{$c->nombre}}: {{$c->users->where('rol','conquistador')->count()}}</h5>
         @endforeach
 
-        <h2>Cantidad de conquistadores por mes por club</h2>
+        <h2>@lang('app.pathfinders_per_month_per_club')</h2>
         @foreach ($clubes as $cl)
 
         <table>
             <tr>
-                <th>Club</th>
+                <th>@lang('app.club')</th>
                 @foreach ($cl->numbers as $fecha)
                 <th>{{$fecha->fecha}}</th>
                 @endforeach

@@ -112,7 +112,7 @@
                                 </tr>
                             @endforeach
                         </table>
-                        <button class="btnEnviar" type="submit">Enviar</button>
+                        <button class="btnEnviar" type="submit">@lang('app.send')</button>
                     </form>
 
                     <!--************************************ Tabla Asistencia ************************************-->
@@ -182,7 +182,7 @@
                             </table>
                         </div>
 
-                        <button class="btnEnviar" type="submit" name="save">Enviar</button>
+                        <button class="btnEnviar" type="submit" name="save">@lang('app.send')</button>
                     </form>
 
         <!--************************************ Añadir Alumnos ************************************-->
@@ -192,7 +192,7 @@
             <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
             @lang('app.students_id')
             <input type="text" name="alumnos" placeholder="(Separados por comas)">
-            <button class="my-button" type="submit">Añadir</button>
+            <button class="my-button" type="submit">@lang('app.add')</button>
         </form>
 
         <!--************************************ Eliminar Alumnos ************************************-->
@@ -202,7 +202,7 @@
             <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
             @lang('app.students_id')
             <input type="text" name="alumnos" placeholder="(Separados por comas)">
-            <button class="my-button" type="submit">Eliminar</button>
+            <button class="my-button" type="submit">@lang('app.delete')</button>
         </form>
 
         <!--************************************ Crear Tarea ************************************-->
@@ -216,14 +216,14 @@
             <input type="text" name="descripcion">
             @lang('app.due_date')
             <input type="date" name="fecha">
-            <button class="my-button" type="submit">Crear</button>
+            <button class="my-button" type="submit">@lang('app.create')</button>
         </form>
         <!--************************************ Modificar Tarea ************************************-->
         <h3>@lang('app.modify_task')</h3>
         <form class="frmAlmTar" action="{{ route('instructor.modificarTarea') }}" method="post">
             @csrf
             <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-            ID:
+            @lang('app.id_:')
             <input type="text" name="tarea_id">
             @lang('app.name')
             <input type="text" name="nombre">
@@ -231,7 +231,7 @@
             <input type="text" name="descripcion" placeholder="Descripcion de la tarea">
             @lang('app.due_date')
             <input type="date" name="fecha" placeholder="Fecha de la tarea">
-            <button class="btnModTar" type="submit">Modificar</button>
+            <button class="btnModTar" type="submit">@lang('app.modify')</button>
         </form>
     </div>
     @endif
@@ -268,7 +268,7 @@
                         @lang('app.exit_time')
                         <input type="time" name="horario2">
                     </div>
-                    <button class="btnCrearClase" type="submit">Crear</button>
+                    <button class="btnCrearClase" type="submit">@lang('app.create')</button>
                 </div>
 
             </form>

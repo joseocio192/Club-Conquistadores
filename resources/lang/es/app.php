@@ -90,6 +90,8 @@ return [
     'registration' => 'Registro',
     'tutor' => 'Tutor',
     'add_pupil' => 'Añadir pupilo',
+    'class'=> 'clase',
+    'specialty' => 'Especialidad',
 
 
 
@@ -151,6 +153,17 @@ return [
     'Accept'=>'Aceptar',
     'Codes'=>'Códigos',
     'generate_code'=>'Generar código',
-    'pupil_details:'=>'Detalles del alumno:'
+    'pupil_details:'=>'Detalles del alumno:',
+
+
+
+
+
+
+    'submit' => 'Enviar',
+    'pathfinders_per_month_per_club' => 'Conquistadores por mes por club',
+    'Pathfinders_per_moth' => 'Conquistadores por mes',
+    'instructor_id' => 'ID del Instructor:',
+    'no_specialties' => 'No tienes especialidades'
 
 ];
