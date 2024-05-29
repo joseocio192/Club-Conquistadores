@@ -43,7 +43,8 @@ class User extends Authenticatable
         'colonia',
         'ciudad_id',
         'codigo_postal',
-        'sexo'
+        'sexo',
+        'rol',
     ];
 
     protected $dispatchesEvents = [

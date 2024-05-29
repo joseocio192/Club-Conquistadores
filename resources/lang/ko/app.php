@@ -7,7 +7,7 @@ return [
 
     'log_out' => '로그아웃',
     'login' => '로그인',
-    'register' => '등록',
+    'register' => '회원가입',
     'email' => '이메일',
     'password' => '비밀번호',
     'remember_me' => '기억하기',

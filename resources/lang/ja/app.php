@@ -119,38 +119,36 @@ return [
     'sign_in' => 'ログイン',
 
     // registerDirectivo
-'personal_data_of_a_executive' => '役員の個人データ',
-'personal_data_of_An_executive' => '役員の個人データ',
-'BossId' => 'ボスのID',
-'role' => '役割',
-'executive' => '役員',
+    'personal_data_of_a_executive' => '役員の個人データ',
+    'personal_data_of_An_executive' => '役員の個人データ',
+    'BossId' => 'ボスのID',
+    'role' => '役割',
+    'executive' => '役員',
 
-// registerInstructor
-'instructor personal information' => 'インストラクターの個人情報',
-'instructor_residency_data' => 'インストラクターの居住地データ',
-'select a country' => '国を選択',
+    // registerInstructor
+    'instructor personal information' => 'インストラクターの個人情報',
+    'instructor_residency_data' => 'インストラクターの居住地データ',
+    'select a country' => '国を選択',
 
-// registerTutor
-'tutors_personal_details' => 'チューターの個人詳細',
-'man' => '男性',
-'tutors_residence_information' => 'チューターの居住地情報',
-'Postal code' => '郵便番号',
+    // registerTutor
+    'tutors_personal_details' => 'チューターの個人詳細',
+    'man' => '男性',
+    'tutors_residence_information' => 'チューターの居住地情報',
+    'Postal code' => '郵便番号',
 
-// tutor
-'There_are_no_pupils_to_accept' => '受け入れる生徒はいません',
-'pupils_to_be_assigned' => '割り当てる生徒',
-'Accept' => '受け入れる',
-'Codes' => 'コード',
-'generate_code' => 'コードを生成する',
-'pupil_details:' => '生徒の詳細:',
-
-
+    // tutor
+    'There_are_no_pupils_to_accept' => '受け入れる生徒はいません',
+    'pupils_to_be_assigned' => '割り当てる生徒',
+    'Accept' => '受け入れる',
+    'Codes' => 'コード',
+    'generate_code' => 'コードを生成する',
+    'pupil_details:' => '生徒の詳細:',
 
 
-'submit' => '提出する',
-'pathfinders_per_month_per_club' => 'クラブごとの月間征服者',
-'Pathfinders_per_moth' => '月ごとの征服者',
-'instructor_id' => 'インストラクターID:',
-'no_specialties' => '専門がありません'
+    'submit' => '提出する',
+    'pathfinders_per_month_per_club' => 'クラブごとの月間征服者',
+    'Pathfinders_per_moth' => '月ごとの征服者',
+    'instructor_id' => 'インストラクターID:',
+    'no_specialties' => '専門がありません'
 
 ];
