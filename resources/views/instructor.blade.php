@@ -188,11 +188,11 @@
                     </div>
                     <button class="btnEnviar" type="submit" name="save">Enviar</button>
                 </form>
-                <h3>Especialidad</h3>
+                
                 <form action={{ route('instructor.sendRequisitos') }} method="post">
                     @csrf
                     @foreach ($especialidades as $especialidad)
-                        <h4>{{ $especialidad->nombre }}</h4>
+                        <h3>Especialidad: {{ $especialidad->nombre }}</h3>
                         <table>
                             <thead>
                                 <tr>
@@ -349,12 +349,12 @@
                 </form>
             </div>
         @endif
-
         <!--************************************ Mostar Conquistador ************************************-->
         @if ($status == 'Mostar Conquistador')
             <div class="divTusDatos">
                 <div class="divDatos">
                     <h2>@lang('app.pathfinder_id') {{ $conquistador->user->id }}</h2>
+
                 </div>
                 <div class="divDatos">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -406,6 +406,8 @@
             <div class="divTusDatos">
                 <div class="divDatos">
                     <h2>@lang('app.your_data')</h2>
+                    <a class="btnModificarTusDatos">Modificar</a>
+
                 </div>
                 <div class="divDatos">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -440,7 +442,18 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        </div>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
         @if ($errors->any())
             <script>
