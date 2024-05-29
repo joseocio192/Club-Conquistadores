@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Conquistador;
 use App\Models\Onecodeuse;
 use Illuminate\Support\Facades\Log;
+
 class TutorController extends Controller
 {
     public function index()
@@ -55,8 +56,10 @@ class TutorController extends Controller
         $count = Onecodeuse::where('user_id', $user->id)->count();
         if ($count >= 5) {
             $pupilosSinAceptar = conquistador::where('tutorlegal_id', $user->id)->where('aceptado', 0)->get();
+            $historial = $user->club;
             $codigos = Onecodeuse::where('user_id', $user->id)->get();
-            return view('tutor', compact('user', 'pupilos', 'status', 'pupilosSinAceptar', 'codigos'))->with('error', 'No puedes generar más códigos');
+
+            return view('tutor', compact('user', 'pupilos', 'status', 'pupilosSinAceptar', 'codigos', 'historial'));
         }
         $onecodeuse = new Onecodeuse();
         $onecodeuse->user_id = $user->id;
