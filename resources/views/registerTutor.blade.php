@@ -1,3 +1,4 @@
+@extends('layouts.app')
 <!-- resources/views/register.blade.php -->
 <!DOCTYPE html>
 
@@ -10,8 +11,7 @@
     <link href="{{ asset('/css/register.css') }}" rel="stylesheet">
 
 </head>
-
-<form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
+<form class="FormLayout" method="POST" action="{{ route('registerTutorLegal') }}" id="registro">
     @csrf
 
 
@@ -23,46 +23,55 @@
             <div class='SubSeccionDiv'>
                 <div>
                     <label for="name">@lang('app.Name')</label>
-                    <input id="name" type="text" name="name" required autofocus><br>
+                    <input id="name" type="text" name="name" required autofocus
+                        value="{{ old('name') }}"><br>
                 </div>
 
                 <div>
 
                     <label for="apellido">@lang('app.lastname')</label>
-                    <input id="apellido" type="text" name="apellido" class="Input" required><br>
+                    <input id="apellido" type="text" name="apellido" class="Input" required
+                        value="{{ old('apellido') }}"><br>
                 </div>
             </div>
 
             <div class='EmailDiv'>
                 <label for="email">@lang('app.email')</label>
-                <input id="email" type="email" name="email" required><br>
+                <input id="email" type="email" name="email" required value="{{ old('email') }}"><br>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
                     <label for="password">@lang('app.Password')</label>
-                    <input id="password" type="password" name="password" required><br>
+                    <input id="password" type="password" name="password" required value="{{ old('password') }}"><br>
                 </div>
 
                 <div>
                     <label for="telefono">@lang('app.Phone')</label>
-                    <input id="telefono" type="text" name="telefono"><br>
+                    <input id="telefono" type="text" name="telefono" value="{{ old('telefono') }}"><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
                     <label for="fecha_nacimiento">@lang('app.Birthdate')</label>
-                    <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" required><br>
+                    <input id="fecha_nacimiento" type="date" name="fecha_nacimiento" required
+                        value="{{ old('fecha_nacimiento') }}"><br>
                 </div>
 
                 <div>
                     <label for="sexo">@lang('app.Sex')</label>
-                    <select id="sexo" name="sexo" required><br>
-                        <option value="">@lang('app.Select_a_gender')</option>
-                        <option value="Hombre">@lang('app.man')</option>
-                        <option value="Mujer">@lang('app.woman')</option>
-                        <option value="Otro">@lang('app.Other')</option>
+                    <select id="sexo" name="sexo" required>
+                        <option value="">{{ __('app.Select_a_gender') }}</option>
+                        <option value="{{ __('app.Men') }}" {{ old('sexo') == __('app.Men') ? 'selected' : '' }}>
+                            {{ __('app.Man') }}
+                        </option>
+                        <option value="{{ __('app.Women') }}" {{ old('sexo') == __('app.Women') ? 'selected' : '' }}>
+                            {{ __('app.Women') }}
+                        </option>
+                        <option value="{{ __('app.Other') }}" {{ old('sexo') == __('app.Other') ? 'selected' : '' }}>
+                            {{ __('app.Other') }}
+                        </option>
                     </select>
                 </div>
             </div>
@@ -72,24 +81,26 @@
             <div class='SubSeccionDiv'>
                 <div>
                     <label for="calle">@lang('app.street')</label>
-                    <input id="calle" type="text" name="calle" required><br>
+                    <input id="calle" type="text" name="calle" required value="{{ old('calle') }}"><br>
                 </div>
 
                 <div>
                     <label for="numero_exterior">@lang('app.street_number') </label>
-                    <input id="numero_exterior" type="text" name="numero_exterior" required><br>
+                    <input id="numero_exterior" type="text" name="numero_exterior" required
+                        value="{{ old('numero_exterior') }}"><br>
                 </div>
             </div>
 
             <div class='SubSeccionDiv'>
                 <div>
                     <label for="numero_interior">@lang('app.suite_number')</label>
-                    <input id="numero_interior" type="text" name="numero_interior"><br>
+                    <input id="numero_interior" type="text" name="numero_interior"
+                        value="{{ old('numero_interior') }}"><br>
                 </div>
 
                 <div>
                     <label for="colonia">@lang('app.neighborhood')</label>
-                    <input id="colonia" type="text" name="colonia" required><br>
+                    <input id="colonia" type="text" name="colonia" required value="{{ old('colonia') }}"><br>
                 </div>
             </div>
 
@@ -115,7 +126,7 @@
 
                 <div>
                     <label for="ciudad_id">@lang('app.city')</label>
-                    <select id="ciudad_id" name="ciudad_id"></select>
+                    <select id="ciudad_id" name="ciudad"></select>
                 </div>
             </div>
 
@@ -145,6 +156,9 @@
 
 </form>
 
+@section('content')
+@endsection
+
 @if ($errors->any())
     <script>
         let errorsExist = true;
@@ -168,134 +182,148 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        console.log("Hola");
+        let oldPais = "{{ old('pais') }}";
+        let oldEstado = "{{ old('estado') }}";
+        let oldMunicipio = "{{ old('municipio') }}";
+        let oldCiudad = "{{ old('ciudad') }}";
+        let oldClub = "{{ old('clubes') }}";
+
         $.ajax({
             url: "{{ url('api/get-pais-list') }}",
             type: "GET",
             success: function(res) {
                 if (res) {
                     $('#pais').empty();
-                    $('#pais').append('<option>{{__("app.select")}}</option>');
+                    $('#pais').append('<option>{{ __('app.select') }}</option>');
                     $.each(res, function(key, value) {
                         $('#pais').append('<option value="' + key + '">' + value +
                             '</option>');
                     });
+                    if (oldPais) {
+                        $('#pais').val(oldPais).change();
+                    }
                 } else {
                     $('#pais').empty();
                 }
             }
         });
-    });
 
-    $('#pais').change(function() {
-        var paisID = $(this).val();
-        if (paisID) {
-            $.ajax({
-                url: "{{ url('api/get-state-list') }}?pais_id=" + paisID,
-                type: "GET",
-                success: function(res) {
-                    if (res) {
-                        $('#estado').empty();
-                        $('#estado').append('<option>{{__("app.select")}}</option>');
-                        $.each(res, function(key, value) {
-                            $('#estado').append('<option value="' + key + '">' + value +
-                                '</option>');
-                        });
-                    } else {
-                        $('#estado').empty();
+        $('#pais').change(function() {
+            let paisID = $(this).val();
+            if (paisID) {
+                $.ajax({
+                    url: "{{ url('api/get-state-list') }}?pais_id=" + paisID,
+                    type: "GET",
+                    success: function(res) {
+                        if (res) {
+                            $('#estado').empty();
+                            $('#estado').append('<option value="">Seleccionar</option>');
+                            $.each(res, function(key, value) {
+                                $('#estado').append('<option value="' + key + '">' +
+                                    value + '</option>');
+                            });
+                            if (oldEstado) {
+                                $('#estado').val(oldEstado).change();
+                            }
+                        } else {
+                            $('#estado').empty();
+                        }
                     }
-                }
-            });
-        } else {
-            $("#estado").empty();
-        }
-        // Clear the municipality and city dropdowns
-        $("#municipio").empty();
-        $("#ciudad_id").empty();
-        $("#clubes").empty();
-    });
-
-    $('#estado').change(function() {
-        var estadoID = $(this).val();
-        if (estadoID) {
-            $.ajax({
-                url: "{{ url('api/get-municipality-list') }}?estado_id=" + estadoID,
-                type: "GET",
-                success: function(res) {
-                    if (res) {
-                        $('#municipio').empty();
-                        $('#municipio').append('<option>{{__("app.select")}}</option>');
-                        $.each(res, function(key, value) {
-                            $('#municipio').append('<option value="' + key + '">' + value +
-                                '</option>');
-                        });
-                    } else {
-                        $('#municipio').empty();
-                    }
-                }
-            });
-        } else {
+                });
+            } else {
+                $("#estado").empty();
+            }
             $("#municipio").empty();
-        }
-        // Clear the city dropdown
-        $("#ciudad_id").empty();
-        $("#clubes").empty();
-    });
-
-    $('#municipio').change(function() {
-        var municipioID = $(this).val();
-        if (municipioID) {
-            $.ajax({
-                url: "{{ url('api/get-city-list') }}?municipio_id=" + municipioID,
-                type: "GET",
-                success: function(res) {
-                    if (res) {
-                        $('#ciudad_id').empty();
-                        $('#ciudad_id').append('<option>{{__("app.select")}}</option>');
-                        $.each(res, function(key, value) {
-                            $('#ciudad_id').append('<option value="' + key + '">' + value +
-                                '</option>');
-                        });
-                    } else {
-                        $('#ciudad_id').empty();
-                    }
-                }
-            });
-        } else {
             $("#ciudad_id").empty();
-            $("#clubes").empty();
-        }
-    });
+        });
 
-    $('#ciudad_id').change(function() {
-        var ciudad_id = $(this).val();
-        if (ciudad_id) {
-            $.ajax({
-                url: "{{ url('api/get-club-list') }}?ciudad_id=" + ciudad_id,
-                type: "GET",
-                success: function(res) {
-                    if (res) {
-                        $('#clubes').empty();
-                        $('#clubes').append('<option>Select</option>');
-                        $.each(res, function(key, value) {
-                            $('#clubes').append('<option value="' + key + '">' + value +
-                                '</option>');
-                        });
+        $('#estado').change(function() {
+            var estadoID = $(this).val();
+            if (estadoID) {
+                $.ajax({
+                    url: "{{ url('api/get-municipality-list') }}?estado_id=" + estadoID,
+                    type: "GET",
+                    success: function(res) {
+                        if (res) {
+                            $('#municipio').empty();
+                            $('#municipio').append('<option value="">Seleccionar</option>');
+                            $.each(res, function(key, value) {
+                                $('#municipio').append('<option value="' + key +
+                                    '">' + value + '</option>');
+                            });
+                            if (oldMunicipio) {
+                                $('#municipio').val(oldMunicipio).change();
+                            }
+                        } else {
+                            $('#municipio').empty();
+                        }
                     }
-                }
-            });
-        } else {
-            $("#clubes").empty();
-        }
-    });
+                });
+            } else {
+                $("#municipio").empty();
+            }
+            $("#ciudad_id").empty();
+        });
 
-    $('#clubes').change(function() {
-        var ciudad_id = $(this).val();
-        if (ciudad_id) {
-            $('#submit-button').prop('disabled', false);
-        } else {
-            $("#submit-button").prop('disabled', true);
-        }
+        $('#municipio').change(function() {
+            var municipioID = $(this).val();
+            if (municipioID) {
+                $.ajax({
+                    url: "{{ url('api/get-city-list') }}?municipio_id=" + municipioID,
+                    type: "GET",
+                    success: function(res) {
+                        if (res) {
+                            $('#ciudad_id').empty();
+                            $('#ciudad_id').append('<option value="">Seleccionar</option>');
+                            $.each(res, function(key, value) {
+                                $('#ciudad_id').append('<option value="' + key +
+                                    '">' + value + '</option>');
+                            });
+                            if (oldCiudad) {
+                                $('#ciudad_id').val(oldCiudad).change();
+                            }
+                        } else {
+                            $('#ciudad_id').empty();
+                        }
+                    }
+                });
+            } else {
+                $("#ciudad_id").empty();
+            }
+        });
+
+        $('#ciudad_id').change(function() {
+            var ciudad_id = $(this).val();
+            if (ciudad_id) {
+                $.ajax({
+                    url: "{{ url('api/get-club-list') }}?ciudad_id=" + ciudad_id,
+                    type: "GET",
+                    success: function(res) {
+                        if (res) {
+                            $('#clubes').empty();
+                            $('#clubes').append('<option value="">Seleccionar</option>');
+                            $.each(res, function(key, value) {
+                                $('#clubes').append('<option value="' + key + '">' +
+                                    value + '</option>');
+                            });
+                            if (oldClub) {
+                                $('#clubes').val(oldClub).change();
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        $('#ciudad_id').change(function() {
+            var ciudad_id = $(this).val();
+            if (ciudad_id) {
+                $('#submit-button').prop('disabled', false);
+            } else {
+                $("#submit-button").prop('disabled', true);
+            }
+        });
     });
 </script>
+
 </html>
