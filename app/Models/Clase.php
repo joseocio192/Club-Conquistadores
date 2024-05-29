@@ -59,4 +59,9 @@ class Clase extends Model
     {
         return $this->belongsToMany(Asistencia::class, 'id_clase')->withPivot('asistio', 'pulcritud');
     }
+
+    public function especialidades(): BelongsToMany
+    {
+        return $this->belongsToMany(Especialidad::class, 'Clase_xespecialidad', 'clase_id', 'especialidad_id');
+    }
 }

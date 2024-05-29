@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Events\RequisitosSaved;
 use App\Models\Traits\Mutators\RequisitosMutator;
 
-class requisitos extends Model
+class Requisitos extends Model
 {
     use HasFactory,
         RequisitosMutator;
@@ -31,8 +31,8 @@ class requisitos extends Model
         return $this->belongsTo(Especialidad::class, 'especialidad_id');
     }
 
-    public function requisitos(): BelongsToMany
+    public function conquistadores(): BelongsToMany
     {
-        return $this->belongsTo(Conquistador::class, 'Requisitos_xconquistador', 'requisito_id', 'conquistador')->using(Requisitos_xconquistador::class);
+        return $this->belongsToMany(Conquistador::class, 'requisitos_xconsquitador', 'requisito_id', 'conquistador_id')->withPivot('completado');
     }
 }

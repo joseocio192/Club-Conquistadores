@@ -34,4 +34,9 @@ class Especialidad extends Model
     {
         return $this->belongsToMany(Conquistador::class, 'Conquistador_xespecialidad', 'especialidad_id', 'conquistador_id');
     }
+
+    public function clases(): BelongsToMany
+    {
+        return $this->belongsToMany(Clase::class, 'Clase_xespecialidad', 'especialidad_id', 'clase_id');
+    }
 }
