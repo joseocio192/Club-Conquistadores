@@ -33,8 +33,9 @@ class EspecialidadSeeder extends Seeder
         $requisito->save();
 
         $requisito_conquistador = new Requisitos_xconquistador();
-        $requisito_conquistador->requisitos_id = 1;
+        $requisito_conquistador->requisito_id = 1;
         $requisito_conquistador->conquistador_id = 1;
+        $requisito_conquistador->completado = false;
         $requisito_conquistador->save();
 
         $especialidad = new Especialidad();

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Requisitos_xconsquitador', function (Blueprint $table) {
+        Schema::create('Requisitos_xconquistador', function (Blueprint $table) {
             $table->foreignId('requisito_id')->references('id')->on('Requisitos');
             $table->foreignId('conquistador_id')->references('id')->on('Conquistador');
             $table->boolean('completado');
