@@ -182,11 +182,11 @@
                         </div>
                     <button class="btnEnviar" type="submit" name="save">Enviar</button>
                 </form>
-                <h3>Especialidad</h3>
+                
                 <form action={{ route('instructor.sendRequisitos') }} method="post">
                     @csrf
                     @foreach ($especialidades as $especialidad)
-                        <h4>{{ $especialidad->nombre }}</h4>
+                        <h3>Especialidad: {{ $especialidad->nombre }}</h3>
                         <table>
                             <thead>
                                 <tr>
@@ -355,17 +355,17 @@
                     <path
                         d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
                 </svg>
-                <h3>@lang('app.name') </h3>
+                <h3>@lang('app.name'): </h3>
                 <h3 class="h3Dato">{{ $conquistador->user->name }}</h3>
                 <h3>@lang('app.age') </h3>
                 <h3 class="h3Dato">{{ $conquistador->edad }}</h3>
             </div>
             <div class="divDatos">
-                <h3>@lang('app.phone') </h3>
+                <h3>@lang('app.phone'): </h3>
                 <h3 class="h3Dato">{{ $conquistador->user->telefono }}</h3>
             </div>
             <div class="divDatos">
-                <h3>@lang('app.email') </h3>
+                <h3>@lang('app.email'): </h3>
                 <h3 class="h3Dato">{{ $conquistador->user->email }}</h3>
             </div>
             <div class="divDatos">
@@ -399,6 +399,7 @@
         <div class="divTusDatos">
             <div class="divDatos">
                 <h2>@lang('app.your_data')</h2>
+                <a class="btnModificarTusDatos">Modificar</a>
             </div>
             <div class="divDatos">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -410,6 +411,7 @@
                 <h3 class="h3Dato">{{ $user->name }}</h3>
                 <h3>@lang('app.age')</h3>
                 <h3 class="h3Dato">{{ $user->edad }}</h3>
+                
             </div>
             <div class="divDatos">
                 <h3>@lang('app.phone')</h3>
@@ -425,6 +427,7 @@
             </div>
         </div>
     @endif
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
