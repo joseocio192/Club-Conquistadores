@@ -86,6 +86,10 @@ Route::post('/instructor/anadirAlumnos', [InstructorController::class, 'anadirAl
 Route::post('/instructor/sendhw', [InstructorController::class, 'sendhw'])
     ->name('instructor.sendhw')
     ->middleware('auth', 'rol:instructor');
+Route::post('/instructor/sendRequisitos', [InstructorController::class, 'sendRequisitos'])
+    ->name('instructor.sendRequisitos')
+    ->middleware('auth', 'rol:instructor');
+
 Route::post('/instructor/eliminarAlumnos', [InstructorController::class, 'eliminarAlumnos'])
     ->name('instructor.eliminarAlumnos')
     ->middleware('auth', 'rol:instructor');
