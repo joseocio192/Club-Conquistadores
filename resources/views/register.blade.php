@@ -14,10 +14,9 @@
 
 <form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
     @csrf
-
-    <h1>@lang ('app.Register')</h1>
-    <h2>@lang('app.Conquerors_personal_data')</h2>
     <div class='RegistroDiv'>
+        <h1>@lang ('app.Register')</h1>
+        <h2>@lang('app.Conquerors_personal_data')</h2>
         <div class='SeccionDiv1'>
             <div class='SubSeccionDiv'>
                 <div>

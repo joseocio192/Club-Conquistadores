@@ -1,8 +1,8 @@
 body {
-    width: 99vw;
-    height: 118.5vh;
+    display: flex;
+    justify-content: center;
     margin: 0;
-    padding: auto;
+    height: max-content;
     font-family: "Roboto";
     background: linear-gradient(90deg, rgba(118,174,159,1) 0%, rgba(118,171,174,1) 20%, rgba(238,238,238,1) 100%);
 }
@@ -10,16 +10,21 @@ body {
 form {
     display: flex;
     flex-direction: column;
-    width: 43.75em;
+
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    margin-top: 1.25em;
-    padding: 1.25em;
-    opacity: 0.7;
-    background-color: white;
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    padding: 1em;
+    padding-right: 1.95em;
+
     border: 2px solid #222831;
     border-radius: 0.625em;
+
+    opacity: 0.7;
+    background-color: white;
 }
 
 form label {
@@ -85,7 +90,6 @@ form input[type="email"]:focus {
     width: 9.6875em;
     border-radius: 6px;
     border-width: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.07em;
     font-weight: 500;
     background-color: #76ABAE;
@@ -111,11 +115,8 @@ form input[type="email"]:focus {
     background-color: #ccc;
 }
 
-.RegistroDiv {
-    width: 98%;
-}
-
 h1 {
+    margin-left: .65em;
     color: #222831;
 }
 
@@ -124,7 +125,6 @@ h2 {
     margin-left: 1em;
     margin-bottom: 0.5em;
     font-size: 1.3em;
-    align-self: self-start;
     color: #31363F;
 }
 
@@ -135,17 +135,19 @@ h2 {
 .SeccionDiv1 {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 20.58823529411765em;
+    padding-bottom: 1em;
     border-bottom: 2px solid #ccc;
 }
 
 .SeccionDiv2 {
     display: flex;
-    margin-top: 1.1764705882352942em;
     flex-direction: column;
-    width: 100%;
-    height: 23.529411764705884em;
+    margin-top: 1.1764705882352942em;
+}
+
+.RegistroDiv {
+    display: flex;
+    flex-direction: column;
 }
 
 .SubSeccionDiv {
@@ -160,8 +162,6 @@ h2 {
     display: flex;
     justify-content: space-evenly;
     margin-top: 1.1764705882352942em;
-    width: 100%;
-    height: 4.0625em;
 }
 
 .HomeBtn {
