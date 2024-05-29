@@ -33,6 +33,6 @@ class Requisitos extends Model
 
     public function conquistadores(): BelongsToMany
     {
-        return $this->belongsToMany(Conquistador::class, 'requisitos_xconsquitador', 'requisito_id', 'conquistador_id')->withPivot('completado');
+        return $this->belongsToMany(Conquistador::class, 'Requisitos_xconquistador', 'requisito_id', 'conquistador_id')->withPivot('completado');
     }
 }
