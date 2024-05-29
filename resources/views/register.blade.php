@@ -70,7 +70,7 @@
                         <label for="sexo">@lang('app.Sex')</label>
                         <select id="sexo" name="sexo" required>
                             <option value="">{{ __('app.Select_a_gender') }}</option>
-                            <option value="{{ __('app.men') }}" {{ old('sexo') == __('app.men') ? 'selected' : '' }}>
+                            <option value="{{ __('app.man') }}" {{ old('sexo') == __('app.man') ? 'selected' : '' }}>
                                 {{ __('app.man') }}
                             </option>
                             <option value="{{ __('app.women') }}"

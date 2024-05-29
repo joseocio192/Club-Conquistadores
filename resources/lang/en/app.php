@@ -78,9 +78,6 @@ return [
     'sex' => 'Sex',
     'Select a gender' => 'Select a gender',
 
-    'men' => 'Men',
-    'women' => 'Women',
-
     'Other' => 'Other',
     'Details_of_the_conqueror_residence' => 'Details of the conqueror residence',
     'Street' => 'Street',
@@ -136,8 +133,8 @@ return [
     'Birthdate' => 'Birthdate',
     'Sex' => 'Sex',
     'Select_a_gender' => 'Select a gender',
-    'Man' => 'Man',
-    'Women' => 'Women',
+    'man' => 'Man',
+    'women' => 'Women',
     'Oher' => 'Other',
     'Instructor_residency_data' => 'Instructor_residency_data',
     'Street' => 'Street',

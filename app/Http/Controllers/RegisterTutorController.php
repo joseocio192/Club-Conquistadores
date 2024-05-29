@@ -17,7 +17,6 @@ class RegisterTutorController extends Controller
 
     public function register(Request $request)
     {
-        dd($request->ciudad);
 
         $user = User::create([
             'name' => $request->name,
@@ -32,6 +31,7 @@ class RegisterTutorController extends Controller
             'colonia' => $request->colonia,
             'ciudad' => $request->ciudad,
             'codigo_postal' => $request->codigo_postal,
+            'locale' => app()->getLocale(),
             'sexo' => $request->sexo,
             'rol' => $this->getAllowedRoles(),
         ]);
