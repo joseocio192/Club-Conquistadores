@@ -154,6 +154,42 @@ return [
     'Back'=>'Regresar',
     'Sign_in'=>'Registrarse',
 
+    //registerTutor
+    'Register'=>'Registrar',
+    'tutors_personal_details'=>'Datos personales del tutor',
+    'Name'=>'Nombre',
+    'lastname'=>'Apellido',
+    'email'=> 'Correo electronico',
+    'Password'=>'Contraseña',
+    'Phone'=>'Telefono',
+    'Birthdate'=>'Fecha de nacimiento',
+    'Sex'=>'Sexo',
+    'Select_a_gender'=>'Selecciona el genero',
+    'man'=>'Hombre',
+    'woman'=>'Mujer',
+    'Other'=>'Otro',
+    'tutors_residence_information'=>'Datos de la residencia del tutor',
+    'street_number'=>'Numero exterior',
+    'suite_number'=>'Numero interior',
+    'neighborhood'=>'Colonia',
+    'Country'=>'Pais',
+    'Select a country'=>'Selecciona un pais',
+    'State'=>'Estado',
+    'Municipality'=>'Municipio',
+    'city'=>'Ciudad',
+    'Postal code'=> 'Codigo postal',
+    'Back'=>'Regresar',
+    'sign_in'=>'Registrarse',
+
+    //tutor
+    'There_are_no_pupils_to_accept'=>'No hay alumnos para aceptar.',
+    'pupils_to_be_assigned'=>'Pupilos por asignar',
+    'Accept'=>'Aceptar',
+    'Codes'=>'Codigos',
+    'generate_code'=>'Generar codigos',
+    'pupil_details:'=>'Detalles del pupilo',
+
+
 
 
 ];

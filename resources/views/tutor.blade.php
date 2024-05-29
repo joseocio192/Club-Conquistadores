@@ -48,34 +48,34 @@
             @if ($status == 'nada')
             <div class="divAceptarPupilos">
                 @if (count($pupilosSinAceptar) == 0)
-                <h1>No hay pupilos por aceptar</h1>
+                <h1>@lang('app.There_are_no_pupils_to_accept')</h1>
                 @else
-                <h1>Pupilos por aceptar</h1>
+                <h1>@lang('app.pupils_to_be_assigned')</h1>
                 @foreach ($pupilosSinAceptar as $pupilo)
                     <div class="divPupilo">
                         <h2>{{$pupilo->user->name}}</h2>
                         <form action="{{route('tutor.aceptar', $pupilo->id)}}" method="post">
                             @csrf
-                            <button type="submit">Aceptar</button>
+                            <button type="submit">@lang('app.Accept')</button>
                         </form>
                     </div>
                     @endforeach
                 @endif
             </div>
             <div class="divAceptarPupilos">
-                <h2>Codigos</h2>
+                <h2>@lang('app.Codes')</h2>
                 @foreach ($codigos as $codigo)
                 <h3>{{$codigo->onecode}}</h3>
                 @endforeach
                 <form action="{{route('tutor.generateOneTimeCode')}}" method="post">
                     @csrf
-                    <button type="submit">Generar codigo</button>
+                    <button type="submit">@lang('app.generate_code') </button>
                 </form>
             </div>
             @endif
             @if ($status == 'show')
             <div class="divDatos">
-                <h2>Datos del pupilo:</h2>
+                <h2>@lang('app.pupil_details:')</h2>
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" >
                         <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
