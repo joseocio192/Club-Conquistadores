@@ -13,7 +13,7 @@
 </head>
 
 <form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
-    @csrf
+    @csrf   
     <div class='RegistroDiv'>
         <h1>@lang ('app.Register')</h1>
         <h2>@lang('app.Conquerors_personal_data')</h2>
