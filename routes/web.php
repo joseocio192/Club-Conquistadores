@@ -59,7 +59,9 @@ Route::post('/tutor/generateOneTimeCode', [TutorController::class, 'generateOneT
     ->name('tutor.generateOneTimeCode')
     ->middleware('auth', 'rol:tutor');
 
-
+Route::post('/conquistador/sendcode', [ConquistadorController::class, 'sendcode'])
+    ->name('conquistador.sendcode')
+    ->middleware('auth', 'rol:conquistador');
 Route::get('/conquistador/especialidad/', [ConquistadorController::class, 'especialidad'])
     ->name('conquistador.especialidad')
     ->middleware('auth', 'rol:conquistador');
@@ -122,6 +124,9 @@ Route::get('/instructor', [InstructorController::class, 'index'])
 
 Route::get('/directivo/altaDirectivo', [DirectivoController::class, 'altaDirectivo'])
     ->name('directivo.altaDirectivo')
+    ->middleware('auth', 'rol:directivo');
+Route::post('/directivo/altaDirectivopost', [DirectivoController::class, 'altaDirectivoPost'])
+    ->name('directivo.altaDirectivoPost')
     ->middleware('auth', 'rol:directivo');
 Route::get('/directivo/altaInstructor', [DirectivoController::class, 'altaInstructor'])
     ->name('directivo.altaInstructor')

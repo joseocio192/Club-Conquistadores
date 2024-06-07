@@ -3,7 +3,10 @@
 return [
     'title' => 'コンキスタドールクラブ',
     'welcome' => 'コンキスタドールクラブへようこそ',
-    'Pathfinders_Club' => 'コンキスタドールクラブ',
+    'pathfinders_Club' => 'コンキスタドールクラブ',
+    'registerTutor' => 'チューターを登録する',
+    'men' => '男性',
+    'women' => '女性',
 
     'log_out' => 'ログアウト',
     'login' => 'ログイン',
@@ -91,6 +94,7 @@ return [
     'tutor' => 'チューター',
     'add_pupil' => '生徒を追加する',
     'specialty' => '専門',
+    'record' => '記録',
 
     // 都市
     'country' => '国',
@@ -105,7 +109,7 @@ return [
     'birthdate' => '生年月日',
     'sex' => '性別',
     'select_a_gender' => '性別を選択',
-    'men' => '男性',
+    'man' => '男性',
     'woman' => '女性',
     'other' => 'その他',
     'details_of_the_conqueror_residence' => 'コンキスタドールの居住地の詳細',
@@ -121,7 +125,7 @@ return [
     // registerDirectivo
     'personal_data_of_a_executive' => '役員の個人データ',
     'personal_data_of_An_executive' => '役員の個人データ',
-    'BossId' => 'ボスのID',
+    'bossId' => 'ボスのID',
     'role' => '役割',
     'executive' => '役員',
 
@@ -134,13 +138,13 @@ return [
     'tutors_personal_details' => 'チューターの個人詳細',
     'man' => '男性',
     'tutors_residence_information' => 'チューターの居住地情報',
-    'Postal code' => '郵便番号',
+    'postal code' => '郵便番号',
 
     // tutor
-    'There_are_no_pupils_to_accept' => '受け入れる生徒はいません',
+    'there_are_no_pupils_to_accept' => '受け入れる生徒はいません',
     'pupils_to_be_assigned' => '割り当てる生徒',
-    'Accept' => '受け入れる',
-    'Codes' => 'コード',
+    'accept' => '受け入れる',
+    'codes' => 'コード',
     'generate_code' => 'コードを生成する',
     'pupil_details:' => '生徒の詳細:',
 
@@ -149,6 +153,17 @@ return [
     'pathfinders_per_month_per_club' => 'クラブごとの月間征服者',
     'Pathfinders_per_moth' => '月ごとの征服者',
     'instructor_id' => 'インストラクターID:',
-    'no_specialties' => '専門がありません'
+    'no_specialties' => '専門がありません',
+
+
+    'date' => '日付',
+    'task_data' => 'タスクデータ',
+    'specialties_started_but_not_completed' => '開始されたが完了していない専門',
+    'student' => '学生',
+    'entry_date' => '入学日',
+    'depure_date' => '退学日',
+    'modify_user' => 'ユーザーを修正する',
+    'personal_information' => '個人情報',
+
 
 ];

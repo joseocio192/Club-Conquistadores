@@ -101,7 +101,7 @@
             @endforeach
             <a class="btnRegisterInstructor" href="{{route('registerInstructor')}}"> @lang('app.instructor_register')</a>
             <div class="divTable">
-                <h2 class="h2ConqPorMes">@lang('app.Pathfinders_per_moth')</h2>
+                <h2 class="h2ConqPorMes">@lang('app.pathfinders_per_moth')</h2>
                 <table>
                     <tr>
                         <th>@lang('app.club')</th>

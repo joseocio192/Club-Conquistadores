@@ -1,3 +1,4 @@
+@extends('layouts.app')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +45,7 @@
             <h2>@lang('app.pathfinders')</h2>
         </header>
         <section></section>
-        <footer>
+        <footer class= "footerIndex">
             <img class="LogoFooter" src="{{ asset('/imgs/logo.webp') }}"></img>
             <div class='Info'>
                 <h2 class="h2Equipo">Equipo 12</h2>
@@ -61,7 +62,8 @@
     <aside>
         <img class="LogoAside" src="{{ asset('/imgs/logoSimple.webp') }}"></img>
     </aside>
-
+    @section('content')
+    @endsection
 </body>
 
 </html>

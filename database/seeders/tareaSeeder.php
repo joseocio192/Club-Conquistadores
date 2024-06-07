@@ -15,8 +15,8 @@ class TareaSeeder extends Seeder
     public function run(): void
     {
         $tarea = new Tarea();
-        $tarea->nombre = 'Tarea 1';
-        $tarea->descripcion = 'Descripcion 1';
+        $tarea->nombre = 'Video';
+        $tarea->descripcion = 'Ver video de frank cuesta para aprender de animales y porque es bueno cuidarlos';
         $tarea->fecha = '2021-12-24';
         $tarea->clase_id = 1;
         $tarea->locale = 'es';

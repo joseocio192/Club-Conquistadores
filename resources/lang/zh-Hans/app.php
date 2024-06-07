@@ -4,6 +4,10 @@ return [
     'title' => '征服者俱乐部',
     'welcome' => '欢迎来到探路者俱乐部',
     'Pathfinders_Club' => '探路者俱乐部',
+    'registerTutor' => '注册导师',
+
+    'men' => '男性',
+    'women' => '女性',
 
     'log_out' => '登出',
     'login' => '登录',
@@ -90,6 +94,7 @@ return [
     'tutor' => '导师',
     'add_pupil' => '添加学生',
     'specialty' => '专业',
+    'record' => '记录',
 
     // Municipalities
     'country' => '国家',
@@ -104,7 +109,8 @@ return [
     'birthdate' => '出生日期',
     'sex' => '性别',
     'select_a_gender' => '选择性别',
-    'men' => '男性',
+
+    'man' => '男性',
     'woman' => '女性',
     'other' => '其他',
     'details_of_the_conqueror_residence' => '征服者住所详情',
@@ -133,7 +139,7 @@ return [
     'tutors_personal_details' => '导师个人详情',
     'man' => '男性',
     'tutors_residence_information' => '导师居住信息',
-    'Postal code' => '邮政编码',
+    'postal code' => '邮政编码',
 
     // Tutor
     'There_are_no_pupils_to_accept' => '没有学生可接受',
@@ -149,7 +155,17 @@ return [
     'pathfinders_per_month_per_club' => '每个俱乐部每月征服者',
     'Pathfinders_per_moth' => '每月征服者',
     'instructor_id' => '教练ID：',
-    'no_specialties' => '您没有任何专业'
+    'no_specialties' => '您没有任何专业',
+
+
+    'date' => '日期',
+    'task_data' => '任务数据',
+    'specialties_started_but_not_completed' => '已开始但未完成的专长',
+    'student' => '学生',
+    'entry_date' => '入学日期',
+    'depure_date' => '退学日期',
+    'modify_user' => '修改用户',
+    'personal_information' => '个人信息',
 
 
 ];

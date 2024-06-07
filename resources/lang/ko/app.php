@@ -4,6 +4,11 @@ return [
     'title' => '정복자 클럽',
     'welcome' => '정복자 클럽에 오신 것을 환영합니다',
     'Pathfinders_Club' => '정복자 클럽',
+    'registerTutor' => '튜터 등록',
+    'man' => '남자',
+    'women' => '여자',
+
+    'app.tutors_personal_details' => '',
 
     'log_out' => '로그아웃',
     'login' => '로그인',
@@ -91,6 +96,7 @@ return [
     'tutor' => '튜터',
     'add_pupil' => '학생 추가',
     'specialty' => '전공',
+    'record' => '기록',
 
     // Municipalities
     'country' => '국가',
@@ -105,7 +111,7 @@ return [
     'birthdate' => '생년월일',
     'sex' => '성별',
     'select_a_gender' => '성별 선택',
-    'men' => '남성',
+    'man' => '남성',
     'woman' => '여성',
     'other' => '기타',
     'details_of_the_conqueror_residence' => '정복자 거주지의 세부 정보',
@@ -128,13 +134,13 @@ return [
     // Register Instructor
     'instructor personal information' => '강사의 개인 정보',
     'instructor_residency_data' => '강사 거주 데이터',
-    'select a country' => '국가 선택',
+    'select_a_country' => '국가 선택',
 
     // Register Tutor
     'tutors_personal_details' => '튜터의 개인 세부 정보',
     'man' => '남자',
     'tutors_residence_information' => '튜터 거주 정보',
-    'Postal code' => '우편 번호',
+    'postal code' => '우편 번호',
 
     //tutor
     'There_are_no_pupils_to_accept' => '수락할 학생이 없습니다',
@@ -149,6 +155,14 @@ return [
     'pathfinders_per_month_per_club' => '클럽별 월별 정복자',
     'Pathfinders_per_moth' => '월별 정복자',
     'instructor_id' => '강사 ID:',
-    'no_specialties' => '전공이 없습니다'
+    'no_specialties' => '전공이 없습니다',
+    'date' => '날짜',
 
+    'task_data' => '작업 데이터',
+    'specialties_started_but_not_completed' => '시작되었지만 완료되지 않은 전문 분야',
+    'student' => '학생',
+    'entry_date' => '입학 날짜',
+    'depure_date' => '퇴학 날짜',
+    'modify_user' => '사용자 수정',
+    'personal_information' => '개인 정보',
 ];

@@ -58,7 +58,7 @@ class Clubs extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'ClubXpersona', 'club_id', 'user_id')->using(ClubXpersona::class);
+        return $this->belongsToMany(User::class, 'ClubXpersona', 'club_id', 'user_id')->using(ClubXpersona::class)->withPivot('fechaIngreso', 'fechaRetiro', 'activo', 'detalles');
     }
     public function instructores(): BelongsToMany
     {
