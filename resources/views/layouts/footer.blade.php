@@ -1,4 +1,4 @@
-<footer>
+<footer class="footer">
     <div class='footerItems'>
         <select id="lang" onchange="window.location.href='{{ url('locale') }}/'+this.value">
             <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English</option>
