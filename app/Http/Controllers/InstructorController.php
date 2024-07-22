@@ -70,7 +70,7 @@ class InstructorController extends Controller
         ]);
         $instructor = Instructor::where('user_id', $user->id)->first();
         $clase = new Clase();
-        $clase->club_id = User::find($user->id)->clubes->first()->id;
+        $clase->club_id = $user->club->first()->id;
         $clase->instructor = $instructor->id;
         $clase->nombre = $request->nombre;
         $clase->edadMinima = $request->edadMinima;
@@ -79,12 +79,28 @@ class InstructorController extends Controller
         $clase->horario = $request->horario;
         $clase->locale = 'es';
         $clase->save();
+
         $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
-        $status = "clase";
+        $status = "nada";
         $tareas = Tarea::where('clase_id', $clase->id)->get();
+
+        $asistencia = new Asistencia();
+        $asistencia->id_clase = $clase->id;
+        $asistencia->fecha = date('Y-m-d');
+        $asistencia->save();
+
         $asistencia = Asistencia::where('id_clase', $clase->id)->get();
-        $conquistadores = $clase->conquistadores;
-        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas', 'asistencia'));
+
+
+        $user = auth()->user();
+        $instructor = Instructor::where('user_id', $user->id)->first();
+        if (!$instructor) {
+            return redirect()->route('home');
+        }
+        $clasesDeInstructor = Clase::where('instructor', $instructor->id)->get();
+        $status = "nada";
+        $historial = $user->club;
+        return view('instructor', compact('instructor', 'clasesDeInstructor', 'user', 'status', 'historial'));
     }
 
     public function eliminarClase(Request $request)
@@ -240,7 +256,6 @@ class InstructorController extends Controller
                     }
 
                     $especialidades = $conquistador->especialidades;
-
                 }
             }
         }

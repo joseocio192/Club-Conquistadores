@@ -174,7 +174,7 @@ return [
     'sex' => 'Sexo',
     'select_a_gender' => 'Selecciona el genero',
     'men' => 'Hombre',
-    'woman' => 'Mujer',
+    'women' => 'Mujer',
     'oher' => 'Otro',
     'instructor_residency_data' => 'Datos de la residencia del instrcutor',
     'street' => 'Calle',
