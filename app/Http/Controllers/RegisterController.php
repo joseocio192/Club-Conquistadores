@@ -86,7 +86,17 @@ class RegisterController extends Controller
                     $tutorid = $onecode->user_id;
                 }
             } else {
-                $tutorid = null;
+                $onecode = Onecodeuse::where('onecode', $request->onecode)->where('used', 0)->first();
+                if ($onecode == null) {
+                    $tutorid = null;
+                } elseif ($onecode->used == 1) {
+                    return view('register')->with('error', 'OTC ya usado');
+                } else {
+                    $onecode->used = 1;
+                    $onecode->save();
+                    $tutorid = $onecode->user_id;
+                }
+
             }
 
             // Crear usuario
@@ -135,9 +145,11 @@ class RegisterController extends Controller
 
             return redirect()->action([ConquistadorController::class, 'invoke']);
         } catch (ValidationException $e) {
+            Log::error($e->errors());
             DB::rollBack();
             return redirect()->back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
+            Log::error($e->getMessage());
             DB::rollBack();
             return redirect()->back()->withErrors($e->getMessage());
         }
