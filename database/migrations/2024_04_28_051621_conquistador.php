@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('Conquistador', function (Blueprint $table) {
             $table->id();
             $table->foreignID('user_id')->references('id')->on('Users');
-            $table->foreignId('tutorLegal_id')->nullable()->constrained('users');
+            $table->foreignId('tutorLegal_id')->nullable()->constrained('Users');
             $table->string('locale')->default('es');
             $table->string('rol', 35);
             //$table->foreignId('unidad_id')->references('id')->on('Unidad');

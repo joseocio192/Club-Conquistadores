@@ -38,7 +38,7 @@ section {
     height: 100%;
 }
 
-footer {
+.footerIndex {
     display: flex;
     margin-top: auto;
     background-color: #F7F8FA;

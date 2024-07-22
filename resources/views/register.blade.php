@@ -1,3 +1,4 @@
+@extends('layouts.app')
 <!-- resources/views/register.blade.php -->
 <!DOCTYPE html>
 
@@ -18,13 +19,13 @@
     <form class="FormLayout" method="POST" action="{{ route('register') }}" id="registro">
         @csrf
 
-        <h1>@lang ('app.Register')</h1>
-        <h2>@lang('app.Conquerors_personal_data')</h2>
+        <h1>@lang ('app.register')</h1>
+        <h2>@lang('app.conquerors_personal_data')</h2>
         <div class='RegistroDiv'>
             <div class='SeccionDiv1'>
                 <div class='SubSeccionDiv'>
                     <div>
-                        <label for="name">@lang('app.Name')</label>
+                        <label for="name">@lang('app.name')</label>
                         <input id="name" type="text" name="name" required autofocus
                             value="{{ old('name') }}"><br>
                     </div>
@@ -37,20 +38,20 @@
                 </div>
 
                 <div class='EmailDiv'>
-                    <label for="email">@lang('app.Email')</label>
+                    <label for="email">@lang('app.email')</label>
                     <input id="email" type="email" name="email" value="{{ old('email') }}" required><br>
                 </div>
 
                 <div class='SubSeccionDiv'>
                     <div>
 
-                        <label for="password">@lang('app.Password')</label>
+                        <label for="password">@lang('app.password')</label>
                         <input id="password" type="password" name="password" value="{{ old('password') }}"
                             required><br>
                     </div>
 
                     <div>
-                        <label for="telefono">@lang('app.Phone')</label>
+                        <label for="telefono">@lang('app.phone')</label>
                         <input id="telefono" type="text" name="telefono" value="{{ old('telefono') }}"><br>
 
                     </div>
@@ -59,29 +60,37 @@
                 <div class='SubSeccionDiv'>
                     <div>
 
-                        <label for="fecha_nacimiento">@lang('app.Birthdate')</label>
+                        <label for="fecha_nacimiento">@lang('app.birthdate')</label>
                         <input id="fecha_nacimiento" type="date" name="fecha_nacimiento"
                             value="{{ old('fecha_nacimiento') }}" required><br>
 
                     </div>
 
                     <div>
-                        <label for="sexo">@lang('app.Sex')</label>
-                        <select id="sexo" name="sexo" required><br>
-                            <option value="">@lang('app.Select_a_gender')</option>
-                            <option value="{{ trans('app.Man') }}">{{ __('app.Man') }}</option>
-                            <option value="{{ trans('app.Women') }}">{{ __('app.Women') }}</option>
-                            <option value="{{ trans('app.Other') }}">{{ __('app.Other') }}</option>
+                        <label for="sexo">@lang('app.sex')</label>
+                        <select id="sexo" name="sexo" required>
+                            <option value="">{{ __('app.select_a_gender') }}</option>
+                            <option value="{{ __('app.man') }}" {{ old('sexo') == __('app.man') ? 'selected' : '' }}>
+                                {{ __('app.man') }}
+                            </option>
+                            <option value="{{ __('app.women') }}"
+                                {{ old('sexo') == __('app.women') ? 'selected' : '' }}>
+                                {{ __('app.women') }}
+                            </option>
+                            <option value="{{ __('app.Other') }}"
+                                {{ old('sexo') == __('app.Other') ? 'selected' : '' }}>
+                                {{ __('app.Other') }}
+                            </option>
                         </select>
                     </div>
                 </div>
             </div>
-            <h2 class='DatosH2'>@lang('app.Details_of_the_conqueror_residence')</h2>
+            <h2 class='DatosH2'>@lang('app.details_of_the_conqueror_residence')</h2>
             <div class='SeccionDiv2'>
                 <div class='SubSeccionDiv'>
                     <div>
 
-                        <label for="calle">@lang('app.Street')</label>
+                        <label for="calle">@lang('app.street')</label>
                         <input id="calle" type="text" name="calle" value="{{ old('calle') }}" required><br>
                     </div>
 
@@ -95,13 +104,13 @@
 
                 <div class='SubSeccionDiv'>
                     <div>
-                        <label for="numero_interior">@lang('app.Suite_number')</label>
+                        <label for="numero_interior">@lang('app.suite_number')</label>
                         <input id="numero_interior" type="text" name="numero_interior"
                             value="{{ old('numero_interior') }}"><br>
                     </div>
 
                     <div>
-                        <label for="colonia">@lang('app.Neighborhood')</label>
+                        <label for="colonia">@lang('app.neighborhood')</label>
                         <input id="colonia" type="text" name="colonia" value="{{ old('colonia') }}" required><br>
 
                     </div>
@@ -109,33 +118,33 @@
 
                 <div class='SubSeccionDiv'>
                     <div class="PaisDiv">
-                        <label for="pais">@lang('app.Country')</label>
+                        <label for="pais">@lang('app.country')</label>
                         <select id="pais" name="pais">
-                            <option value="">@lang('app.Select_a_country')</option>
+                            <option value="">@lang('app.select_a_country')</option>
                         </select>
                     </div>
 
                     <div>
-                        <label for="estado">@lang('app.State')</label>
+                        <label for="estado">@lang('app.state')</label>
                         <select id="estado" name="estado"></select>
                     </div>
                 </div>
 
                 <div class='SubSeccionDiv'>
                     <div class="MunicipioDiv">
-                        <label for="municipio">@lang('app.Municipality')</label>
+                        <label for="municipio">@lang('app.municipality')</label>
                         <select id="municipio" name="municipio"></select>
                     </div>
 
                     <div>
-                        <label for="ciudad_id">@lang('app.City')</label>
+                        <label for="ciudad_id">@lang('app.city')</label>
                         <select id="ciudad_id" name="ciudad"></select>
                     </div>
                 </div>
 
                 <div class='SubSeccionDiv'>
                     <div class="ClubesDiv">
-                        <label for="clubes">@lang('app.Clubs')</label>
+                        <label for="clubes">@lang('app.clubs')</label>
                         <select id="clubes" name="clubes"></select>
                     </div>
 
@@ -148,7 +157,7 @@
                 </div>
             </div>
 
-            <input type="hidden" name="status" value="{{ $status }}">
+            {{-- <input type="hidden" name="status" value="{{ $status }}"> --}}
 
             @if ($status == 'tutor')
                 <label for="tutorLegal_id">@lang('app.onecode')</label>
@@ -164,18 +173,20 @@
             <div class="ButtonsDiv">
                 <div>
                     <a class="HomeBtn" id="home-button" onclick="window.location.href = '/';">
-                        @lang('app.Back')
+                        @lang('app.back')
                     </a>
                 </div>
 
                 <div>
                     <button class="RegisterBtn" type="submit" id="submit-button" disabled>
-                        @lang('app.Sign_up')
+                        @lang('app.sign_up')
                     </button>
                 </div>
             </div>
         </div>
     </form>
+    @section('content')
+    @endsection
 </body>
 @if ($errors->any())
     <script>
@@ -199,11 +210,11 @@
 @endif
 <script type="text/javascript">
     $(document).ready(function() {
-        var oldPais = "{{ old('pais') }}";
-        var oldEstado = "{{ old('estado') }}";
-        var oldMunicipio = "{{ old('municipio') }}";
-        var oldCiudad = "{{ old('ciudad') }}";
-        var oldClub = "{{ old('clubes') }}";
+        let oldPais = "{{ old('pais') }}";
+        let oldEstado = "{{ old('estado') }}";
+        let oldMunicipio = "{{ old('municipio') }}";
+        let oldCiudad = "{{ old('ciudad') }}";
+        let oldClub = "{{ old('clubes') }}";
 
         $.ajax({
             url: "{{ url('api/get-pais-list') }}",
@@ -234,7 +245,7 @@
                     success: function(res) {
                         if (res) {
                             $('#estado').empty();
-                            $('#estado').append('<option value="">Seleccionar</option>');
+                            $('#estado').append('<option value="">{{__("app.select")}}</option>');
                             $.each(res, function(key, value) {
                                 $('#estado').append('<option value="' + key + '">' +
                                     value + '</option>');
@@ -264,7 +275,7 @@
                     success: function(res) {
                         if (res) {
                             $('#municipio').empty();
-                            $('#municipio').append('<option value="">Seleccionar</option>');
+                            $('#municipio').append('<option value="">{{__("app.select")}}</option>');
                             $.each(res, function(key, value) {
                                 $('#municipio').append('<option value="' + key +
                                     '">' + value + '</option>');
@@ -293,7 +304,7 @@
                     success: function(res) {
                         if (res) {
                             $('#ciudad_id').empty();
-                            $('#ciudad_id').append('<option value="">Seleccionar</option>');
+                            $('#ciudad_id').append('<option value="">{{__("app.select")}}</option>');
                             $.each(res, function(key, value) {
                                 $('#ciudad_id').append('<option value="' + key +
                                     '">' + value + '</option>');
@@ -321,7 +332,7 @@
                     success: function(res) {
                         if (res) {
                             $('#clubes').empty();
-                            $('#clubes').append('<option value="">Seleccionar</option>');
+                            $('#clubes').append('<option value="">{{__("app.select")}}</option>');
                             $.each(res, function(key, value) {
                                 $('#clubes').append('<option value="' + key + '">' +
                                     value + '</option>');

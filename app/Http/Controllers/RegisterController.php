@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\App;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
@@ -59,7 +60,7 @@ class RegisterController extends Controller
                 'apellido' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:Users',
                 'password' => 'required|string|min:8',
-                'telefono' => 'required|string|max:10',
+                'telefono' => 'required|string',
                 'fecha_nacimiento' => 'required|after:1900/01/01|before:today',
                 'calle' => 'required|string|max:255',
                 'numero_exterior' => 'required|string|max:255',
@@ -68,13 +69,10 @@ class RegisterController extends Controller
                 'ciudad' => 'required|integer',
                 'codigo_postal' => 'required|string|max:255',
                 'sexo' => 'required|string|max:255',
-                'onecode' => 'required|integer',
                 'clubes' => 'required|integer',
-                'status' => 'required|string',
             ]);
 
             $status = $request->input('status');
-            $tutorid = null;
 
             if ($status == 'tutor') {
                 $onecode = Onecodeuse::where('onecode', $request->onecode)->where('used', 0)->first();
@@ -136,10 +134,12 @@ class RegisterController extends Controller
             auth()->login($user);
 
             return redirect()->action([ConquistadorController::class, 'invoke']);
+        } catch (ValidationException $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
             DB::rollBack();
-
-            return view('error')->with('message', 'Ha ocurrido un error durante el registro.');
+            return redirect()->back()->withErrors($e->getMessage());
         }
     }
 

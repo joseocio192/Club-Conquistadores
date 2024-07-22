@@ -18,4 +18,5 @@ class ClubXpersona extends Pivot
         'activo',
         'detalles'
     ];
+
 }
