@@ -33,7 +33,7 @@ AZURE_TRANSLATOR_KEY=
 AZURE_TRANSLATOR_ENDPOINT=
 AZURE_TRANSLATOR_REGION=
 ```
-
+Y ejecutar los siguientes comandos en el directorio del proyecto
 ```
 php artisan key:generate
 
