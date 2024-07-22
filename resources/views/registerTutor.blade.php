@@ -71,7 +71,7 @@
                             {{ __('app.women') }}
                         </option>
                         <option value="{{ __('app.other') }}" {{ old('sexo') == __('app.other') ? 'selected' : '' }}>
-                            {{ __('app.tther') }}
+                            {{ __('app.other') }}
                         </option>
                     </select>
                 </div>
@@ -149,7 +149,7 @@
 
             <div>
                 <button class="RegisterBtn" type="submit" id="submit-button" disabled>
-                    @lang('app.sign_in')
+                    @lang('app.sign_up')
                 </button>
             </div>
         </div>

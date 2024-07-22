@@ -66,106 +66,131 @@
         @if ($status == 'clase')
         <div class="divTareasAsis">
             <h2>{{ $clase->nombre }}</h2>
-            <!--************************************ Tabla Tareas ************************************-->
-            <h3>Tareas</h3>
-            <form action={{ route('instructor.sendhw') }} method="post">
-                @csrf
-                <table>
-                    <thead>
-                        <tr>
-                            <th>@lang('app.name')</th>
-                            @if ($tareas->count() == 0)
-                            <th>@lang('app.there_are_no_tasks')</th>
-                            @else
-                            @foreach ($tareas as $tarea)
-                            <th>
-                                <a href="/instructor/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a>
-                            </th>
-                            @endforeach
-                            @endif
-                        </tr>
-                    </thead>
-                    @foreach ($conquistadores as $conquistador)
-                    <tr>
-                        <td>
-                            <a href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
-                        </td>
-                        @foreach ($conquistador->tareas as $tareaa)
-                        <td class="tdTareas">
-                            @if ($tareaa->clase_id === $clase->id)
-                            <input type="checkbox" name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}" value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
-                            @endif
-                        </td>
-                        @endforeach
-                    </tr>
-                    @endforeach
-                </table>
-                <button class="btnEnviar" type="submit">@lang('app.send')</button>
-            </form>
 
-            <!--************************************ Tabla Asistencia ************************************-->
-            <h3>@lang('app.assitence')</h3>
-            <form action="{{ route('instructor.definer') }}" method="post">
-                @csrf
-                <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
-                <div class="divTablaAsis">
+                <!--************************************ Tabla Tareas ************************************-->
+                <h3>Tareas</h3>
+                <form action={{ route('instructor.sendhw') }} method="post">
+                    @csrf
                     <table>
                         <thead>
                             <tr>
                                 <th>@lang('app.name')</th>
-                                @if ($asistencias->count() == 0)
-                                <th>@lang('app.there_are_no_assists')</th>
+                                @if ($tareas->count() == 0)
+                                    <th>@lang('app.there_are_no_tasks')</th>
                                 @else
-                                @foreach ($conquistador->asistencia as $asistencia)
-                                <th>{{ $asistencia->fecha }}</th>
-                                @endforeach
+                                    @foreach ($tareas as $tarea)
+                                        <th>
+                                            <a href="/instructor/tarea/{{ $tarea->id }}">{{ $tarea->nombre }}</a>
+                                        </th>
+                                    @endforeach
                                 @endif
-                                <th class="thBtnDia">
-                                    <button class="btnDia" type="submit" name="adddia">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                            <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                            <path d="M416 208H272V64c0-17.7-14.3-32-32-32h-32c-17.7 0-32 14.3-32 32v144H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h144v144c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32V304h144c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z" />
-                                        </svg>
-                                    </button>
-                                    <button class="btnDia" type="submit" name="deleteDia">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                            <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                            <path d="M416 208H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z" />
-                                        </svg>
-                                    </button>
-                                </th>
                             </tr>
                         </thead>
-                        @foreach ($conquistadores as $conquistador)
-                        <tr>
-                            @if ($asistencias->count() == 0)
-                            <th>@lang('app.there_are_no_assists')</th>
-                            @else
-                            <td>{{ $conquistador->user->name }}</td>
-                            @foreach ($conquistador->asistencia as $asistencia)
-                            @if ($asistencia->id_clase === $clase->id)
-                            <td class="tdAsistencia">
-                                <input type="checkbox" name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}" value="1" @if ($asistencia->pivot->asistio == 1) checked @endif />
-                                <select class="selectPulcritud" name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
-                                    <option value="1" @if ($asistencia->pivot->pulcritud == 1) selected @endif>1</option>
-                                    <option value="2" @if ($asistencia->pivot->pulcritud == 2) selected @endif>2</option>
-                                    <option value="3" @if ($asistencia->pivot->pulcritud == 3) selected @endif>3
-                                    </option>
-                                    <option value="4" @if ($asistencia->pivot->pulcritud == 4) selected @endif>4
-                                    </option>
-                                    <option value="5" @if ($asistencia->pivot->pulcritud == 5) selected @endif>5
-                                    </option>
-                                </select>
-                            </td>
-                            @endif
+                        @if ($conquistadores->count() == 0)
+                            <th>@lang('app.there_are_no_students')</th>
+                        @else
+                            @foreach ($conquistadores as $conquistador)
+                                <tr>
+                                    <td>
+                                        <a
+                                            href="/instructor/conquistador/{{ $conquistador->user->id }}">{{ $conquistador->user->name }}</a>
+                                    </td>
+                                    @foreach ($conquistador->tareas as $tareaa)
+                                        <td class="tdTareas">
+                                            @if ($tareaa->clase_id === $clase->id)
+                                                <input type="checkbox"
+                                                    name="{{ $tareaa->pivot->tarea_id . '-' . $tareaa->pivot->conquistador }}"
+                                                    value="1" @if ($tareaa->pivot->completada == 1) checked @endif>
+                                            @endif
+                                        </td>
+                                    @endforeach
+                                </tr>
                             @endforeach
-                            @endif
-                        </tr>
-                        @endforeach
+                        @endif
                     </table>
-                </div>
-                <button class="btnEnviar" type="submit" name="save">@lang('app.send')</button>
-            </form>
+                    <button class="btnEnviar" type="submit">@lang('app.send')</button>
+                </form>
+
+                <!--************************************ Tabla Asistencia ************************************-->
+                <h3>@lang('app.assitence')</h3>
+                <form action="{{ route('instructor.definer') }}" method="post">
+                    @csrf
+                    <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
+                    <div class="divTablaAsis">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>@lang('app.name')</th>
+                                    @if ($asistencias->count() == 0)
+                                        <th>@lang('app.there_are_no_assists')</th>
+                                    @else
+                                        @if ($conquistadores->count() == 0)
+                                            <th>{{ $asistencias->first()->fecha }}</th>
+                                        @else
+                                            @foreach ($conquistador->asistencia as $asistencia)
+                                                <th>{{ $asistencia->fecha }}</th>
+                                            @endforeach
+                                        @endif
+                                    @endif
+                                    <th class="thBtnDia">
+                                        <button class="btnDia" type="submit" name="adddia">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                                <path
+                                                    d="M416 208H272V64c0-17.7-14.3-32-32-32h-32c-17.7 0-32 14.3-32 32v144H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h144v144c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32V304h144c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z" />
+                                            </svg>
+                                        </button>
+                                        <button class="btnDia" type="submit" name="deleteDia">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                                <path
+                                                    d="M416 208H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z" />
+                                            </svg>
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            @foreach ($conquistadores as $conquistador)
+                                <tr>
+                                    @if ($asistencias->count() == 0)
+                                        <th>@lang('app.there_are_no_assists')</th>
+                                    @else
+                                        <td>{{ $conquistador->user->name }}</td>
+                                        @foreach ($conquistador->asistencia as $asistencia)
+                                            @if ($asistencia->id_clase === $clase->id)
+                                                <td class="tdAsistencia">
+                                                    <input type="checkbox"
+                                                        name="asistencia_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}"
+                                                        value="1"
+                                                        @if ($asistencia->pivot->asistio == 1) checked @endif />
+                                                    <select class="selectPulcritud"
+                                                        name="pulcritud_{{ $asistencia->pivot->id_asistencia . '-' . $asistencia->pivot->id_conquistador }}">
+                                                        <option value="1"
+                                                            @if ($asistencia->pivot->pulcritud == 1) selected @endif>1
+                                                        </option>
+                                                        <option value="2"
+                                                            @if ($asistencia->pivot->pulcritud == 2) selected @endif>2
+                                                        </option>
+                                                        <option value="3"
+                                                            @if ($asistencia->pivot->pulcritud == 3) selected @endif>3
+                                                        </option>
+                                                        <option value="4"
+                                                            @if ($asistencia->pivot->pulcritud == 4) selected @endif>4
+                                                        </option>
+                                                        <option value="5"
+                                                            @if ($asistencia->pivot->pulcritud == 5) selected @endif>5
+                                                        </option>
+                                                    </select>
+                                                </td>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                    <button class="btnEnviar" type="submit" name="save">@lang('app.send')</button>
+                </form>
 
             <form action={{ route('instructor.sendRequisitos') }} method="post">
                 @csrf
