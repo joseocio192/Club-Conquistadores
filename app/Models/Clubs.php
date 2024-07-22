@@ -67,7 +67,7 @@ class Clubs extends Model
 
     public function conquistadores(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'ClubXpersona', 'club_id', 'user_id')->using(ClubXpersona::class)->where('rol', 'conquistador');
+        return $this->belongsToMany(User::class, 'ClubXpersona', 'club_id', 'user_id')->using(ClubXpersona::class)->where('rol', 'conquistador')->orwhere('rol', 'conqueror');
     }
 
     public function numbers(): HasMany

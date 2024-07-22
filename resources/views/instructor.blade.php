@@ -231,7 +231,12 @@
                 @csrf
                 <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
                 @lang('app.students_id')
-                <input type="text" name="alumnos" placeholder="(Separados por comas)">
+                <!-- <input type="text" name="alumnos" placeholder="(Separados por comas)"> -->
+                <select name="alumnos" id="alumnos">
+                    @foreach ($conquistadoresenclub as $conquistador)
+                    <option value="{{$conquistador->conquistador->id}}">{{$conquistador->name}}</option>
+                    @endforeach
+                </select>
                 <button class="my-button" type="submit">@lang('app.add')</button>
             </form>
 
@@ -241,7 +246,12 @@
                 @csrf
                 <input type="text" name="clase_id" value="{{ $clase->id }}" style="display: none;">
                 @lang('app.students_id')
-                <input type="text" name="alumnos" placeholder="(Separados por comas)">
+                <!-- <input type="text" name="alumnos" placeholder="(Separados por comas)"> -->
+                <select name="alumnos" id="alumnos">
+                    @foreach ($conquistadores as $conquistador)
+                    <option value="{{ $conquistador->id }}">{{ $conquistador->user->name }}</option>
+                    @endforeach
+                </select>
                 <button class="my-button" type="submit">@lang('app.delete')</button>
             </form>
 

@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Tarea;
 use App\Models\Conquistador;
 use App\Models\Asistencia;
+use App\Models\Clubs;
 use App\Models\Especialidad;
 use Illuminate\Support\Facades\Log;
 
@@ -45,8 +46,12 @@ class InstructorController extends Controller
         $tareas = Tarea::where('clase_id', $id)->get();
         $asistencias = Asistencia::where('id_clase', $id)->get();
         $especialidades = $clase->especialidades;
+        //conquistadors que no estan en la clase y estan en el club
+        $conquistadoresenclub = Clubs::find($user->club->first()->id)->conquistadores;
+        $conquistadoresenclub = $conquistadoresenclub->diff($conquistadores);
+        Log::info($conquistadoresenclub);
 
-        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas', 'asistencias', 'especialidades'));
+        return view('instructor', compact('clase', 'conquistadores', 'clasesDeInstructor', 'user', 'status', 'tareas', 'asistencias', 'especialidades', 'conquistadoresenclub'));
     }
 
     public function crear()

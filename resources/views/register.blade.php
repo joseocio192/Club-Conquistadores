@@ -166,7 +166,7 @@
                 <input type="hidden" name="autorizado" value="1">
             @else
                 <label for="tutorLegal_id">@lang('app.onecode')</label>
-                <input id="tutorLegal_id" type="text" name="onecode" value="{{ old('onecode') }}" required><br>
+                <input id="tutorLegal_id" type="text" name="onecode" value="{{ old('onecode') }}"><br>
                 <input type="hidden" name="autorizado" value="0">
                 <input type="hidden" name="rol" value="conquistador">
             @endif

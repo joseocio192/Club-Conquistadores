@@ -8,6 +8,7 @@ Proyecto de Ingeniería de software(SCD-1011) donde se busca solucionar una prob
 - COMPOSER
 - NODEJS
 - PHP(XAMPP)
+- Azure traductor
   ## Instalar el proyecto
 - Abrir XAMPP y empezar los servicios de MySql y Apache
 - En la carpeta donde se tendrá el proyecto abrir PowerShell
@@ -26,7 +27,13 @@ En el proyecto cambiar el nombre de '.env.example' por '.env'
 
 ![image](https://github.com/joseocio192/Club-Conquistadores/assets/80994068/ab9e21b0-816f-4a5d-999e-8b7b56a0a99e)
 
-
+añadir lo siguiente al .env
+```
+AZURE_TRANSLATOR_KEY=
+AZURE_TRANSLATOR_ENDPOINT=
+AZURE_TRANSLATOR_REGION=
+```
+Y ejecutar los siguientes comandos en el directorio del proyecto
 ```
 php artisan key:generate
 
