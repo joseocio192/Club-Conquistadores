@@ -110,6 +110,7 @@ class InstructorController extends Controller
 
     public function eliminarClase(Request $request)
     {
+        Log::info($request);
         $user = auth()->user();
         $instructor = Instructor::where('user_id', $user->id)->first();
         $clase = Clase::find($request->clase_id);
@@ -145,7 +146,7 @@ class InstructorController extends Controller
         foreach ($conquistador_ids as $conquistador_id) {
             $conquistador = Conquistador::find($conquistador_id);
             if ($conquistador->edad < $clase->edadMinima) {
-                return back()->withErrors(['alumnos' => 'One or more students are under 12 years old.']);
+                return back()->withErrors(['alumnos' => 'One or more students are under '. $clase->edadMinima .' years old.']);
             }
         }
 

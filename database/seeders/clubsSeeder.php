@@ -58,5 +58,7 @@ class ClubsSeeder extends Seeder
         $instructor->jefe_id = 1;
         $instructor->activo = 1;
         $instructor->save();
+
+
     }
 }
