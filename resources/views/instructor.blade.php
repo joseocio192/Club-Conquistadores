@@ -325,6 +325,7 @@
             </form>
             <div class="divEliminarClase">
                 <form action="{{ route('instructor.eliminarClase') }}" method="post">
+                    @csrf
                     <h3> @lang('app.delete_class') </h3>
                     <div>
                         @lang('app.class_id')
@@ -334,7 +335,6 @@
                 </form>
                 <button class="btnEliminarClase" type="submit">@lang('app.delete')</button>
             </div>
-            @csrf
         </div>
         @endif
         <!--************************************ Mostrar tarea ************************************-->
@@ -380,17 +380,6 @@
         </div>
 
         </form>
-        <div class="divEliminarClase">
-            <form action="{{ route('instructor.eliminarClase') }}" method="post">
-                <h3> @lang('app.delete_class') </h3>
-                <div>
-                    @lang('app.class_id')
-                    <input type="text" name="clase_id">
-                </div>
-
-                <button class="my-button" type="submit">@lang('app.modify')</button>
-            </form>
-        </div>
         @endif
         <!--************************************ Mostar Conquistador ************************************-->
         @if ($status == 'Mostar Conquistador')
