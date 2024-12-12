@@ -36,7 +36,7 @@ AZURE_TRANSLATOR_REGION=
 Y ejecutar los siguientes comandos en el directorio del proyecto
 ```
 php artisan key:generate
-
+php artisan migrate:fresh --seed
 php artisan serve
 ```
  - Y ya se tendría la pagina en http://127.0.0.1:8000 ó usar el dominio del localhost
