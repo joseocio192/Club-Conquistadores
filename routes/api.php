@@ -22,3 +22,9 @@ Route::get('get-state-list', 'API\DropdownController@getStateList');
 Route::get('get-municipality-list', 'API\DropdownController@getMunicipalityList');
 Route::get('get-city-list', 'API\DropdownController@getCityList');
 Route::get('get-club-list', 'API\DropdownController@getClubList');
+
+
+
+
+
+aaaa
